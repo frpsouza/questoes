@@ -1,0 +1,28 @@
+# Edital 001/2026 – Fundação Liberato
+
+Dividido por itens do edital original.
+
+- [Preâmbulo](00-preambulo.md) (linhas 3-23)
+- [1 DISPOSIÇÕES PRELIMINARES](01-disposicoes-preliminares.md) (linhas 24-91)
+- [2 ETAPAS DO CONCURSO PÚBLICO](02-etapas-do-concurso.md) (linhas 92-119)
+- [3 ENTREGA DE DOCUMENTOS](03-entrega-de-documentos.md) (linhas 120-151)
+- [4 EMPREGOS PÚBLICOS, VAGAS, CARGA HORÁRIA, VENCIMENTO BÁSICO E FORMAÇÃO EXIGIDA](04-empregos-vagas-vencimento-formacao.md) (linhas 152-562)
+- [5 REQUISITOS PARA O INGRESSO](05-requisitos-ingresso.md) (linhas 563-618)
+- [6 INSCRIÇÕES](06-inscricoes.md) (linhas 619-721)
+- [7 ISENÇÃO DA TAXA](07-isencao-taxa.md) (linhas 722-787)
+- [8 VAGAS RESERVADAS](08-vagas-reservadas.md) (linhas 788-1121)
+- [9 CONDIÇÕES ESPECIAIS](09-condicoes-especiais-prova.md) (linhas 1122-1212)
+- [10 HOMOLOGAÇÃO](10-homologacao-inscricoes.md) (linhas 1213-1225)
+- [11 PROVA TEÓRICO-OBJETIVA](11-prova-teorico-objetiva.md) (linhas 1226-1455)
+- [12 PROVA DE TÍTULOS](12-prova-de-titulos.md) (linhas 1456-1568)
+- [13 NOTA FINAL](13-nota-final-classificacao.md) (linhas 1569-1685)
+- [14 RECURSOS](14-recursos.md) (linhas 1686-1749)
+- [15 DOCUMENTAÇÃO](15-documentacao-contratacao.md) (linhas 1750-1825)
+- [16 FORO](16-foro-judicial.md) (linhas 1826-1830)
+- [17 DISPOSIÇÕES FINAIS](17-disposicoes-finais.md) (linhas 1831-1885)
+- [Anexo I](anexo-I-cronograma.md) (linhas 1886-1986)
+- [Anexo II](anexo-II-programas-das-provas.md) (linhas 1987-3043)
+- [Anexo III](anexo-III-atribuicoes.md) (linhas 3044-3123)
+- [Anexo IV](anexo-IV-areas-de-conhecimento.md) (linhas 3124-3168)
+- [Anexo V](anexo-V-autodeclaracao-etnico-racial.md) (linhas 3169-3192)
+- [Anexo VI](anexo-VI-autodeclaracao-trans.md) (linhas 3193-3220)
