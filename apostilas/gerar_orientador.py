@@ -888,6 +888,7 @@ def main():
 <style>{CSS}</style><script>{JS}</script></head>
 <body><div class="wrap">{nav()}<main>{capa}{corpo}</main></div></body></html>"""
     SAIDA.write_text(pagina, encoding="utf-8")
+    (RAIZ / "index.html").write_text(pagina, encoding="utf-8")   # página do GitHub Pages
     print(f"gerado {SAIDA} ({SAIDA.stat().st_size // 1024} KB)")
 
 
