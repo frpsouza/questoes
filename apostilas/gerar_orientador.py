@@ -11,6 +11,7 @@ import difflib
 import html
 import re
 import subprocess
+from datetime import date
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -30,6 +31,7 @@ RE_NOTA = re.compile(
 _cache: dict[str, list[str]] = {}
 _antes: dict[str, dict[int, list[str]]] = {}   # arquivo -> {índice do bloco: [redações anteriores, da mais antiga à mais recente]}
 
+ANO_LIMITE = date.today().year - 10   # só alterações dos últimos 10 anos recebem destaque (diff, redação anterior)
 ANO_RECENTE = 2023          # alterações a partir deste ano recebem destaque "potencial de prova"
 RE_ROTULO = re.compile(r"^(Art\.\s*\d+(?:\.\d+)?\s*(?:º|°|o\b)?(?:-[A-Z]{1,2}\b)?|§\s*\d+\s*(?:º|°|o\b)?|Parágrafo único|[IVXLC]+(?=\s*[-–])|[a-z](?=\)))")
 RE_ALTERADOR = re.compile(
@@ -221,10 +223,11 @@ def md_lei(partes) -> str:
         ano = max(anos) if anos else None
         ref = next((f"{a[1]}/{a[2]}" if a[2] else a[1] for a in alts if a[2] == ano), None) if alts else None
         recente = bool(ano and ano >= ANO_RECENTE)
+        no_periodo = ano is not None and ano >= ANO_LIMITE
         sem_texto = len(re.sub(r"[^A-Za-zÀ-ú]", "", RE_ROTULO.sub("", corpo.replace("*", ""), count=1))) < 3
         revogado = "(Revogad" in notas and sem_texto
         corpo_md, h_ant, coment = corpo, None, None
-        if olds:
+        if olds and no_periodo:
             ant = re.sub(r"[ \t]{2,}", " ", RE_NOTA.sub("", olds[-1])).strip()
             h_old, m_new, add, rem, sim = diff(ant, corpo)
             if revogado:
@@ -407,10 +410,11 @@ def parte_legislacao():
 
 <p class="meta">10 questões · 1,00 ponto cada · mínimo de 5 acertos. Textos transcritos <em>ipsis litteris</em> das fontes oficiais. Cada lei abre com um <strong>mapa por tópico</strong>; em seguida, cada tópico traz o trecho correspondente da lei, com seus títulos e capítulos.</p>
 
-<div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div>
+<div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde {ANO_LIMITE}); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div>
 
 <p class="meta">Ordem de estudo sugerida (do geral ao específico): <a href="#leg-c">Constituição</a> → <a href="#leg-j">LDB</a> → <a href="#leg-l">BNCC</a> → <a href="#leg-k">PNEPT</a> → <a href="#leg-m">ECA</a> → <a href="#leg-h">LBI</a> → <a href="#leg-e">igualdade racial</a> → <a href="#leg-g">Maria da Penha</a> → <a href="#leg-i">LGPD</a> → <a href="#leg-a">Liberato</a> → <a href="#leg-d">CLT</a>.</p>
 """
+    s = s.replace("{ANO_LIMITE}", str(ANO_LIMITE))
     LDB = "lei9394-ldb.md"
     s += """
 ## a) Lei RS nº 14.498/2014 — Plano de Empregos, Funções e Salários da Fundação Liberato {#leg-a}
