@@ -1,2 +1,7 @@
 __pycache__/
 *.pyc
+
+# páginas salvas do Qconcursos (conteúdo protegido; não publicar)
+q/*.html
+q/pages/
+q/md/

@@ -9,6 +9,7 @@ Uso:  python apostilas/gerar_orientador.py
 """
 import difflib
 import html
+import json
 import re
 import subprocess
 from datetime import date
@@ -330,11 +331,90 @@ def topicos(*itens):
 
 # ------------------------------------------------------------- conteúdo --
 
+QUESTOES_JSON = RAIZ / "q" / "questoes.json"
+
+# assuntos do Qconcursos -> subtópicos do programa de Português (Anexo II)
+GRUPOS_PT = {
+    "pt-a1": ("Compreensão e interpretação", {"Noções Gerais de Compreensão e Interpretação de Texto",
+              "Tipologia Textual", "Funções da Linguagem: emotiva, apelativa, referencial, metalinguística, fática e poética."}),
+    "pt-a2": ("Efeitos de sentido e figuras de linguagem", {"Figuras de Linguagem", "Denotação e Conotação"}),
+    "pt-a3": ("Coesão e coerência", {"Coesão e coerência", "Uso dos conectivos"}),
+    "pt-b1": ("Significação e substituição de palavras e expressões", {
+              "Significação Contextual de Palavras e Expressões. Sinônimos e Antônimos.", "Denotação e Conotação",
+              "Redação - Reescritura de texto"}),
+    "pt-b2": ("Estrutura e formação de palavras", {"Estrutura das Palavras: Radical, Desinência, Prefixo e Sufixo"}),
+    "pt-c1": ("Ortografia e acentuação gráfica", {"Ortografia", "Acentuação Gráfica: Proparoxítonas, Paroxítonas, Oxítonas e Hiatos"}),
+    "pt-c2": ("Relações entre fonemas e grafias", {"Fonologia", "Fonemas e Letras", "Encontros consonantais: Dígrafos", "Noções de Fonética"}),
+    "pt-c3": ("Flexões e emprego das classes gramaticais", {"Morfologia", "Morfologia - Verbos", "Morfologia - Pronomes",
+              "Pronomes demonstrativos", "Advérbios", "Adjetivos", "Funções morfossintáticas da palavra ATÉ"}),
+    "pt-c4": ("Vozes verbais", {"Flexão de voz (ativa, passiva, reflexiva)"}),
+    "pt-c5": ("Concordância nominal e verbal", {"Concordância verbal, Concordância nominal", "Concordância Verbal", "Concordância Nominal"}),
+    "pt-c6": ("Regência e crase", {"Regência", "Crase"}),
+    "pt-c7": ("Pontuação", {"Pontuação", "Uso dos dois-pontos", "Uso da vírgula"}),
+    "pt-c8": ("Coordenação, subordinação e relações sintáticas", {"Sintaxe", "Análise sintática", "Uso dos conectivos",
+              "Orações coordenadas sindéticas: Aditivas, Adversativas, Alternativas, Conclusivas...",
+              "Orações subordinadas adverbiais: Causal, Comparativa, Consecutiva, Concessiva, Condicional...",
+              "Vocativo e Termos Acessórios da Oração: Adjunto Adnominal, Diferença entre Adjunto Adnominal e Complemento Nominal, Adjunto Adverbial e Aposto"}),
+}
+# assunto genérico: só conta quando a questão não tem outro assunto mapeado
+GENERICOS_PT = {"Interpretação de Textos": "pt-a1"}
+
+
+def _questoes_pt():
+    """{grupo: [questões]} a partir de q/questoes.json (metadados extraídos do Qconcursos)."""
+    if not QUESTOES_JSON.exists():
+        return {}, 0, set()
+    qs = json.loads(QUESTOES_JSON.read_text(encoding="utf-8"))
+    por = {g: [] for g in GRUPOS_PT}
+    sem = set()
+    for q in qs:
+        gs = [g for g, (_, ass) in GRUPOS_PT.items() if ass & set(q["assuntos"])]
+        if not gs:
+            gs = [GENERICOS_PT[a] for a in q["assuntos"] if a in GENERICOS_PT][:1]
+        if not gs:
+            sem.add(q["codigo"])
+        for g in gs:
+            por[g].append(q)
+    for g in por:
+        por[g].sort(key=lambda q: (-(q["ano"] or 0), q["codigo"]))
+    return por, len(qs), sem
+
+
+QPT, NQPT, SEM_GRUPO_PT = _questoes_pt()
+
+
+def QPT_BLOCO(grupo: str) -> str:
+    """Lista de questões da Legalle do subtópico, com link para o Qconcursos."""
+    titulo, _ = GRUPOS_PT[grupo]
+    qs = QPT.get(grupo, [])
+    if not qs:
+        return (f'\n\n<p class="ref" id="{grupo}"><strong>{titulo}</strong> — nenhuma questão da Legalle '
+                f'neste assunto na seleção atual.</p>\n\n')
+    itens = []
+    for q in qs:
+        prova = q["provas"][0] if q["provas"] else ""
+        cargo = prova.split(" - ")[-1] if prova else ""
+        outros = ", ".join(a for a in q["assuntos"] if a not in GRUPOS_PT[grupo][1] and a not in GENERICOS_PT)
+        itens.append(
+            f'<li><a href="{html.escape(q["url"])}" target="_blank" rel="noopener">{q["codigo"]}</a> '
+            f'· {q["ano"]} · {html.escape(q["orgao"] or "")} · {html.escape(cargo)}'
+            + (f' <span class="nota">(também: {html.escape(outros)})</span>' if outros else "") + "</li>")
+    return (f'\n\n<details class="questoes" id="{grupo}"><summary>{titulo} — {len(qs)} '
+            f'{"questão" if len(qs) == 1 else "questões"} da Legalle</summary>\n'
+            f'<ul>{"".join(itens)}</ul></details>\n\n')
+
+
 def parte_portugues():
+    resumo = (f'<p class="meta">Questões da Legalle no Qconcursos ({NQPT} de Português, nível superior), '
+              'agrupadas pelos subtópicos do programa a partir dos assuntos indicados pelo próprio Qconcursos. '
+              'Os links abrem a questão no Qconcursos (requer login). Uma questão com vários assuntos aparece em '
+              'mais de um subtópico.</p>') if NQPT else ""
     return f"""
 # Parte I — Língua Portuguesa {{#pt}}
 
 <p class="meta">10 questões · 1,00 ponto cada · mínimo de 5 acertos</p>
+
+{resumo}
 
 ## a) Leitura e compreensão de textos {{#pt-a}}
 
@@ -344,6 +424,7 @@ def parte_portugues():
 "Recursos de argumentação (exemplificação, autoridade, dados, comparação, contra-argumentação)",
 "Informações implícitas: pressupostos (marcados linguisticamente) × subentendidos (inferidos do contexto)",
 "Coesão (referencial, sequencial, lexical) e coerência textual")}
+{QPT_BLOCO("pt-a1")}{QPT_BLOCO("pt-a2")}{QPT_BLOCO("pt-a3")}
 
 ## b) Léxico {{#pt-b}}
 
@@ -351,6 +432,7 @@ def parte_portugues():
 "Substituição de palavras e expressões mantendo sentido e correção",
 "Estrutura e formação de palavras: radical, afixos, desinências; derivação e composição",
 "Sinônimos, antônimos, parônimos e homônimos")}
+{QPT_BLOCO("pt-b1")}{QPT_BLOCO("pt-b2")}
 
 ## c) Aspectos linguísticos {{#pt-c}}
 
@@ -363,6 +445,7 @@ def parte_portugues():
 "Regência nominal e verbal; acento indicativo de crase",
 "Pontuação: regras e implicações de sentido",
 "Coordenação e subordinação: conjunções, locuções conjuntivas e pronomes relativos")}
+{"".join(QPT_BLOCO(g) for g in GRUPOS_PT if g.startswith("pt-c"))}
 """
 
 
@@ -805,6 +888,9 @@ ul{padding-left:22px}
 li{margin:3px 0}
 .aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
 details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
 details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
 table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
 table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
