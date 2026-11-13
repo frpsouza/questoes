@@ -7,6 +7,7 @@ redação vigente com as notas de alteração ("Redação dada pela...").
 
 Uso:  python apostilas/gerar_supervisor.py
 """
+import difflib
 import html
 import re
 import subprocess
@@ -20,19 +21,34 @@ SAIDA = RAIZ / "apostilas" / "supervisor-escolar.html"
 
 RE_ART = re.compile(r"^Art\.\s*(\d+(?:\.\d+)?)(?:\s*(?:º|°|o\b))?(-[A-Z]{1,2}\b)?")
 RE_HEAD = re.compile(r"^(T[ÍI]TULO|CAP[ÍI]TULO|Cap[íi]tulo|SE[ÇC][ÃA]O|Se[çc][ãa]o|SUBSE[ÇC][ÃA]O|Subse[çc][ãa]o|LIVRO|PARTE)\b")
-RE_RUIDO = re.compile(r"^(https?://www\.al\.rs\.gov\.br\S*|\d{1,3}|#?\s*ESTADO DO RIO GRANDE DO SUL ASSEMBLEIA LEGISLATIVA.*)$")
+RE_RUIDO = re.compile(r"^(https?://www\.al\.rs\.gov\.br\S*|\**Resolução CEEd nº 365/2021\s*[–-]\s*fl\.\s*\d+\**|\d{1,3}|#?\s*ESTADO DO RIO GRANDE DO SUL ASSEMBLEIA LEGISLATIVA.*)$")
 RE_NOTA = re.compile(
     r"\((?:Redação dada|Incluíd[oa]|Acrescid[oa]|Vide|Vigência|Revogad[oa]|Renumerad[oa]|Produção de efeito|Regulamento|"
     r"Regulamenta|Promulgação|Expressão|Parágrafo|Inciso|Alínea|Artigo|Texto|Vetado|VETADO)[^()]*(?:\([^()]*\)[^()]*)*\)"
 )
 
 _cache: dict[str, list[str]] = {}
+_antes: dict[str, dict[int, list[str]]] = {}   # arquivo -> {índice do bloco: [redações anteriores, da mais antiga à mais recente]}
+
+ANO_RECENTE = 2023          # alterações a partir deste ano recebem destaque "potencial de prova"
+RE_ROTULO = re.compile(r"^(Art\.\s*\d+(?:\.\d+)?\s*(?:º|°|o\b)?(?:-[A-Z]{1,2}\b)?|§\s*\d+\s*(?:º|°|o\b)?|Parágrafo único|[IVXLC]+(?=\s*[-–])|[a-z](?=\)))")
+RE_ALTERADOR = re.compile(
+    r"(Redação dada|Incluíd[oa]|Acrescid[oa]|Revogad[oa]|Renumerad[oa])\s+(?:pel[oa]s?|por)\s+"
+    r"((?:Lei(?: Complementar)?|Emenda Constitucional|Medida Provisória|Decreto(?:-Lei)?)\s*n[ºo°]?\s*[\d.\-]+)"
+    r"(?:,\s*de\s*(?:\d{1,2}\.\d{1,2}\.)?(\d{4}))?"
+)
+
+
+def rotulo(t: str):
+    m = RE_ROTULO.match(t.replace("*", "").strip())
+    return re.sub(r"[\s.º°]|o$", "", m.group(1)).lower() if m else None
 
 
 def limpar(bloco: str) -> str:
     b = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", bloco)            # imagens
     b = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", b)             # links -> texto
     b = re.sub(r"<[^>]+>", "", b)                              # <u>, <br> etc.
+    b = re.sub(r"(?m)^#{1,6}\s*", "", b)                       # "## CAPÍTULO I" (textos vindos de PDF)
     b = b.replace("^(o)", "º").replace("^(a)", "ª")
     b = "\n".join(l.strip() for l in b.splitlines()).strip()
     return "" if re.fullmatch(r"[\\*\s]*", b) else b
@@ -41,19 +57,32 @@ def limpar(bloco: str) -> str:
 def blocos(arquivo: str) -> list[str]:
     if arquivo not in _cache:
         txt = (MD / arquivo).read_text(encoding="utf-8")
-        out = []
+        out, antes, pend = [], {}, []
         for b in re.split(r"\n\s*\n", txt):
             b = "\n".join(l for l in b.splitlines() if not RE_RUIDO.match(l.strip()))
-            # descarta redação revogada: bloco que, sem o texto riscado e as notas, fica vazio
+            # redação revogada (texto riscado nas versões compiladas): guarda como "versão anterior"
             if "~~" in b:
-                resto = RE_NOTA.sub("", limpar(re.sub(r"~~.*?~~", "", b, flags=re.S)))
-                if len(re.sub(r"[^A-Za-zÀ-ú]", "", resto)) < 3:
+                velho = limpar(" ".join(re.findall(r"~~(.*?)~~", b, flags=re.S)).replace("~~", ""))
+                resto = limpar(re.sub(r"~~.*?~~", "", b, flags=re.S))
+                if len(re.sub(r"[^A-Za-zÀ-ú]", "", RE_NOTA.sub("", resto))) < 3:
+                    # bloco só com texto antigo (+ a nota que lhe deu aquela redação)
+                    if velho:
+                        pend.append((velho + " " + resto).strip())
                     continue
-                b = re.sub(r"~~.*?~~", "", b, flags=re.S)
+                if velho:
+                    pend.append(velho)
+                b = resto
             b = limpar(b)
             if b and b != "[TABLE]":
+                if pend:
+                    r = rotulo(b)
+                    casam = [p for p in pend if r and rotulo(p) == r]
+                    if casam:
+                        antes[len(out)] = casam
+                    pend = []
                 out.append(b)
         _cache[arquivo] = out
+        _antes[arquivo] = antes
     return _cache[arquivo]
 
 
@@ -94,13 +123,18 @@ def trecho(arquivo: str, ini: str, fim: str | None = None, titulos_antes=True) -
     if titulos_antes:
         while j > 0 and chave(bl[j - 1]) is None and (RE_HEAD.match(bl[j - 1].replace("*", "").strip()) or eh_titulo(bl[j - 1], True)) and len(bl[j - 1]) < 160:
             j -= 1
+        # só aceita o recuo se ele começar num cabeçalho estrutural (TÍTULO, CAPÍTULO, Seção...)
+        while j < i0 and not RE_HEAD.match(bl[j].replace("*", "").strip()):
+            j += 1
     res, ant_tit = [], False
-    for b in bl[j:]:
+    av = _antes[arquivo]
+    for i in range(j, len(bl)):
+        b = bl[i]
         c = chave(b)
         if c is not None and c > kf:
             break
         t = c is None and eh_titulo(b, ant_tit or RE_HEAD.match(b.replace("*", "").strip()) is not None)
-        res.append(("tit" if t else "txt", b))
+        res.append(("tit", b) if t else ("txt", b, av.get(i, [])))
         ant_tit = t
     def fim_titulo(b):
         t = b.replace("*", "").strip()
@@ -115,14 +149,11 @@ def integral(arquivo: str) -> list[tuple[str, str]]:
     i0 = next(i for i, b in enumerate(bl) if chave(b) == (1, ""))
     while i0 > 0 and len(bl[i0 - 1]) < 160 and chave(bl[i0 - 1]) is None and eh_titulo(bl[i0 - 1], True):
         i0 -= 1
-    return _todos(bl[i0:])
-
-
-def _todos(bl):
-    res, ant = [], False
-    for b in bl:
+    res, ant, av = [], False, _antes[arquivo]
+    for i in range(i0, len(bl)):
+        b = bl[i]
         t = chave(b) is None and eh_titulo(b, ant)
-        res.append(("tit" if t else "txt", b))
+        res.append(("tit", b) if t else ("txt", b, av.get(i, [])))
         ant = t
     return res
 
@@ -136,15 +167,106 @@ def linhas_entre(arquivo: str, inicio: str, fim_regex: str) -> str:
 
 # --------------------------------------------------------------- render md --
 
-def md_lei(partes: list[tuple[str, str]]) -> str:
+REGISTRO: list[dict] = []     # alterações recentes encontradas (lido por MAPA)
+_n_alt = [0]
+
+
+def esc(s: str) -> str:
+    """Texto puro -> HTML seguro dentro de bloco HTML que o pandoc ainda lê como Markdown."""
+    s = html.escape(re.sub(r"\s+", " ", s.replace("*", "")).strip())
+    return re.sub(r"([\\`_\[\]#])", r"\\\1", s)
+
+
+def alteradores(notas: str):
+    return [(m.group(1), m.group(2).strip(), int(m.group(3)) if m.group(3) else None) for m in RE_ALTERADOR.finditer(notas)]
+
+
+def diff(antigo: str, novo: str):
+    """Diferença por palavras. Retorna (html_antigo_com_del, md_novo_com_add, acrescidos, suprimidos, semelhança)."""
+    a, b = antigo.split(), novo.split()
+    sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
+    h_old, m_new, add, rem = [], [], [], []
+    for op, i1, i2, j1, j2 in sm.get_opcodes():
+        if op == "equal":
+            h_old.append(esc(" ".join(a[i1:i2])))
+            m_new.append(" ".join(b[j1:j2]))
+            continue
+        if i2 > i1:
+            t = " ".join(a[i1:i2]); rem.append(t)
+            h_old.append(f'<span class="del">{esc(t)}</span>')
+        if j2 > j1:
+            t = " ".join(b[j1:j2]); add.append(t)
+            m_new.append(f'<span class="add">{" ".join(b[j1:j2])}</span>')
+    return " ".join(h_old), " ".join(m_new), add, rem, sm.ratio()
+
+
+def _curto(xs, n=3, lim=90):
+    xs = [x.replace("*", "") for x in xs if re.search(r"[A-Za-zÀ-ú0-9]", x)]
+    t = " … ".join(f"“{x if len(x) <= lim else x[:lim] + '…'}”" for x in xs[:n])
+    return t + (" …" if len(xs) > n else "")
+
+
+def md_lei(partes) -> str:
     out = []
-    for tipo, b in partes:
+    for p in partes:
+        tipo, b = p[0], p[1]
         if tipo == "tit":
             out.append(f"::: tit\n{b.replace('*', '')}\n:::")
-        else:
-            b = re.sub(r"^\*{0,2}(Art\.\s*[\d.]+(?:\s*(?:º|°|o\b))?(?:-[A-Z]{1,2}\b)?\.?)\*{0,2}", r"**\1**", b)
-            b = RE_NOTA.sub(lambda m: f"[{m.group(0)}]{{.nota}}", b)
-            out.append(b)
+            continue
+        olds = p[2] if len(p) > 2 else []
+        notas = " ".join(RE_NOTA.findall(b))
+        corpo = re.sub(r"[ \t]{2,}", " ", RE_NOTA.sub("", b)).strip()
+        alts = [a for a in alteradores(notas) if a[0] != "Renumerado"]
+        anos = [a[2] for a in alts if a[2]]
+        ano = max(anos) if anos else None
+        ref = next((f"{a[1]}/{a[2]}" if a[2] else a[1] for a in alts if a[2] == ano), None) if alts else None
+        recente = bool(ano and ano >= ANO_RECENTE)
+        sem_texto = len(re.sub(r"[^A-Za-zÀ-ú]", "", RE_ROTULO.sub("", corpo.replace("*", ""), count=1))) < 3
+        revogado = "(Revogad" in notas and sem_texto
+        corpo_md, h_ant, coment = corpo, None, None
+        if olds:
+            ant = re.sub(r"[ \t]{2,}", " ", RE_NOTA.sub("", olds[-1])).strip()
+            h_old, m_new, add, rem, sim = diff(ant, corpo)
+            if revogado:
+                coment = "dispositivo <strong>revogado</strong>; o texto que vigorava está abaixo."
+                h_ant = esc(ant)
+            elif sim >= 0.35:
+                corpo_md, h_ant = m_new, h_old
+                partes_c = []
+                if add:
+                    partes_c.append(f'<span class="add">acrescentou</span> {esc(_curto(add))}')
+                if rem:
+                    partes_c.append(f'<span class="del-l">suprimiu</span> {esc(_curto(rem))}')
+                coment = "; ".join(partes_c) or "ajuste de redação (pontuação ou forma)."
+            else:
+                coment = "redação <strong>reformulada</strong> — compare com a versão anterior abaixo."
+                h_ant = esc(ant)
+        elif recente and alts and alts[0][0].startswith(("Incluíd", "Acrescid")) and not sem_texto:
+            corpo_md = f'<span class="add">{corpo}</span>'
+            coment = "dispositivo <strong>incluído</strong> — não existia na redação anterior."
+        elif recente and revogado:
+            coment = "dispositivo <strong>revogado</strong>."
+        corpo_md = re.sub(r"^(<span class=\"add\">)?\*{0,2}(Art\.\s*[\d.]+(?:\s*(?:º|°|o\b))?(?:-[A-Z]{1,2}\b)?\.?)\*{0,2}",
+                          lambda m: (m.group(1) or "") + f"**{m.group(2)}**", corpo_md)
+        if notas:
+            corpo_md += " " + " ".join(f"[{n}]{{.nota}}" for n in RE_NOTA.findall(b))
+        if coment is None:
+            out.append(corpo_md)
+            continue
+        _n_alt[0] += 1
+        ident = f"alt-{_n_alt[0]}"
+        if recente:
+            REGISTRO.append({"id": ident, "ano": ano, "ref": ref,
+                             "trecho": re.sub(r"\s+", " ", corpo.replace("*", ""))[:110]})
+        selo = (f'<p class="selo"><span class="badge">Alteração recente · {ano} · potencial de prova</span></p>\n\n'
+                if recente else "")
+        h = [f'<p class="mudou"><strong>O que mudou{f" ({esc(ref)})" if ref else ""}:</strong> {coment}</p>']
+        if h_ant is not None:
+            h.append(f'<p><strong>Redação anterior:</strong> {h_ant}</p>')
+            for velho in reversed(olds[:-1]):
+                h.append(f'<p class="velha"><strong>Redação mais antiga:</strong> {esc(velho)}</p>')
+        out.append(f"::: {{#{ident} .alt{' .recente' if recente else ''}}}\n{selo}{corpo_md}\n\n"
+                   f'<div class="antes">{"".join(h)}</div>\n:::')
     return "\n\n".join(out)
 
 
@@ -241,22 +363,71 @@ def parte_portugues():
 """
 
 
+PONTOS = {
+    "esp-b": "Esp. b — prática pedagógica", "esp-d": "Esp. d — PPP e gestão democrática",
+    "esp-e": "Esp. e — competências", "esp-f": "Esp. f — inclusão e tecnologias",
+    "esp-g": "Esp. g — supervisão escolar", "esp-h": "Esp. h — formação docente",
+    "esp-i": "Esp. i — currículo", "esp-j": "Esp. j — planejamento e rotina",
+    "esp-k": "Esp. k — avaliação", "leg-j": "Leg. j — LDB", "leg-k": "Leg. k — PNEPT",
+    "leg-l": "Leg. l — BNCC", "leg-m": "Leg. m — ECA", "leg-h": "Leg. h — LBI", "leg-e": "Leg. e — Igualdade Racial",
+}
+
+
+def MAPA(ident, nome, arq, itens):
+    """Mapa tópico × dispositivos + uma seção por tópico com o trecho da lei logo abaixo.
+    itens: (tópico, rótulo dos dispositivos, [faixas], [pontos do programa relacionados])"""
+    linhas, secoes = [], []
+    reg0 = len(REGISTRO)
+    for n, (top, rot, faixas, rel) in enumerate(itens, 1):
+        anc = f"{ident}-{n}"
+        rel_html = " · ".join(f'<a href="#{r}">{PONTOS[r]}</a>' for r in rel) or "—"
+        linhas.append(f'<tr><td><a href="#{anc}">{n}. {top}</a></td><td>{rot}</td><td>{rel_html}</td></tr>')
+        partes = []
+        for f in faixas:
+            partes += trecho(arq, *f)
+        secoes.append(
+            f'\n\n<h3 id="{anc}">{n}. {top}</h3>\n\n<p class="arts">{rot}'
+            + (f' · relacionado a: {rel_html}' if rel else "") + "</p>\n"
+            + caixa_lei(f"{nome} — {rot}", F(arq), partes, aberto=True)
+        )
+    tabela = ('\n\n<table class="mapa"><caption>Mapa da lei por tópico</caption>'
+              '<thead><tr><th>Tópico</th><th>Dispositivos</th><th>Pontos do programa</th></tr></thead><tbody>'
+              + "".join(linhas) + "</tbody></table>\n\n")
+    rec = REGISTRO[reg0:]
+    if rec:
+        tabela += (f'<div class="recentes"><p><strong>Alterações recentes nesta norma (desde {ANO_RECENTE}) — potencial de prova:</strong></p><ul>'
+                   + "".join(f'<li><a href="#{r["id"]}">{esc(r["trecho"])}…</a> <span class="nota">({esc(r["ref"] or str(r["ano"]))})</span></li>' for r in rec)
+                   + "</ul></div>\n\n")
+    return tabela + "".join(secoes)
+
+
 def parte_legislacao():
     s = """
 # Parte II — Legislação {#leg}
 
-<p class="meta">10 questões · 1,00 ponto cada · mínimo de 5 acertos. Textos transcritos <em>ipsis litteris</em> das fontes oficiais. Clique em cada quadro para abrir o texto legal.</p>
+<p class="meta">10 questões · 1,00 ponto cada · mínimo de 5 acertos. Textos transcritos <em>ipsis litteris</em> das fontes oficiais. Cada lei abre com um <strong>mapa por tópico</strong>; em seguida, cada tópico traz o trecho correspondente da lei, com seus títulos e capítulos.</p>
+
+<div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div>
 
 <p class="meta">Ordem de estudo sugerida (do geral ao específico): <a href="#leg-c">Constituição</a> → <a href="#leg-j">LDB</a> → <a href="#leg-l">BNCC</a> → <a href="#leg-k">PNEPT</a> → <a href="#leg-m">ECA</a> → <a href="#leg-h">LBI</a> → <a href="#leg-e">igualdade racial</a> → <a href="#leg-g">Maria da Penha</a> → <a href="#leg-i">LGPD</a> → <a href="#leg-a">Liberato</a> → <a href="#leg-d">CLT</a>.</p>
 """
+    LDB = "lei9394-ldb.md"
+    s += """
+## a) Lei RS nº 14.498/2014 — Plano de Empregos, Funções e Salários da Fundação Liberato {#leg-a}
+
+<p class="aviso">Texto original (AL-RS). As tabelas foram extraídas de PDF e podem estar desalinhadas: confira no PDF pelo link da fonte.</p>
+"""
+    s += MAPA("leg-a", "Lei nº 14.498/2014", "rs-lei14498-pefs-liberato.md", [
+        ("Disposições preliminares: instituição e composição do Plano", "Cap. I — arts. 1º e 2º", [("1", "2")], []),
+        ("Quadro de Empregos Permanentes (Analista Educacional — Supervisor Escolar)", "Cap. II — arts. 3º e 4º", [("3", "4")], ["esp-g"]),
+        ("Seleção, admissão e lotação", "Cap. III — arts. 5º e 6º", [("5", "6")], []),
+        ("Jornada de trabalho", "Cap. IV — art. 7º", [("7",)], []),
+        ("Promoções e avaliação de desempenho", "Cap. V — arts. 8º a 10", [("8", "10")], ["esp-h"]),
+        ("Adicional de incentivo à capacitação", "Cap. VI — art. 11", [("11",)], ["esp-h"]),
+        ("Quadro de Empregos e de Funções em Comissão", "Cap. VII — arts. 12 a 14", [("12", "14")], []),
+        ("Disposições finais e transitórias; aplicação subsidiária da CLT; anexos", "Cap. VIII — arts. 15 a 20 e anexos", [("15", "20")], []),
+    ])
     s += f"""
-## a) Lei RS nº 14.498/2014 — Plano de Empregos, Funções e Salários da Fundação Liberato {{#leg-a}}
-
-{topicos("Estrutura do Plano: quadro de empregos permanentes, empregos e funções em comissão",
-"Emprego de Analista Educacional e a ocupação de **Supervisor Escolar** (número de vagas, padrão salarial)",
-"Jornada de trabalho e carga horária; atribuições; promoção e avaliação de desempenho")}
-{LI("Lei nº 14.498, de 3 de abril de 2014 — íntegra", "rs-lei14498-pefs-liberato.md")}
-
 ## b) Estatuto da Fundação Liberato (Decreto nº 18.446/1967, alterado pelo Decreto nº 52.101/2014) {{#leg-b}}
 
 {topicos("Natureza jurídica (pessoa jurídica de direito privado), sede e regência (Estatuto, Regimento Geral, Resoluções do Conselho Técnico Deliberativo)",
@@ -267,86 +438,134 @@ def parte_legislacao():
 {LI("Decreto nº 52.101, de 27 de novembro de 2014 — íntegra", "rs-dec52101-estatuto-liberato.md")}
 
 ## c) Constituição Federal de 1988 — art. 37 e arts. 205 a 214 {{#leg-c}}
+"""
+    s += MAPA("leg-c", "CF/88", "cf88.md", [
+        ("Administração Pública: princípios, concurso público, acumulação de cargos", "Art. 37", [("37",)], []),
+        ("Educação: direito de todos, finalidades e princípios do ensino (gestão democrática, valorização dos profissionais)", "Arts. 205 e 206", [("205", "206")], ["esp-d", "leg-j"]),
+        ("Autonomia universitária", "Art. 207", [("207",)], []),
+        ("Dever do Estado com a educação", "Art. 208", [("208",)], ["esp-f", "leg-m"]),
+        ("Ensino privado, conteúdos mínimos e regime de colaboração entre os sistemas", "Arts. 209 a 211", [("209", "211")], ["esp-i", "leg-l"]),
+        ("Financiamento da educação e Fundeb", "Arts. 212, 212-A e 213", [("212", "213")], []),
+        ("Plano Nacional de Educação", "Art. 214", [("214",)], []),
+    ])
+    s += """
+## d) CLT — Jornada, descanso e férias {#leg-d}
+"""
+    s += MAPA("leg-d", "CLT", "clt-del5452.md", [
+        ("Cap. II, Seção II — Da Jornada de Trabalho: duração normal, tempo parcial, horas extras, compensação, banco de horas, 12×36", "Arts. 58 a 65", [("58", "65")], []),
+        ("Cap. II, Seção III — Dos Períodos de Descanso: interjornada, descanso semanal, intervalo intrajornada", "Arts. 66 a 72", [("66", "72")], []),
+        ("Cap. IV, Seção I — Do Direito a Férias e da sua Duração", "Arts. 129 a 133", [("129", "133")], []),
+        ("Cap. IV, Seção II — Da Concessão e da Época das Férias (fracionamento — Lei 13.467/2017)", "Arts. 134 a 138", [("134", "138")], []),
+    ])
+    s += """
+## e) Lei nº 12.288/2010 — Estatuto da Igualdade Racial {#leg-e}
+"""
+    s += MAPA("leg-e", "Lei nº 12.288/2010", "lei12288-estatuto-igualdade-racial.md", [
+        ("Disposições preliminares: objetivo, conceitos e deveres do Estado e da sociedade", "Título I — arts. 1º a 5º", [("1", "5")], []),
+        ("Direito à saúde", "Arts. 6º a 8º", [("6", "8")], []),
+        ("Direito à educação: disposições gerais e ensino de história geral da África e da população negra", "Arts. 9º a 16", [("9", "16")], ["esp-i", "leg-j"]),
+        ("Cultura, esporte e lazer", "Arts. 17 a 22", [("17", "22")], []),
+        ("Liberdade de consciência e de crença e livre exercício dos cultos religiosos", "Arts. 23 a 26", [("23", "26")], []),
+        ("Acesso à terra e à moradia adequada", "Arts. 27 a 37", [("27", "37")], []),
+        ("Trabalho", "Arts. 38 a 42", [("38", "42")], []),
+        ("Meios de comunicação", "Arts. 43 a 46", [("43", "46")], []),
+        ("Sistema Nacional de Promoção da Igualdade Racial (SINAPIR)", "Título III — arts. 47 a 57", [("47", "57")], []),
+        ("Disposições finais", "Título IV — arts. 58 a 65", [("58", "65")], []),
+    ])
+    s += """
+## f) Lei RS nº 13.694/2011 — Estatuto Estadual da Igualdade Racial {#leg-f}
+"""
+    s += MAPA("leg-f", "Lei nº 13.694/2011", "rs-lei13694-igualdade-racial-rs.md", [
+        ("Disposições preliminares: objeto, diretrizes e participação da população negra", "Arts. 1º a 3º", [("1", "3")], []),
+        ("Do direito à vida e à saúde", "Cap. I — arts. 4º a 8º", [("4", "8")], []),
+        ("Do direito à cultura, à educação, ao esporte e ao lazer: ensino, datas cívicas, diversidade, literatura, permanência", "Cap. II — arts. 9º a 16", [("9", "16")], ["esp-i", "leg-e"]),
+        ("Do acesso ao mercado de trabalho; quesito raça/cor", "Cap. III — arts. 17 e 18", [("17", "18")], []),
+        ("Das terras quilombolas", "Cap. IV — art. 19", [("19",)], []),
+        ("Da comunicação social; contratos administrativos", "Cap. V — arts. 20 a 23", [("20", "23")], []),
+        ("Disposições finais", "Cap. VI — art. 24", [("24",)], []),
+    ])
+    s += """
+## g) Lei nº 11.340/2006 — Lei Maria da Penha {#leg-g}
+"""
+    s += MAPA("leg-g", "Lei nº 11.340/2006", "lei11340-maria-da-penha.md", [
+        ("Disposições preliminares: objeto e direitos fundamentais da mulher", "Arts. 1º a 4º", [("1", "4")], []),
+        ("Violência doméstica e familiar: conceito e formas (física, psicológica, sexual, patrimonial e moral)", "Arts. 5º a 7º", [("5", "7")], []),
+        ("Medidas integradas de prevenção (inclusive nos currículos escolares) e assistência à mulher", "Arts. 8º e 9º", [("8", "9")], ["esp-i"]),
+    ])
+    s += """
+## h) Lei nº 13.146/2015 — Lei Brasileira de Inclusão (Estatuto da Pessoa com Deficiência) {#leg-h}
+"""
+    s += MAPA("leg-h", "Lei nº 13.146/2015", "lei13146-lbi.md", [
+        ("Disposições gerais: finalidade, conceito de pessoa com deficiência, definições (acessibilidade, desenho universal, adaptação razoável, profissional de apoio escolar)", "Arts. 1º a 3º", [("1", "3")], ["esp-f"]),
+        ("Igualdade e não discriminação", "Arts. 4º a 8º", [("4", "8")], []),
+        ("Direito à educação: sistema educacional inclusivo; incumbências do poder público; escolas privadas", "Arts. 27 a 30", [("27", "30")], ["esp-f", "leg-j"]),
+    ])
+    s += """
+## i) Lei nº 13.709/2018 — LGPD {#leg-i}
+"""
+    s += MAPA("leg-i", "LGPD", "lei13709-lgpd-compilada.md", [
+        ("Disposições preliminares: objetivo, fundamentos, aplicação, conceitos e princípios", "Arts. 1º a 6º", [("1", "6")], []),
+        ("Requisitos (bases legais) para o tratamento de dados pessoais", "Art. 7º", [("7",)], []),
+        ("Tratamento de dados pessoais sensíveis", "Art. 11", [("11",)], []),
+        ("Tratamento de dados pessoais de crianças e adolescentes — aplicação na escola", "Art. 14", [("14",)], ["esp-j", "leg-m"]),
+    ])
+    s += """
+## j) Lei nº 9.394/1996 — LDB (com as Leis 14.533/2023 e 14.811/2024) {#leg-j}
 
-{topicos("Art. 37: princípios da Administração Pública (legalidade, impessoalidade, moralidade, publicidade, eficiência); concurso público; acumulação de cargos",
-"Art. 205: educação como direito de todos e dever do Estado e da família; finalidades",
-"Art. 206: princípios do ensino (inclusive gestão democrática e valorização dos profissionais)",
-"Art. 207: autonomia universitária · Art. 208: deveres do Estado com a educação",
-"Arts. 209 a 211: ensino privado, conteúdos mínimos, regime de colaboração",
-"Arts. 212 a 214: financiamento (vinculação de receitas, Fundeb) e Plano Nacional de Educação")}
-{L("CF/88 — Art. 37 (Administração Pública)", "cf88.md", ("37",))}
-{L("CF/88 — Arts. 205 a 214 (Da Educação)", "cf88.md", ("205", "214"))}
-
-## d) CLT — Jornada, descanso e férias {{#leg-d}}
-
-{topicos("Cap. II, Seção II — Da Jornada de Trabalho (arts. 58 a 65): duração normal, tempo parcial, horas extras, compensação, banco de horas, 12×36",
-"Cap. II, Seção III — Dos Períodos de Descanso (arts. 66 a 72): interjornada (11 h), descanso semanal, intervalo intrajornada",
-"Cap. IV, Seção I — Do Direito a Férias e da sua Duração (arts. 129 a 133)",
-"Cap. IV, Seção II — Da Concessão e da Época das Férias (arts. 134 a 138): fracionamento em até 3 períodos (Reforma Trabalhista, Lei 13.467/2017)")}
-{L("CLT — Arts. 58 a 72 (Jornada e Descanso)", "clt-del5452.md", ("58", "72"))}
-{L("CLT — Arts. 129 a 138 (Férias)", "clt-del5452.md", ("129", "138"))}
-
-## e) Lei nº 12.288/2010 — Estatuto da Igualdade Racial {{#leg-e}}
-
-{topicos("Conceitos (art. 1º): discriminação racial, desigualdade racial, desigualdade de gênero e raça, população negra, políticas públicas, ações afirmativas",
-"Deveres do Estado e da sociedade (arts. 2º a 4º)",
-"Direito à educação (arts. 11 a 16): ensino de história geral da África e da população negra no Brasil (LDB art. 26-A)",
-"Trabalho, cultura, esporte, lazer, liberdade religiosa e SINAPIR")}
-{LI("Lei nº 12.288, de 20 de julho de 2010 — íntegra", "lei12288-estatuto-igualdade-racial.md")}
-
-## f) Lei RS nº 13.694/2011 — Estatuto Estadual da Igualdade Racial {{#leg-f}}
-
-{topicos("Estatuto Estadual da Igualdade Racial e de Combate à Intolerância Religiosa",
-"Diretrizes das políticas públicas estaduais; educação, saúde, cultura, comunidades quilombolas")}
-{LI("Lei nº 13.694, de 19 de janeiro de 2011 — íntegra", "rs-lei13694-igualdade-racial-rs.md")}
-
-## g) Lei nº 11.340/2006 — Lei Maria da Penha {{#leg-g}}
-
-{topicos("Objeto e direitos fundamentais da mulher (arts. 1º a 4º)",
-"Conceito de violência doméstica e familiar e formas de violência: física, psicológica, sexual, patrimonial e moral (arts. 5º a 7º)",
-"Medidas integradas de prevenção, inclusive conteúdos nos currículos escolares (art. 8º)",
-"Assistência à mulher em situação de violência (art. 9º)")}
-{L("Lei nº 11.340/2006 — Arts. 1º a 9º", "lei11340-maria-da-penha.md", ("1", "9"))}
-
-## h) Lei nº 13.146/2015 — Lei Brasileira de Inclusão (Estatuto da Pessoa com Deficiência) {{#leg-h}}
-
-{topicos("Conceito de pessoa com deficiência e avaliação biopsicossocial (art. 2º)",
-"Definições: acessibilidade, desenho universal, tecnologia assistiva, barreiras, adaptações razoáveis, profissional de apoio escolar (art. 3º)",
-"Igualdade e não discriminação (arts. 4º a 8º)",
-"Direito à educação: sistema educacional inclusivo em todos os níveis; incumbências do poder público; vedação de cobrança adicional pelas escolas privadas (arts. 27 a 30)")}
-{L("Lei nº 13.146/2015 — Arts. 1º a 8º (Disposições gerais; igualdade e não discriminação)", "lei13146-lbi.md", ("1", "8"))}
-{L("Lei nº 13.146/2015 — Arts. 27 a 30 (Do Direito à Educação)", "lei13146-lbi.md", ("27", "30"))}
-
-## i) Lei nº 13.709/2018 — LGPD {{#leg-i}}
-
-{topicos("Objetivo e fundamentos (arts. 1º e 2º); aplicação (arts. 3º e 4º)",
-"Conceitos (art. 5º): dado pessoal, dado sensível, titular, controlador, operador, encarregado, tratamento, consentimento",
-"Princípios (art. 6º): finalidade, adequação, necessidade, livre acesso, qualidade, transparência, segurança, prevenção, não discriminação, responsabilização",
-"Bases legais do tratamento (art. 7º); dados sensíveis (art. 11); **dados de crianças e adolescentes (art. 14)** — relevante para a escola")}
-{L("LGPD — Arts. 1º a 7º", "lei13709-lgpd-compilada.md", ("1", "7"))}
-{L("LGPD — Art. 11 (dados pessoais sensíveis)", "lei13709-lgpd-compilada.md", ("11",))}
-{L("LGPD — Art. 14 (dados de crianças e adolescentes)", "lei13709-lgpd-compilada.md", ("14",))}
-
-## j) Lei nº 9.394/1996 — LDB (com as Leis 14.533/2023 e 14.811/2024) {{#leg-j}}
-
-{topicos("Títulos I a III: conceito de educação, princípios e fins (arts. 1º a 3º); direito à educação e dever de educar (arts. 4º a 7º-A)",
-"Título IV: organização da educação nacional; incumbências da União, estados, municípios, **estabelecimentos de ensino (art. 12)** e **docentes (art. 13)**; **gestão democrática (art. 14)**; autonomia (art. 15)",
-"Título V, Cap. II: educação básica — disposições gerais (arts. 22 a 28): organização, calendário, **verificação do rendimento e frequência (art. 24)**, currículo e BNCC (art. 26), temas obrigatórios (26-A)",
-"Ensino Médio (arts. 35 a 36) e **Educação Profissional Técnica de Nível Médio (arts. 36-A a 36-D)**; Educação Profissional e Tecnológica (arts. 39 a 42)",
-"Educação Especial (arts. 58 a 60) · Educação Digital (art. 4º, XII; art. 26, § 11, entre outros — Lei 14.533/2023)",
-"Título VI: **profissionais da educação (arts. 61 a 67)** — formação de especialistas em supervisão (art. 64)",
-"Lei 14.811/2024: medidas de proteção contra a violência em estabelecimentos educacionais")}
-{L("LDB — íntegra (texto compilado vigente)", "lei9394-ldb.md", ("1", "92"), ident="ldb-integral")}
-{LI("Lei nº 14.533, de 11 de janeiro de 2023 — Política Nacional de Educação Digital — íntegra", "lei14533-educacao-digital.md")}
-{LI("Lei nº 14.811, de 12 de janeiro de 2024 — Proteção contra a violência nos estabelecimentos educacionais — íntegra", "lei14811-seguranca-escolar.md")}
-
-## k) Decreto nº 12.603/2025 — Política Nacional de Educação Profissional e Tecnológica (PNEPT) {{#leg-k}}
-
-{topicos("Objeto: institui a PNEPT, regulamenta o art. 4º da Lei 14.645/2023 e institui o SINAEPT",
-"Princípios, objetivos (art. 4º) e eixos (art. 5º) da PNEPT",
-"Governança: Comissão Tripartite Paritária Permanente (CTPP); sistemas de informação e avaliação")}
-{LI("Decreto nº 12.603, de 28 de agosto de 2025 — íntegra", "dec12603-pnept.md")}
-
+<p class="meta">LDB em texto compilado vigente, completa, dividida pelos tópicos do programa. As alterações das Leis 14.533/2023 (educação digital) e 14.811/2024 (segurança escolar) já estão no corpo do texto.</p>
+"""
+    s += MAPA("leg-j", "LDB", LDB, [
+        ("Conceito de educação, princípios e fins da educação nacional", "Títulos I e II — arts. 1º a 3º", [("1", "3")], ["esp-d"]),
+        ("Direito à educação e dever de educar (inclusive educação digital e AEE)", "Título III — arts. 4º a 7º-A", [("4", "7-A")], ["esp-f", "leg-m"]),
+        ("Organização da educação nacional: incumbências da União, dos Estados e dos Municípios", "Título IV — arts. 8º a 11", [("8", "11")], ["esp-k"]),
+        ("Incumbências dos estabelecimentos de ensino e dos docentes; gestão democrática; autonomia", "Título IV — arts. 12 a 15", [("12", "15")], ["esp-b", "esp-d", "esp-j"]),
+        ("Sistemas de ensino", "Título IV — arts. 16 a 20", [("16", "20")], []),
+        ("Educação básica — composição dos níveis e disposições gerais: organização, calendário, verificação do rendimento, frequência, currículo e BNCC", "Título V, Cap. I e Cap. II, Seção I — arts. 21 a 28", [("21", "28")], ["esp-b", "esp-i", "esp-j", "esp-k", "leg-l"]),
+        ("Educação infantil e ensino fundamental", "Seções II e III — arts. 29 a 34", [("29", "34")], []),
+        ("Ensino médio: finalidades, BNCC, formação geral básica e itinerários formativos", "Seção IV — arts. 35 a 36", [("35", "36")], ["esp-i", "leg-l"]),
+        ("Educação profissional técnica de nível médio", "Seção IV-A — arts. 36-A a 36-D", [("36-A", "36-D")], ["esp-i", "leg-k"]),
+        ("Educação de jovens e adultos", "Seção V — arts. 37 e 38", [("37", "38")], []),
+        ("Educação profissional e tecnológica", "Cap. III — arts. 39 a 42", [("39", "42")], ["leg-k"]),
+        ("Educação superior", "Cap. IV — arts. 43 a 57", [("43", "57")], []),
+        ("Educação especial e educação bilíngue de surdos", "Cap. V e V-A — arts. 58 a 60-B", [("58", "60-B")], ["esp-f", "leg-h"]),
+        ("Profissionais da educação: formação, especialistas em supervisão, valorização", "Título VI — arts. 61 a 67", [("61", "67")], ["esp-g", "esp-h"]),
+        ("Recursos financeiros", "Título VII — arts. 68 a 77", [("68", "77")], []),
+        ("Disposições gerais: educação indígena, EAD, estágio, educação no campo", "Título VIII — arts. 78 a 86", [("78", "86")], []),
+        ("Disposições transitórias", "Título IX — arts. 87 a 92", [("87", "92")], []),
+    ])
+    s += """
+### Lei nº 14.533/2023 — Política Nacional de Educação Digital {#leg-j-pned}
+"""
+    s += MAPA("leg-jd", "Lei nº 14.533/2023", "lei14533-educacao-digital.md", [
+        ("Política Nacional de Educação Digital (PNED) e seus eixos", "Art. 1º", [("1",)], []),
+        ("Eixo inclusão digital", "Art. 2º", [("2",)], []),
+        ("Eixo Educação Digital Escolar", "Art. 3º", [("3",)], ["esp-f", "esp-i"]),
+        ("Eixos capacitação e especialização digital; pesquisa e desenvolvimento em TIC", "Arts. 4º e 5º", [("4", "5")], []),
+        ("Implementação dos eixos; alterações na LDB e na Lei 9.448/1997", "Arts. 6º a 8º", [("6", "8")], ["leg-j"]),
+        ("Financiamento e vigência", "Arts. 9º a 12", [("9", "12")], []),
+    ])
+    s += """
+### Lei nº 14.811/2024 — Proteção contra a violência nos estabelecimentos educacionais {#leg-j-seg}
+"""
+    s += MAPA("leg-js", "Lei nº 14.811/2024", "lei14811-seguranca-escolar.md", [
+        ("Medidas de proteção e de prevenção à violência em estabelecimentos educacionais; protocolos", "Arts. 1º a 3º", [("1", "3")], ["esp-j"]),
+        ("Política Nacional de Prevenção e Combate ao Abuso e Exploração Sexual da Criança e do Adolescente", "Art. 4º", [("4",)], ["leg-m"]),
+        ("Alterações no Código Penal (inclusive intimidação sistemática — bullying e cyberbullying) e na Lei dos Crimes Hediondos", "Arts. 5º a 7º", [("5", "7")], []),
+        ("Alterações no ECA e vigência", "Arts. 8º a 10", [("8", "10")], ["leg-m"]),
+    ])
+    s += """
+## k) Decreto nº 12.603/2025 — Política Nacional de Educação Profissional e Tecnológica (PNEPT) {#leg-k}
+"""
+    s += MAPA("leg-k", "Decreto nº 12.603/2025", "dec12603-pnept.md", [
+        ("Disposições gerais: objeto, princípios, objetivos e eixos da PNEPT", "Cap. I — arts. 1º a 6º", [("1", "6")], ["leg-j"]),
+        ("Oferta de cursos", "Cap. II — arts. 7º a 13", [("7", "13")], ["esp-i"]),
+        ("Estratégias", "Cap. III — art. 14", [("14",)], []),
+        ("Governança e participação (CTPP)", "Cap. IV — art. 15", [("15",)], []),
+        ("Monitoramento e avaliação (SINAEPT)", "Cap. V — arts. 16 a 20", [("16", "20")], ["esp-k"]),
+        ("Fontes e recursos", "Cap. VI — art. 21", [("21",)], []),
+        ("Disposições finais", "Cap. VII — arts. 22 a 24", [("22", "24")], []),
+    ])
+    s += f"""
 ## l) Base Nacional Comum Curricular — Ensino Médio e Educação Profissional Técnica {{#leg-l}}
 
 {topicos("Marcos legais da BNCC (CF art. 210; LDB arts. 9º, IV, 26 e 35-A; PNE)",
@@ -358,23 +577,19 @@ def parte_legislacao():
     comp = linhas_entre("bncc.md", "###### COMPETÊNCIAS GERAIS DA EDUCAÇÃO BÁSICA", r"^#{1,6} ")
     comp = re.sub(r"^#{1,6}\s*", "", comp, flags=re.M)
     s += caixa_lei("BNCC — Competências gerais da Educação Básica (texto oficial)", F("bncc.md"),
-                   [("txt", b.strip()) for b in re.split(r"\n\s*\n", comp) if b.strip()])
-    s += f"""
-## m) Lei nº 8.069/1990 — Estatuto da Criança e do Adolescente {{#leg-m}}
-
-{topicos("Disposições preliminares: proteção integral, conceito de criança e adolescente, prioridade absoluta (arts. 1º a 6º)",
-"Direito à liberdade, ao respeito e à dignidade; educação sem castigo físico ou tratamento cruel (arts. 15 a 18-B)",
-"**Direito à educação, à cultura, ao esporte e ao lazer (arts. 53 a 59)** — dever dos dirigentes de comunicar ao Conselho Tutelar (art. 56)",
-"Prevenção: políticas contra violência e castigo físico (arts. 70-A e 70-B)",
-"Medidas de proteção (arts. 98 a 101) · Conselho Tutelar (arts. 131 a 137) · infração administrativa do art. 245")}
-{L("ECA — Arts. 1º a 6º", "lei8069-eca.md", ("1", "6"))}
-{L("ECA — Arts. 15 a 18-B", "lei8069-eca.md", ("15", "18-B"))}
-{L("ECA — Arts. 53 a 59 (Do Direito à Educação, à Cultura, ao Esporte e ao Lazer)", "lei8069-eca.md", ("53", "59"))}
-{L("ECA — Arts. 70-A e 70-B", "lei8069-eca.md", ("70-A", "70-B"))}
-{L("ECA — Arts. 98 a 101 (Medidas de proteção)", "lei8069-eca.md", ("98", "101"))}
-{L("ECA — Arts. 131 a 137 (Conselho Tutelar)", "lei8069-eca.md", ("131", "137"))}
-{L("ECA — Art. 245", "lei8069-eca.md", ("245",), )}
+                   [("txt", b.strip()) for b in re.split(r"\n\s*\n", comp) if b.strip()], aberto=True)
+    s += """
+## m) Lei nº 8.069/1990 — Estatuto da Criança e do Adolescente {#leg-m}
 """
+    s += MAPA("leg-m", "ECA", "lei8069-eca.md", [
+        ("Disposições preliminares: proteção integral, conceito de criança e adolescente, prioridade absoluta", "Arts. 1º a 6º", [("1", "6")], []),
+        ("Direito à liberdade, ao respeito e à dignidade; educação sem castigo físico", "Arts. 15 a 18-B", [("15", "18-B")], ["esp-j"]),
+        ("Direito à educação, à cultura, ao esporte e ao lazer; comunicação ao Conselho Tutelar (art. 56)", "Arts. 53 a 59", [("53", "59")], ["esp-j", "leg-j"]),
+        ("Prevenção: políticas contra a violência e o castigo físico", "Arts. 70-A e 70-B", [("70-A", "70-B")], []),
+        ("Medidas de proteção", "Arts. 98 a 101", [("98", "101")], []),
+        ("Conselho Tutelar", "Arts. 131 a 137", [("131", "137")], []),
+        ("Infração administrativa: falta de comunicação de maus-tratos", "Art. 245", [("245",)], ["esp-j"]),
+    ])
     return s
 
 
@@ -481,7 +696,22 @@ def parte_especificos():
 "Metodologias ativas, técnicas de ensino e integração de recursos tecnológicos ao currículo")}
 {L("Base legal — LDB, arts. 26, 26-A e 27 (currículo da educação básica)", LDB, ("26", "27"))}
 {L("Base legal — LDB, arts. 35 a 36-D (Ensino Médio e Educação Profissional Técnica de Nível Médio)", LDB, ("35", "36-D"))}
-{LI("Base legal — Resolução CEEd-RS nº 365/2021 (normas complementares para o Ensino Médio no RS; Referencial Curricular Gaúcho) — íntegra", "ceed-rs-resolucao-365-2021.md")}
+
+### Resolução CEEd-RS nº 365/2021 — normas complementares para o Ensino Médio no RS (Referencial Curricular Gaúcho) {{#esp-i-365}}
+
+{MAPA("esp-i-365", "Resolução CEEd-RS nº 365/2021", "ceed-rs-resolucao-365-2021.md", [
+    ("Disposições gerais e organização do Ensino Médio", "Arts. 1º a 4º", [("1", "4")], []),
+    ("Currículo: Formação Geral Básica e Itinerários Formativos", "Arts. 5º a 15", [("5", "15")], ["leg-l", "leg-j"]),
+    ("Projeto de Vida e trilhas dos itinerários", "Arts. 16 a 20", [("16", "20")], []),
+    ("Unidades curriculares eletivas", "Arts. 21 a 29", [("21", "29")], []),
+    ("Parcerias", "Arts. 30 a 37", [("30", "37")], []),
+    ("Educação a distância no Ensino Médio", "Arts. 38 a 41", [("38", "41")], []),
+    ("Ensino Médio noturno", "Arts. 42 a 48", [("42", "48")], []),
+    ("Educação de Jovens e Adultos", "Arts. 49 a 62", [("49", "62")], []),
+    ("Educação do campo, indígena e quilombola; aproveitamento de estudos; transferência", "Arts. 63 a 66", [("63", "66")], []),
+    ("Registros, avaliação, certificação e documentação escolar", "Arts. 67 a 79", [("67", "79")], ["esp-j", "esp-k"]),
+    ("Disposições finais", "Arts. 80 a 83", [("80", "83")], []),
+])}
 <p class="ref">Ver também: <a href="#leg-l">BNCC — competências gerais</a>.</p>
 
 ## j) Planejamento pedagógico e rotina escolar {{#esp-j}}
@@ -541,6 +771,29 @@ li{margin:3px 0}
 .aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
 details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
 details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
 details.lei>summary p{display:inline;margin:0;font:inherit}
 details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
 details.lei p{margin:6px 0;font-size:15px}
@@ -582,11 +835,16 @@ def nav():
 
 def main():
     md = parte_portugues() + parte_legislacao() + parte_especificos()
-    corpo = subprocess.run(
-        ["pandoc", "+RTS", "-K512m", "-RTS", "-f", "markdown-fancy_lists-example_lists-implicit_figures-tex_math_dollars-subscript-superscript",
-         "-t", "html5", "--wrap=none"],
-        input=md.encode("utf-8"), capture_output=True, check=True,
-    ).stdout.decode("utf-8")
+    # converte seção por seção (## ...) para limitar o uso de memória do pandoc
+    pedacos = [p for p in re.split(r"(?m)^(?=#{1,2} )", md) if p.strip()]
+    corpo = "\n".join(
+        subprocess.run(
+            ["pandoc", "+RTS", "-K512m", "-RTS", "-f", "markdown-fancy_lists-example_lists-implicit_figures-tex_math_dollars-subscript-superscript",
+             "-t", "html5", "--wrap=none"],
+            input=p.encode("utf-8"), capture_output=True, check=True,
+        ).stdout.decode("utf-8")
+        for p in pedacos
+    )
     capa = ('<header class="capa"><h1>Apostila — Analista Educacional: Supervisor Escolar</h1>'
             '<p>Fundação Escola Técnica Liberato Salzano Vieira da Cunha · Concurso Público 001/2026 · Banca: Legalle Concursos</p>'
             '<p>Prova teórico-objetiva (data provável): 07/03/2027 · 60 questões: Português (10) · Legislação (10) · Específicos (40)</p>'
