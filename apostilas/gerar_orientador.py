@@ -1,11 +1,11 @@
-"""Gera apostilas/supervisor-escolar.html.
+"""Gera apostilas/orientador-educacional.html.
 
 Os artigos de lei são extraídos *ipsis litteris* dos textos oficiais em
 legislacao/md/ (convertidos de Planalto, AL-RS, MEC e CEEd-RS). Redações
 revogadas (texto riscado nas versões compiladas) são omitidas, e fica só a
 redação vigente com as notas de alteração ("Redação dada pela...").
 
-Uso:  python apostilas/gerar_supervisor.py
+Uso:  python apostilas/gerar_orientador.py
 """
 import difflib
 import html
@@ -15,7 +15,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 MD = RAIZ / "legislacao" / "md"
-SAIDA = RAIZ / "apostilas" / "supervisor-escolar.html"
+SAIDA = RAIZ / "apostilas" / "orientador-educacional.html"
 
 # ---------------------------------------------------------------- extração --
 
@@ -364,11 +364,11 @@ def parte_portugues():
 
 
 PONTOS = {
-    "esp-b": "Esp. b — prática pedagógica", "esp-d": "Esp. d — PPP e gestão democrática",
-    "esp-e": "Esp. e — competências", "esp-f": "Esp. f — inclusão e tecnologias",
-    "esp-g": "Esp. g — supervisão escolar", "esp-h": "Esp. h — formação docente",
-    "esp-i": "Esp. i — currículo", "esp-j": "Esp. j — planejamento e rotina",
-    "esp-k": "Esp. k — avaliação", "leg-j": "Leg. j — LDB", "leg-k": "Leg. k — PNEPT",
+    "esp-b": "Esp. b — prática pedagógica", "esp-c": "Esp. c — aprendizagem e competências",
+    "esp-d": "Esp. d — orientação educacional", "esp-e": "Esp. e — desenvolvimento e identidades",
+    "esp-f": "Esp. f — família, escola e conflitos", "esp-g": "Esp. g — inclusão e dificuldades",
+    "esp-h": "Esp. h — trabalho e educação profissional", "esp-i": "Esp. i — gestão democrática e currículo",
+    "esp-j": "Esp. j — avaliação e supervisão", "leg-j": "Leg. j — LDB", "leg-k": "Leg. k — PNEPT",
     "leg-l": "Leg. l — BNCC", "leg-m": "Leg. m — ECA", "leg-h": "Leg. h — LBI", "leg-e": "Leg. e — Igualdade Racial",
 }
 
@@ -386,7 +386,7 @@ def MAPA(ident, nome, arq, itens):
         for f in faixas:
             partes += trecho(arq, *f)
         secoes.append(
-            f'\n\n<h3 id="{anc}">{n}. {top}</h3>\n\n<p class="arts">{rot}'
+            f'\n\n<h3 id="{anc}">{n}\\. {top}</h3>\n\n<p class="arts">{rot}'
             + (f' · relacionado a: {rel_html}' if rel else "") + "</p>\n"
             + caixa_lei(f"{nome} — {rot}", F(arq), partes, aberto=True)
         )
@@ -419,11 +419,11 @@ def parte_legislacao():
 """
     s += MAPA("leg-a", "Lei nº 14.498/2014", "rs-lei14498-pefs-liberato.md", [
         ("Disposições preliminares: instituição e composição do Plano", "Cap. I — arts. 1º e 2º", [("1", "2")], []),
-        ("Quadro de Empregos Permanentes (Analista Educacional — Supervisor Escolar)", "Cap. II — arts. 3º e 4º", [("3", "4")], ["esp-g"]),
+        ("Quadro de Empregos Permanentes (Analista Educacional — Orientador Educacional)", "Cap. II — arts. 3º e 4º", [("3", "4")], ["esp-d"]),
         ("Seleção, admissão e lotação", "Cap. III — arts. 5º e 6º", [("5", "6")], []),
         ("Jornada de trabalho", "Cap. IV — art. 7º", [("7",)], []),
-        ("Promoções e avaliação de desempenho", "Cap. V — arts. 8º a 10", [("8", "10")], ["esp-h"]),
-        ("Adicional de incentivo à capacitação", "Cap. VI — art. 11", [("11",)], ["esp-h"]),
+        ("Promoções e avaliação de desempenho", "Cap. V — arts. 8º a 10", [("8", "10")], ["esp-j"]),
+        ("Adicional de incentivo à capacitação", "Cap. VI — art. 11", [("11",)], []),
         ("Quadro de Empregos e de Funções em Comissão", "Cap. VII — arts. 12 a 14", [("12", "14")], []),
         ("Disposições finais e transitórias; aplicação subsidiária da CLT; anexos", "Cap. VIII — arts. 15 a 20 e anexos", [("15", "20")], []),
     ])
@@ -441,9 +441,9 @@ def parte_legislacao():
 """
     s += MAPA("leg-c", "CF/88", "cf88.md", [
         ("Administração Pública: princípios, concurso público, acumulação de cargos", "Art. 37", [("37",)], []),
-        ("Educação: direito de todos, finalidades e princípios do ensino (gestão democrática, valorização dos profissionais)", "Arts. 205 e 206", [("205", "206")], ["esp-d", "leg-j"]),
+        ("Educação: direito de todos, finalidades e princípios do ensino (gestão democrática, valorização dos profissionais)", "Arts. 205 e 206", [("205", "206")], ["esp-i", "leg-j"]),
         ("Autonomia universitária", "Art. 207", [("207",)], []),
-        ("Dever do Estado com a educação", "Art. 208", [("208",)], ["esp-f", "leg-m"]),
+        ("Dever do Estado com a educação", "Art. 208", [("208",)], ["esp-g", "leg-m"]),
         ("Ensino privado, conteúdos mínimos e regime de colaboração entre os sistemas", "Arts. 209 a 211", [("209", "211")], ["esp-i", "leg-l"]),
         ("Financiamento da educação e Fundeb", "Arts. 212, 212-A e 213", [("212", "213")], []),
         ("Plano Nacional de Educação", "Art. 214", [("214",)], []),
@@ -463,7 +463,7 @@ def parte_legislacao():
     s += MAPA("leg-e", "Lei nº 12.288/2010", "lei12288-estatuto-igualdade-racial.md", [
         ("Disposições preliminares: objetivo, conceitos e deveres do Estado e da sociedade", "Título I — arts. 1º a 5º", [("1", "5")], []),
         ("Direito à saúde", "Arts. 6º a 8º", [("6", "8")], []),
-        ("Direito à educação: disposições gerais e ensino de história geral da África e da população negra", "Arts. 9º a 16", [("9", "16")], ["esp-i", "leg-j"]),
+        ("Direito à educação: disposições gerais e ensino de história geral da África e da população negra", "Arts. 9º a 16", [("9", "16")], ["esp-e", "leg-j"]),
         ("Cultura, esporte e lazer", "Arts. 17 a 22", [("17", "22")], []),
         ("Liberdade de consciência e de crença e livre exercício dos cultos religiosos", "Arts. 23 a 26", [("23", "26")], []),
         ("Acesso à terra e à moradia adequada", "Arts. 27 a 37", [("27", "37")], []),
@@ -478,7 +478,7 @@ def parte_legislacao():
     s += MAPA("leg-f", "Lei nº 13.694/2011", "rs-lei13694-igualdade-racial-rs.md", [
         ("Disposições preliminares: objeto, diretrizes e participação da população negra", "Arts. 1º a 3º", [("1", "3")], []),
         ("Do direito à vida e à saúde", "Cap. I — arts. 4º a 8º", [("4", "8")], []),
-        ("Do direito à cultura, à educação, ao esporte e ao lazer: ensino, datas cívicas, diversidade, literatura, permanência", "Cap. II — arts. 9º a 16", [("9", "16")], ["esp-i", "leg-e"]),
+        ("Do direito à cultura, à educação, ao esporte e ao lazer: ensino, datas cívicas, diversidade, literatura, permanência", "Cap. II — arts. 9º a 16", [("9", "16")], ["esp-e", "leg-e"]),
         ("Do acesso ao mercado de trabalho; quesito raça/cor", "Cap. III — arts. 17 e 18", [("17", "18")], []),
         ("Das terras quilombolas", "Cap. IV — art. 19", [("19",)], []),
         ("Da comunicação social; contratos administrativos", "Cap. V — arts. 20 a 23", [("20", "23")], []),
@@ -489,16 +489,16 @@ def parte_legislacao():
 """
     s += MAPA("leg-g", "Lei nº 11.340/2006", "lei11340-maria-da-penha.md", [
         ("Disposições preliminares: objeto e direitos fundamentais da mulher", "Arts. 1º a 4º", [("1", "4")], []),
-        ("Violência doméstica e familiar: conceito e formas (física, psicológica, sexual, patrimonial e moral)", "Arts. 5º a 7º", [("5", "7")], []),
-        ("Medidas integradas de prevenção (inclusive nos currículos escolares) e assistência à mulher", "Arts. 8º e 9º", [("8", "9")], ["esp-i"]),
+        ("Violência doméstica e familiar: conceito e formas (física, psicológica, sexual, patrimonial e moral)", "Arts. 5º a 7º", [("5", "7")], ["esp-f"]),
+        ("Medidas integradas de prevenção (inclusive nos currículos escolares) e assistência à mulher", "Arts. 8º e 9º", [("8", "9")], ["esp-e", "esp-f"]),
     ])
     s += """
 ## h) Lei nº 13.146/2015 — Lei Brasileira de Inclusão (Estatuto da Pessoa com Deficiência) {#leg-h}
 """
     s += MAPA("leg-h", "Lei nº 13.146/2015", "lei13146-lbi.md", [
-        ("Disposições gerais: finalidade, conceito de pessoa com deficiência, definições (acessibilidade, desenho universal, adaptação razoável, profissional de apoio escolar)", "Arts. 1º a 3º", [("1", "3")], ["esp-f"]),
+        ("Disposições gerais: finalidade, conceito de pessoa com deficiência, definições (acessibilidade, desenho universal, adaptação razoável, profissional de apoio escolar)", "Arts. 1º a 3º", [("1", "3")], ["esp-g"]),
         ("Igualdade e não discriminação", "Arts. 4º a 8º", [("4", "8")], []),
-        ("Direito à educação: sistema educacional inclusivo; incumbências do poder público; escolas privadas", "Arts. 27 a 30", [("27", "30")], ["esp-f", "leg-j"]),
+        ("Direito à educação: sistema educacional inclusivo; incumbências do poder público; escolas privadas", "Arts. 27 a 30", [("27", "30")], ["esp-g", "leg-j"]),
     ])
     s += """
 ## i) Lei nº 13.709/2018 — LGPD {#leg-i}
@@ -507,7 +507,7 @@ def parte_legislacao():
         ("Disposições preliminares: objetivo, fundamentos, aplicação, conceitos e princípios", "Arts. 1º a 6º", [("1", "6")], []),
         ("Requisitos (bases legais) para o tratamento de dados pessoais", "Art. 7º", [("7",)], []),
         ("Tratamento de dados pessoais sensíveis", "Art. 11", [("11",)], []),
-        ("Tratamento de dados pessoais de crianças e adolescentes — aplicação na escola", "Art. 14", [("14",)], ["esp-j", "leg-m"]),
+        ("Tratamento de dados pessoais de crianças e adolescentes — aplicação na escola", "Art. 14", [("14",)], ["esp-d", "esp-f", "leg-m"]),
     ])
     s += """
 ## j) Lei nº 9.394/1996 — LDB (com as Leis 14.533/2023 e 14.811/2024) {#leg-j}
@@ -515,20 +515,20 @@ def parte_legislacao():
 <p class="meta">LDB em texto compilado vigente, completa, dividida pelos tópicos do programa. As alterações das Leis 14.533/2023 (educação digital) e 14.811/2024 (segurança escolar) já estão no corpo do texto.</p>
 """
     s += MAPA("leg-j", "LDB", LDB, [
-        ("Conceito de educação, princípios e fins da educação nacional", "Títulos I e II — arts. 1º a 3º", [("1", "3")], ["esp-d"]),
-        ("Direito à educação e dever de educar (inclusive educação digital e AEE)", "Título III — arts. 4º a 7º-A", [("4", "7-A")], ["esp-f", "leg-m"]),
-        ("Organização da educação nacional: incumbências da União, dos Estados e dos Municípios", "Título IV — arts. 8º a 11", [("8", "11")], ["esp-k"]),
-        ("Incumbências dos estabelecimentos de ensino e dos docentes; gestão democrática; autonomia", "Título IV — arts. 12 a 15", [("12", "15")], ["esp-b", "esp-d", "esp-j"]),
+        ("Conceito de educação, princípios e fins da educação nacional", "Títulos I e II — arts. 1º a 3º", [("1", "3")], ["esp-i"]),
+        ("Direito à educação e dever de educar (inclusive educação digital e AEE)", "Título III — arts. 4º a 7º-A", [("4", "7-A")], ["esp-g", "leg-m"]),
+        ("Organização da educação nacional: incumbências da União, dos Estados e dos Municípios", "Título IV — arts. 8º a 11", [("8", "11")], ["esp-j"]),
+        ("Incumbências dos estabelecimentos de ensino e dos docentes; gestão democrática; autonomia", "Título IV — arts. 12 a 15", [("12", "15")], ["esp-b", "esp-f", "esp-i"]),
         ("Sistemas de ensino", "Título IV — arts. 16 a 20", [("16", "20")], []),
-        ("Educação básica — composição dos níveis e disposições gerais: organização, calendário, verificação do rendimento, frequência, currículo e BNCC", "Título V, Cap. I e Cap. II, Seção I — arts. 21 a 28", [("21", "28")], ["esp-b", "esp-i", "esp-j", "esp-k", "leg-l"]),
+        ("Educação básica — composição dos níveis e disposições gerais: organização, calendário, verificação do rendimento, frequência, currículo e BNCC", "Título V, Cap. I e Cap. II, Seção I — arts. 21 a 28", [("21", "28")], ["esp-b", "esp-i", "esp-j", "leg-l"]),
         ("Educação infantil e ensino fundamental", "Seções II e III — arts. 29 a 34", [("29", "34")], []),
-        ("Ensino médio: finalidades, BNCC, formação geral básica e itinerários formativos", "Seção IV — arts. 35 a 36", [("35", "36")], ["esp-i", "leg-l"]),
-        ("Educação profissional técnica de nível médio", "Seção IV-A — arts. 36-A a 36-D", [("36-A", "36-D")], ["esp-i", "leg-k"]),
+        ("Ensino médio: finalidades, BNCC, formação geral básica e itinerários formativos", "Seção IV — arts. 35 a 36", [("35", "36")], ["esp-h", "leg-l"]),
+        ("Educação profissional técnica de nível médio", "Seção IV-A — arts. 36-A a 36-D", [("36-A", "36-D")], ["esp-h", "leg-k"]),
         ("Educação de jovens e adultos", "Seção V — arts. 37 e 38", [("37", "38")], []),
-        ("Educação profissional e tecnológica", "Cap. III — arts. 39 a 42", [("39", "42")], ["leg-k"]),
+        ("Educação profissional e tecnológica", "Cap. III — arts. 39 a 42", [("39", "42")], ["esp-h", "leg-k"]),
         ("Educação superior", "Cap. IV — arts. 43 a 57", [("43", "57")], []),
-        ("Educação especial e educação bilíngue de surdos", "Cap. V e V-A — arts. 58 a 60-B", [("58", "60-B")], ["esp-f", "leg-h"]),
-        ("Profissionais da educação: formação, especialistas em supervisão, valorização", "Título VI — arts. 61 a 67", [("61", "67")], ["esp-g", "esp-h"]),
+        ("Educação especial e educação bilíngue de surdos", "Cap. V e V-A — arts. 58 a 60-B", [("58", "60-B")], ["esp-g", "leg-h"]),
+        ("Profissionais da educação: formação, orientação educacional (art. 64), valorização", "Título VI — arts. 61 a 67", [("61", "67")], ["esp-d", "esp-j"]),
         ("Recursos financeiros", "Título VII — arts. 68 a 77", [("68", "77")], []),
         ("Disposições gerais: educação indígena, EAD, estágio, educação no campo", "Título VIII — arts. 78 a 86", [("78", "86")], []),
         ("Disposições transitórias", "Título IX — arts. 87 a 92", [("87", "92")], []),
@@ -539,7 +539,7 @@ def parte_legislacao():
     s += MAPA("leg-jd", "Lei nº 14.533/2023", "lei14533-educacao-digital.md", [
         ("Política Nacional de Educação Digital (PNED) e seus eixos", "Art. 1º", [("1",)], []),
         ("Eixo inclusão digital", "Art. 2º", [("2",)], []),
-        ("Eixo Educação Digital Escolar", "Art. 3º", [("3",)], ["esp-f", "esp-i"]),
+        ("Eixo Educação Digital Escolar", "Art. 3º", [("3",)], ["esp-b", "esp-g"]),
         ("Eixos capacitação e especialização digital; pesquisa e desenvolvimento em TIC", "Arts. 4º e 5º", [("4", "5")], []),
         ("Implementação dos eixos; alterações na LDB e na Lei 9.448/1997", "Arts. 6º a 8º", [("6", "8")], ["leg-j"]),
         ("Financiamento e vigência", "Arts. 9º a 12", [("9", "12")], []),
@@ -548,7 +548,7 @@ def parte_legislacao():
 ### Lei nº 14.811/2024 — Proteção contra a violência nos estabelecimentos educacionais {#leg-j-seg}
 """
     s += MAPA("leg-js", "Lei nº 14.811/2024", "lei14811-seguranca-escolar.md", [
-        ("Medidas de proteção e de prevenção à violência em estabelecimentos educacionais; protocolos", "Arts. 1º a 3º", [("1", "3")], ["esp-j"]),
+        ("Medidas de proteção e de prevenção à violência em estabelecimentos educacionais; protocolos", "Arts. 1º a 3º", [("1", "3")], ["esp-f"]),
         ("Política Nacional de Prevenção e Combate ao Abuso e Exploração Sexual da Criança e do Adolescente", "Art. 4º", [("4",)], ["leg-m"]),
         ("Alterações no Código Penal (inclusive intimidação sistemática — bullying e cyberbullying) e na Lei dos Crimes Hediondos", "Arts. 5º a 7º", [("5", "7")], []),
         ("Alterações no ECA e vigência", "Arts. 8º a 10", [("8", "10")], ["leg-m"]),
@@ -557,11 +557,11 @@ def parte_legislacao():
 ## k) Decreto nº 12.603/2025 — Política Nacional de Educação Profissional e Tecnológica (PNEPT) {#leg-k}
 """
     s += MAPA("leg-k", "Decreto nº 12.603/2025", "dec12603-pnept.md", [
-        ("Disposições gerais: objeto, princípios, objetivos e eixos da PNEPT", "Cap. I — arts. 1º a 6º", [("1", "6")], ["leg-j"]),
-        ("Oferta de cursos", "Cap. II — arts. 7º a 13", [("7", "13")], ["esp-i"]),
+        ("Disposições gerais: objeto, princípios, objetivos e eixos da PNEPT", "Cap. I — arts. 1º a 6º", [("1", "6")], ["esp-h", "leg-j"]),
+        ("Oferta de cursos", "Cap. II — arts. 7º a 13", [("7", "13")], ["esp-h"]),
         ("Estratégias", "Cap. III — art. 14", [("14",)], []),
         ("Governança e participação (CTPP)", "Cap. IV — art. 15", [("15",)], []),
-        ("Monitoramento e avaliação (SINAEPT)", "Cap. V — arts. 16 a 20", [("16", "20")], ["esp-k"]),
+        ("Monitoramento e avaliação (SINAEPT)", "Cap. V — arts. 16 a 20", [("16", "20")], []),
         ("Fontes e recursos", "Cap. VI — art. 21", [("21",)], []),
         ("Disposições finais", "Cap. VII — arts. 22 a 24", [("22", "24")], []),
     ])
@@ -582,13 +582,13 @@ def parte_legislacao():
 ## m) Lei nº 8.069/1990 — Estatuto da Criança e do Adolescente {#leg-m}
 """
     s += MAPA("leg-m", "ECA", "lei8069-eca.md", [
-        ("Disposições preliminares: proteção integral, conceito de criança e adolescente, prioridade absoluta", "Arts. 1º a 6º", [("1", "6")], []),
-        ("Direito à liberdade, ao respeito e à dignidade; educação sem castigo físico", "Arts. 15 a 18-B", [("15", "18-B")], ["esp-j"]),
-        ("Direito à educação, à cultura, ao esporte e ao lazer; comunicação ao Conselho Tutelar (art. 56)", "Arts. 53 a 59", [("53", "59")], ["esp-j", "leg-j"]),
+        ("Disposições preliminares: proteção integral, conceito de criança e adolescente, prioridade absoluta", "Arts. 1º a 6º", [("1", "6")], ["esp-e"]),
+        ("Direito à liberdade, ao respeito e à dignidade; educação sem castigo físico", "Arts. 15 a 18-B", [("15", "18-B")], ["esp-e", "esp-f"]),
+        ("Direito à educação, à cultura, ao esporte e ao lazer; comunicação ao Conselho Tutelar (art. 56)", "Arts. 53 a 59", [("53", "59")], ["esp-f", "leg-j"]),
         ("Prevenção: políticas contra a violência e o castigo físico", "Arts. 70-A e 70-B", [("70-A", "70-B")], []),
-        ("Medidas de proteção", "Arts. 98 a 101", [("98", "101")], []),
-        ("Conselho Tutelar", "Arts. 131 a 137", [("131", "137")], []),
-        ("Infração administrativa: falta de comunicação de maus-tratos", "Art. 245", [("245",)], ["esp-j"]),
+        ("Medidas de proteção", "Arts. 98 a 101", [("98", "101")], ["esp-f"]),
+        ("Conselho Tutelar", "Arts. 131 a 137", [("131", "137")], ["esp-f"]),
+        ("Infração administrativa: falta de comunicação de maus-tratos", "Art. 245", [("245",)], ["esp-f"]),
     ])
     return s
 
@@ -596,9 +596,11 @@ def parte_legislacao():
 def parte_especificos():
     LDB = "lei9394-ldb.md"
     return f"""
-# Parte III — Conhecimentos Específicos: Supervisor Escolar {{#esp}}
+# Parte III — Conhecimentos Específicos: Orientador Educacional {{#esp}}
 
 <p class="meta">40 questões · 1,75 ponto cada · mínimo de 20 acertos (70% da nota total)</p>
+
+<div class="legenda"><strong>Atribuições do emprego (Anexo III do edital):</strong> coletar dados sobre o aluno; estudar, atender e acompanhar casos; realizar entrevistas individuais e reuniões com alunos, professores, pais e demais pessoas envolvidas com a escola; articular-se com médicos, psicólogos, clínicas e serviços; estudar e encaminhar os casos que extrapolam a esfera escolar; assistir às turmas das últimas séries no prosseguimento do seu aperfeiçoamento, na colocação profissional e em problemas que envolvam escolhas ou decisões; programar e desenvolver sessões coletivas e palestras para os alunos; sugerir medidas de melhoria dos sistemas de ensino; auxiliar a Diretoria na solução de problemas de relações humanas; auxiliar na integração da Fundação à comunidade; estimular os professores a avaliarem seu desempenho.</div>
 
 ## a) Pensadores da educação e história da educação {{#esp-a}}
 
@@ -609,136 +611,165 @@ def parte_especificos():
 "Tendências pedagógicas liberais (tradicional, renovada progressivista e não diretiva, tecnicista) e progressistas (libertadora, libertária, crítico-social dos conteúdos)",
 "História da educação brasileira: jesuítas, reformas pombalinas, Império, República, LDBs de 1961, 1971 e 1996")}
 
-## b) Elementos da prática pedagógica {{#esp-b}}
+## b) Elementos da prática pedagógica. Recursos tecnológicos. Metodologias ativas {{#esp-b}}
 
-{topicos("Planejamento escolar e planejamento de aula: níveis (sistema, escola, currículo, ensino, aula)",
+{topicos("Planejamento de aula e níveis de planejamento (sistema, escola, currículo, ensino, aula)",
 "Currículo: formal, real, oculto; organização curricular",
 "Regimento escolar: natureza, conteúdo e relação com o PPP",
 "Metodologias de ensino, projetos de trabalho e técnicas didáticas",
-"Avaliação da aprendizagem",
-"Formação docente")}
+"Avaliação da aprendizagem (aprofundada no <a href='#esp-j'>ponto j</a>)",
+"Recursos tecnológicos e educação: educação digital, cultura digital, ensino híbrido",
+"Metodologias ativas: sala de aula invertida, aprendizagem baseada em projetos e em problemas, rotação por estações, gamificação, instrução por pares (*peer instruction*)")}
 {L("Base legal — LDB, arts. 12 e 13 (incumbências da escola e dos docentes)", LDB, ("12", "13"))}
 {L("Base legal — LDB, arts. 23 e 24 (organização e verificação do rendimento)", LDB, ("23", "24"))}
+{L("Base legal — Lei nº 14.533/2023, arts. 1º a 3º (Política Nacional de Educação Digital; educação digital escolar)", "lei14533-educacao-digital.md", ("1", "3"))}
 
-## c) Teorias do conhecimento e da aprendizagem {{#esp-c}}
+## c) Teorias do conhecimento e da aprendizagem; tipos de conhecimento; desenvolvimento cognitivo; inteligências múltiplas; o lúdico {{#esp-c}}
 
 {topicos("Empirismo, inatismo (apriorismo) e interacionismo/construtivismo",
 "Comportamentalismo (Skinner, Watson): condicionamento e reforço",
 "Epistemologia genética (Piaget): assimilação, acomodação, equilibração",
-"Sociointeracionismo (Vygotsky): mediação, ZDP, internalização, linguagem",
+"Sociointeracionismo (Vygotsky): mediação, zona de desenvolvimento proximal, internalização, linguagem",
 "Teoria psicogenética de Wallon: afetividade, emoção, movimento",
 "Aprendizagem significativa (Ausubel); aprendizagem por descoberta (Bruner)",
-"Concepções pedagógicas decorrentes e implicações para a supervisão")}
-
-## d) Projeto político-pedagógico e proposta pedagógica da Fundação Liberato. Gestão democrática {{#esp-d}}
-
-{topicos("PPP: conceito, dimensões política e pedagógica, princípios (Veiga), etapas de elaboração (marco referencial, diagnóstico, programação — Gandin/Vasconcelos)",
-"Proposta pedagógica da Fundação Liberato: ler o PPP institucional publicado em liberato.com.br",
-"Gestão democrática: participação, Conselho Escolar, autonomia (administrativa, financeira e pedagógica)",
-"Relação PPP × Regimento × Planos de Ensino")}
-{L("Base legal — CF/88, art. 206 (princípios do ensino; gestão democrática)", "cf88.md", ("206",), )}
-{L("Base legal — LDB, arts. 3º, 12, 13, 14 e 15", LDB, ("3",), ("12", "15"))}
-
-## e) Tipos de conhecimento; desenvolvimento cognitivo; competências; inteligências múltiplas; o lúdico {{#esp-e}}
-
-{topicos("Tipos de conhecimento: senso comum, científico, filosófico, teológico/religioso, artístico",
+"Interdisciplinaridade, multidisciplinaridade, pluridisciplinaridade e transdisciplinaridade: graus crescentes de integração entre as disciplinas (Japiassu, Fazenda, Morin)",
+"Tipos de conhecimento: senso comum, científico, filosófico, teológico/religioso, artístico",
 "Estágios do desenvolvimento cognitivo (Piaget): sensório-motor, pré-operatório, operatório-concreto, operatório-formal",
 "Competências e capacidades: conceito (Perrenoud; BNCC — mobilização de conhecimentos, habilidades, atitudes e valores)",
 "Inteligências múltiplas (Gardner): linguística, lógico-matemática, espacial, corporal-cinestésica, musical, interpessoal, intrapessoal, naturalista",
 "O lúdico na educação: jogo, brincadeira e aprendizagem (Kishimoto, Vygotsky, Piaget)")}
-<p class="ref">Ver também: <a href="#leg-l">BNCC — competências gerais</a>.</p>
+<p class="ref">Ver também: <a href="#leg-l">BNCC — competências gerais</a> · <a href="#esp-e">ponto e (desenvolvimento humano)</a>.</p>
 
-## f) Educação inclusiva; dificuldades e transtornos de aprendizagem; tecnologias; metodologias ativas {{#esp-f}}
+## d) Fundamentos e práticas da Orientação Educacional {{#esp-d}}
 
-{topicos("Educação inclusiva: paradigma da inclusão × integração; AEE; Política Nacional de Educação Especial na Perspectiva da Educação Inclusiva (2008)",
-"Dificuldades × transtornos de aprendizagem: dislexia, disgrafia, discalculia, TDAH; papel da escola e encaminhamentos",
-"Recursos tecnológicos e educação: educação digital, cultura digital, ensino híbrido",
-"Metodologias ativas: sala de aula invertida, aprendizagem baseada em projetos (ABP), em problemas, rotação por estações, gamificação, peer instruction")}
+<p class="autores">Autora sugerida: Mírian P. S. Zippin Grinspun</p>
+
+{topicos("História da Orientação Educacional (OE) no Brasil: origem na orientação profissional (década de 1920); Leis Orgânicas do Ensino de 1942 (Reforma Capanema), que introduzem a OE na escola; LDB de 1961 (formação do orientador); Lei nº 5.564/1968 e Decreto nº 72.846/1973 (profissão de orientador educacional); Lei nº 5.692/1971 (OE obrigatória, com aconselhamento vocacional); LDB de 1996 (art. 64)",
+"Períodos da OE segundo Grinspun: implementador (1920–1941), institucional (1942–1960), transformador (1961–1970), disciplinador (1971–1980), questionador (década de 1980) e orientador (a partir de 1990)",
+"Conceitos e princípios: da orientação terapêutica e individual, centrada no “aluno-problema” e no ajustamento, para a orientação pedagógica, coletiva e contextualizada, comprometida com a formação do sujeito e da cidadania",
+"Áreas de atuação: alunos, professores, famílias, comunidade e equipe gestora",
+"Desafios no espaço escolar contemporâneo: diversidade, violência, mídias e redes, saúde mental, projeto de vida, permanência e êxito",
+"Gestão da OE: plano de ação do serviço, diagnóstico da realidade escolar, registros e projetos específicos da área (justificativa, objetivos, metodologia, cronograma, avaliação)",
+"O orientador como agente integrador e articulador do trabalho pedagógico, mediador entre aluno, professor, família e escola",
+"Paradigmas da ciência aplicados à educação: paradigma newtoniano-cartesiano (fragmentação, objetividade) × paradigma emergente, da complexidade (Kuhn, Morin, Boaventura de Sousa Santos); o “conflito de paradigmas” em Grinspun")}
+{L("Base legal — LDB, arts. 61 e 64 (profissionais da educação; formação para a orientação educacional)", LDB, ("61",), ("64",))}
+<p class="ref">Ver também: <a href="#leg-a-2">Lei RS 14.498/2014 — Quadro de Empregos Permanentes</a> · <a href="#esp-j">ponto j (parceria com a Supervisão Escolar)</a>.</p>
+
+## e) Desenvolvimento humano e subjetividade {{#esp-e}}
+
+<p class="autores">Autores sugeridos: Jean Piaget · Lev Vygotsky · Henri Wallon · César Coll · Howard Gardner · Yves de La Taille</p>
+
+{topicos("Desenvolvimento da criança e do adolescente: aspectos cognitivos, afetivos, sociais e psicológicos",
+"Piaget: estágios do desenvolvimento cognitivo e construção do conhecimento; desenvolvimento moral (anomia, heteronomia, autonomia)",
+"Vygotsky: origem social das funções psicológicas superiores; pensamento e linguagem; mediação; zona de desenvolvimento proximal",
+"Wallon: estágios (impulsivo-emocional, sensório-motor e projetivo, personalismo, categorial, puberdade e adolescência); alternância entre afetividade e cognição; a pessoa completa",
+"César Coll: construtivismo na sala de aula; conteúdos conceituais, procedimentais e atitudinais; ajuda pedagógica ajustada",
+"Gardner: inteligências múltiplas; competências e capacidades",
+"La Taille: moral e ética; limites; virtudes; personalidade ética",
+"Estruturação da subjetividade: o sujeito constituído nas relações sociais, na cultura e na linguagem",
+"Identidades na sociedade contemporânea: diversidade, gênero e juventude(s); culturas juvenis; projeto de vida")}
+{L("Base legal — ECA, arts. 1º a 6º (proteção integral; condição peculiar de pessoa em desenvolvimento)", "lei8069-eca.md", ("1", "6"))}
+{L("Base legal — ECA, arts. 15 a 18-B (liberdade, respeito e dignidade)", "lei8069-eca.md", ("15", "18-B"))}
+<p class="ref">Ver também: <a href="#esp-c">ponto c (teorias da aprendizagem)</a> · <a href="#leg-e">Estatuto da Igualdade Racial</a> · <a href="#leg-g">Lei Maria da Penha</a>.</p>
+
+## f) Relações interpessoais, família e escola {{#esp-f}}
+
+{topicos("Gestão das relações intra e interpessoais no ambiente escolar: autoconhecimento, empatia, comunicação, escuta ativa, clima escolar",
+"A rede de vínculos: familiar, escolar e do aluno consigo mesmo",
+"Articulação escola/comunidade e participação da família na escola: reuniões, entrevistas, conselhos, corresponsabilidade",
+"Mediação e gestão de conflitos no cotidiano escolar: conflito × violência; mediação entre pares; práticas restaurativas e círculos de diálogo; comunicação não violenta",
+"Intimidação sistemática (*bullying* e *cyberbullying*): prevenção, protocolos e encaminhamentos",
+"Rede de proteção: Conselho Tutelar, serviços de saúde e assistência social; comunicação obrigatória de maus-tratos e de faltas reiteradas",
+"Marketing educacional: marketing de relacionamento, imagem institucional, captação e retenção de alunos, endomarketing; construção de relacionamentos institucionais positivos")}
+{L("Base legal — LDB, art. 12 (articulação com as famílias; notificação de faltas ao Conselho Tutelar; combate à intimidação sistemática; cultura de paz)", LDB, ("12",))}
+{L("Base legal — ECA, arts. 53 a 56 (direito à educação; deveres dos pais; comunicação ao Conselho Tutelar)", "lei8069-eca.md", ("53", "56"))}
+{L("Base legal — Lei nº 14.811/2024, arts. 1º a 3º (proteção contra a violência nos estabelecimentos educacionais)", "lei14811-seguranca-escolar.md", ("1", "3"))}
+<p class="ref">Ver também: <a href="#leg-m">ECA — medidas de proteção e Conselho Tutelar</a> · <a href="#leg-i">LGPD — dados de crianças e adolescentes</a>.</p>
+
+## g) Dificuldades de aprendizagem, inclusão e práticas educativas {{#esp-g}}
+
+<p class="autores">Autores sugeridos: Paulo Freire · José Carlos Libâneo · Michel Foucault · Rubem Alves</p>
+
+{topicos("Rendimento escolar e causas do fracasso escolar: explicações centradas no aluno e na família (carência cultural) × explicações institucionais e sociais (Patto: a produção do fracasso escolar)",
+"Dificuldades × transtornos de aprendizagem: dislexia, disgrafia, disortografia, discalculia, TDAH; papel da escola, identificação precoce e encaminhamentos",
+"Educação inclusiva e atendimento à diversidade: inclusão × integração; atendimento educacional especializado (AEE); adaptações razoáveis; desenho universal",
+"O lúdico na educação como recurso de aprendizagem e de vínculo",
+"Uso de tecnologias e recursos digitais na educação; tecnologia assistiva",
+"Pedagogia da Emergência (Bernd Ruf): intervenção pedagógica, de base Waldorf, com crianças e jovens em situação de trauma (catástrofes, violência, perdas); ritmo, vínculo, arte, movimento e brincar para estabilizar e prevenir o transtorno pós-traumático",
+"Paulo Freire: educação bancária × problematizadora; diálogo; autonomia; leitura do mundo",
+"Libâneo: didática, democratização da escola pública, pedagogia crítico-social dos conteúdos",
+"Foucault: poder disciplinar, vigilância, exame e normalização na escola (*Vigiar e punir*)",
+"Rubem Alves: escolas que são gaiolas × escolas que são asas; o prazer de aprender; a alegria de ensinar")}
 {L("Base legal — LDB, arts. 58 a 60 (Educação Especial)", LDB, ("58", "60"))}
 {L("Base legal — LBI, arts. 27 e 28 (Direito à Educação)", "lei13146-lbi.md", ("27", "28"))}
 {LI("Base legal — Lei nº 14.254/2021 (dislexia, TDAH e outros transtornos de aprendizagem) — íntegra", "lei14254-dislexia-tdah.md")}
-{L("Base legal — Lei nº 14.533/2023, arts. 1º a 3º (Política Nacional de Educação Digital; educação digital escolar)", "lei14533-educacao-digital.md", ("1", "3"))}
+<p class="ref">Ver também: <a href="#esp-b">ponto b (educação digital)</a> · <a href="#leg-h">LBI</a>.</p>
 
-## g) Fundamentos e práticas da Supervisão Escolar {{#esp-g}}
+## h) Orientação para o trabalho e cidadania {{#esp-h}}
 
-<p class="autores">Autores sugeridos: Antonia da Silva Medina · Heloísa Lück · Mary Rangel</p>
+<p class="autores">Autora sugerida: Acácia Kuenzer</p>
 
-{topicos("Aspectos históricos: origem fabril/taylorista da supervisão; inspeção escolar; PABAEE; Lei 5.692/1971 e Parecer CFE 252/1969 (habilitações); crítica à divisão do trabalho na escola",
-"Aspectos legais: formação do supervisor (LDB art. 64); profissionais da educação (LDB art. 61)",
-"Aspectos culturais e conceitos: supervisão como controle × supervisão como mediação/acompanhamento pedagógico",
-"Áreas de atuação e propostas relacionadas aos diferentes modelos pedagógicos",
-"O supervisor como especialista e articulador do trabalho pedagógico (Medina: o trabalho com o professor e a produção do professor)",
-"Ação integrada entre supervisão, orientação e administração escolar na elaboração, construção e execução do PPP (Lück; Rangel)")}
-{L("Base legal — LDB, arts. 61 e 64", LDB, ("61",), ("64",))}
-
-## h) Formação docente e prática reflexiva {{#esp-h}}
-
-<p class="autores">Autores sugeridos: Isabel Alarcão · Philippe Perrenoud · Terezinha Azerêdo Rios · Léopold Paquay</p>
-
-{topicos("A ação supervisora e a formação continuada de professores: perspectiva histórica (“ontem e hoje” — Alarcão)",
-"Bases epistemológicas e pedagógicas da ação docente",
-"Formação crítica e reflexiva: professor reflexivo, escola reflexiva (Alarcão); reflexão na ação, sobre a ação e sobre a reflexão na ação (Schön)",
-"Novas competências para ensinar (Perrenoud) e profissionalização do ofício de professor (Paquay, Perrenoud et al.)",
-"Dimensões da competência docente: técnica, estética, ética e política (Terezinha Rios)",
-"A didática como área de atuação da supervisão na formação em serviço",
-"Avaliação docente")}
-{L("Base legal — LDB, arts. 61 a 67 (Dos Profissionais da Educação)", LDB, ("61", "67"))}
-
-## i) Organização curricular e metodologias de ensino {{#esp-i}}
-
-<p class="autores">Autores sugeridos: José Carlos Libâneo · Juan Díaz Bordenave · Edgar Morin · Monica Gather Thurler</p>
-
-{topicos("Reflexões sobre currículo: interdisciplinaridade, multidisciplinaridade, pluridisciplinaridade, transdisciplinaridade (Morin: *Os sete saberes*; pensamento complexo)",
-"Aplicação da LDB, da BNCC, dos PCNs e do Referencial Curricular Gaúcho do Ensino Médio (RCGEM) na prática supervisora",
-"Fundamentos teóricos e dimensões político-sociais da Didática (Libâneo)",
-"Estratégias de ensino-aprendizagem (Bordenave & Pereira)",
-"Inovação e mudança na escola (Gather Thurler)",
-"Metodologias ativas, técnicas de ensino e integração de recursos tecnológicos ao currículo")}
-{L("Base legal — LDB, arts. 26, 26-A e 27 (currículo da educação básica)", LDB, ("26", "27"))}
+{topicos("O processo de escolha profissional: fatores pessoais, familiares, sociais e econômicos; autoconhecimento, informação profissional e projeto de vida",
+"Orientação vocacional/profissional: abordagens de traço e fator (Parsons), desenvolvimentista (Super), tipológica (Holland), clínica (Bohoslavsky) e sócio-histórica (Bock)",
+"Relação educação/trabalho e desenvolvimento econômico-social: o trabalho como princípio educativo; dualidade estrutural do ensino médio; politecnia e formação integrada (Kuenzer)",
+"Educação para o consumo: consumo consciente, educação financeira, publicidade e juventude",
+"O Ensino Médio e a Educação Profissional: formas de oferta (integrada, concomitante, subsequente); itinerário de formação técnica e profissional",
+"Catálogo Nacional de Cursos Técnicos (CNCT): organização por eixos tecnológicos, cargas horárias mínimas e perfil profissional de conclusão",
+"Meio ambiente e sociedade: sustentabilidade e educação ambiental como tema transversal",
+"Legislação específica indicada no edital: Resolução nº 365/2021")}
 {L("Base legal — LDB, arts. 35 a 36-D (Ensino Médio e Educação Profissional Técnica de Nível Médio)", LDB, ("35", "36-D"))}
+{L("Base legal — LDB, arts. 39 a 42 (Educação Profissional e Tecnológica)", LDB, ("39", "42"))}
 
-### Resolução CEEd-RS nº 365/2021 — normas complementares para o Ensino Médio no RS (Referencial Curricular Gaúcho) {{#esp-i-365}}
+### Resolução CEEd-RS nº 365/2021 — normas complementares para o Ensino Médio no RS {{#esp-h-365}}
 
-{MAPA("esp-i-365", "Resolução CEEd-RS nº 365/2021", "ceed-rs-resolucao-365-2021.md", [
+<p class="aviso">O edital cita apenas “Resolução nº 365/2021”, como legislação da Educação Técnica. Esta apostila adota a Resolução nº 365/2021 do Conselho Estadual de Educação do RS, que trata do Ensino Médio e de seus itinerários, inclusive o de formação técnica e profissional.</p>
+
+{MAPA("esp-h-365", "Resolução CEEd-RS nº 365/2021", "ceed-rs-resolucao-365-2021.md", [
     ("Disposições gerais e organização do Ensino Médio", "Arts. 1º a 4º", [("1", "4")], []),
     ("Currículo: Formação Geral Básica e Itinerários Formativos", "Arts. 5º a 15", [("5", "15")], ["leg-l", "leg-j"]),
-    ("Projeto de Vida e trilhas dos itinerários", "Arts. 16 a 20", [("16", "20")], []),
+    ("Projeto de Vida e trilhas dos itinerários", "Arts. 16 a 20", [("16", "20")], ["esp-e"]),
     ("Unidades curriculares eletivas", "Arts. 21 a 29", [("21", "29")], []),
     ("Parcerias", "Arts. 30 a 37", [("30", "37")], []),
     ("Educação a distância no Ensino Médio", "Arts. 38 a 41", [("38", "41")], []),
     ("Ensino Médio noturno", "Arts. 42 a 48", [("42", "48")], []),
     ("Educação de Jovens e Adultos", "Arts. 49 a 62", [("49", "62")], []),
     ("Educação do campo, indígena e quilombola; aproveitamento de estudos; transferência", "Arts. 63 a 66", [("63", "66")], []),
-    ("Registros, avaliação, certificação e documentação escolar", "Arts. 67 a 79", [("67", "79")], ["esp-j", "esp-k"]),
+    ("Registros, avaliação, certificação e documentação escolar", "Arts. 67 a 79", [("67", "79")], ["esp-j"]),
     ("Disposições finais", "Arts. 80 a 83", [("80", "83")], []),
 ])}
-<p class="ref">Ver também: <a href="#leg-l">BNCC — competências gerais</a>.</p>
+<p class="ref">Ver também: <a href="#leg-k">PNEPT (Decreto nº 12.603/2025)</a> · <a href="#leg-l">BNCC — Ensino Médio</a>.</p>
 
-## j) Planejamento pedagógico e rotina escolar {{#esp-j}}
+## i) Gestão democrática, planejamento e currículo {{#esp-i}}
 
-<p class="autores">Autores sugeridos: Danilo Gandin · Celso dos Santos Vasconcelos</p>
+<p class="autores">Autores sugeridos: Ilma Passos Alencastro Veiga · Danilo Gandin · Mary Rangel · Heloísa Lück</p>
 
-{topicos("O processo de planejamento em suas diferentes dimensões",
-"Planejamento estratégico participativo (Gandin): marco referencial, diagnóstico, programação",
-"Elaboração do projeto pedagógico de curso (PPC) integrado; planos de ensino e planos de aula (Vasconcelos)",
-"Modalidades organizativas do trabalho pedagógico (atividades permanentes, sequências didáticas, projetos)",
-"Registros das atividades docentes (diários de classe) e sua conferência pela supervisão",
-"Organização e liderança do Conselho de Classe; atuação do supervisor perante as turmas")}
-{L("Base legal — LDB, art. 24 (frequência mínima, recuperação, registros)", LDB, ("24",))}
-{L("Base legal — ECA, art. 56 (comunicação ao Conselho Tutelar)", "lei8069-eca.md", ("56",))}
+{topicos("Gestão democrática na escola: participação, descentralização, transparência; Conselho Escolar (funções deliberativa, consultiva, fiscal e mobilizadora)",
+"O princípio da autonomia: administrativa, financeira e pedagógica (Veiga acrescenta a jurídica)",
+"PPP e proposta pedagógica: dimensões política e pedagógica; princípios (igualdade, qualidade, gestão democrática, liberdade, valorização do magistério — Veiga); elaboração, acompanhamento e avaliação",
+"Planejamento participativo (Gandin): marco referencial (situacional, doutrinal, operativo), diagnóstico e programação",
+"Organização do trabalho pedagógico, divisão social do trabalho e burocratização na escola: fragmentação entre quem pensa e quem executa; crítica aos “especialistas”; trabalho coletivo",
+"Gestão educacional e liderança; da administração à gestão (Lück)",
+"Reflexões sobre currículo e abordagens de ensino: interdisciplinaridade, multidisciplinaridade, transdisciplinaridade",
+"Ação integrada de orientação, supervisão e administração escolar (Rangel)")}
+{L("Base legal — CF/88, art. 206 (princípios do ensino; gestão democrática)", "cf88.md", ("206",), )}
+{L("Base legal — LDB, arts. 3º, 12, 13, 14 e 15", LDB, ("3",), ("12", "15"))}
+{L("Base legal — LDB, arts. 26, 26-A e 27 (currículo da educação básica)", LDB, ("26", "27"))}
 
-## k) Avaliação da aprendizagem e institucional {{#esp-k}}
+## j) Articulação pedagógica: avaliação e Supervisão Escolar {{#esp-j}}
 
-<p class="autores">Autores sugeridos: Jussara Hoffmann · Cipriano Luckesi</p>
+<p class="autores">Autores sugeridos: Jussara Hoffmann · Cipriano Luckesi · Isabel Alarcão · Philippe Perrenoud · Celso dos Santos Vasconcelos</p>
 
-{topicos("Dimensões da avaliação no processo de ensino-aprendizagem: diagnóstica, formativa, somativa",
-"Função social da avaliação escolar; avaliação classificatória × diagnóstica (Luckesi)",
-"Concepção dialética-libertadora (Vasconcelos); avaliação mediadora e formativa — “avaliar para promover” (Hoffmann)",
-"A relação intrínseca entre planejamento e avaliação",
-"Avaliação institucional e avaliações externas (SAEB, ENEM, SINAEPT)",
-"Pressupostos teóricos da pesquisa na ação supervisora")}
-{L("Base legal — LDB, art. 9º (avaliação nacional do rendimento escolar)", LDB, ("9",))}
-<p class="ref">Ver também: <a href="#esp-j">LDB, art. 24</a>.</p>
+{topicos("História, conceitos e atuação da Orientação Educacional (ver <a href='#esp-d'>ponto d</a>)",
+"Parceria entre Orientação e Supervisão Escolar: a orientação com foco no aluno e em suas relações, a supervisão com foco no professor e no currículo; trabalho integrado no Conselho de Classe, no PPP e na formação continuada",
+"Diagnóstico e intervenção psicopedagógica: queixa escolar, entrevistas, observação, devolutiva, plano de intervenção e encaminhamentos; caráter preventivo e institucional",
+"Avaliação escolar e sua função social: classificatória × diagnóstica (Luckesi: avaliar × examinar)",
+"Avaliação mediadora e formativa — “avaliar para promover” (Hoffmann); concepção dialética-libertadora (Vasconcelos)",
+"Dimensões da avaliação no processo ensino-aprendizagem: diagnóstica, formativa, somativa",
+"Formação reflexiva de professores: professor reflexivo e escola reflexiva (Alarcão); reflexão na ação e sobre a ação (Schön); dez novas competências para ensinar (Perrenoud)",
+"Avaliação docente: autoavaliação e avaliação de desempenho (nas atribuições do emprego: “estimular os professores a avaliarem seu desempenho”)")}
+{L("Base legal — LDB, art. 24 (verificação do rendimento, frequência mínima, recuperação)", LDB, ("24",))}
+{L("Base legal — LDB, arts. 61 a 67 (Dos Profissionais da Educação)", LDB, ("61", "67"))}
+<p class="ref">Ver também: <a href="#leg-a-5">Lei RS 14.498/2014 — promoções e avaliação de desempenho</a>.</p>
 """
 
 
@@ -821,10 +852,10 @@ def nav():
            ("leg-d", "d) CLT"), ("leg-e", "e) Lei 12.288/2010"), ("leg-f", "f) Lei RS 13.694/2011"),
            ("leg-g", "g) Maria da Penha"), ("leg-h", "h) LBI"), ("leg-i", "i) LGPD"), ("leg-j", "j) LDB"),
            ("leg-k", "k) PNEPT"), ("leg-l", "l) BNCC"), ("leg-m", "m) ECA")]
-    esp = [("esp-a", "a) Pensadores e história"), ("esp-b", "b) Prática pedagógica"), ("esp-c", "c) Teorias da aprendizagem"),
-           ("esp-d", "d) PPP e gestão democrática"), ("esp-e", "e) Cognição e competências"), ("esp-f", "f) Inclusão e tecnologias"),
-           ("esp-g", "g) Supervisão escolar"), ("esp-h", "h) Formação docente"), ("esp-i", "i) Currículo e metodologias"),
-           ("esp-j", "j) Planejamento e rotina"), ("esp-k", "k) Avaliação")]
+    esp = [("esp-a", "a) Pensadores e história"), ("esp-b", "b) Prática pedagógica"), ("esp-c", "c) Aprendizagem e conhecimento"),
+           ("esp-d", "d) Orientação Educacional"), ("esp-e", "e) Desenvolvimento e subjetividade"), ("esp-f", "f) Família, escola e conflitos"),
+           ("esp-g", "g) Dificuldades e inclusão"), ("esp-h", "h) Trabalho e cidadania"), ("esp-i", "i) Gestão, planejamento e currículo"),
+           ("esp-j", "j) Avaliação e supervisão")]
     def bloco(t, ancora, itens):
         return f'<h2><a href="#{ancora}">{t}</a></h2>' + "".join(f'<a href="#{a}">{n}</a>' for a, n in itens)
     return ('<nav><div class="tools"><button onclick="todos(true)">Abrir leis</button>'
@@ -845,14 +876,14 @@ def main():
         ).stdout.decode("utf-8")
         for p in pedacos
     )
-    capa = ('<header class="capa"><h1>Apostila — Analista Educacional: Supervisor Escolar</h1>'
+    capa = ('<header class="capa"><h1>Apostila — Analista Educacional: Orientador Educacional</h1>'
             '<p>Fundação Escola Técnica Liberato Salzano Vieira da Cunha · Concurso Público 001/2026 · Banca: Legalle Concursos</p>'
             '<p>Prova teórico-objetiva (data provável): 07/03/2027 · 60 questões: Português (10) · Legislação (10) · Específicos (40)</p>'
             '<p>Versão inicial: tópicos de cada ponto do programa (Anexo II) e textos legais transcritos das fontes oficiais. '
             'Redações revogadas foram omitidas; as notas de alteração aparecem em cinza.</p></header>')
     pagina = f"""<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Apostila Supervisor Escolar</title>
+<title>Apostila Orientador Educacional</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>{CSS}</style><script>{JS}</script></head>
 <body><div class="wrap">{nav()}<main>{capa}{corpo}</main></div></body></html>"""
