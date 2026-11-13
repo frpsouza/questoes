@@ -14,5 +14,6 @@ Apostila com Língua Portuguesa, Legislação (textos oficiais, com alterações
 | [edital/](edital/) | Edital dividido por itens; `anexo-II/` traz o programa de cada cargo |
 | [legislacao/](legislacao/) | Normas oficiais em Markdown e scripts de download e conversão |
 | [plano-de-estudos.md](plano-de-estudos.md) | Cronograma semanal de 16/11/2026 a 06/03/2027 |
+| [banca-legalle.md](banca-legalle.md) | A banca: contato, atuação no concurso, editais e onde treinar questões |
 
 Para regenerar a apostila: `python apostilas/gerar_orientador.py` (requer Python 3 e pandoc).
