@@ -393,7 +393,8 @@ def QPT_BLOCO(grupo: str) -> str:
     itens = []
     for q in qs:
         prova = q["provas"][0] if q["provas"] else ""
-        cargo = prova.split(" - ")[-1] if prova else ""
+        prefixo = f'{q["banca"]} - {q["ano"]} - {q["orgao"]} - '
+        cargo = prova[len(prefixo):] if prova.startswith(prefixo) else prova
         outros = ", ".join(a for a in q["assuntos"] if a not in GRUPOS_PT[grupo][1] and a not in GENERICOS_PT)
         itens.append(
             f'<li><a href="{html.escape(q["url"])}" target="_blank" rel="noopener">{q["codigo"]}</a> '
@@ -404,11 +405,22 @@ def QPT_BLOCO(grupo: str) -> str:
             f'<ul>{"".join(itens)}</ul></details>\n\n')
 
 
+def topicos_q(*itens) -> str:
+    """Lista de tópicos em HTML; um item pode ser (texto, grupo) para trazer logo abaixo
+    as questões da Legalle daquele assunto."""
+    li = []
+    for it in itens:
+        texto, grupo = (it, None) if isinstance(it, str) else it
+        bloco = QPT_BLOCO(grupo).strip() if grupo else ""
+        li.append(f"<li>{html.escape(texto)}{bloco}</li>")
+    return '\n\n<ul class="topicos">' + "".join(li) + "</ul>\n\n"
+
+
 def parte_portugues():
-    resumo = (f'<p class="meta">Questões da Legalle no Qconcursos ({NQPT} de Português, nível superior), '
-              'agrupadas pelos subtópicos do programa a partir dos assuntos indicados pelo próprio Qconcursos. '
+    resumo = (f'<p class="meta">Abaixo de cada tópico estão as questões da Legalle no Qconcursos '
+              f'({NQPT} de Português, nível superior), agrupadas pelos assuntos indicados pelo próprio Qconcursos. '
               'Os links abrem a questão no Qconcursos (requer login). Uma questão com vários assuntos aparece em '
-              'mais de um subtópico.</p>') if NQPT else ""
+              'mais de um tópico.</p>') if NQPT else ""
     return f"""
 # Parte I — Língua Portuguesa {{#pt}}
 
@@ -418,34 +430,31 @@ def parte_portugues():
 
 ## a) Leitura e compreensão de textos {{#pt-a}}
 
-{topicos("Assunto, tema e tese; estruturação do texto (introdução, desenvolvimento, conclusão)",
-"Ideias principais e secundárias; relação entre as ideias (causa, consequência, oposição, concessão, conclusão)",
-"Efeitos de sentido; figuras de linguagem (metáfora, metonímia, ironia, eufemismo, hipérbole, antítese, paradoxo, personificação)",
+{topicos_q("Assunto, tema e tese; estruturação do texto (introdução, desenvolvimento, conclusão)",
+("Ideias principais e secundárias; relação entre as ideias (causa, consequência, oposição, concessão, conclusão)", "pt-a1"),
+("Efeitos de sentido; figuras de linguagem (metáfora, metonímia, ironia, eufemismo, hipérbole, antítese, paradoxo, personificação)", "pt-a2"),
 "Recursos de argumentação (exemplificação, autoridade, dados, comparação, contra-argumentação)",
 "Informações implícitas: pressupostos (marcados linguisticamente) × subentendidos (inferidos do contexto)",
-"Coesão (referencial, sequencial, lexical) e coerência textual")}
-{QPT_BLOCO("pt-a1")}{QPT_BLOCO("pt-a2")}{QPT_BLOCO("pt-a3")}
+("Coesão (referencial, sequencial, lexical) e coerência textual", "pt-a3"))}
 
 ## b) Léxico {{#pt-b}}
 
-{topicos("Significação de palavras e expressões no texto (sentido denotativo × conotativo)",
-"Substituição de palavras e expressões mantendo sentido e correção",
-"Estrutura e formação de palavras: radical, afixos, desinências; derivação e composição",
+{topicos_q("Significação de palavras e expressões no texto (sentido denotativo × conotativo)",
+("Substituição de palavras e expressões mantendo sentido e correção", "pt-b1"),
+("Estrutura e formação de palavras: radical, afixos, desinências; derivação e composição", "pt-b2"),
 "Sinônimos, antônimos, parônimos e homônimos")}
-{QPT_BLOCO("pt-b1")}{QPT_BLOCO("pt-b2")}
 
 ## c) Aspectos linguísticos {{#pt-c}}
 
-{topicos("Relações morfossintáticas",
-"Ortografia: emprego de letras e acentuação gráfica (Acordo Ortográfico vigente)",
-"Relações entre fonemas e grafias",
-"Flexões e emprego das classes gramaticais",
-"Vozes verbais (ativa, passiva analítica, passiva sintética, reflexiva) e sua conversão",
-"Concordância nominal e verbal",
-"Regência nominal e verbal; acento indicativo de crase",
-"Pontuação: regras e implicações de sentido",
-"Coordenação e subordinação: conjunções, locuções conjuntivas e pronomes relativos")}
-{"".join(QPT_BLOCO(g) for g in GRUPOS_PT if g.startswith("pt-c"))}
+{topicos_q("Relações morfossintáticas",
+("Ortografia: emprego de letras e acentuação gráfica (Acordo Ortográfico vigente)", "pt-c1"),
+("Relações entre fonemas e grafias", "pt-c2"),
+("Flexões e emprego das classes gramaticais", "pt-c3"),
+("Vozes verbais (ativa, passiva analítica, passiva sintética, reflexiva) e sua conversão", "pt-c4"),
+("Concordância nominal e verbal", "pt-c5"),
+("Regência nominal e verbal; acento indicativo de crase", "pt-c6"),
+("Pontuação: regras e implicações de sentido", "pt-c7"),
+("Coordenação e subordinação: conjunções, locuções conjuntivas e pronomes relativos", "pt-c8"))}
 """
 
 
@@ -891,6 +900,9 @@ details.lei{background:var(--law);border:1px solid var(--line);border-left:4px s
 details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
 details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
 details.questoes ul{margin:4px 0 10px}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
 details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
 table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
 table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}

@@ -5,3 +5,7 @@ __pycache__/
 q/*.html
 q/pages/
 q/md/
+
+# anotações locais (não publicar)
+prompt.md
+baixar questoes.md
