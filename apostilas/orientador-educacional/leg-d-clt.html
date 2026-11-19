@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLT – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="leg-a-lei-rs-14498.html#leg-a">a) Lei RS 14.498/2014</a><a href="leg-b-estatuto-liberato.html#leg-b">b) Estatuto da Fundação</a><a href="leg-c-cf88.html#leg-c">c) CF/88</a><a href="#leg-d" class="atual">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="leg-g-maria-da-penha.html#leg-g">g) Maria da Penha</a><a href="leg-h-lbi.html#leg-h">h) LBI</a><a href="leg-i-lgpd.html#leg-i">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="leg-l-bncc.html#leg-l">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>CLT</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-d">d) CLT — Jornada, descanso e férias</h2>
+<table class="mapa">
+<caption>
+Mapa da lei por tópico
+</caption>
+<thead>
+<tr>
+<th>
+Tópico
+</th>
+<th>
+Dispositivos
+</th>
+<th>
+Pontos do programa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="#leg-d-1">1. Cap. II, Seção II — Da Jornada de Trabalho: duração normal, tempo parcial, horas extras, compensação, banco de horas, 12×36</a>
+</td>
+<td>
+Arts. 58 a 65
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-d-2">2. Cap. II, Seção III — Dos Períodos de Descanso: interjornada, descanso semanal, intervalo intrajornada</a>
+</td>
+<td>
+Arts. 66 a 72
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-d-3">3. Cap. IV, Seção I — Do Direito a Férias e da sua Duração</a>
+</td>
+<td>
+Arts. 129 a 133
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-d-4">4. Cap. IV, Seção II — Da Concessão e da Época das Férias (fracionamento — Lei 13.467/2017)</a>
+</td>
+<td>
+Arts. 134 a 138
+</td>
+<td>
+—
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="leg-d-1">
+1. Cap. II, Seção II — Da Jornada de Trabalho: duração normal, tempo parcial, horas extras, compensação, banco de horas, 12×36
+</h3>
+<p class="arts">
+Arts. 58 a 65
+</p>
+<details class="lei" open>
+<summary>
+CLT — Arts. 58 a 65
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>SEÇÃO II</p>
+</div>
+<div class="tit">
+<p>DA JORNADA DE TRABALHO</p>
+</div>
+<p><strong>Art. 58</strong> - A duração normal do trabalho, para os empregados em qualquer atividade privada, não excederá de 8 (oito) horas diárias, desde que não seja fixado expressamente outro limite.</p>
+<p>§ 1^(<em>o</em>) Não serão descontadas nem computadas como jornada extraordinária as variações de horário no registro de ponto não excedentes de cinco minutos, observado o limite máximo de dez minutos diários. <span class="nota">(Parágrafo incluído pela Lei nº 10.243, de 19.6.2001)</span></p>
+<div id="alt-10" class="alt">
+<p>§ <span class="add">2º</span> O tempo despendido pelo empregado <span class="add">desde a sua residência</span> até <span class="add">a efetiva ocupação do posto</span> de trabalho e para o seu retorno, <span class="add">caminhando ou</span> por qualquer meio de transporte, <span class="add">inclusive o fornecido pelo empregador,</span> não será computado na jornada de trabalho, <span class="add">por</span> não <span class="add">ser tempo à disposição do empregador.</span> <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> <span class="add">acrescentou</span> “2º” … “desde a sua residência” … “a efetiva ocupação do posto” …; <span class="del-l">suprimiu</span> “2^(o)” … “o local” … “salvo quando, tratando-se de local de difícil acesso ou” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § <span class="del">2^(o)</span> O tempo despendido pelo empregado até <span class="del">o local</span> de trabalho e para o seu retorno, por qualquer meio de transporte, não será computado na jornada de trabalho, <span class="del">salvo quando, tratando-se de local de difícil acesso ou</span> não <span class="del">servido por transporte público, o empregador fornecer a condução.</span>
+</p>
+</div>
+</div>
+<div id="alt-11" class="alt">
+<p><strong>Art. 58-A.</strong> Considera-se trabalho em regime de tempo parcial aquele cuja duração não exceda a <span class="add">trinta horas semanais, sem a possibilidade de horas suplementares semanais, ou, ainda, aquele cuja duração não exceda a</span> vinte e <span class="add">seis</span> horas <span class="add">semanais, com a possibilidade de acréscimo de até seis horas suplementares</span> semanais. <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> <span class="add">acrescentou</span> “trinta horas semanais, sem a possibilidade de horas suplementares semanais, ou, ainda, aqu…” … “seis” … “semanais, com a possibilidade de acréscimo de até seis horas suplementares”; <span class="del-l">suprimiu</span> “cinco”
+</p>
+<p>
+<strong>Redação anterior:</strong> Art. 58-A. Considera-se trabalho em regime de tempo parcial aquele cuja duração não exceda a vinte e <span class="del">cinco</span> horas semanais.
+</p>
+</div>
+</div>
+<p>§ 1^(<em>o</em>)  O salário a ser pago aos empregados sob o regime de tempo parcial será proporcional à sua jornada, em relação aos empregados que cumprem, nas mesmas funções, tempo integral. <span class="nota">(Incluído pela Medida Provisória nº 2.164-41, de 2001)</span></p>
+<p>§ 2^(<em>o</em>)  Para os atuais empregados, a adoção do regime de tempo parcial será feita mediante opção manifestada perante a empresa, na forma prevista em instrumento decorrente de negociação coletiva. <span class="nota">(Incluído pela Medida Provisória nº 2.164-41, de 2001)</span></p>
+<p>§ 3º  As horas suplementares à duração do trabalho semanal normal serão pagas com o acréscimo de 50% (cinquenta por cento) sobre o salário-hora normal. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 4<em>º</em>  Na hipótese de o contrato de trabalho em regime de tempo parcial ser estabelecido em número inferior a vinte e seis horas semanais, as horas suplementares a este quantitativo serão consideradas horas extras para fins do  pagamento  estipulado  no § 3<em>º</em>, estando também limitadas a seis horas suplementares semanais. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 5<em>º</em>  As horas suplementares da jornada de trabalho normal poderão ser compensadas diretamente até a semana imediatamente posterior à da sua execução, devendo ser feita a sua quitação na folha de pagamento do mês subsequente, caso não sejam compensadas. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 6<em>º</em>  É facultado ao empregado contratado sob regime de tempo parcial converter um terço do período de férias a que tiver direito em abono pecuniário. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 7<em>º</em>  As férias do regime de tempo parcial são regidas pelo disposto no art. 130 desta Consolidação. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div id="alt-12" class="alt">
+<p>Art. <span class="add">59.</span> A duração <span class="add">diária</span> do trabalho poderá ser acrescida de horas <span class="add">extras,</span> em número não excedente de <span class="add">duas, por</span> acordo <span class="add">individual, convenção coletiva</span> ou <span class="add">acordo</span> coletivo de trabalho. <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> <span class="add">acrescentou</span> “59.” … “diária” … “extras,” …; <span class="del-l">suprimiu</span> “59 -” … “normal” … “suplementares,” …
+</p>
+<p>
+<strong>Redação anterior:</strong> Art. <span class="del">59 -</span> A duração <span class="del">normal</span> do trabalho poderá ser acrescida de horas <span class="del">suplementares,</span> em número não excedente de <span class="del">2 (duas), mediante</span> acordo <span class="del">escrito entre empregador e empregado,</span> ou <span class="del">mediante contrato</span> coletivo de trabalho.
+</p>
+</div>
+</div>
+<div id="alt-13" class="alt">
+<p>§ <span class="add">1<em>º</em> A</span> remuneração da hora <span class="add">extra</span> será, pelo menos, <span class="add">50% (cinquenta</span> por cento) superior à da hora normal. <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> <span class="add">acrescentou</span> “1º A” … “extra” … “50% (cinquenta”; <span class="del-l">suprimiu</span> “1º - Do acordo ou do contrato coletivo de trabalho deverá constar, obrigatoriamente, a imp…” … “suplementar, que” … “20% (vinte”
+</p>
+<p>
+<strong>Redação anterior:</strong> § <span class="del">1º - Do acordo ou do contrato coletivo de trabalho deverá constar, obrigatoriamente, a importância da</span> remuneração da hora <span class="del">suplementar, que</span> será, pelo menos, <span class="del">20% (vinte</span> por cento) superior à da hora normal.
+</p>
+</div>
+</div>
+<p>§ 2^(<em>o</em>)  Poderá ser dispensado o acréscimo de salário se, por força de acordo ou convenção coletiva de trabalho, o excesso de horas em um dia for compensado pela correspondente diminuição em outro dia, de maneira que não exceda, no período máximo de um ano, à soma das jornadas semanais de trabalho previstas, nem seja ultrapassado o limite máximo de dez horas diárias. <span class="nota">(Redação dada pela Medida Provisória nº 2.164-41, de 2001)</span></p>
+<div id="alt-14" class="alt">
+<p>§ 3º Na hipótese de rescisão do contrato de trabalho sem que tenha havido a compensação integral da jornada extraordinária, na forma <span class="add">dos §§ 2<em>º</em> e 5<em>º</em> deste artigo,</span> o trabalhador <span class="add">terá direito</span> ao pagamento das horas extras não compensadas, calculadas sobre o valor da remuneração na data da rescisão. <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> <span class="add">acrescentou</span> “dos §§ 2º e 5º deste artigo,” … “terá direito”; <span class="del-l">suprimiu</span> “do parágrafo anterior, fará” … “jus”
+</p>
+<p>
+<strong>Redação anterior:</strong> § 3º Na hipótese de rescisão do contrato de trabalho sem que tenha havido a compensação integral da jornada extraordinária, na forma <span class="del">do parágrafo anterior, fará</span> o trabalhador <span class="del">jus</span> ao pagamento das horas extras não compensadas, calculadas sobre o valor da remuneração na data da rescisão.
+</p>
+</div>
+</div>
+<p>§ 5º  O banco de horas de que trata o § 2<em>º</em> deste artigo poderá ser pactuado por acordo individual escrito, desde que a compensação ocorra no período máximo de seis meses. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 6<em>º</em>  É lícito o regime de compensação de jornada estabelecido por acordo individual, tácito ou escrito, para a compensação no mesmo mês. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p><strong>Art. 59-A.</strong>  Em exceção ao disposto no art. 59 desta Consolidação, é facultado às partes, mediante acordo individual escrito, convenção coletiva ou acordo coletivo de trabalho, estabelecer horário de trabalho de doze horas seguidas por trinta e seis horas ininterruptas de descanso, observados ou indenizados os intervalos para repouso e alimentação. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>Parágrafo único.  A remuneração mensal pactuada pelo horário previsto no <strong>caput</strong> deste artigo abrange os pagamentos devidos pelo descanso semanal remunerado e pelo descanso em feriados, e serão considerados compensados os feriados e as prorrogações de trabalho noturno, quando houver, de que tratam o art. 70 e o § 5º do art. 73 desta Consolidação. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p><strong>Art. 59-A.</strong>  Em exceção ao disposto no art. 59 e em leis específicas, é facultado às partes, por meio de convenção coletiva ou acordo coletivo de trabalho, estabelecer horário de trabalho de doze horas seguidas por trinta e seis horas ininterruptas de descanso, observados ou indenizados os intervalos para repouso e alimentação. <span class="nota">(Redação dada pela Medida Provisória nº 808, de 2017)</span> <span class="nota">(Vigência encerrada)</span></p>
+<p>§ 1  A remuneração mensal pactuada pelo horário previsto no <strong>caput</strong> abrange os pagamentos devidos pelo descanso semanal remunerado e pelo descanso em feriados e serão considerados compensados os feriados e as prorrogações de trabalho noturno, quando houver, de que tratam o art. 70 e o § 5º do art. 73. <span class="nota">(Redação dada pela Medida Provisória nº 808, de 2017)</span> <span class="nota">(Vigência encerrada)</span></p>
+<p>§ 2  É facultado às entidades atuantes no setor de saúde estabelecer, por meio de acordo individual escrito, convenção coletiva ou acordo coletivo de trabalho, horário de trabalho de doze horas seguidas por trinta e seis horas ininterruptas de descanso, observados ou indenizados os intervalos para repouso e alimentação. <span class="nota">(Redação dada pela Medida Provisória nº 808, de 2017)</span> <span class="nota">(Vigência encerrada)</span></p>
+<p><strong>Art. 59-A.</strong>  Em exceção ao disposto no art. 59 desta Consolidação, é facultado às partes, mediante acordo individual escrito, convenção coletiva ou acordo coletivo de trabalho, estabelecer horário de trabalho de doze horas seguidas por trinta e seis horas ininterruptas de descanso, observados ou indenizados os intervalos para repouso e alimentação. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>Parágrafo único.  A remuneração mensal pactuada pelo horário previsto no <strong>caput</strong> deste artigo abrange os pagamentos devidos pelo descanso semanal remunerado e pelo descanso em feriados, e serão considerados compensados os feriados e as prorrogações de trabalho noturno, quando houver, de que tratam o art. 70 e o § 5º do art. 73 desta Consolidação. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p><strong>Art. 59-B.</strong>  O não atendimento das exigências legais para compensação de jornada, inclusive quando estabelecida mediante acordo tácito, não implica a repetição do pagamento das horas excedentes à jornada normal diária se não ultrapassada a duração máxima semanal, sendo devido apenas o respectivo adicional. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p>Parágrafo único.  A prestação de horas extras habituais não descaracteriza o acordo de compensação de jornada e o banco de horas. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p><strong> </strong>Art. 60 - Nas atividades insalubres, assim consideradas as constantes dos quadros mencionados no capítulo “Da Segurança e da Medicina do Trabalho”, ou que neles venham a ser incluídas por ato do Ministro do Trabalho, Industria e Comercio, quaisquer prorrogações só poderão ser acordadas mediante licença prévia das autoridades competentes em matéria de higiene do trabalho, as quais, para esse efeito, procederão aos necessários exames locais e à verificação dos métodos e processos de trabalho, quer diretamente, quer por intermédio de autoridades sanitárias federais, estaduais e municipais, com quem entrarão em entendimento para tal fim.</p>
+<p>Parágrafo único.  Excetuam-se da exigência de licença prévia as jornadas de doze horas de trabalho por trinta e seis horas ininterruptas de descanso. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<p><strong>Art. 61</strong> - Ocorrendo necessidade imperiosa, poderá a duração do trabalho exceder do limite legal ou convencionado, seja para fazer face a motivo de força maior, seja para atender à realização ou conclusão de serviços inadiáveis ou cuja inexecução possa acarretar prejuízo manifesto.</p>
+<div id="alt-15" class="alt">
+<p>§ 1º O excesso, nos casos deste artigo, <span class="add">pode</span> ser exigido independentemente de <span class="add">convenção coletiva ou</span> acordo coletivo de <span class="add">trabalho.</span> <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> <span class="add">acrescentou</span> “pode” … “convenção coletiva ou” … “trabalho.”; <span class="del-l">suprimiu</span> “poderá” … “ou contrato” … “e deverá ser comunicado, dentro” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § 1º <span class="del">-</span> O excesso, nos casos deste artigo, <span class="del">poderá</span> ser exigido independentemente de acordo <span class="del">ou contrato</span> coletivo <span class="del">e deverá ser comunicado, dentro</span> de <span class="del">10 (dez) dias, à autoridade competente em matéria de trabalho, ou, antes desse prazo, justificado no momento da fiscalização sem prejuízo dessa comunicação.</span>
+</p>
+</div>
+</div>
+<p>§ 2º - Nos casos de excesso de horário por motivo de força maior, a remuneração da hora excedente não será inferior à da hora normal. Nos demais casos de excesso previstos neste artigo, a remuneração será, pelo menos, 25% (vinte e cinco por cento) superior à da hora normal, e o trabalho não poderá exceder de 12 (doze) horas, desde que a lei não fixe expressamente outro limite.</p>
+<p>§ 3º - Sempre que ocorrer interrupção do trabalho, resultante de causas acidentais, ou de força maior, que determinem a impossibilidade de sua realização, a duração do trabalho poderá ser prorrogada pelo tempo necessário até o máximo de 2 (duas) horas, durante o número de dias indispensáveis à recuperação do tempo perdido, desde que não exceda de 10 (dez) horas diárias, em período não superior a 45 (quarenta e cinco) dias por ano, sujeita essa recuperação à prévia autorização da autoridade competente.</p>
+<p><strong>Art. 62</strong> - Não são abrangidos pelo regime previsto neste capítulo: <span class="nota">(Redação dada pela Lei nº 8.966, de 27.12.1994)</span></p>
+<p>I - os empregados que exercem atividade externa incompatível com a fixação de horário de trabalho, devendo tal condição ser anotada na Carteira de Trabalho e Previdência Social e no registro de empregados; <span class="nota">(Incluído pela Lei nº 8.966, de 27.12.1994)</span></p>
+<p>II - os gerentes, assim considerados os exercentes de cargos de gestão, aos quais se equiparam, para efeito do disposto neste artigo, os diretores e chefes de departamento ou filial. <span class="nota">(Incluído pela Lei nº 8.966, de 27.12.1994)</span></p>
+<p>III - os empregados em regime de teletrabalho. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div id="alt-16" class="alt">
+<p>III - os empregados em regime de teletrabalho que prestam serviço por produção ou tarefa. <span class="nota">(Redação dada pela Lei nº 14.442, de 2022)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 14.442/2022):</strong> ajuste de redação (pontuação ou forma).
+</p>
+<p>
+<strong>Redação anterior:</strong> III - os empregados em regime de teletrabalho que prestam serviço por produção ou tarefa.
+</p>
+</div>
+</div>
+<p>Parágrafo único - O regime previsto neste capítulo será aplicável aos empregados mencionados no inciso II deste artigo, quando o salário do cargo de confiança, compreendendo a gratificação de função, se houver, for inferior ao valor do respectivo salário efetivo acrescido de 40% (quarenta por cento). <span class="nota">(Incluído pela Lei nº 8.966, de 27.12.1994)</span></p>
+<p><strong>Art. 63</strong> - Não haverá distinção entre empregados e interessados, e a participação em lucros e comissões, salvo em lucros de caráter social, não exclui o participante do regime deste Capítulo.</p>
+<p><strong>Art. 64</strong> - O salário-hora normal, no caso de empregado mensalista, será obtido dividindo-se o salário mensal correspondente à duração do trabalho, a que se refere o art. 58, por 30 (trinta) vezes o número de horas dessa duração.</p>
+<p>Parágrafo único - Sendo o número de dias inferior a 30 (trinta), adotar-se-á para o cálculo, em lugar desse número, o de dias de trabalho por mês.</p>
+<p><strong>Art. 65</strong> - No caso do empregado diarista, o salário-hora normal será obtido dividindo-se o salário diário correspondente à duração do trabalho, estabelecido no art. 58, pelo número de horas de efetivo trabalho.</p>
+</details>
+<h3 id="leg-d-2">
+2. Cap. II, Seção III — Dos Períodos de Descanso: interjornada, descanso semanal, intervalo intrajornada
+</h3>
+<p class="arts">
+Arts. 66 a 72
+</p>
+<details class="lei" open>
+<summary>
+CLT — Arts. 66 a 72
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>SEÇÃO III</p>
+</div>
+<div class="tit">
+<p>DOS PERÍODOS DE DESCANSO</p>
+</div>
+<p><strong>Art. 66</strong> - Entre 2 (duas) jornadas de trabalho haverá um período mínimo de 11 (onze) horas consecutivas para descanso.</p>
+<p><strong>Trabalho aos domingos</strong></p>
+<p>Vigência encerrada</p>
+<p><strong>Art. 67</strong> - Será assegurado a todo empregado um descanso semanal de 24 (vinte e quatro) horas consecutivas, o qual, salvo motivo de conveniência pública ou necessidade imperiosa do serviço, deverá coincidir com o domingo, no todo ou em parte.</p>
+<p>Parágrafo único - Nos serviços que exijam trabalho aos domingos, com exceção quanto aos elencos teatrais, será estabelecida escala de revezamento, mensalmente organizada e constando de quadro sujeito à fiscalização.</p>
+<p>Vigência encerrada</p>
+<p>Vigência encerrada</p>
+<p>Vigência encerrada</p>
+<p>Vigência encerrada</p>
+<p><strong>Art. 68</strong> - O trabalho em domingo, seja total ou parcial, na forma do art. 67, será sempre subordinado à permissão prévia da autoridade competente em matéria de trabalho.</p>
+<p>Parágrafo único - A permissão será concedida a título permanente nas atividades que, por sua natureza ou pela conveniência pública, devem ser exercidas aos domingos, cabendo ao Ministro do Trabalho, Industria e Comercio, expedir instruções em que sejam especificadas tais atividades. Nos demais casos, ela será dada sob forma transitória, com discriminação do período autorizado, o qual, de cada vez, não excederá de 60 (sessenta) dias.</p>
+<p><strong>Art. 69</strong> - Na regulamentação do funcionamento de atividades sujeitas ao regime deste Capítulo, os municípios atenderão aos preceitos nele estabelecidos, e as regras que venham a fixar não poderão contrariar tais preceitos nem as instruções que, para seu cumprimento, forem expedidas pelas autoridades competentes em matéria de trabalho.</p>
+<p>Vigência encerrada</p>
+<p>Vigência encerrada</p>
+<p><strong>Art. 70</strong> - Salvo o disposto nos artigos 68 e 69, é vedado o trabalho em dias feriados nacionais e feriados religiosos, nos têrmos da legislação própria. <span class="nota">(Redação dada pelo Decreto-lei nº 229, de 28.2.1967)</span></p>
+<p><strong>Art. 71</strong> - Em qualquer trabalho contínuo, cuja duração exceda de 6 (seis) horas, é obrigatória a concessão de um intervalo para repouso ou alimentação, o qual será, no mínimo, de 1 (uma) hora e, salvo acordo escrito ou contrato coletivo em contrário, não poderá exceder de 2 (duas) horas.</p>
+<p>§ 1º - Não excedendo de 6 (seis) horas o trabalho, será, entretanto, obrigatório um intervalo de 15 (quinze) minutos quando a duração ultrapassar 4 (quatro) horas.</p>
+<p>§ 2º - Os intervalos de descanso não serão computados na duração do trabalho.</p>
+<p>§ 3º O limite mínimo de uma hora para repouso ou refeição poderá ser reduzido por ato do Ministro do Trabalho, Indústria e Comércio, quando ouvido o Serviço de Alimentação de Previdência Social, se verificar que o estabelecimento atende integralmente às exigências concernentes à organização dos refeitórios, e quando os respectivos empregados não estiverem sob regime de trabalho prorrogado a horas suplementares.</p>
+<div id="alt-17" class="alt">
+<p><span class="add">§ 4<em>º</em> A não concessão ou a concessão parcial do</span> intervalo <span class="add">intrajornada mínimo,</span> para repouso e alimentação, a <span class="add">empregados urbanos e rurais, implica</span> o <span class="add">pagamento, de natureza indenizatória, apenas do</span> período <span class="add">suprimido,</span> com acréscimo de 50% <span class="add">(cinquenta</span> por cento) sobre o valor da remuneração da hora normal de trabalho. <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span> <span class="nota">(Vigência)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> <span class="add">acrescentou</span> “§ 4º A não concessão ou a concessão parcial do” … “intrajornada mínimo,” … “empregados urbanos e rurais, implica” …; <span class="del-l">suprimiu</span> “§ 4º - Quando o” … “previsto neste artigo, não for concedido pelo empregador, este ficará obrigado” … “remunerar” …
+</p>
+<p>
+<strong>Redação anterior:</strong> <span class="del">§ 4º - Quando o</span> intervalo para repouso e alimentação, <span class="del">previsto neste artigo, não for concedido pelo empregador, este ficará obrigado</span> a <span class="del">remunerar</span> o período <span class="del">correspondente</span> com <span class="del">um</span> acréscimo de <span class="del">no mínimo</span> 50% <span class="del">(cinqüenta</span> por cento) sobre o valor da remuneração da hora normal de trabalho.
+</p>
+</div>
+</div>
+<p>§ 5<em>º</em>  O intervalo expresso no caput poderá ser reduzido e/ou fracionado, e aquele estabelecido no § 1<em>º</em> poderá ser fracionado, quando compreendidos entre o término da primeira hora trabalhada e o início da última hora trabalhada, desde que previsto em convenção ou acordo coletivo de trabalho, ante a natureza do serviço e em virtude das condições especiais de trabalho a que são submetidos estritamente os motoristas, cobradores, fiscalização de campo e afins nos serviços de operação de veículos rodoviários, empregados no setor de transporte coletivo de passageiros, mantida a remuneração e concedidos intervalos para descanso menores ao final de cada viagem. <span class="nota">(Redação dada pela Lei nº 13.103, de 2015)</span> <span class="nota">(Vigência)</span></p>
+<p><strong>Art. 72</strong> - Nos serviços permanentes de mecanografia (datilografia, escrituração ou cálculo), a cada período de 90 (noventa) minutos de trabalho consecutivo corresponderá um repouso de 10 (dez) minutos não deduzidos da duração normal de trabalho.</p>
+</details>
+<h3 id="leg-d-3">
+3. Cap. IV, Seção I — Do Direito a Férias e da sua Duração
+</h3>
+<p class="arts">
+Arts. 129 a 133
+</p>
+<details class="lei" open>
+<summary>
+CLT — Arts. 129 a 133
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>CAPÍTULO IV</p>
+</div>
+<div class="tit">
+<p>DAS FÉRIAS ANUAIS</p>
+</div>
+<div class="tit">
+<p>(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</p>
+</div>
+<div class="tit">
+<p>~~SECÇÃO I</p>
+</div>
+<div class="tit">
+<p>Do direito a férias~~</p>
+</div>
+<div class="tit">
+<p>SEÇÃO I</p>
+</div>
+<div class="tit">
+<p>DO DIREITO A FÉRIAS E DA SUA DURAÇÃO</p>
+</div>
+<div class="tit">
+<p>(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</p>
+</div>
+<p><strong> </strong>Art. 129 - Todo empregado terá direito anualmente ao gozo de um período de férias, sem prejuízo da remuneração. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p><strong> </strong>Art. 130 - Após cada período de 12 (doze) meses de vigência do contrato de trabalho, o empregado terá direito a férias, na seguinte proporção: <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>I - 30 (trinta) dias corridos, quando não houver faltado ao serviço mais de 5 (cinco) vezes; <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>II - 24 (vinte e quatro) dias corridos, quando houver tido de 6 (seis) a 14 (quatorze) faltas; <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>III - 18 (dezoito) dias corridos, quando houver tido de 15 (quinze) a 23 (vinte e três) faltas; <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>IV - 12 (doze) dias corridos, quando houver tido de 24 (vinte e quatro) a 32 (trinta e duas) faltas. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 1º - É vedado descontar, do período de férias, as faltas do empregado ao serviço. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 2º - O período das férias será computado, para todos os efeitos, como tempo de serviço. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p><strong>Art. 131</strong> - Não será considerada falta ao serviço, para os efeitos do artigo anterior, a ausência do empregado: <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>I - nos casos referidos no art. 473; <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>**  **Il - durante o licenciamento compulsório da empregada por motivo de maternidade ou aborto, observados os requisitos para percepção do salário-maternidade custeado pela Previdência Social; <span class="nota">(Redação dada pela Lei nº 8.921, de 25.7.1994)</span></p>
+<p>**  **III - por motivo de acidente do trabalho ou enfermidade atestada pelo Instituto Nacional do Seguro Social - INSS, excetuada a hipótese do inciso IV do art. 133; <span class="nota">(Redação dada pela Lei nº 8.726, de 5.11.1993)</span></p>
+<p>IV - justificada pela empresa, entendendo-se como tal a que não tiver determinado o desconto do correspondente salário; <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>V - durante a suspensão preventiva para responder a inquérito administrativo ou de prisão preventiva, quando for impronunciado ou absolvido; e <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>VI - nos dias em que não tenha havido serviço, salvo na hipótese do inciso III do art. 133. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p><strong> </strong>Art. 132 - O tempo de trabalho anterior à apresentação do empregado para serviço militar obrigatório será computado no período aquisitivo, desde que ele compareça ao estabelecimento dentro de 90 (noventa) dias da data em que se verificar a respectiva baixa. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p><strong> </strong>Art. 133 - Não terá direito a férias o empregado que, no curso do período aquisitivo: <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>I - deixar o emprego e não for readmitido dentro de 60 (sessenta) dias subseqüentes à sua saída; <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>II - permanecer em gozo de licença, com percepção de salários, por mais de 30 (trinta) dias; <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>III - deixar de trabalhar, com percepção do salário, por mais de 30 (trinta) dias, em virtude de paralisação parcial ou total dos serviços da empresa; e <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>IV - tiver percebido da Previdência Social prestações de acidente de trabalho ou de auxílio-doença por mais de 6 (seis) meses, embora descontínuos. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 1º - A interrupção da prestação de serviços deverá ser anotada na Carteira de Trabalho e Previdência Social. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 2º - Iniciar-se-á o decurso de novo período aquisitivo quando o empregado, após o implemento de qualquer das condições previstas neste artigo, retornar ao serviço. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 3º - Para os fins previstos no inciso lIl deste artigo a empresa comunicará ao órgão local do Ministério do Trabalho, com antecedência mínima de 15 (quinze) dias, as datas de início e fim da paralisação total ou parcial dos serviços da empresa, e, em igual prazo, comunicará, nos mesmos termos, ao sindicato representativo da categoria profissional, bem como afixará aviso nos respectivos locais de trabalho. <span class="nota">(Incluído pela Lei nº 9.016, de 30.3.1995)</span></p>
+<p>§ 4º <span class="nota">(Vetado)</span> <span class="nota">(Incluído pela Lei nº 9.016, de 30.3.1995)</span></p>
+</details>
+<h3 id="leg-d-4">
+4. Cap. IV, Seção II — Da Concessão e da Época das Férias (fracionamento — Lei 13.467/2017)
+</h3>
+<p class="arts">
+Arts. 134 a 138
+</p>
+<details class="lei" open>
+<summary>
+CLT — Arts. 134 a 138
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>SEÇÃO II</p>
+</div>
+<div class="tit">
+<p>DA CONCESSÃO E DA ÉPOCA DAS FÉRIAS</p>
+</div>
+<div class="tit">
+<p>(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977</p>
+</div>
+<p><strong>Art. 134</strong> - As férias serão concedidas por ato do empregador, em um só período, nos 12 (doze) meses subseqüentes à data em que o empregado tiver adquirido o direito. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<div id="alt-18" class="alt">
+<p>§ 1<em>º</em>  Desde que haja concordância do empregado, as férias poderão ser usufruídas em até três períodos, sendo que um deles não poderá ser inferior a quatorze dias corridos e os demais não poderão ser inferiores a cinco dias corridos, cada um. <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> redação <strong>reformulada</strong> — compare com a versão anterior abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> § 1º - Somente em casos excepcionais serão as férias concedidas em 2 (dois) períodos, um dos quais não poderá ser inferior a 10 (dez) dias corridos.
+</p>
+</div>
+</div>
+<div id="alt-19" class="alt">
+<p>§ 2<em>º</em>  . <span class="nota">(Revogado)</span> <span class="nota">(Redação dada pela Lei nº 13.467, de 2017)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.467/2017):</strong> dispositivo <strong>revogado</strong>; o texto que vigorava está abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> § 2º - Aos menores de 18 (dezoito) anos e aos maiores de 50 (cinqüenta) anos de idade, as férias serão sempre concedidas de uma só vez.
+</p>
+</div>
+</div>
+<p>§ 3<em>º</em>  É vedado o início das férias no período de dois dias que antecede feriado ou dia de repouso semanal remunerado. <span class="nota">(Incluído pela Lei nº 13.467, de 2017)</span></p>
+<p><strong>Art. 135</strong> - A concessão das férias será participada, por escrito, ao empregado, com antecedência de, no mínimo, 30 (trinta) dias. Dessa participação o interessado dará recibo. <span class="nota">(Redação dada pela Lei nº 7.414, de 9.12.1985)</span></p>
+<p>§ 1º - O empregado não poderá entrar no gozo das férias sem que apresente ao empregador sua Carteira de Trabalho e Previdência Social, para que nela seja anotada a respectiva concessão. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 2º - A concessão das férias será, igualmente, anotada no livro ou nas fichas de registro dos empregados. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 3º  Nos casos em que o empregado possua a CTPS em meio digital, a anotação será feita nos sistemas a que se refere o § 7º do art. 29 desta Consolidação, na forma do regulamento, dispensadas as anotações de que tratam os §§ 1º e 2º deste artigo. <span class="nota">(Incluído pela Lei nº 13.874, de 2019)</span></p>
+<p><strong>Art. 136</strong> - A época da concessão das férias será a que melhor consulte os interesses do empregador. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 1º - Os membros de uma família, que trabalharem no mesmo estabelecimento ou empresa, terão direito a gozar férias no mesmo período, se assim o desejarem e se disto não resultar prejuízo para o serviço. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 2º - O empregado estudante, menor de 18 (dezoito) anos, terá direito a fazer coincidir suas férias com as férias escolares. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p><strong>Art. 137</strong> - Sempre que as férias forem concedidas após o prazo de que trata o art. 134, o empregador pagará em dobro a respectiva remuneração. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 1º - Vencido o mencionado prazo sem que o empregador tenha concedido as férias, o empregado poderá ajuizar reclamação pedindo a fixação, por sentença, da época de gozo das mesmas. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 2º - A sentença cominará pena diária de 5% (cinco por cento) do salário mínimo da região, devida ao empregado até que seja cumprida. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p>§ 3º - Cópia da decisão judicial transitada em julgado será remetida ao órgão local do Ministério do Trabalho, para fins de aplicação da multa de caráter administrativo. <span class="nota">(Incluído pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+<p><strong>Art. 138</strong> - Durante as férias, o empregado não poderá prestar serviços a outro empregador, salvo se estiver obrigado a fazê-lo em virtude de contrato de trabalho regularmente mantido com aquele. <span class="nota">(Redação dada pelo Decreto-lei nº 1.535, de 13.4.1977)</span></p>
+</details>
+</main></div></body></html>

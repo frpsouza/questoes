@@ -1,0 +1,2326 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lei RS 14.498/2014 – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="#leg-a" class="atual">a) Lei RS 14.498/2014</a><a href="leg-b-estatuto-liberato.html#leg-b">b) Estatuto da Fundação</a><a href="leg-c-cf88.html#leg-c">c) CF/88</a><a href="leg-d-clt.html#leg-d">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="leg-g-maria-da-penha.html#leg-g">g) Maria da Penha</a><a href="leg-h-lbi.html#leg-h">h) LBI</a><a href="leg-i-lgpd.html#leg-i">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="leg-l-bncc.html#leg-l">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>Lei RS 14.498/2014</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-a">a) Lei RS nº 14.498/2014 — Plano de Empregos, Funções e Salários da Fundação Liberato</h2>
+<p class="aviso">
+Texto original (AL-RS). As tabelas foram extraídas de PDF e podem estar desalinhadas: confira no PDF pelo link da fonte.
+</p>
+<table class="mapa">
+<caption>
+Mapa da lei por tópico
+</caption>
+<thead>
+<tr>
+<th>
+Tópico
+</th>
+<th>
+Dispositivos
+</th>
+<th>
+Pontos do programa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="#leg-a-1">1. Disposições preliminares: instituição e composição do Plano</a>
+</td>
+<td>
+Cap. I — arts. 1º e 2º
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-a-2">2. Quadro de Empregos Permanentes (Analista Educacional — Orientador Educacional)</a>
+</td>
+<td>
+Cap. II — arts. 3º e 4º
+</td>
+<td>
+<a href="especificos.html#esp-d">Esp. d — orientação educacional</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-a-3">3. Seleção, admissão e lotação</a>
+</td>
+<td>
+Cap. III — arts. 5º e 6º
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-a-4">4. Jornada de trabalho</a>
+</td>
+<td>
+Cap. IV — art. 7º
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-a-5">5. Promoções e avaliação de desempenho</a>
+</td>
+<td>
+Cap. V — arts. 8º a 10
+</td>
+<td>
+<a href="especificos.html#esp-j">Esp. j — avaliação e supervisão</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-a-6">6. Adicional de incentivo à capacitação</a>
+</td>
+<td>
+Cap. VI — art. 11
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-a-7">7. Quadro de Empregos e de Funções em Comissão</a>
+</td>
+<td>
+Cap. VII — arts. 12 a 14
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-a-8">8. Disposições finais e transitórias; aplicação subsidiária da CLT; anexos</a>
+</td>
+<td>
+Cap. VIII — arts. 15 a 20 e anexos
+</td>
+<td>
+—
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="leg-a-1">
+1. Disposições preliminares: instituição e composição do Plano
+</h3>
+<p class="arts">
+Cap. I — arts. 1º e 2º
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. I — arts. 1º e 2º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO I</p>
+</div>
+<div class="tit">
+<p>DISPOSIÇÕES PRELIMINARES</p>
+</div>
+<p><strong>Art. 1º</strong> Fica instituído o Plano de Empregos, Funções e Salários da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, regido pela Consolidação das Leis do Trabalho – CLT.</p>
+<p><strong>Art. 2º</strong> O Plano de Empregos, Funções e Salários da Fundação Escola Técnica Liberato Salzano Vieira da Cunha fica composto pelos seguintes quadros:</p>
+<p>I - Quadro de Empregos Permanentes;</p>
+<p>II - Quadro de Empregos e de Funções em Comissão.</p>
+</details>
+<h3 id="leg-a-2">
+2. Quadro de Empregos Permanentes (Analista Educacional — Orientador Educacional)
+</h3>
+<p class="arts">
+Cap. II — arts. 3º e 4º · relacionado a: <a href="especificos.html#esp-d">Esp. d — orientação educacional</a>
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. II — arts. 3º e 4º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO II</p>
+</div>
+<div class="tit">
+<p>QUADRO DE EMPREGOS PERMANENTES</p>
+</div>
+<p><strong>Art. 3º</strong> O Quadro de Empregos Permanentes da Fundação Escola Técnica Liberato Salzano Vieira da Cunha fica composto pelos seguintes empregos, conforme as suas características e a natureza das suas respectivas atribuições, destinadas ao atendimento das atividades essenciais e gerais, necessárias à consecução dos seus fins:</p>
+<p>I - Analista Educacional: constituído de 380 (trezentos e oitenta) empregos de nível superior;</p>
+<p>II - Analista Técnico: constituído de 36 (trinta e seis) empregos de nível superior; III - Agente Educacional: constituído de 100 (cem) empregos de nível médio técnico; IV - Agente Técnico: constituído de 32 (trinta e dois) empregos de nível médio técnico; V - Agente Administrativo: constituído de 140 (cento e quarenta) empregos de nível</p>
+<p>médio.</p>
+<p><strong>Art. 4º</strong> O Quadro de Empregos Permanentes, de que trata o inciso I do art. 2.º desta Lei, fica estruturado conforme quadro que segue:</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>E</th>
+<th>MPREGOOcupação</th>
+<th></th>
+<th>Padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Denominação</td>
+<td>Escolaridade</td>
+<td>Número</td>
+<td>Denominação</td>
+<td>Número</td>
+<td>Salarial</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Ensino</td>
+<td></td>
+<td>Professor</td>
+<td>330</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Analista</td>
+<td>Superior</td>
+<td>380</td>
+<td>Técnico em Educação</td>
+<td>10</td>
+<td>IV</td>
+</tr>
+<tr class="even">
+<td>Educacional</td>
+<td>Completo</td>
+<td></td>
+<td>Orientador Educacional</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Supervisor Escolar</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Administrador</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Advogado</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Analista de Sistemas</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Assistente Social</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Bibliotecário</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Analista Técnico</td>
+<td></td>
+<td></td>
+<td>Contador</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Ensino</td>
+<td></td>
+<td>Engenheiro Civil</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Superior</td>
+<td>36</td>
+<td>Psicólogo</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Completo</td>
+<td></td>
+<td>Psicopedagogo</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico em ComunicaçãoSocial</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Terapeuta Ocupacional</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>AgenteEducacional</td>
+<td>Ensino MédioTécnicoCompleto</td>
+<td>100</td>
+<td>Auxiliar de Ensino</td>
+<td>100</td>
+<td>III</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Secretário de Escola</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico em Eletrotécnica</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico em Contabilidade</td>
+<td>04</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico em Design</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Ensino Médio</td>
+<td></td>
+<td>Técnico em Informática</td>
+<td>08</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Agente Técnico</td>
+<td>TécnicoCompleto</td>
+<td>32</td>
+<td>Técnico em Segurança doTrabalho</td>
+<td>02</td>
+<td>II</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico emQuímica</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico em Mecânica</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico em Eletrônica</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td>Técnico em MecânicaAutomotiva</td>
+<td>02</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>AgenteAdministrativo</td>
+<td>Ensino MédioCompleto</td>
+<td>140</td>
+<td>Agente Administrativo</td>
+<td>140</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+<p><strong>§ 1º</strong> As atribuições e pré-requisitos requeridos para o provimento dos empregos permanentes, de que trata o “caput” deste artigo, estão estabelecidos no Anexo I desta Lei.</p>
+<p><strong>§ 2º</strong> Os salários básicos dos empregos permanentes, de que trata o “caput” deste artigo, estão estabelecidos no Anexo III desta Lei para carga horária semanal de 40 (quarenta) horas.</p>
+<p><strong>§ 3º</strong> Os empregos permanentes terão carga horária correspondente a 40 (quarenta) horas semanais, exceto nos casos em que for prevista por lei a jornada reduzida, caso em que o salário básico será proporcional à carga horária contratual.</p>
+<p><strong>§ 4º</strong> Excepcionalmente, o(a) Diretor(a) Executivo(a) da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, no interesse do ensino e das finalidades da instituição, poderá admitir analistas educacionais e agentes educacionais para desenvolver suas atividades em regime de 20 (vinte) ou de 30 (trinta) horas semanais, caso em que o salário básico será proporcional à carga horária exercida, ficando vedada a majoração das referidas cargas horárias.</p>
+<p><strong>§ 5º</strong> Os empregos permanentes de Analista Educacional, de Analista Técnico, de Agente Educacional e de Agente Técnico abrangem atividades de natureza técnica, sendo exigido, para os dois primeiros, formação de nível superior completo, e para os dois últimos, formação de nível médio técnico completo.</p>
+<p><strong>§ 6º</strong> Os empregos de Analista Técnico e de Agente Técnico exigem o registro no órgão de fiscalização profissional, quando existente, sendo que a perda do registro profissional por ato de responsabilidade do(a) empregado(a) resultará em extinção do contrato de trabalho.</p>
+</details>
+<h3 id="leg-a-3">
+3. Seleção, admissão e lotação
+</h3>
+<p class="arts">
+Cap. III — arts. 5º e 6º
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. III — arts. 5º e 6º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO III</p>
+</div>
+<div class="tit">
+<p>DA SELEÇÃO, ADMISSÃO E DA LOTAÇÃO</p>
+</div>
+<p><strong>Art. 5º</strong> A seleção dos(as) empregados(as) do Quadro de Empregos Permanentes da Fundação Escola Técnica Liberato Salzano Vieira da Cunha dar-se-á por meio de concurso público de provas, ou de provas e títulos, e a admissão será no padrão e no nível salarial inicial da matriz salarial correspondente ao emprego, mediante contrato padrão, regido de acordo com a CLT.</p>
+<p><strong>Art. 6º</strong> A lotação dos(as) empregados(as) do Quadro de Empregos Permanentes da Fundação Escola Técnica Liberato Salzano Vieira da Cunha dar-se-á nas diferentes esferas de atividades administrativas, operacionais e institucionais da Fundação.</p>
+</details>
+<h3 id="leg-a-4">
+4. Jornada de trabalho
+</h3>
+<p class="arts">
+Cap. IV — art. 7º
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. IV — art. 7º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO IV DA JORNADA DE TRABALHO</p>
+</div>
+<p><strong>Art. 7º</strong> A jornada semanal de trabalho dos(as) empregados(as) integrantes do Quadro de Empregos Permanentes, será de 40 (quarenta) horas semanais, exceto nos casos em que for prevista por lei a jornada reduzida, caso em que o salário básico será proporcional à carga horária contratual.</p>
+<p><strong>§ 1º</strong> Mediante solicitação formal do(a) empregado(a) e com a anuência da Diretoria, a jornada semanal de trabalho poderá, excepcionalmente, ser reduzida para 30 (trinta) ou 20 (vinte) horas semanais, ao que corresponderá a proporcional redução de salário.</p>
+<p><strong>§ 2º</strong> A solicitação de redução de jornada de trabalho deverá vir acompanhada de parecer da chefia imediata do(a) empregado(a).</p>
+<p><strong>§ 3º</strong> A redução da jornada de trabalho será sempre por prazo certo e por período nunca inferior a 1 (um) ano.</p>
+<p><strong>§ 4º</strong> Findo o prazo de que trata o § 3.º deste artigo, sem pedido de renovação, o empregado retornará automaticamente à jornada de 40 (quarenta) horas semanais.</p>
+</details>
+<h3 id="leg-a-5">
+5. Promoções e avaliação de desempenho
+</h3>
+<p class="arts">
+Cap. V — arts. 8º a 10 · relacionado a: <a href="especificos.html#esp-j">Esp. j — avaliação e supervisão</a>
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. V — arts. 8º a 10
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO V DAS PROMOÇÕES</p>
+</div>
+<p><strong>Art. 8º</strong> Promoção é a movimentação salarial dos(as) empregados(as) integrantes do Quadro de Empregos Permanentes de um nível salarial para outro imediatamente superior, respeitados o padrão salarial de cada emprego e a matriz salarial estabelecida no Anexo III desta Lei.</p>
+<p><strong>§ 1º</strong> A promoção por antiguidade é mensurada pelo tempo de permanência do(a) empregado(a) no nível salarial em que estiver posicionado no último dia do mês de agosto do ano da concessão das promoções.</p>
+<p><strong>§ 2º</strong> A promoção por merecimento resulta de um processo de avaliação do(a) empregado(a) em relação a aspectos que dimensionem seu desempenho profissional, sendo o mérito determinado segundo os termos desta Lei e do Regulamento de Promoções e de Avaliação de Desempenho Funcional, aprovado por decreto governamental em até 90 (noventa) dias após a publicação desta Lei.</p>
+<p><strong>§ 3º</strong> A concessão de promoções por antiguidade e merecimento ocorrerá alternadamente, observando-se a legislação consolidada vigente.</p>
+<p><strong>§ 4º</strong> O interstício mínimo para o(a) empregado(a) concorrer à promoção por antiguidade e por merecimento é de 730 (setecentos e trinta dias) no nível salarial em que se encontra posicionado.</p>
+<p><strong>§ 5º</strong> O(a) empregado(a) integrante do Quadro de Empregos Permanentes da Fundação Escola Técnica Liberato Salzano Vieira da Cunha que estiver cedido(a), liberado(a) ou em licença para tratamento de interesses particulares, somente poderá concorrer à promoção por antiguidade.</p>
+<p><strong>§ 6º</strong> As promoções por antiguidade e por merecimento serão concedidas no mês de novembro de cada ano, devendo abranger 30% (trinta por cento) do quantitativo de empregados(as) em cada emprego, no último dia do mês de agosto do ano de concessão de promoções, sendo 15% (quinze por cento) por antiguidade e 15% (quinze por cento) por merecimento.</p>
+<p><strong>Art. 9º</strong> Para fins de promoção por merecimento, não poderá concorrer o(a) empregado(a) que, considerando o período de 730 (setecentos e trinta) dias imediatamente</p>
+<p>anterior ao mês de setembro do ano de concessão de promoções, estiver enquadrado(a) em uma das seguintes situações:</p>
+<p>I - ter estado afastado(a) por período superior a 90 (noventa) dias, exceto em razão de acidente de trabalho ou gozo de licença-maternidade, casos em que o afastamento não poderá ser superior a 180 (cento e oitenta) dias; e</p>
+<p>II - estiver cedido(a) ou liberado(a) para outro órgão/entidade.</p>
+<p><strong>Art. 10</strong> . No ano em que o(a) empregado(a) do Quadro de Empregos Permanentes receber a promoção por antiguidade, ficará automaticamente excluído(a) do processo de promoção por merecimento e vice-versa.</p>
+<p><strong>Parágrafo único</strong> . O ato que promover indevidamente o(a) empregado(a) integrante do Quadro de Empregos Permanentes será declarado nulo, em benefício daquele(a) a quem por direito cabia a promoção.</p>
+</details>
+<h3 id="leg-a-6">
+6. Adicional de incentivo à capacitação
+</h3>
+<p class="arts">
+Cap. VI — art. 11
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. VI — art. 11
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO VI</p>
+</div>
+<div class="tit">
+<p>DO ADICIONAL DE INCENTIVO À CAPACITAÇÃO</p>
+</div>
+<p><strong>Art. 11</strong> . Os(as) empregados(as) ocupantes dos empregos permanentes, de que trata o art. 3.º desta Lei, perceberão uma parcela mensal denominada Adicional de Incentivo à Capacitação, decorrente do nível de escolaridade formal superior ao previsto para o exercício do emprego, em área de conhecimento com relação direta ao emprego realizado na Fundação Escola Técnica Liberato Salzano Vieira da Cunha, cujo valor corresponde à incidência de percentual não cumulativo sobre o salário básico do(a) empregado(a), conforme segue:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>EMPREGO</th>
+<th>NÍVEL DE ESCOLARIDADE FORMALSUPERIOR AO PREVISTO PARAEXERCÍCIO DO EMPREGO</th>
+<th>PERCENTUAL DOADICIONAL(NÃOCUMULATIVO) -%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Agente Educacional,</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Agente Técnico eAdministrativo.</td>
+<td>Ensino Superior completo</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>Analista Educacional e</td>
+<td>Especialização, com carga horária igual ousuperior a 360 horas/aula</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Analista Técnico.</td>
+<td>Mestrado completo</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Doutorado completo</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+<p><strong>§ 1º</strong> O Adicional de Incentivo à Capacitação, previsto no “caput” deste artigo deverá ser destacado no contracheque, com natureza salarial, servindo de base de cálculo exclusivamente para as seguintes parcelas: gratificação natalina, férias, adicional de tempo de serviço, Fundo de Garantia por Tempo de Serviço, horas extras, aviso prévio e adicional de periculosidade.</p>
+<p><strong>§ 2º</strong> A avaliação da relação direta dos cursos realizados pelo(a) empregado(a) com as atividades do emprego na Fundação Escola Técnica Liberato Salzano Vieira da Cunha será realizada pela Comissão Permanente de Recursos Humanos, a ser estabelecida no Regulamento de que trata o § 2.º do art. 8.º desta Lei, e referendada pelo Diretor(a) Executivo(a) da Fundação.</p>
+<p><strong>§ 3º</strong> A percepção do Adicional de que trata o “caput” deste artigo será devida a partir da data de protocolo do Certificado de conclusão do curso, reconhecido pelo Ministério da Educação e desde que comprovada a relação direta da qualificação com as atividades desenvolvidas, conforme dispõe o § 2.º deste artigo.</p>
+</details>
+<h3 id="leg-a-7">
+7. Quadro de Empregos e de Funções em Comissão
+</h3>
+<p class="arts">
+Cap. VII — arts. 12 a 14
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. VII — arts. 12 a 14
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO VII</p>
+</div>
+<div class="tit">
+<p>QUADRO DE EMPREGOS E DE FUNÇÕES EM COMISSÃO</p>
+</div>
+<p><strong>Art. 12</strong> . O Quadro de Empregos e de Funções em Comissão é destinado ao atendimento dos encargos de Direção, de Chefia e de Assessoramento, empregos e funções estas a serem exercidas por pessoas de notória capacitação, de livre designação e dispensa do(a) Diretor(a) Executivo(a) da Fundação Escola Técnica Liberato Salzano Vieira da Cunha.</p>
+<p><strong>Art. 13</strong> . As Funções em Comissão – FC – de lotação exclusiva pelos(as) empregados(as) da Fundação Escola Técnica Liberato Salzano Vieira da Cunha integrantes do Quadro de Empregos Permanentes, de que trata o inciso I do art. 2.º desta Lei, e do Plano de Carreira em extinção, de que trata o art. 15 desta Lei, ficam estruturadas conforme abaixo:</p>
+<table>
+<thead>
+<tr class="header">
+<th>FUNÇÃO EM COMISSÃO</th>
+<th>NÚMERO</th>
+<th>PADRÃO DEREMUNERAÇÃO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diretor</td>
+<td>05</td>
+<td>FC I</td>
+</tr>
+<tr class="even">
+<td>Coordenador de Centro</td>
+<td>10</td>
+<td>FC II</td>
+</tr>
+<tr class="odd">
+<td>Coordenador de Curso I</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Coordenador de Curso II</td>
+<td>10</td>
+<td>FC III</td>
+</tr>
+<tr class="odd">
+<td>Coordenadorde Serviço</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Coordenador de Curso III</td>
+<td>10</td>
+<td>FC IV</td>
+</tr>
+<tr class="odd">
+<td>Encarregado de Serviço I</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Encarregado de Serviço II</td>
+<td>10</td>
+<td>FC V</td>
+</tr>
+</tbody>
+</table>
+<p><strong>§ 1º</strong> As atribuições e os pré-requisitos para o provimento das FC estão estabelecidos no Anexo II desta Lei.</p>
+<p><strong>§ 2º</strong> A remuneração das FC está estabelecida no Anexo IV desta Lei para a carga horária semanal de 40 (quarenta) horas, sem prejuízo do salário.</p>
+<p><strong>§ 3º</strong> As FC terão carga horária correspondente a 40 (quarenta) horas semanais, podendo, a critério do(a) Diretor(a) Executivo(a), ser reduzida para 30 (trinta) ou 20 (vinte) horas semanais, caso em que a remuneração será proporcional.</p>
+<p><strong>Art. 14</strong> . Os Empregos em Comissão – EC –, de lotação não exclusiva pelos(as) empregados(as) integrantes dos Quadros de Empregos Permanentes, de que trata o art. 3.º desta Lei, e do Quadro de Cargos Permanentes em extinção, de que trata o art. 15 desta Lei, ficam estruturados conforme segue:</p>
+<table>
+<thead>
+<tr class="header">
+<th>EMPREGO EM COMISSÃO</th>
+<th>NÚMERO</th>
+<th>PADRÃO DE REMUNERAÇÃO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Assessor</td>
+<td>02</td>
+<td>EC IIFC II</td>
+</tr>
+</tbody>
+</table>
+<p><strong>§ 1º</strong> As atribuições e os pré-requisitos requeridos para o provimento dos EC de que trata o “caput” deste artigo estão estabelecidas no Anexo II desta Lei.</p>
+<ul>
+<li><p><strong>§ 2º</strong> A remuneração dos EC de que trata o “caput” deste artigo está estabelecida no</p></li>
+<li><p>Anexo IV desta Lei para a carga horária semanal de 40 (quarenta) horas.</p></li>
+</ul>
+<p><strong>§ 3º</strong> Os EC terão carga horária correspondente a 40 (quarenta) horas semanais.</p>
+<p><strong>§ 4º</strong> Os EC poderão ser ocupados por pessoas não pertencentes ao Quadro de Empregos Permanentes da Fundação Escola Técnica Liberato Salzano Vieira da Cunha.</p>
+<p><strong>§ 5º</strong> Quando os EC forem ocupados por empregados(as) da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, integrantes dos Quadros de Empregos Permanentes, de que trata o art. 3.º desta Lei, e do Quadro de Cargos Permanentes em extinção, de que trata o art. 15 desta Lei, ou ainda por servidores públicos postos à disposição da Fundação, nos termos da legislação vigente, o serão sob a forma de FC, às quais corresponderá uma retribuição remuneratória, sem prejuízo do salário, de acordo com o Anexo IV desta Lei.</p>
+</details>
+<h3 id="leg-a-8">
+8. Disposições finais e transitórias; aplicação subsidiária da CLT; anexos
+</h3>
+<p class="arts">
+Cap. VIII — arts. 15 a 20 e anexos
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 14.498/2014 — Cap. VIII — arts. 15 a 20 e anexos
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/LEI%2014.498.pdf">AL-RS / LEGIS</a> (texto original; tabelas extraídas de PDF, conferir no original)
+</p>
+<div class="tit">
+<p>CAPÍTULO VIII</p>
+</div>
+<div class="tit">
+<p>DAS DISPOSIÇÕES FINAIS E TRANSITÓRIAS</p>
+</div>
+<p><strong>Art. 15</strong> . Fica em extinção o Plano de Carreira dos Servidores da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, de que trata o Processo n.º 00008-19.56/86, e alterações, aprovado pelo Governador do Estado em 12 de agosto de 1992.</p>
+<p><strong>§ 1º</strong> Fica assegurado aos(às) empregados(as) integrantes do Quadro de Cargos Permanentes e do Quadro de Cargos Especiais previstos no Plano de Carreira em extinção, de que trata o “caput” deste artigo, bem como ao(à) empregado(a) ocupante do cargo de Técnico(a) em Informática, admitido(a) nos termos do Edital de Concurso Público n.º 001/2010 e do Plano de Carreira supracitado, mediante livre opção, até 90 (noventa) dias após a publicação desta Lei, o que segue:</p>
+<p>I - a adoção da matriz salarial estabelecida no Anexo V desta Lei, respeitando-se a faixa salarial correspondente ao emprego e a classe salarial em que o(a) empregado(a) encontra-se posicionado(a) na matriz salarial na data da publicação desta Lei;</p>
+<p>II - a aplicação das disposições previstas nos arts 8.º a 10 desta Lei, no que couber, e</p>
+<p>III - a percepção de uma parcela mensal denominada Adicional de Incentivo à Capacitação, nos termos do art. 11 desta Lei, no que couber, conforme tabela a seguir:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cargos em extinção do Plano de Carreirae alterações, aprovado pelo Governadordo Estado em 12 de agosto de 1992</th>
+<th>Nível de escolaridade formalsuperior ao previsto paraexercício do cargo</th>
+<th>Percentual doAdicional(nãocumulativo)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Agente Administrativo I, Auxiliar de</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Disciplina, Motorista, Zelador, Vigia eServente.</td>
+<td>Nível médio completo</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Agente Administrativo II e III, Auxiliar deEnsino, Desenhista, Secretário de Escola,Técnico em Contabilidade, Técnico dePessoal,TécnicoemInformática,</th>
+<th>Ensino Superior completo</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tesoureiro e Operador de Máquinas</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Especiais.</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Advogado,Arquiteto,Assessorde</td>
+<td>Especialização, com cargahorária igual ou superior a 360</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>ComunicaçãoSocial,Bibliotecário,</td>
+<td>horas/aula</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>ontador,Engenheiro,Médico,</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>OrientadorEducacional,Professor,</td>
+<td>Mestrado completo</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<td>sicólogo, Supervisor Escolar e Técnicoem Educação.</td>
+<td>Doutorado completo</td>
+<td>27</td>
+</tr>
+</tbody>
+</table>
+<p><strong>§ 2º</strong> O(A) Diretor(a) Executivo(a) da Fundação Escola Técnica Liberato Salzano Vieira da Cunha adequará as disposições desta Lei, no prazo de 30 (trinta) dias, à situação dos atuais titulares das funções gratificadas em extinção, ficando preservados os casos que não atendem plenamente as condições estabelecidas nesta Lei, caso em que os cargos/funções de confiança extinguir-se-ão à medida que vagarem.</p>
+<p><strong>§ 3º</strong> O prazo para a opção, de que trata o § 1.º deste artigo, será de 120 (cento e vinte) dias, a partir da data de publicação desta Lei, sendo garantido aos(às) atuais empregados(as) afastados(as) de suas obrigações empregatícias, o direito de opção dentro do prazo de 90 (noventa) dias, contados a partir da data de retorno, vigorando a opção, em ambos os casos, a partir da data de assinatura do Termo de Opção.</p>
+<p><strong>Art. 16</strong> . O Regulamento de Promoções e de Avaliação de Desempenho, de que trata o § 2.º do art. 8.º desta Lei, dos(as) empregados(as) do Quadro de Empregos Permanentes será elaborado por Comissão Paritária, constituída de representantes do Sindicato representativo dos(as) empregados(as) e de representantes da Fundação, ratificado pelo(a) Diretor(a) Executivo(a) da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, e regulamentado por decreto governamental até 90 (noventa) dias contados da data de publicação desta Lei.</p>
+<p><strong>Art. 17</strong> . Aplica-se, subsidiariamente a esta Lei, a CLT e os princípios gerais da Administração Pública.</p>
+<p><strong>Art. 18</strong> . Nos atos de admissão e demais documentos de identificação do(a) empregado(a), deverão constar a flexão de gênero que indica o sexo do(a) ocupante de emprego.</p>
+<p><strong>Art. 19</strong> . As despesas decorrentes da execução desta Lei correrão à conta de dotações orçamentárias próprias.</p>
+<p><strong>Art. 20</strong> . Esta lei entra em vigor na data de sua publicação.</p>
+<p><strong>PALÁCIO PIRATINI</strong> , em Porto Alegre, 3 de abril de 2014.</p>
+<p><strong>ANEXO I</strong></p>
+<p>DESCRIÇÃO DAS ATRIBUIÇÕES, CARGA HORÁRIA E PRÉ-REQUISITOS DOS EMPREGOS DO QUADRO DE EMPREGOS PERMANENTES DA FUNDAÇÃO ESCOLA TÉCNICA LIBERATO SALZANO VIEIRA DA CUNHA</p>
+<p>EMPREGO: ANALISTA EDUCACIONAL</p>
+<p>Descrição sumária: realizar atividades de nível superior, relativas ao planejamento, organização, controle e execução de ações técnicas voltadas à atividade fim da Fundação.</p>
+<p>ANALISTA EDUCACIONAL: PROFESSOR</p>
+<p>Descrição sucinta: desenvolver atividades docentes de natureza teórica, teórico-prática e prática em consonância com a titulação do Professor. Descrição analítica:</p>
+<ol>
+<li><p>ministrar aulas teóricas e práticas das disciplinas que constituem o currículo do ensino, de acordo com a orientação técnico-pedagógica emanada da legislação específica em vigor; planejar aulas, conduzir a sua execução e avaliá-las;</p></li>
+<li><p>manter-se atualizado no conhecimento da legislação do ensino e nos assuntos pertinentes a sua área de atuação;</p></li>
+<li><p>acatar as orientações e os procedimentos pedagógicos previstos no Projeto Pedagógico da escola;</p></li>
+<li><p>tratar de problemas disciplinares relativos ao processo ensino-aprendizagem;</p></li>
+<li><p>usar material didático adequado ao ensino ministrado;</p></li>
+<li><p>efetuar os registros pertinentes e deles prestar contas quando necessário ou solicitado; participar da elaboração/atualização do projeto pedagógico da escola e do curso;</p></li>
+<li><p>atuar em reuniões administrativas e pedagógicas;</p></li>
+<li><p>participar de reuniões de conselho de classe e outras convocadas pela Direção Executiva; sugerir medidas que visem à melhoria e ao aperfeiçoamento do ensino-aprendizagem; comparecer às comemorações previstas em Calendário Escolar;</p></li>
+<li><p>executar atividades extraclasse de complementação curricular;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em área específica de docência, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: TÉCNICO EM EDUCAÇÃO Descrição analítica:</p>
+<ol>
+<li><p>coordenar a elaboração do plano e das avaliações gerais da instituição;</p></li>
+<li><p>coordenar, em nível da instituição, a elaboração dos planos do Governo do Estado, acompanhando sua execução, elaborando relatórios e conhecendo a legislação vigente;</p></li>
+<li><p>assessorar e assistir às diferentes diretorias na implementação dos planos da instituição, bem como na elaboração, acompanhamento e avaliação de seus planos de trabalho específicos;</p></li>
+<li><p>assessorar em projetos e atividades técnico-administrativas de ensino, pesquisa e extensão;</p></li>
+<li><p>assessorar o(a) Diretor(a) Executivo(a) na execução de atividades específicas, sempre que solicitado;</p></li>
+<li><p>manter-se informado(a) da execução de projetos e ações institucionais priorizadas pela administração, acompanhando seu desenvolvimento;</p></li>
+<li><p>acrescentar/atualizar dispositivos omissos/superados em documentos normativos legais da FETLSVC, após aprovação superior;</p></li>
+<li><p>executar outras tarefas de mesma natureza e nível de complexidade associadas ao ambiente organizacional;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em qualquer Licenciatura e especialização em administração de sistemas escolares, ou gestão escolar, ou planejamento organizacional, fornecidos por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: ORIENTADOR EDUCACIONAL Descrição analítica:</p>
+<ol>
+<li><p>coletar dados sobre o(a) aluno(a), em geral; estudar, atender e acompanhar casos;</p></li>
+<li><p>realizar entrevistas individuais e reuniões com alunos(as), professores(as), pais e demais pessoas envolvidas com a escola;</p></li>
+<li><p>articular-se com médicos, psicólogos, clínicas e serviços;</p></li>
+<li><p>estudar e encaminhar os casos que extrapolam a esfera escolar;</p></li>
+<li><p>assistir às turmas de alunos(as) das últimas séries, no sentido de auxiliá-las no prosseguimento do seu aperfeiçoamento, colocação profissional e em problemas que envolvam escolhas ou decisões;</p></li>
+<li><p>programar e desenvolver sessões coletivas e palestras para os alunos dos cursos;</p></li>
+<li><p>sugerir medidas que visem à melhoria e ao aperfeiçoamento dos sistemas de ensino;</p></li>
+<li><p>colaborar na prestação de serviços a setores que envolvam diretamente o aluno;</p></li>
+<li><p>auxiliar a Diretoria na solução de problemas de relações humanas;</p></li>
+<li><p>auxiliar na integração da FETLSVC à comunidade da qual faz parte;</p></li>
+<li><p>estimular os(as) professores(as) a avaliarem seu desempenho;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Pedagogia e habilitação em orientação educacional ou especialização em orientação educacional, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: SUPERVISOR ESCOLAR</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>realizar investigações e estudos pedagógicos e sociais, com a finalidade de manter o ensino em bases científicas;</p></li>
+<li><p>efetuar estudos sobre técnicas educacionais, instrumentos e processos de aprendizagem; elaborar, acompanhar e reestruturar a aplicação de instrumentos de medida e aferição de rendimento escolar e orientar sua aplicação;</p></li>
+<li><p>realizar estudos com vistas ao controle do rendimento do ensino e determinação das causas de reprovações, emitir parecer sobre o professorado, sua formação, distribuição e atuação; analisar planos e projetos de ensino, para determinar sua validade e adequação;</p></li>
+<li><p>elaborar programas para orientação de professores(as);</p></li>
+<li><p>manter-se atualizado no conhecimento dos problemas fundamentais da administração dos serviços de educação, visando a racionalizá-los e torná-los adequados aos fins da educação; sugerir medidas que visem a solucionar os problemas da organização escolar, material didático, horários, instituições complementares e outros;</p></li>
+<li><p>emitir parecer sobre obras didáticas e de literatura;</p></li>
+<li><p>elaborar ou preparar para publicação boletins sobre assuntos da atualidade pedagógica e outras de interesse para o ensino; organizar e coordenar seminários e outras atividades semelhantes e delas participar quando necessário ou solicitado;</p></li>
+<li><p>orientar e coordenar o trabalho de equipes de auxiliares empenhados na realização de pesquisas e orientação educacional;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais. Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Pedagogia e habilitação em supervisão escolar ou especialização em supervisão escolar, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>EMPREGO: ANALISTA TÉCNICO</p>
+<p>Descrição sumária: realizar atividades de nível superior, relativas ao planejamento, organização, controle e execução de ações técnicas voltadas ao suporte da atividade fim da Fundação.</p>
+<p>ANALISTA TÉCNICO: ADMINISTRADOR Descrição analítica:</p>
+<ol>
+<li><p>planejar, organizar, dirigir, coordenar e controlar os empreendimentos humanos e o funcionamento administrativo da FETLSVC;</p></li>
+<li><p>ajudar a definir, analisar e cumprir metas;</p></li>
+<li><p>cuidar da administração financeira e analisar programas e métodos;</p></li>
+<li><p>envolver-se com a publicidade e o marketing;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais. Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Administração, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: ADVOGADO</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>representar a FETLSVC em juízo e acompanhar o andamento de processos judiciais (cíveis, penais, trabalhistas e tributários) e administrativos;</p></li>
+<li><p>comparecer a audiências;</p></li>
+<li><p>analisar documentos e despachos;</p></li>
+<li><p>redigir petições;</p></li>
+<li><p>elaborar recursos;</p></li>
+<li><p>cumprir determinações legais, judiciais e administrativas;</p></li>
+<li><p>acompanhar expedientes de aquisição de bens e serviços;</p></li>
+<li><p>auxiliar na redação de contratos, convênios, aditivos, ofícios, ordens de serviço, resoluções e orientações;</p></li>
+<li><p>acompanhar processos junto ao Tribunal de Contas do Estado, auxiliando na prestação de informações e na resposta a questionamentos;</p></li>
+<li><p>realizar pareceres e pesquisas;</p></li>
+<li><p>participar de comissões de sindicância, comissões permanentes e comissões eventuais da Fundação;</p></li>
+<li><p>executar tarefas afins. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Ciências Jurídicas e Sociais, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: ANALISTA DE SISTEMAS Descrição analítica:</p>
+<ol>
+<li><p>fazer levantamento de dados junto ao usuário, identificando suas necessidades de sistemas, visando a dimensionar e definir características, análise de viabilidade técnica e custo/benefício; 2. elaborar anteprojeto de sistemas, definindo sua abrangência, recursos necessários e alternativas técnicas de funcionamento e operação, visando a verificar a viabilidade de sua implantação e submetê-lo à aprovação do usuário;</p></li>
+<li><p>elaborar o projeto dos sistemas, definindo os arquivos de entrada e saída, programas e demais características; acompanhar a implantação dos sistemas, executando testes simulados até que estejam confiáveis;</p></li>
+<li><p>prestar todas as informações necessárias à elaboração ou à atualização da documentação dos sistemas sob sua responsabilidade, zelando pela sua exatidão;</p></li>
+<li><p>atualizar, desenvolver e prestar serviços de manutenção nos sistemas já implantados, identificando falhas e problemas ocorridos, definindo e propondo alternativas técnicas de funcionamento, visando a otimizar o processamento de dados;</p></li>
+<li><p>analisar a qualidade e a conveniência da aquisição de novos equipamentos, programas ou trocas de versões, mediante parecer técnico;</p></li>
+<li><p>configurar e manter a rede de teleprocessamento da instalação;</p></li>
+<li><p>orientar programadores e operadores no sentido de otimizar os recursos de hardware e software;</p></li>
+<li><p>administrar bancos de dados; realizar treinamento na área de atuação, quando solicitado;</p></li>
+<li><p>prestar suporte técnico voltado à manutenção de software básico e à segurança física e lógica de dados;</p></li>
+<li><p>desenvolver e implantar métodos e fluxos de trabalho voltados à otimização das atividades operacionais;</p></li>
+<li><p>manter organizados, limpos e conservados os materiais, máquinas, equipamentos e local de trabalho que estiverem sob sua responsabilidade;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Análise de Sistemas, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação; Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: ASSISTENTE SOCIAL Descrição analítica:</p>
+<ol>
+<li><p>planejar, coordenar e avaliar planos, programas e projetos sociais em diferentes áreas de atuação profissional (seguridade, educação, trabalho, jurídica, habitação e outras);</p></li>
+<li><p>assessorar as atividades de ensino, pesquisa e extensão;</p></li>
+<li><p>encaminhar providências e prestar orientação social à comunidade escolar em geral;</p></li>
+<li><p>informar à comunidade sobre os programas sociais disponíveis, orientando o acesso a esses programas;</p></li>
+<li><p>planejar a execução e a avaliação de pesquisas sócio-econômicas, de vistorias, perícias técnicas, laudos periciais, informações e pareceres sobre matéria da área;</p></li>
+<li><p>prestar assessoria e consultoria à Direção Executiva e aos especialistas da educação;</p></li>
+<li><p>elaborar, coordenar, executar e avaliar programas e projetos na área da assistência social;</p></li>
+<li><p>realizar visitas domiciliares, sempre que necessário, de modo a constituir um canal aberto entre os familiares e a instituição, acolhendo e discutindo as dificuldades e facilitando a reflexão sobre as situações apresentadas;</p></li>
+<li><p>investigar a situação cultural, ambiental, social, pessoal e econômica dos familiares, a fim de identificar problemas que possam interferir no trabalho ou na aprendizagem dos alunos;</p></li>
+<li><p>coordenar seminários, encontros, congressos e eventos assemelhados sobre assuntos de assistência social; participar de comissões permanentes e eventuais; executar tarefas afins. Carga horária: 30 (trinta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Serviço Social, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: BIBLIOTECÁRIO Descrição analítica:</p>
+<ol>
+<li><p>indicar e selecionar o material bibliográfico a ser adquirido;</p></li>
+<li><p>registrar, catalogar e classificar os livros;</p></li>
+<li><p>utilizar os recursos de processamento de dados nos sistemas de biblioteca, centros de documentação e serviços de informações;</p></li>
+<li><p>realizar estudos, pesquisas, relatórios, pareceres, resumos, índices e bibliografias sobre assuntos compreendidos no seu campo profissional;</p></li>
+<li><p>selecionar o material destinado à encadernação e à reparação de danos;</p></li>
+<li><p>encaminhar a baixa do material desativado ou avariado;</p></li>
+<li><p>orientar os usuários na escolha de livros, periódicos e demais documentos; considerar sugestões dos usuários e recomendar a aquisição de livros e periódicos;</p></li>
+<li><p>registrar e apresentar dados estatísticos relativos à movimentação em geral;</p></li>
+<li><p>orientar o serviço de limpeza e conservação dos livros;</p></li>
+<li><p>estabelecer serviços de intercâmbio para atualização do acervo bibliográfico;</p></li>
+<li><p>acompanhar a legislação pertinente;</p></li>
+<li><p>manter intercâmbio de informações com outras bibliotecas e instituições;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Biblioteconomia, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação; Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: CONTADOR Descrição analítica:</p>
+<ol>
+<li><p>elaborar e coordenar normas relativas aos trabalhos de contabilidade;</p></li>
+<li><p>executar ou orientar a escrituração contábil sistemática através dos lançamentos dos atos e fatos contábeis;</p></li>
+<li><p>elaborar e manter atualizados relatórios contábeis;</p></li>
+<li><p>promover a prestação, acertos e conciliação de contas;</p></li>
+<li><p>participar da implantação e execução das normas e rotinas de controle interno;</p></li>
+<li><p>elaborar e acompanhar a execução do orçamento;</p></li>
+<li><p>elaborar demonstrações contábeis exigidas por lei e demais normas legais e a prestação de contas anual do órgão;</p></li>
+<li><p>prestar assessoria e preparar informações econômico-financeiras para a Direção Executiva;</p></li>
+<li><p>atender as demandas dos órgãos fiscalizadores e realizar perícia;</p></li>
+<li><p>assessorar nas atividades de ensino, pesquisa e extensão naquilo que for de sua competência; 11. participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Ciências Contábeis, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: ENGENHEIRO CIVIL Descrição analítica:</p>
+<ol>
+<li><p>desenvolver projetos de engenharia;</p></li>
+<li><p>executar obras, planejar e coordenar a operação e a manutenção;</p></li>
+<li><p>orçar e avaliar a contratação de serviços;</p></li>
+<li><p>controlar a qualidade dos suprimentos e serviços comprados e executados;</p></li>
+<li><p>elaborar normas e documentação técnica;</p></li>
+<li><p>assessorar nas atividades de ensino, pesquisa e extensão;</p></li>
+<li><p>atuar na assessoria de planejamento e gestão;</p></li>
+<li><p>executar outras atividades correlatas.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Engenharia Civil, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: PSICÓLOGO Descrição analítica:</p>
+<ol>
+<li><p>entrevistar o aluno para analisar os fatos que atuam sobre ele, consultando sua ficha de atendimento, aplicando testes e elaborando psicodiagnósticos;</p></li>
+<li><p>atuar no âmbito da Psicologia nos programas, projetos e serviços sócio-assistenciais e educacionais, procedendo a estudos, elaborando e aplicando técnicas e métodos de verificação, possibilitando orientações aos alunos e a suas famílias;</p></li>
+<li><p>reunir informações para fornecer subsídios indispensáveis ao diagnóstico e tratamento das respectivas enfermidades que levem à promoção do ajustamento do aluno e à correção dos distúrbios psíquicos e ao restabelecimento dos padrões normais de comportamento e relacionamento humano;</p></li>
+<li><p>desenvolver espaço de debate e interlocução, visando à interação de conhecimentos e práticas, na perspectiva da interdisciplinaridade;</p></li>
+<li><p>atuar no campo educacional, estudando a importância da motivação no ensino, novos métodos de ensino e treinamento, a fim de contribuir para o estabelecimento de currículos escolares e técnicas de ensino adequadas;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Psicologia, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: PSICOPEDAGOGO</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>informar a comunidade escolar acerca da legislação e normas educacionais vigentes que assegurem a inclusão educacional;</p></li>
+<li><p>participar do processo de identificação e tomada de decisão acerca do atendimento às necessidades educacionais dos alunos;</p></li>
+<li><p>preparar material específico para uso dos alunos com vistas à melhoria dos processos de ensino e aprendizagem;</p></li>
+<li><p>orientar a elaboração dos materiais didáticos pedagógicos e tecnologia assistiva para serem utilizados pelos alunos em classe comum;</p></li>
+<li><p>indicar e orientar o uso de equipamentos e materiais específicos e de outros recursos existentes na família e na comunidade;</p></li>
+<li><p>realizar atividades que estimulem o desenvolvimento dos processos mentais: atenção, percepção, memória, raciocínio, imaginação, criatividade, linguagem entre outros; 7. fortalecer a autonomia dos alunos para decidir, opinar, escolher e tomar iniciativas a partir de suas necessidades e motivações;</p></li>
+<li><p>propiciar a interação dos alunos em ambientes sociais, valorizando as diferenças e a não discriminação;</p></li>
+<li><p>desenvolver técnicas de convivência de orientação e mobilidade e atividades da vida diária para a autonomia e independência dos alunos;</p></li>
+<li><p>ensinar, criar e usar recursos de tecnologia assistiva, promovendo adequações necessárias para o desenvolvimento da aprendizagem dos alunos;</p></li>
+<li><p>incentivar o uso de tecnologias de informação e comunicação;</p></li>
+<li><p>introduzir o aluno no aprendizado da informática acessível identificando qual o melhor recurso de tecnologia assistiva que atende às suas necessidades;</p></li>
+<li><p>promover a interface com os serviços de saúde, assistência social e outros, a fim de manter articulação e interlocução, sempre que necessário, com profissionais externos de áreas diversas tais como Medicina, Psicologia, Fisioterapia, Fonoaudiologia, Arquitetura, Engenharia, Informática, etc.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em qualquer Licenciatura e especialização em Inclusão Escolar, Educação Especial ou atendimento Educacional Especializado, fornecidos por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: TÉCNICO EM COMUNICAÇÃO SOCIAL Descrição analítica:</p>
+<ol>
+<li><p>acompanhar, participar e executar o planejamento e a execução de campanhas, de programas, de projetos e de atividades de comunicação institucional e mercadológica voltados à construção e ao fortalecimento da marca e da imagem da FETLSVC, de seus serviços, bem como do relacionamento com seus públicos de interesse;</p></li>
+<li><p>levantar dados, mapas, gráficos, indicativos numéricos, pesquisa complementar (livros, textos);</p></li>
+<li><p>editar veículos de comunicação internos e externos (“house organ”, revista, “newsletter”), “clipping” <em>,</em> “clipping” eletrônico;</p></li>
+<li><p>produzir releases, comunicados e notas oficiais;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Comunicação Social, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>ANALISTA TÉCNICO: TERAPEUTA OCUPACIONAL Descrição analítica:</p>
+<ol>
+<li><p>atuar em processos socioterapêuticos, programas e projetos de inclusão, de enfrentamento de estigmas, preconceitos e outros processos de exclusão social envolvendo grupos de alunos ou empregados em equipes de trabalho;</p></li>
+<li><p>realizar acompanhamento do sujeito e de sua família para conhecimento de sua história ocupacional e participativa na comunidade que habita, a fim de desenvolver estratégias de pertencimento sociocultural e econômico, ambiental e urbanística, mobilidade, acessibilidade e outras tecnologias de suporte para inclusão sociocomunitária;</p></li>
+<li><p>planejar e executar atividades orientadas para a participação e facilitação no desempenho ocupacional e expressivo de pessoas com deficiência;</p></li>
+<li><p>auxiliar a equipe responsável pela promoção de condições para a inclusão das pessoas com deficiência em todas as atividades da escola;</p></li>
+<li><p>atuar em conjunto com os profissionais da área pedagógica na identificação de melhor recurso de tecnologia assistiva que atenda às necessidades específicas de aluno(a) ou empregado(a);</p></li>
+<li><p>realizar interlocução com profissionais externos de áreas diversas tais como Medicina, Psicologia, Fisioterapia, Fonoaudiologia, Arquitetura, Engenharia, Informática, etc., sempre que necessário.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação em Terapia Ocupacional, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>EMPREGO: AGENTE EDUCACIONAL Descrição sumária: auxiliar professores(as) e especialistas nas atividades docentes.</p>
+<p>AGENTE EDUCACIONAL: AUXILIAR DE ENSINO Descrição analítica:</p>
+<ol>
+<li><p>auxiliar o(a) professor(a), realizando trabalhos práticos segundo sua orientação;</p></li>
+<li><p>auxiliar o(a) professor(a) durante as aulas práticas;</p></li>
+<li><p>auxiliar o(a) professor, na elaboração, aplicação e correção de avaliações de alunos(as), sejam elas práticas ou teóricas;</p></li>
+<li><p>acompanhar alunos(as) e professor(a) em visitas técnicas;</p></li>
+<li><p>desempenhar funções de auxiliar de pesquisa;</p></li>
+<li><p>preparar materiais para exames e ensaios de laboratório, fazer análises rotineiras de produtos e executar trabalhos de aplicação da disciplina;</p></li>
+<li><p>executar a limpeza e a manutenção de instrumentos, máquinas, equipamentos e utensílios de laboratórios e oficinas;</p></li>
+<li><p>zelar pela conservação e guarda de todo o material didático, de laboratório e de oficinas; manter-se atualizado(a) no conhecimento técnico das disciplinas relacionadas às atividades que executa;</p></li>
+<li><p>usar material didático adequado às atividades executadas;</p></li>
+<li><p>efetuar os registros pertinentes e deles prestar contas quando necessário ou solicitado;</p></li>
+<li><p>participar de reuniões administrativas e pedagógicas;</p></li>
+<li><p>participar de reuniões de conselho de classe e outras convocadas pela Direção;</p></li>
+<li><p>sugerir medidas que visem à melhoria e ao aperfeiçoamento do processo de ensino e de aprendizagem;</p></li>
+<li><p>participar da elaboração/atualização do projeto pedagógico da escola e do curso;</p></li>
+<li><p>participar de comissões permanentes e eventuais da Fundação;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>EMPREGO: AGENTE TÉCNICO</p>
+<p>Descrição sumária: executar atividades inerentes aos profissionais de nível médio técnico e suas diversas especialidades, envolvendo tarefas de apoio técnico às diversas áreas da Fundação.</p>
+<p>AGENTE TÉCNICO: SECRETÁRIO DE ESCOLA Descrição analítica:</p>
+<ol>
+<li><p>superintender os serviços da Secretaria da escola de acordo com a orientação para o setor;</p></li>
+<li><p>manter atualizados os registros referentes ao corpo docente e discente;</p></li>
+<li><p>manter em dia a escrituração escolar;</p></li>
+<li><p>manter-se atualizado(a) com a legislação do ensino;</p></li>
+<li><p>extrair certidões, atestados, fichas, históricos escolares, boletins e demais documentos que se refiram à vida escolar dos(as) alunos(as);</p></li>
+<li><p>transcrever as avaliações dos(as) alunos(as), efetuando a apuração dos resultados finais;</p></li>
+<li><p>preencher boletins estatísticos;</p></li>
+<li><p>preparar ou revisar listas de chamadas, atas e relatórios;</p></li>
+<li><p>lavrar termos de abertura e encerramento dos livros de escrituração escolar;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Secretariado, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>AGENTE TÉCNICO: TÉCNICO EM ELETROTÉCNICA</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>auxiliar na instalação e na recuperação da rede elétrica e dos componentes;</p></li>
+<li><p>reparar defeitos em instalações, substituindo peças e fazendo ajustes, conforme especificações e orientações;</p></li>
+<li><p>realizar treinamento na área de atuação, quando solicitado;</p></li>
+<li><p>preparar estimativas detalhadas das quantidades e custos dos materiais e mão-de-obra necessários, efetuando cálculos, estimativas e projeções, determinando os meios requeridos para a fabricação e montagem das instalações e equipamentos elétricos;</p></li>
+<li><p>orientar as atividades dos trabalhadores de sua equipe nas diferentes fases dos trabalhos, acompanhando a execução das tarefas, solucionando problemas, prestando esclarecimentos e tomando outras medidas assegurando a observância dos padrões técnicos estabelecidos;</p></li>
+<li><p>inspecionar as redes de transmissão e distribuição de energia, verificando possíveis falhas e orientando a manutenção das redes;</p></li>
+<li><p>conduzir a execução técnica referente à instalação de tubulações, por onde passam os fios elétricos;</p></li>
+<li><p>executar projetos de iluminação e neste sentido proceder à instalação de cabos, conexão e condutores e outro aparelhos de iluminação;</p></li>
+<li><p>manter organizados, limpos e conservados os materiais, máquinas, equipamentos e local de trabalho que estão sob a sua responsabilidade; 10. dar assistência às atividades relacionadas à aquisição de bens e serviços, e das atividades de identificação, codificação, padronização e catalogação de bens e serviços.</p></li>
+<li><p>elaborar projetos de sistemas elétricos: interpretar características técnicas de sistemas elétricos do projeto;</p></li>
+<li><p>executar outras atividades afins. Carga horária: 40 (quarenta) horas semanais. Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Eletrotécnica, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional. AGENTE TÉCNICO: TÉCNICO EM CONTABILIDADE Descrição analítica:</p></li>
+<li><p>efetuar anotações das transações financeiras da organização e examinar documentos fiscais e parafiscais;</p></li>
+<li><p>analisar a documentação contábil e elaborar planos de determinação das taxas de depreciação e exaustão dos bens materiais, de amortização dos valores imateriais;</p></li>
+<li><p>organizar, controlar e arquivar os documentos relativos à atividade contábil e controlar as movimentações;</p></li>
+<li><p>registrar as operações contábeis, ordenando os movimentos pelo débito e crédito;</p></li>
+<li><p>preparar a documentação, apurar haveres, direitos e obrigações legais;</p></li>
+<li><p>prestar informações e atendimento aos usuários internos e externos dos serviços da FETLSVC;</p></li>
+<li><p>participar de processos de licitação, de comissões de trabalho, de estudos e de projetos de pesquisa e de eventos internos e externos relacionados aos trabalhos da FETLSVC;</p></li>
+<li><p>estudar, promover e instruir processos administrativos, de propostas de melhorias, de normas administrativas e de simplificação de rotinas de trabalho;</p></li>
+<li><p>observar o cumprimento de prazos e da legislação vigente;</p></li>
+<li><p>orientar e treinar pessoal para o exercício de funções inerentes às suas áreas de atuação, bem como supervisionar bolsistas e estagiários em sua formação;</p></li>
+<li><p>zelar pelo patrimônio, pelos materiais, pelos equipamentos em uso e pela boa ordem dos locais de trabalho, observando as normas de segurança vigentes;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins. Carga horária: 40 (quarenta) horas semanais. Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Contabilidade, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p></li>
+</ol>
+<p>AGENTE TÉCNICO: TÉCNICO EM DESIGN Descrição analítica:</p>
+<ol>
+<li><p>analisar o trabalho a ser executado com a finalidade de aplicar técnicas apropriadas para sua execução;</p></li>
+<li><p>revisar trabalhos executados e efetuar controle de qualidade;</p></li>
+<li><p>participar na elaboração de projetos para a aquisição de equipamentos e matérias-primas;</p></li>
+<li><p>auxiliar na elaboração de orçamentos e relatórios do setor gráfico;</p></li>
+<li><p>executar o controle de qualidade sobre matérias-primas recebidas;</p></li>
+<li><p>executar serviços de manutenção rotineira e ocasional nas oficinas;</p></li>
+<li><p>organizar e acompanhar a manutenção e instalação de equipamentos e orientar sua reparação;</p></li>
+<li><p>auxiliar na coordenação dos projetos;</p></li>
+<li><p>consultar normas técnicas e padrões de desenho da instituição;</p></li>
+<li><p>colaborar na definição das diretrizes dos projetos;</p></li>
+<li><p>solicitar projetos complementares; auxiliar a compatibilização de projetos;</p></li>
+<li><p>participar de reuniões de avaliação do projeto;</p></li>
+<li><p>conferir projetos sob supervisão; arquivar documentos relativos ao projeto;</p></li>
+<li><p>pesquisar novas tecnologias de produtos e processos;</p></li>
+<li><p>seguir princípios da qualidade total;</p></li>
+<li><p>analisar viabilidade de uso de materiais; verificar condições de uso dos equipamentos de desenho;</p></li>
+<li><p>utilizar programas de informática específicos para elaboração de projetos;</p></li>
+<li><p>aplicar novas tecnologias;</p></li>
+<li><p>dar assistência às atividades relacionadas à aquisição de bens e serviços, e das atividades de identificação, codificação, padronização e catalogação de bens e serviços. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Design, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>AGENTE TÉCNICO: TÉCNICO EM INFORMÁTICA</p>
+<p>Descrição analítica:</p>
+<ol start="6">
+<li><p>participar de projeto, construção, implantação e documentação no que tange ao desenvolvimento de sistemas;</p></li>
+<li><p>fazer manutenção e configuração de equipamentos de rede (intranet e Internet);</p></li>
+<li><p>estudar as especificações de programas, visando a sua instalação;</p></li>
+<li><p>elaborar programas de computação;</p></li>
+<li><p>instalar, configurar e dar manutenção em sistemas operacionais, softwares aplicativos e sistemas gestores de bancos de dados;</p></li>
+<li><p>depurar novos produtos, bem como sua documentação;</p></li>
+<li><p>preparar, operar, manipular, acompanhar e verificar os resultados dos processamentos de rotinas ou de programas de aplicações;</p></li>
+<li><p>manter e dar suporte em sistemas e treinamentos;</p></li>
+<li><p>prestar atendimento técnico, bem como dar suporte ao usuário;</p></li>
+<li><p>zelar pela guarda, conservação, manutenção e limpeza dos equipamentos e materiais peculiares ao trabalho;</p></li>
+<li><p>dar assistência às atividades relacionadas à aquisição de bens e serviços, e das atividades de identificação, codificação, padronização e catalogação de bens e serviços. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Informática, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>AGENTE TÉCNICO: TÉCNICO EM SEGURANÇA DO TRABALHO</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>efetuar observações referentes à higiene e medicina do trabalho;</p></li>
+<li><p>coletar e registrar dados e informações sobre as condições de higiene e segurança do trabalho;</p></li>
+<li><p>auxiliar na execução do plano de proteção à saúde física e mental da comunidade;</p></li>
+<li><p>auxiliar na realização de inquéritos sanitários e ambientais;</p></li>
+<li><p>auxiliar nos programas de educação sanitária, visando à prevenção de doenças e acidentes do trabalho;</p></li>
+<li><p>fazer estatísticas;</p></li>
+<li><p>colaborar no treinamento dos funcionários no que se refere à prevenção e proteção à saúde;</p></li>
+<li><p>colaborar na campanha de prevenção de acidentes;</p></li>
+<li><p>auxiliar na elaboração de relatórios de atividades e comunicados à Fundação;</p></li>
+<li><p>manter cadastro e análises estatísticas dos acidentes a fim de orientar a prevenção e calcular custos;</p></li>
+<li><p>dar assistência às atividades relacionadas à aquisição de bens e serviços, e das atividades de identificação, codificação, padronização e catalogação de bens e serviços. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Segurança do Trabalho, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>AGENTE TÉCNICO: TÉCNICO EM QUÍMICA Descrição analítica:</p>
+<ol>
+<li><p>executar ensaios físico-químicos;</p></li>
+<li><p>coletar amostras, utilizar normas técnicas;</p></li>
+<li><p>preparar reagentes;</p></li>
+<li><p>utilizar instrumentos de medição e controle;</p></li>
+<li><p>preparar amostras;</p></li>
+<li><p>registrar resultados de análises;</p></li>
+<li><p>participar no desenvolvimento de produtos;</p></li>
+<li><p>pesquisar novas tecnologias; testar insumos e matérias-primas;</p></li>
+<li><p>definir matérias-primas e insumos;</p></li>
+<li><p>elaborar formulações para fabricação de produtos;</p></li>
+<li><p>especificar aplicações do produto;</p></li>
+<li><p>testar produto acabado;</p></li>
+<li><p>participar da definição de processos de produção;</p></li>
+<li><p>participar da definição da viabilidade de produção do produto;</p></li>
+<li><p>adaptar processo de produção ao produto;</p></li>
+<li><p>adequar produtos à necessidade do usuário;</p></li>
+<li><p>definir material para embalagem do produto;</p></li>
+<li><p>supervisionar processo de produção: definir equipes de trabalho;</p></li>
+<li><p>coordenar equipes de trabalho, organizar fluxo de produção;</p></li>
+<li><p>elaborar cronograma de produção;</p></li>
+<li><p>emitir ordem de serviço;</p></li>
+<li><p>efetuar controles no processo produtivo;</p></li>
+<li><p>monitorar parâmetros de poluição ambiental;</p></li>
+<li><p>solicitar manutenção de máquinas e equipamentos;</p></li>
+<li><p>garantir cumprimento de normas de segurança;</p></li>
+<li><p>realizar ações educativas;</p></li>
+<li><p>levantar necessidades de treinamento;</p></li>
+<li><p>elaborar programas de treinamento;</p></li>
+<li><p>preparar material para treinamento;</p></li>
+<li><p>ministrar treinamento;</p></li>
+<li><p>operar máquinas e ou equipamentos:</p></li>
+<li><p>interpretar manuais de máquinas e equipamentos;</p></li>
+<li><p>regular máquinas e equipamentos;</p></li>
+<li><p>abastecer máquinas e equipamentos;</p></li>
+<li><p>monitorar funcionamento de máquinas e equipamentos;</p></li>
+<li><p>manter máquinas e equipamentos em condições de uso;</p></li>
+<li><p>participar de programas de qualidade;</p></li>
+<li><p>seguir procedimentos da qualidade;</p></li>
+<li><p>utilizar ferramentas da qualidade;</p></li>
+<li><p>analisar indicadores de qualidade;</p></li>
+<li><p>implementar ações corretivas e preventivas; participar de auditorias de qualidade; participar na definição ou reestruturação das instalações;</p></li>
+<li><p>elaborar leiaute;</p></li>
+<li><p>especificar máquinas e equipamentos;</p></li>
+<li><p>definir fluxo de produção;</p></li>
+<li><p>acompanhar montagem e instalação de equipamentos;</p></li>
+<li><p>testar máquinas e equipamentos; elaborar documentação técnica;</p></li>
+<li><p>redigir relatórios de análises;</p></li>
+<li><p>emitir laudos técnicos;</p></li>
+<li><p>redigir procedimentos;</p></li>
+<li><p>auxiliar na redação de relatório técnico para legalização de produtos;</p></li>
+<li><p>prestar assistência técnica;</p></li>
+<li><p>realizar visitas técnicas;</p></li>
+<li><p>identificar necessidades do cliente;</p></li>
+<li><p>identificar problemas técnicos; propor alternativas para solução de problemas;</p></li>
+<li><p>propor melhorias no processo de fabricação de produtos;</p></li>
+<li><p>resolver problemas técnicos;</p></li>
+<li><p>realizar tratamentos prévios e complementares de resíduos laboratoriais, incluindo manuseio, acondicionamento e encaminhamento para descarte dos resíduos produzidos no laboratório, obedecendo à legislação ambiental e demais normativas vigentes;</p></li>
+<li><p>manter organizados, limpos e conservados os materiais, máquinas, equipamentos e local de trabalho que estão sob a sua responsabilidade;</p></li>
+<li><p>dar assistência às atividades relacionadas à aquisição de bens e serviços, e das atividades de identificação, codificação, padronização e catalogação de bens e serviços;</p></li>
+<li><p>executar outras atividades afins. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Química, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>AGENTE TÉCNICO: TÉCNICO EM MECÂNICA</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>analisar relação custo x benefício;</p></li>
+<li><p>desenvolver projetos de automação, utilizar normas técnicas;</p></li>
+<li><p>elaborar desenhos técnicos;</p></li>
+<li><p>especificar materiais e equipamentos, consultando catálogos técnicos;</p></li>
+<li><p>definir layout;</p></li>
+<li><p>acompanhar a execução do projeto;</p></li>
+<li><p>propor alterações técnicas em projetos implantados;</p></li>
+<li><p>montar máquinas e equipamentos;</p></li>
+<li><p>interpretar manuais e desenhos;</p></li>
+<li><p>realizar ajustes dimensionais e de posição;</p></li>
+<li><p>detectar falhas do projeto;</p></li>
+<li><p>propor alterações, tendo em vista a agilização de processos de montagem;</p></li>
+<li><p>realizar testes de funcionamento; instalar máquinas e equipamentos;</p></li>
+<li><p>conferir materiais e peças para instalação;</p></li>
+<li><p>verificar condições para instalação de máquinas e equipamentos;</p></li>
+<li><p>coordenar instalação de máquinas e equipamentos;</p></li>
+<li><p>avaliar condições de funcionamento, após a instalação; treinar usuários na operação de máquinas e equipamentos instalados;</p></li>
+<li><p>planejar manutenção;</p></li>
+<li><p>inspecionar equipamentos, para a definição do tipo de manutenção;</p></li>
+<li><p>levantar dados de controle de manutenção;</p></li>
+<li><p>elaborar cronograma de manutenção;</p></li>
+<li><p>estimar custo da manutenção;</p></li>
+<li><p>providenciar peças e materiais para reposição;</p></li>
+<li><p>coordenar manutenção, executar manutenção;</p></li>
+<li><p>detectar falhas em máquinas e sistemas, identificando suas causas;</p></li>
+<li><p>substituir peças e componentes;</p></li>
+<li><p>fazer ajustes circunstanciais de emergência;</p></li>
+<li><p>propor estudos para eliminação de falhas repetitivas;</p></li>
+<li><p>colocar máquinas e equipamentos em condições de funcionamento produtivo; desenvolver processos de fabricação e montagem;</p></li>
+<li><p>estabelecer sequência de operações;</p></li>
+<li><p>identificar recursos dos equipamentos disponíveis;</p></li>
+<li><p>estabelecer método e tempo de fabricação;</p></li>
+<li><p>realizar teste de ajuste final;</p></li>
+<li><p>utilizar ferramentas para a garantia da qualidade no processo;</p></li>
+<li><p>analisar processos, visando às melhorias e eliminação de falhas;</p></li>
+<li><p>controlar a produtividade do processo;</p></li>
+<li><p>balancear linhas, tendo em vista a otimização de processos;</p></li>
+<li><p>treinar equipes de trabalho;</p></li>
+<li><p>elaborar documentação técnica;</p></li>
+<li><p>redigir relatórios técnicos;</p></li>
+<li><p>fazer listas de verificação (check-list);</p></li>
+<li><p>elaborar manuais e procedimentos;</p></li>
+<li><p>elaborar folha de processo e de orientação;</p></li>
+<li><p>desenvolver fornecedores;</p></li>
+<li><p>analisar orçamentos;</p></li>
+<li><p>avaliar as condições técnicas de contratos e especificação de serviços;</p></li>
+<li><p>administrar prazos estabelecidos;</p></li>
+<li><p>avaliar desempenho de fornecedores;</p></li>
+<li><p>homologar fornecedores;</p></li>
+<li><p>cumprir normas de segurança e de preservação ambiental;</p></li>
+<li><p>zelar pela utilização de equipamentos de proteção individual (EPI) e coletivo (EPC);</p></li>
+<li><p>identificar condições e atos inseguros;</p></li>
+<li><p>destinar os materiais descartáveis aos locais apropriados;</p></li>
+<li><p>sugerir a utilização de materiais e produtos não agressivos ao meio ambiente;</p></li>
+<li><p>manter os postos de trabalho em condições seguras;</p></li>
+<li><p>manter organizados, limpos e conservados os materiais, máquinas, equipamentos e local de trabalho que estão sob a sua responsabilidade;</p></li>
+<li><p>dar assistência às atividades relacionadas à aquisição de bens e serviços, e das atividades de identificação, codificação, padronização e catalogação de bens e serviços;</p></li>
+<li><p>executar outras atividades afins. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Mecânica, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>AGENTE TÉCNICO: TÉCNICO EM ELETRÔNICA</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>auxiliar em trabalhos de pesquisa, administração referente à área eletrônica;</p></li>
+<li><p>aperfeiçoar máquinas, ferramentas e equipamentos de funcionamento eletrônico;</p></li>
+<li><p>colaborar na assistência técnica de equipamentos eletrônicos da entidade;</p></li>
+<li><p>registrar o desempenho dos equipamentos e instalações eletrônicos;</p></li>
+<li><p>avaliar a eficiência da utilização dos equipamentos eletrônicos;</p></li>
+<li><p>elaborar relatórios de atividades da unidade;</p></li>
+<li><p>auxiliar na elaboração de projetos que envolvam equipamentos e instalações eletrônicas;</p></li>
+<li><p>executar plano de manutenção preventiva e corretiva;</p></li>
+<li><p>instalar equipamentos de um sistema de produção e distribuição de audiovisual;</p></li>
+<li><p>reparar equipamentos, regulando e ajustando-os, substituindo peças, lâmpadas, testando-os, comparando e analisando-os para mantê-los em operação adequada;</p></li>
+<li><p>dar assistência às atividades relacionadas à aquisição de bens e serviços, e das atividades de identificação, codificação, padronização e catalogação de bens e serviços. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Eletrônica, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>AGENTE TÉCNICO: TÉCNICO EM MECÂNICA AUTOMOTIVA</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>zelar pela manutenção dos veículos da Fundação Liberato, solicitando providências cabíveis, quando necessário;</p></li>
+<li><p>guardar e solicitar o material necessário aos serviços de manutenção veicular; manter atualizada a manutenção dos veículos, equipamentos, ferramentas e dispositivos veiculares;</p></li>
+<li><p>providenciar as solicitações necessárias para o seu conserto, quando for o caso;</p></li>
+<li><p>cumprir e fazer cumprir as normas de segurança;</p></li>
+<li><p>realizar diagnósticos veiculares quando solicitado pela Direção;</p></li>
+<li><p>executar as tarefas de manutenção veicular necessárias nos veículos da Instituição;</p></li>
+<li><p>participar de comissões, projetos e tarefas determinadas pela Direção; executar outras tarefas que se incluam, por similaridade, no mesmo campo de atuação.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio técnico em Mecânica Automotiva, fornecido por instituição de ensino reconhecida pelo Ministério da Educação. Registro no órgão de fiscalização profissional.</p>
+<p>EMPREGO: AGENTE ADMINISTRATIVO</p>
+<p>Descrição sumária:</p>
+<p>Executar serviços de apoio administrativo nos setores da FETLSVC.</p>
+<p>AGENTE ADMINISTRATIVO: AGENTE ADMINISTRATIVO Descrição analítica:</p>
+<ol>
+<li><p>interpretar normas administrativas e da legislação vigente;</p></li>
+<li><p>elaborar, receber, expedir, classificar, registrar e arquivar documentos e expedientes;</p></li>
+<li><p>atender ao público interno e externo;</p></li>
+<li><p>zelar pela guarda e conservação de materiais de consumo, móveis, máquinas e equipamentos do setor a que estiver vinculado;</p></li>
+<li><p>participar de comissões permanentes e eventuais;</p></li>
+<li><p>executar tarefas afins.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de nível médio, fornecido por instituição de ensino reconhecida pelo Ministério da Educação.</p>
+<p><strong>ANEXO II</strong></p>
+<p>DESCRIÇÃO DAS ATRIBUIÇÕES, CARGA HORÁRIA E PRÉ-REQUISITOS DOS EMPREGOS E FUNÇÕES EM COMISSÃO DA FUNDAÇÃO ESCOLA TÉCNICA LIBERATO SALZANO VIEIRA DA CUNHA</p>
+<p>DIRETOR</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>elaborar o plano da Diretoria de acordo com as metas estabelecidas no plano estratégico e no projeto político pedagógico;</p></li>
+<li><p>levantar e atender necessidades de capacitação, aperfeiçoamento e atualização dos recursos humanos da instituição;</p></li>
+<li><p>propor e implantar as políticas de gestão da Diretoria;</p></li>
+<li><p>participar da elaboração dos orçamentos anuais da instituição;</p></li>
+<li><p>coordenar a elaboração do relatório anual das atividades da diretoria;</p></li>
+<li><p>promover em conjunto com a comunidade escolar a observância de regras de convivência de acordo com a filosofia da instituição;</p></li>
+<li><p>exercer outras atividades inerentes à função.</p></li>
+</ol>
+<ul>
+<li>Carga horária: 40 (quarenta) horas semanais.</li>
+</ul>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação.</p>
+<p>COORDENADOR DE CENTRO</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>assessorar a Diretoria e dar assistência aos profissionais do centro;</p></li>
+<li><p>acompanhar a execução e avaliar os projetos políticos pedagógicos e o plano estratégico;</p></li>
+<li><p>coordenar a elaboração do plano de ação do centro, zelando pela integração dos planos das diretorias;</p></li>
+<li><p>acompanhar sua execução e avaliar seus resultados;</p></li>
+<li><p>coordenar e participar de reuniões;</p></li>
+<li><p>definir em conjunto com os profissionais do setor as sistemáticas estratégicas das reuniões de avaliação do processo de ensino e demais diretorias;</p></li>
+<li><p>coordenar a elaboração do relatório anual do centro e exercer outras atividades inerentes à função.</p></li>
+</ol>
+<p>Carga horária: 40 (quarenta) horas semanais.</p>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação.</p>
+<p>COORDENADOR DE CURSO I</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>coordenar curso com atividades letivas em três turnos;</p></li>
+<li><p>representar o curso junto à direção e demais segmentos;</p></li>
+<li><p>elaborar, executar e avaliar o plano de ação do curso;</p></li>
+<li><p>organizar e gerenciar o horário do corpo docente e auxiliares de ensino e fornecer a disponibilidade e necessidade de pessoal;</p></li>
+<li><p>articular a elaboração, atualização e adequação dos planos de curso e plano de trabalhos dos professores, em conjunto com o centro pedagógico;</p></li>
+<li><p>gerenciar, em conjunto com o SAE, orientador educacional, supervisor escolar e diretoria de ensino, transgressões de alunos e/ou do corpo docente, às regras de convivência;</p></li>
+<li><p>efetuar levantamento e especificação do material didático e do consumo necessário encaminhando os pedidos aos responsáveis;</p></li>
+<li><p>dar parecer sobre licitações para compra de material de qualquer natureza;</p></li>
+<li><p>supervisionar a manutenção de equipamentos, aparelhos e instalações, realizando acompanhamento patrimonial;</p></li>
+<li><p>gerenciar as verbas específicas do curso;</p></li>
+<li><p>elaborar o relatório anual;</p></li>
+<li><p>exercer outras atividades inerentes à função. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação.</p>
+<p>COORDENADOR DE CURSO II</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>coordenar curso com atividades letivas em dois turnos;</p></li>
+<li><p>representar o curso junto à direção e demais segmentos;</p></li>
+<li><p>elaborar, executar e avaliar o plano de ação do curso;</p></li>
+<li><p>organizar e gerenciar o horário do corpo docente e auxiliares de ensino e fornecer a disponibilidade e necessidade de pessoal;</p></li>
+<li><p>articular a elaboração, atualização e adequação dos planos de curso e plano de trabalhos dos professores, em conjunto com o centro pedagógico;</p></li>
+<li><p>gerenciar, em conjunto com o SAE, orientador educacional, supervisor escolar e diretoria de ensino, transgressões de alunos e/ou do corpo docente às regras de convivência;</p></li>
+<li><p>efetuar levantamento e especificação do material didático e do consumo necessário encaminhando os pedidos aos responsáveis;</p></li>
+<li><p>dar parecer sobre licitações para compra de material de qualquer natureza;</p></li>
+<li><p>supervisionar a manutenção de equipamentos, aparelhos e instalações, realizando acompanhamento patrimonial;</p></li>
+<li><p>gerenciar as verbas específicas do curso;</p></li>
+<li><p>elaborar o relatório anual;</p></li>
+<li><p>exercer outras atividades inerentes à função. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação.</p>
+<p>COORDENADOR DE CURSO III</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>coordenar curso com atividades letivas em um turno;</p></li>
+<li><p>representar o curso junto à Direção e demais segmentos;</p></li>
+<li><p>elaborar, executar e avaliar o plano de ação do curso;</p></li>
+<li><p>organizar e gerenciar o horário do corpo docente e auxiliares de ensino e fornecer a disponibilidade e necessidade de pessoal;</p></li>
+<li><p>articular a elaboração, atualização e adequação dos planos de curso e plano de trabalhos dos professores, em conjunto com o centro pedagógico;</p></li>
+<li><p>gerenciar, em conjunto com o SAE, orientador educacional, supervisor escolar e diretoria de ensino, transgressões de alunos e/ou do corpo docente, às regras de convivência;</p></li>
+<li><p>efetuar levantamento e especificação do material didático e do consumo necessário encaminhando os pedidos aos responsáveis;</p></li>
+<li><p>dar parecer sobre licitações para compra de material de qualquer natureza;</p></li>
+<li><p>supervisionar a manutenção de equipamentos, aparelhos e instalações, realizando acompanhamento patrimonial;</p></li>
+<li><p>gerenciar as verbas específicas do curso;</p></li>
+<li><p>elaborar o relatório anual;</p></li>
+<li><p>exercer outras atividades inerentes à função.</p></li>
+</ol>
+<ul>
+<li>Carga horária: 40 (quarenta) horas semanais.</li>
+</ul>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação.</p>
+<p>ASSESSOR</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>prestar assistência e assessoramento direto às diretorias nos assuntos pertinentes a sua área de atuação, emitindo pareceres, laudos técnicos;</p></li>
+<li><p>assessorar as atividades relativas ao gabinete da Diretoria Executiva da Fundação;</p></li>
+<li><p>assessorar na formulação de ações que resultem na definição, organização e acompanhamento das atividades internas e externas da Fundação;</p></li>
+<li><p>executar outras atividades correlatas e/ou delegadas pelas diretorias. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de graduação, fornecido por instituição de ensino superior reconhecida pelo Ministério da Educação.</p>
+<p>COORDENADOR DE SERVIÇO</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>dirigir, organizar e manter atualizada todas as atividades referentes aos registros da vida funcional e/ou escolar de acordo com as competências do órgão;</p></li>
+<li><p>elaborar relatórios e instruir processos;</p></li>
+<li><p>providenciar a publicação de editais;</p></li>
+<li><p>dar baixa em documentos conforme legislação vigente;</p></li>
+<li><p>responder pelo funcionamento normal do serviço, prevendo, para tanto, os recursos pessoais e materiais necessários antes de cada exercício;</p></li>
+<li><p>elaborar, executar e avaliar com seus auxiliares o plano de trabalho do serviço;</p></li>
+<li><p>zelar pelo recebimento e expedição de documentos autênticos, inequívocos e sem rasuras;</p></li>
+<li><p>elaborar relatórios das atividades de serviço;</p></li>
+<li><p>exercer outras atividades inerentes à função. Carga horária: 40 (quarenta) horas semanais.</p></li>
+</ol>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de ensino médio, fornecido por instituição de ensino reconhecida pelo Ministério da Educação.</p>
+<p>ENCARREGADO DE SERVIÇO I Descrição analítica:</p>
+<ol>
+<li><p>administrar, chefiar e dirigir as atividades do serviço;</p></li>
+<li><p>zelar pela conservação do acervo e equipamentos do serviço;</p></li>
+<li><p>manter controle do material cedido. Informar a comunidade escolar sobre o material existente;</p></li>
+<li><p>elaborar relatórios e encaminhar à diretoria;</p></li>
+<li><p>exercer outras atividades inerentes à função.</p></li>
+</ol>
+<ul>
+<li>Carga horária: 40 (quarenta) horas semanais.</li>
+</ul>
+<p>Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de ensino médio, fornecido por instituição de ensino reconhecida pelo Ministério da Educação.</p>
+<p>ENCARREGADO DE SERVIÇO II</p>
+<p>Descrição analítica:</p>
+<ol>
+<li><p>exercer as atividades do serviço;</p></li>
+<li><p>zelar pela conservação do acervo e equipamentos do serviço;</p></li>
+<li><p>manter controle do material cedido;</p></li>
+<li><p>informar a comunidade escolar sobre o material existente;</p></li>
+<li><p>elaborar relatórios e encaminhar à Diretoria;</p></li>
+<li><p>exercer outras atividades inerentes à função. Carga horária: 40 (quarenta) horas semanais. Pré-requisitos: Diploma, devidamente registrado, de conclusão de curso de ensino médio, fornecido por instituição de ensino reconhecida pelo Ministério da Educação.</p></li>
+</ol>
+<p><strong>ANEXO III</strong></p>
+<p>QUADRO DE EMPREGOS PERMANENTES</p>
+<p>FUNDAÇÃO ESCOLA TÉCNICA LIBERATO SALZANO VIEIRA DA CUNHA</p>
+<p>MATRIZ SALARIAL E NÚMERO DE EMPREGOS DE NÍVEL MÉDIO, MÉDIO TÉCNICO E SUPERIOR</p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>EMPREGO</th>
+<th></th>
+<th>PADRÃOSALARIAL</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>NÍVE</th>
+<th>L SALARI</th>
+<th>AL - R$</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>DENOMINAÇÃO</td>
+<td>OCUPAÇÃO</td>
+<td>NÚMERO</td>
+<td></td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>I</td>
+<td>J</td>
+<td>K</td>
+<td>L</td>
+</tr>
+<tr class="even">
+<td>AgenteAdministrativo</td>
+<td>Agente Administrativo</td>
+<td>140</td>
+<td>I</td>
+<td>2.384,81</td>
+<td>2.515,97</td>
+<td>2.654,35</td>
+<td>2.800,34</td>
+<td>2.954,36</td>
+<td>3.116,85</td>
+<td>3.288,28</td>
+<td>3.469,13</td>
+<td>3.659,94</td>
+<td>3.861,23</td>
+<td>4.073,60</td>
+<td>4.297,65</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Secretario de Escola</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Técnico em Eletrotécnica</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Técnico em Contabilidade</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Técnico em Design</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Agente Técnico</td>
+<td>Técnico em InformáticaTécnico em Segurança doTrabalho</td>
+<td>82</td>
+<td>II</td>
+<td>2.777,29</td>
+<td>2.930,04</td>
+<td>3.091,19</td>
+<td>3.261,21</td>
+<td>3.440,58</td>
+<td>3.629,81</td>
+<td>3.829,45</td>
+<td>4.040,07</td>
+<td>4.262,27</td>
+<td>4.496,69</td>
+<td>4.744,01</td>
+<td>5.004,93</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Técnico emQuímica</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Técnico em Mecânica</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Técnico em Eletrônica</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Técnico em MecânicaAutomotiva</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Agente Educacional</td>
+<td>Auxilar de Ensino</td>
+<td>100</td>
+<td>III</td>
+<td>3.254,10</td>
+<td>3.433,08</td>
+<td>3.621,89</td>
+<td>3.821,10</td>
+<td>4.031,26</td>
+<td>4.252,98</td>
+<td>4.486,89</td>
+<td>4.733,67</td>
+<td>4.994,02</td>
+<td>5.268,69</td>
+<td>5.558,47</td>
+<td>5.864,19</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Administrador</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Advogado</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Analista de Sistemas</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Assistente Social</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Bibliotecário</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Analista Técnico</td>
+<td>Contador</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Engenheiro Civil</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Psicólogo</td>
+<td>4</td>
+<td>IV</td>
+<td>4.946,68</td>
+<td>5.218,75</td>
+<td>5.505,78</td>
+<td>5.808,60</td>
+<td>6.128,07</td>
+<td>6.465,11</td>
+<td>6.820,69</td>
+<td>7.195,83</td>
+<td>7.591,60</td>
+<td>8.009,14</td>
+<td>8.449,64</td>
+<td>8.914,37</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Psicopedagogo</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Técnico em ComunicaçãoSocial</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Terapeuta Ocupacional</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Técnico em Educação</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Analista Educacional</td>
+<td>Orientador Educacional</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Supervisor EscolarProfessor</td>
+<td>20330</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>OBSERVAÇÕES: 1) Valor do salário básico fixado para carga horária semanal de 40 (quarenta) horas;</p>
+<p>2) O valor do salário básico para carga horária semanal de 20 (vinte) e de 30 (trinta) horas corresponde a 50% (cinquenta por cento) e 75% (setenta e cinco por cento), respectivamente, do valor do salário básico fixado para 40 (quarenta) horas semanais.</p>
+<p><strong>ANEXO IV</strong></p>
+<p>QUADRO DE EMPREGOS E DE FUNÇÕES EM COMISSÃO</p>
+<p>FUNDAÇÃO ESCOLA TÉCNICA LIBERATO SALZANO VIEIRA DA CUNHA</p>
+<p>MATRIZ REMUNERATÓRIA, DENOMINAÇÃO E NÚMERO DE EMPREGOS E FUNÇÕES</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>DENOMINAÇÃO</th>
+<th>NÚMERO</th>
+<th>EMPR</th>
+<th>EGO EM COMISSÃO</th>
+<th>FUNÇ</th>
+<th>ÃO EM COMISSÃO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>PADRÃO</td>
+<td>REMUNERAÇÃO R$</td>
+<td>PADRÃO</td>
+<td>REMUNERAÇÃO R$</td>
+</tr>
+<tr class="even">
+<td>Diretor</td>
+<td>5</td>
+<td></td>
+<td>-</td>
+<td>FC I</td>
+<td>3.062,29</td>
+</tr>
+<tr class="odd">
+<td>Assessor</td>
+<td>2</td>
+<td>EC II</td>
+<td>4.316,60</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Coordenador de Centro</td>
+<td>10</td>
+<td></td>
+<td>-</td>
+<td>FC II</td>
+<td>2.187,25</td>
+</tr>
+<tr class="odd">
+<td>Coordenador de Curso I</td>
+<td>20</td>
+<td></td>
+<td>-</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Coordenador de Curso II</td>
+<td>10</td>
+<td></td>
+<td>-</td>
+<td>FC III</td>
+<td>159649</td>
+</tr>
+<tr class="odd">
+<td>Coordenador de Serviço</td>
+<td>10</td>
+<td></td>
+<td>-</td>
+<td></td>
+<td>.,</td>
+</tr>
+<tr class="even">
+<td>Coordenador de Curso III</td>
+<td>10</td>
+<td></td>
+<td>-</td>
+<td>FC IV</td>
+<td>133596</td>
+</tr>
+<tr class="odd">
+<td>Encarregado de Serviço I</td>
+<td>20</td>
+<td></td>
+<td>-</td>
+<td></td>
+<td>.,</td>
+</tr>
+<tr class="even">
+<td>Encarregado de Serviço II</td>
+<td>10</td>
+<td></td>
+<td>-</td>
+<td>FC V</td>
+<td>870,18</td>
+</tr>
+<tr class="odd">
+<td>Obs: Valor da remuneração estabelecida</td>
+<td>para carga horária de 40 (qu</td>
+<td>arenta) horas.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ANEXO V</strong></p>
+<p>QUADRO DE CARGOS PERMANENTES EM EXTINÇÃO</p>
+<p>FUNDAÇÃO ESCOLA TÉCNICA LIBERATO SALZANO VIEIRA DA CUNHA</p>
+<p>MATRIZ SALARIAL DOS CARGOS PERMANENTES DE NÍVEL FUNDAMENTAL, MÉDIO, MÉDIO TÉCNICO E SUPERIOR</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>PLANO DE CAREXTINÇÃO</th>
+<th>GOS, FUNÇÕES E SALÁRIOS DE 1987 EM</th>
+<th>FAIXASALARIAL</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>CLASSE SA</th>
+<th>LARIAL - R$</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CATEGORIA</td>
+<td>CARGO</td>
+<td></td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>I</td>
+<td>J</td>
+</tr>
+<tr class="even">
+<td>Primeiro Grau</td>
+<td>Vigia e Servente</td>
+<td>I</td>
+<td>943,98</td>
+<td>1.038,38</td>
+<td>1.142,22</td>
+<td>1.256,44</td>
+<td>1.382,08</td>
+<td>1.451,19</td>
+<td>1.523,74</td>
+<td>1.581,04</td>
+<td>1.640,48</td>
+<td>1.702,17</td>
+</tr>
+<tr class="odd">
+<td>Incompleto</td>
+<td>Zelador</td>
+<td>II</td>
+<td>1.139,00</td>
+<td>1.252,90</td>
+<td>1.378,19</td>
+<td>1.516,01</td>
+<td>1.667,61</td>
+<td>1.750,99</td>
+<td>1.838,54</td>
+<td>1.907,67</td>
+<td>1.979,40</td>
+<td>2.053,82</td>
+</tr>
+<tr class="even">
+<td>Primeiro Grau</td>
+<td>Auxiliar de Disciplina</td>
+<td>III</td>
+<td>1.295,91</td>
+<td>1.425,50</td>
+<td>1.568,05</td>
+<td>1.724,86</td>
+<td>1.897,34</td>
+<td>1.992,21</td>
+<td>2.091,82</td>
+<td>2.170,47</td>
+<td>2.252,08</td>
+<td>2.336,76</td>
+</tr>
+<tr class="odd">
+<td>Completo</td>
+<td>Agente Administrativo I e Motorista.</td>
+<td>IV</td>
+<td>1.528,75</td>
+<td>1.681,63</td>
+<td>1.849,79</td>
+<td>2.034,77</td>
+<td>2.238,24</td>
+<td>2.350,16</td>
+<td>2.467,66</td>
+<td>2.560,45</td>
+<td>2.656,72</td>
+<td>2.756,61</td>
+</tr>
+<tr class="even">
+<td>Segundo GrauCompleto</td>
+<td>Agente Administrativo II e AgenteAdministrativo III</td>
+<td>V</td>
+<td>2.384,81</td>
+<td>2.623,29</td>
+<td>2.885,62</td>
+<td>3.174,18</td>
+<td>3.491,60</td>
+<td>3.666,18</td>
+<td>3.849,49</td>
+<td>3.994,23</td>
+<td>4.144,41</td>
+<td>4.300,24</td>
+</tr>
+<tr class="odd">
+<td>Técnico</td>
+<td>Técnico em Informática, Técnico emContabilidade, Tesoureiro, Técnico dePessoal, Secretário de Escola e Desenhista.</td>
+<td>VI</td>
+<td>2.777,29</td>
+<td>3.055,02</td>
+<td>3.360,52</td>
+<td>3.696,57</td>
+<td>4.066,23</td>
+<td>4.269,54</td>
+<td>4.483,02</td>
+<td>4.651,58</td>
+<td>4.826,48</td>
+<td>5.007,96</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Auxiliar de Ensino</td>
+<td>VII</td>
+<td>3.254,10</td>
+<td>3.579,51</td>
+<td>3.937,46</td>
+<td>4.331,21</td>
+<td>4.764,33</td>
+<td>5.002,54</td>
+<td>5.252,67</td>
+<td>5.450,17</td>
+<td>5.655,10</td>
+<td>5.867,73</td>
+</tr>
+<tr class="odd">
+<td>Superior</td>
+<td>Advogado,Arquiteto,AssessordeComunicaçãoSocial,Bibliotecário,Contador, Engenheiro, Médico, OrientadorEducacional,Professor,Psicólogo,Supervisor Escolar e Técnico em Educação.</td>
+<td>VIIIMATRIZ SAL</td>
+<td>4.946,68ARIAL DOS C</td>
+<td>5.441,35ARGOS ESPE</td>
+<td>5.985,48CIAIS DE N</td>
+<td>6.584,03ÍVEL MÉDI</td>
+<td>7.242,43O TÉCNICO</td>
+<td>7.604,56</td>
+<td>7.984,78</td>
+<td>8.285,01</td>
+<td>8.596,53</td>
+<td>8.919,76</td>
+</tr>
+<tr class="even">
+<td>Produção</td>
+<td>Operador de Máquinas Especiais</td>
+<td>I</td>
+<td>2.973,45</td>
+<td>3.270,80</td>
+<td>3.597,87</td>
+<td>3.957,66</td>
+<td>4.353,43</td>
+<td>4.571,10</td>
+<td>4.799,65</td>
+<td>4.980,12</td>
+<td>5.167,37</td>
+<td>5.361,67</td>
+</tr>
+</tbody>
+</table>
+<p>1) Valor do salário básico das matrizes salariais acima fixado para carga horária semanal de 40 (quarenta horas); Observações: http://www.al.rs.gov.br/legis 2) O valor do salário básico para carga horária semanal de 20 (vinte) e de 30 (trinta) horas corresponde a 50% (cinquenta por cento) e 75% (setenta e cinco por cento), respectivamente, do valor do salário 31 básico fixado para 40 (quarenta) horas semanais.</p>
+</details>
+</main></div></body></html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BNCC – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="leg-a-lei-rs-14498.html#leg-a">a) Lei RS 14.498/2014</a><a href="leg-b-estatuto-liberato.html#leg-b">b) Estatuto da Fundação</a><a href="leg-c-cf88.html#leg-c">c) CF/88</a><a href="leg-d-clt.html#leg-d">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="leg-g-maria-da-penha.html#leg-g">g) Maria da Penha</a><a href="leg-h-lbi.html#leg-h">h) LBI</a><a href="leg-i-lgpd.html#leg-i">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="#leg-l" class="atual">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>BNCC</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-l">l) Base Nacional Comum Curricular — Ensino Médio e Educação Profissional Técnica</h2>
+<ul>
+<li>Marcos legais da BNCC (CF art. 210; LDB arts. 9º, IV, 26 e 35-A; PNE)</li>
+<li>As <strong>10 competências gerais da Educação Básica</strong></li>
+<li>Ensino Médio: áreas do conhecimento (Linguagens, Matemática, Ciências da Natureza, Ciências Humanas e Sociais Aplicadas), competências específicas e habilidades</li>
+<li>Itinerários formativos e o itinerário de formação técnica e profissional (LDB art. 36)</li>
+<li>Juventudes e projeto de vida; protagonismo juvenil</li>
+</ul>
+<details class="lei" open>
+<summary>
+BNCC — Competências gerais da Educação Básica (texto oficial)
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="http://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf">MEC – BNCC</a>
+</p>
+<p>COMPETÊNCIAS GERAIS DA EDUCAÇÃO BÁSICA</p>
+<ol>
+<li><p>Valorizar e utilizar os conhecimentos historicamente construídos sobre o mundo físico, social, cultural e digital para entender e explicar a realidade, continuar aprendendo e colaborar para a construção de uma sociedade justa, democrática e inclusiva.</p></li>
+<li><p>Exercitar a curiosidade intelectual e recorrer à abordagem própria das ciências, incluindo a investigação, a reflexão, a análise crítica, a imaginação e a criatividade, para investigar causas, elaborar e testar hipóteses, formular e resolver problemas e criar soluções (inclusive tecnológicas) com base nos conhecimentos das diferentes áreas.</p></li>
+<li><p>Valorizar e fruir as diversas manifestações artísticas e culturais, das locais às mundiais, e também participar de práticas diversificadas da produção artístico-cultural.</p></li>
+<li><p>Utilizar diferentes linguagens – verbal (oral ou visual-motora, como Libras, e escrita), corporal, visual, sonora e digital –, bem como conhecimentos das linguagens artística, matemática e científica, para se expressar e partilhar informações, experiências, ideias e sentimentos em diferentes contextos e produzir sentidos que levem ao entendimento mútuo.</p></li>
+<li><p>Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais (incluindo as escolares) para se comunicar, acessar e disseminar informações, produzir conhecimentos, resolver problemas e exercer protagonismo e autoria na vida pessoal e coletiva.</p></li>
+<li><p>Valorizar a diversidade de saberes e vivências culturais e apropriar-se de conhecimentos e experiências que lhe possibilitem entender as relações próprias do mundo do trabalho e fazer escolhas alinhadas ao exercício da cidadania e ao seu projeto de vida, com liberdade, autonomia, consciência crítica e responsabilidade.</p></li>
+<li><p>Argumentar com base em fatos, dados e informações confiáveis, para formular, negociar e defender ideias, pontos de vista e decisões comuns que respeitem e promovam os direitos humanos, a consciência socioambiental e o consumo responsável em âmbito local, regional e global, com posicionamento ético em relação ao cuidado de si mesmo, dos outros e do planeta.</p></li>
+</ol>
+<p>9</p>
+<p>BASE NACIONAL COMUM CURRICULAR</p>
+<ol start="8">
+<li><p>Conhecer-se, apreciar-se e cuidar de sua saúde física e emocional, compreendendo-se na diversidade humana e reconhecendo suas emoções e as dos outros, com autocrítica e capacidade para lidar com elas.</p></li>
+<li><p>Exercitar a empatia, o diálogo, a resolução de conflitos e a cooperação, fazendo-se respeitar e promovendo o respeito ao outro e aos direitos humanos, com acolhimento e valorização da diversidade de indivíduos e de grupos sociais, seus saberes, identidades, culturas e potencialidades, sem preconceitos de qualquer natureza.</p></li>
+<li><p>Agir pessoal e coletivamente com autonomia, responsabilidade, flexibilidade, resiliência e determinação, tomando decisões com base em princípios éticos, democráticos, inclusivos, sustentáveis e solidários.</p></li>
+</ol>
+</details>
+<details class="questoes">
+<summary>
+Questões da Legalle — 3 questões
+</summary>
+<details class="qcom" id="q-Q4081121">
+<summary>
+Q4081121 · 2026 · Prefeitura de Presidente Lucena - RS · Professor de Ensino Fundamental <span class="nota">(Legislação da Educação, Base Nacional Comum Curricular - BNCC, Lei nº 14.533 de 2023 - Política Nacional de Educação Digital (PNED))</span>
+</summary>
+<p><strong>Para responder à questão, leia o texto abaixo.</strong></p>
+<p>**<br />
+**</p>
+<p>**<br />
+**</p>
+<p><strong>ECA Digital em vigor: o que muda e qual o papel da escola na proteção de crianças e jovens</strong></p>
+<p>Entrou em vigor a Lei no 15.211/2025, conhecida como ECA Digital, que estabelece novas regras para a proteção de crianças e adolescentes na internet e amplia a responsabilidade de plataformas digitais no Brasll. A norma inaugura um marco regulatório ao exigir, entre outros pontos, mecanismos de verificação de idade, restrições à publicidade infantil e a remoção mais ágil de conteúdos que envolvam exploração de menores. A entrada em vigor ocorre após meses de pressão pública e institucional por maior controle sobre o ambiente digital, intensificada por denúncias de exposição e exploração de crianças nas redes sociais.</p>
+<p>Com a nova legislação, fica proibida a autodeclaração de maioridade. As plataformas digitais serão obrigadas a utilizar mecanismos de validação mais precisos, como biometria, validação dgcumental e estimativa de idade por inteligência artificial, para a criação de novos perfis.</p>
+<p>Crianças e adolescentes de até 16 anos só poderão acessar redes sociais cqso tenham contas vinculadas a um responsável. Além disso, empresas que oferecem serviços digitais para esse público devem ter regras e medidas eficazes para evitar a exploração e o abuso sexual, o incentivo à violência física e ao assédio, o cyberbullying, a indução a práticas que levem danos às crianças, a promoção a jogos de azar e produtos tóxicos, a publicidade predatória e a pornografia.</p>
+<p>Com a expansão das possibilidades de interação no mundo digital, a escola é cada vez mais chamada a atuar para a conscientização da importância da Educação e do letramento digital e para a reflexão sobre o uso adequado das tecnologias no ambiente escolar.</p>
+<p>A Base Nacional Comum Curricular (BNCC) reforça essas agendas ao trazer a cultura digital na competência geral número 5. Mais recentemente, em 2024, também estabeleceu normas para o ensino da computação na Educação Básica, detalhadas no documento que ficou conhecido como BNCC Computação. Anteriormente, a Política Nacional de Educação Digital (Pned), de 2023, tambem já apontava diretrizes para a inclusão digital e o uso de tecnologias educacionais. Isso sem contar a Estrategia Nacional de Escolas Conectadas, além de determinações pontuais, como a restrição do uso não pedagogico dos celulares nas escolas.</p>
+<p>Nesse contexto, a participação da escola é vital para garantir o acesso a tecnologias, mas também para promover a compreensão sobre os tópicos relacionados à segurança, privacidade, etica e saúde mental, por exemplo. A meta deve ser a de trazer essa conversa sobre temas contemporâneos e transdisciplinares de forma integrada e constante. Para tanto, as escolas devem discutir criticamente sobre as tecnologias, seus usos, potenciais e riscos ao longo de toda a Educação Básica.</p>
+<p>**<br />
+**</p>
+<p>**<br />
+**</p>
+<p><strong>Fonte</strong>: https://novaescola.org.brlconteudo /2247 5/ adullizacaocriancas-adolescentes-universo-digital (com adaptações).</p>
+<p>Ao analisar a fundamentação legal citada no texto - que inclui o ECA Digital, a BNCC, a Pned e a Estratégia Nacional de Escolas Conectadas -, depreende-se que a proteção de crianças e adolescentes no ambiente virtual:</p>
+<ul>
+<li><strong>A)</strong> Depende primordialmente da suspensão do uso de tecnologias no ambiente escolar até que as plataformas alcancem 1000/” de precisão na validação etária.</li>
+<li><strong>B)</strong> É tratada de forma fragmentada na legislação brasileira, sem que haja uma correlação direta entre os marcos regulatórios digitais e as diretrizes pedagógicas.</li>
+<li><strong>C)</strong> Configura-se como um esforço multissetorial, que demanda a convergência de mecanismos tecnológicos de controle e ações educativas estruturantes.</li>
+<li><strong>D)</strong> É uma atribuição exclusiva das famílias com crianças e das plataformas, cabendo ao Estado apenas o papel de sancionar infrações graves nesse contexto.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/df332ac6-5b" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4135201">
+<summary>
+Q4135201 · 2026 · Prefeitura de Porto Vitória - PR · Professor de Artes … <span class="nota">(Legislação da Educação, Base Nacional Comum Curricular - BNCC)</span>
+</summary>
+<p>Analise as assertivas que seguem, com base na Base Nacional Comum Curricular (BNCC):</p>
+<p>I. Respeitando as muitas possibilidades de organização do conhecimento escolar, as unidades temáticas definem um arranjo dos objetos de conhecimento ao longo do Ensino Fundamental adequado às especif icidades dos diferentes componentes curricu lares.</p>
+<p>II. Cada unidade temática contempla uma gama maior ou menor de objetos de conhecimento, assim como cada objeto de conhecimento se relaciona a um número variável de habilidades.</p>
+<p>Acerca das assertivas, pode se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/aaf531c3-70" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4289675">
+<summary>
+Q4289675 · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial … <span class="nota">(Legislação da Educação, Base Nacional Comum Curricular - BNCC)</span>
+</summary>
+<p>Observe a habilidade definida pela Base Nacional Comum Curricular (BNCC) a seguir:</p>
+<p><em><strong>(EF01CI03):</strong> Discutir as razões pelas quais os hábitos de higiene do corpo (lavar as mãos antes de comer, escovar os dentes, limpar os olhos, o nariz e as orelhas etc.) são necessários para a manutenção da saúde.</em></p>
+<p>Diante disso, sabe-se que cada habilidade da BNCC é identificada por um código alfanumérico cuja composição pode ser dividida em quatro pares, como disposto a seguir:</p>
+<p><strong>• </strong>Primeiro par de letras: <strong>EF</strong>.</p>
+<p>• Primeiro par de números: <strong>01</strong>.</p>
+<p>• Segundo par de letras: <strong>CI</strong>.</p>
+<p>• Segundo par de números: <strong>03</strong>.</p>
+<p>Seguindo a lógica da composição do código alfanumérico, podemos afirmar que o segundo par de letras indica:</p>
+<ul>
+<li><strong>A)</strong> A etapa de Ensino Fundamental.</li>
+<li><strong>B)</strong> A numeração sequencial do ano ou do bloco de anos.</li>
+<li><strong>C)</strong> O ano (01 a 09) a que se refere a habilidade.</li>
+<li><strong>D)</strong> O componente curricular (disciplina).</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bac875db-ac" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+</details>
+</main></div></body></html>

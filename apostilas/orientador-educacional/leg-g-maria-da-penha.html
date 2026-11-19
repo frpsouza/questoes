@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maria da Penha – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="leg-a-lei-rs-14498.html#leg-a">a) Lei RS 14.498/2014</a><a href="leg-b-estatuto-liberato.html#leg-b">b) Estatuto da Fundação</a><a href="leg-c-cf88.html#leg-c">c) CF/88</a><a href="leg-d-clt.html#leg-d">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="#leg-g" class="atual">g) Maria da Penha</a><a href="leg-h-lbi.html#leg-h">h) LBI</a><a href="leg-i-lgpd.html#leg-i">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="leg-l-bncc.html#leg-l">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>Maria da Penha</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-g">g) Lei nº 11.340/2006 — Lei Maria da Penha</h2>
+<table class="mapa">
+<caption>
+Mapa da lei por tópico
+</caption>
+<thead>
+<tr>
+<th>
+Tópico
+</th>
+<th>
+Dispositivos
+</th>
+<th>
+Pontos do programa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="#leg-g-1">1. Disposições preliminares: objeto e direitos fundamentais da mulher</a>
+</td>
+<td>
+Arts. 1º a 4º
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-g-2">2. Violência doméstica e familiar: conceito e formas (física, psicológica, sexual, patrimonial e moral)</a>
+</td>
+<td>
+Arts. 5º a 7º
+</td>
+<td>
+<a href="especificos.html#esp-f">Esp. f — família, escola e conflitos</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-g-3">3. Medidas integradas de prevenção (inclusive nos currículos escolares) e assistência à mulher</a>
+</td>
+<td>
+Arts. 8º e 9º
+</td>
+<td>
+<a href="especificos.html#esp-e">Esp. e — desenvolvimento e identidades</a> · <a href="especificos.html#esp-f">Esp. f — família, escola e conflitos</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="recentes">
+<p>
+<strong>Alterações recentes nesta norma (desde 2023) — potencial de prova:</strong>
+</p>
+<ul>
+<li>
+<a href="#alt-30">VI – a violência vicária, entendida como qualquer forma de violência praticada contra descendente, ascendente,…</a> <span class="nota">(Lei nº 15.384/2026)</span>
+</li>
+<li>
+<a href="#alt-31">Art. 9º A assistência à mulher em situação de violência doméstica e familiar será prestada em caráter prioritá…</a> <span class="nota">(Lei nº 14.887/2024)</span>
+</li>
+</ul>
+</div>
+<h3 id="leg-g-1">
+1. Disposições preliminares: objeto e direitos fundamentais da mulher
+</h3>
+<p class="arts">
+Arts. 1º a 4º
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 11.340/2006 — Arts. 1º a 4º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>TÍTULO I</p>
+</div>
+<div class="tit">
+<p>DISPOSIÇÕES PRELIMINARES</p>
+</div>
+<p><strong>Art. 1º</strong> Esta Lei cria mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, nos termos do § 8º do art. 226 da Constituição Federal, da Convenção sobre a Eliminação de Todas as Formas de Violência contra a Mulher, da Convenção Interamericana para Prevenir, Punir e Erradicar a Violência contra a Mulher e de outros tratados internacionais ratificados pela República Federativa do Brasil; dispõe sobre a criação dos Juizados de Violência Doméstica e Familiar contra a Mulher; e estabelece medidas de assistência e proteção às mulheres em situação de violência doméstica e familiar.</p>
+<p><strong>Art. 2º</strong> Toda mulher, independentemente de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza dos direitos fundamentais inerentes à pessoa humana, sendo-lhe asseguradas as oportunidades e facilidades para viver sem violência, preservar sua saúde física e mental e seu aperfeiçoamento moral, intelectual e social.</p>
+<p><strong>Art. 3º</strong> Serão asseguradas às mulheres as condições para o exercício efetivo dos direitos à vida, à segurança, à saúde, à alimentação, à educação, à cultura, à moradia, ao acesso à justiça, ao esporte, ao lazer, ao trabalho, à cidadania, à liberdade, à dignidade, ao respeito e à convivência familiar e comunitária.</p>
+<p>§ 1º O poder público desenvolverá políticas que visem garantir os direitos humanos das mulheres no âmbito das relações domésticas e familiares no sentido de resguardá-las de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão.</p>
+<p>§ 2º Cabe à família, à sociedade e ao poder público criar as condições necessárias para o efetivo exercício dos direitos enunciados no caput.</p>
+<p><strong>Art. 4º</strong> Na interpretação desta Lei, serão considerados os fins sociais a que ela se destina e, especialmente, as condições peculiares das mulheres em situação de violência doméstica e familiar.</p>
+</details>
+<h3 id="leg-g-2">
+2. Violência doméstica e familiar: conceito e formas (física, psicológica, sexual, patrimonial e moral)
+</h3>
+<p class="arts">
+Arts. 5º a 7º · relacionado a: <a href="especificos.html#esp-f">Esp. f — família, escola e conflitos</a>
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 11.340/2006 — Arts. 5º a 7º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>TÍTULO II</p>
+</div>
+<div class="tit">
+<p>DA VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER</p>
+</div>
+<div class="tit">
+<p>CAPÍTULO I</p>
+</div>
+<div class="tit">
+<p>DISPOSIÇÕES GERAIS</p>
+</div>
+<p><strong>Art. 5º</strong> Para os efeitos desta Lei, configura violência doméstica e familiar contra a mulher qualquer ação ou omissão baseada no gênero que lhe cause morte, lesão, sofrimento físico, sexual ou psicológico e dano moral ou patrimonial: <span class="nota">(Vide Lei complementar nº 150, de 2015)</span></p>
+<p>I - no âmbito da unidade doméstica, compreendida como o espaço de convívio permanente de pessoas, com ou sem vínculo familiar, inclusive as esporadicamente agregadas;</p>
+<p>II - no âmbito da família, compreendida como a comunidade formada por indivíduos que são ou se consideram aparentados, unidos por laços naturais, por afinidade ou por vontade expressa;</p>
+<p>III - em qualquer relação íntima de afeto, na qual o agressor conviva ou tenha convivido com a ofendida, independentemente de coabitação.</p>
+<p>Parágrafo único. As relações pessoais enunciadas neste artigo independem de orientação sexual.</p>
+<p><strong>Art. 6º</strong> A violência doméstica e familiar contra a mulher constitui uma das formas de violação dos direitos humanos.</p>
+<div class="tit">
+<p>CAPÍTULO II</p>
+</div>
+<div class="tit">
+<p>DAS FORMAS DE VIOLÊNCIA DOMÉSTICA E FAMILIAR CONTRA A MULHER</p>
+</div>
+<p><strong>Art. 7º</strong> São formas de violência doméstica e familiar contra a mulher, entre outras:</p>
+<p>I - a violência física, entendida como qualquer conduta que ofenda sua integridade ou saúde corporal;</p>
+<div id="alt-29" class="alt">
+<p>II - a violência psicológica, entendida como qualquer conduta que lhe cause dano emocional e diminuição da <span class="add">autoestima</span> ou que lhe prejudique e perturbe o pleno desenvolvimento ou que vise degradar ou controlar suas ações, comportamentos, crenças e decisões, mediante ameaça, constrangimento, humilhação, manipulação, isolamento, vigilância constante, perseguição contumaz, insulto, chantagem, <span class="add">violação de sua intimidade,</span> ridicularização, exploração e limitação do direito de ir e vir ou qualquer outro meio que lhe cause prejuízo à saúde psicológica e à autodeterminação; <span class="nota">(Redação dada pela Lei nº 13.772, de 2018)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 13.772/2018):</strong> <span class="add">acrescentou</span> “autoestima” … “violação de sua intimidade,”; <span class="del-l">suprimiu</span> “auto-estima”
+</p>
+<p>
+<strong>Redação anterior:</strong> II - a violência psicológica, entendida como qualquer conduta que lhe cause dano emocional e diminuição da <span class="del">auto-estima</span> ou que lhe prejudique e perturbe o pleno desenvolvimento ou que vise degradar ou controlar suas ações, comportamentos, crenças e decisões, mediante ameaça, constrangimento, humilhação, manipulação, isolamento, vigilância constante, perseguição contumaz, insulto, chantagem, ridicularização, exploração e limitação do direito de ir e vir ou qualquer outro meio que lhe cause prejuízo à saúde psicológica e à autodeterminação;
+</p>
+</div>
+</div>
+<p>III - a violência sexual, entendida como qualquer conduta que a constranja a presenciar, a manter ou a participar de relação sexual não desejada, mediante intimidação, ameaça, coação ou uso da força; que a induza a comercializar ou a utilizar, de qualquer modo, a sua sexualidade, que a impeça de usar qualquer método contraceptivo ou que a force ao matrimônio, à gravidez, ao aborto ou à prostituição, mediante coação, chantagem, suborno ou manipulação; ou que limite ou anule o exercício de seus direitos sexuais e reprodutivos;</p>
+<p>IV - a violência patrimonial, entendida como qualquer conduta que configure retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens, valores e direitos ou recursos econômicos, incluindo os destinados a satisfazer suas necessidades;</p>
+<p>V - a violência moral, entendida como qualquer conduta que configure calúnia, difamação ou injúria.</p>
+<div id="alt-30" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2026 · potencial de prova</span>
+</p>
+<p><span class="add">VI – a violência vicária, entendida como qualquer forma de violência praticada contra descendente, ascendente, dependente, enteado, parente, pessoa sob guarda ou responsabilidade direta da mulher ou pessoa de sua rede de apoio, com vistas a atingi-la.</span> <span class="nota">(Incluído pela Lei nº 15.384, de 2026)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 15.384/2026):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+</details>
+<h3 id="leg-g-3">
+3. Medidas integradas de prevenção (inclusive nos currículos escolares) e assistência à mulher
+</h3>
+<p class="arts">
+Arts. 8º e 9º · relacionado a: <a href="especificos.html#esp-e">Esp. e — desenvolvimento e identidades</a> · <a href="especificos.html#esp-f">Esp. f — família, escola e conflitos</a>
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 11.340/2006 — Arts. 8º e 9º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>TÍTULO III</p>
+</div>
+<div class="tit">
+<p>DA ASSISTÊNCIA À MULHER EM SITUAÇÃO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR</p>
+</div>
+<div class="tit">
+<p>CAPÍTULO I</p>
+</div>
+<div class="tit">
+<p>DAS MEDIDAS INTEGRADAS DE PREVENÇÃO</p>
+</div>
+<p><strong>Art. 8º</strong> A política pública que visa coibir a violência doméstica e familiar contra a mulher far-se-á por meio de um conjunto articulado de ações da União, dos Estados, do Distrito Federal e dos Municípios e de ações não-governamentais, tendo por diretrizes:</p>
+<p>I - a integração operacional do Poder Judiciário, do Ministério Público e da Defensoria Pública com as áreas de segurança pública, assistência social, saúde, educação, trabalho e habitação;</p>
+<p>II - a promoção de estudos e pesquisas, estatísticas e outras informações relevantes, com a perspectiva de gênero e de raça ou etnia, concernentes às causas, às conseqüências e à freqüência da violência doméstica e familiar contra a mulher, para a sistematização de dados, a serem unificados nacionalmente, e a avaliação periódica dos resultados das medidas adotadas;</p>
+<p>III - o respeito, nos meios de comunicação social, dos valores éticos e sociais da pessoa e da família, de forma a coibir os papéis estereotipados que legitimem ou exacerbem a violência doméstica e familiar, de acordo com o estabelecido no inciso III do art. 1º , no inciso IV do art. 3º e no inciso IV do art. 221 da Constituição Federal ;</p>
+<p>IV - a implementação de atendimento policial especializado para as mulheres, em particular nas Delegacias de Atendimento à Mulher;</p>
+<p>V - a promoção e a realização de campanhas educativas de prevenção da violência doméstica e familiar contra a mulher, voltadas ao público escolar e à sociedade em geral, e a difusão desta Lei e dos instrumentos de proteção aos direitos humanos das mulheres;</p>
+<p>VI - a celebração de convênios, protocolos, ajustes, termos ou outros instrumentos de promoção de parceria entre órgãos governamentais ou entre estes e entidades não-governamentais, tendo por objetivo a implementação de programas de erradicação da violência doméstica e familiar contra a mulher;</p>
+<p>VII - a capacitação permanente das Polícias Civil e Militar, da Guarda Municipal, do Corpo de Bombeiros e dos profissionais pertencentes aos órgãos e às áreas enunciados no inciso I quanto às questões de gênero e de raça ou etnia;</p>
+<p>VIII - a promoção de programas educacionais que disseminem valores éticos de irrestrito respeito à dignidade da pessoa humana com a perspectiva de gênero e de raça ou etnia;</p>
+<p>IX - o destaque, nos currículos escolares de todos os níveis de ensino, para os conteúdos relativos aos direitos humanos, à eqüidade de gênero e de raça ou etnia e ao problema da violência doméstica e familiar contra a mulher.</p>
+<div class="tit">
+<p>CAPÍTULO II</p>
+</div>
+<div class="tit">
+<p>DA ASSISTÊNCIA À MULHER EM SITUAÇÃO DE VIOLÊNCIA DOMÉSTICA E FAMILIAR</p>
+</div>
+<div id="alt-31" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2024 · potencial de prova</span>
+</p>
+<p><strong>Art. 9º</strong> A assistência à mulher em situação de violência doméstica e familiar será prestada <span class="add">em caráter prioritário no Sistema Único de Saúde (SUS) e no Sistema Único de Segurança Pública (Susp),</span> de forma articulada e conforme os princípios e as diretrizes previstos na Lei <span class="add">nº 8.742, de 7 de dezembro de 1993 (Lei</span> Orgânica da Assistência <span class="add">Social), e em</span> outras normas e políticas públicas de proteção, e <span class="add">emergencialmente,</span> quando for o caso. <span class="nota">(Redação dada pela Lei nº 14.887, de 2024)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 14.887/2024):</strong> <span class="add">acrescentou</span> “em caráter prioritário no Sistema Único de Saúde (SUS) e no Sistema Único de Segurança Púb…” … “nº 8.742, de 7 de dezembro de 1993 (Lei” … “Social), e em” …; <span class="del-l">suprimiu</span> “Social, no Sistema Único de Saúde, no Sistema Único de Segurança Pública, entre” … “emergencialmente”
+</p>
+<p>
+<strong>Redação anterior:</strong> Art. 9º A assistência à mulher em situação de violência doméstica e familiar será prestada de forma articulada e conforme os princípios e as diretrizes previstos na Lei Orgânica da Assistência <span class="del">Social, no Sistema Único de Saúde, no Sistema Único de Segurança Pública, entre</span> outras normas e políticas públicas de proteção, e <span class="del">emergencialmente</span> quando for o caso.
+</p>
+</div>
+</div>
+<p>§ 1º O juiz determinará, por prazo certo, a inclusão da mulher em situação de violência doméstica e familiar no cadastro de programas assistenciais do governo federal, estadual e municipal.</p>
+<p>§ 2º O juiz assegurará à mulher em situação de violência doméstica e familiar, para preservar sua integridade física e psicológica:</p>
+<p>I - acesso prioritário à remoção quando servidora pública, integrante da administração direta ou indireta;</p>
+<p>II - manutenção do vínculo trabalhista, quando necessário o afastamento do local de trabalho, por até seis meses.</p>
+<p>III - encaminhamento à assistência judiciária, quando for o caso, inclusive para eventual ajuizamento da ação de separação judicial, de divórcio, de anulação de casamento ou de dissolução de união estável perante o juízo competente. <span class="nota">(Incluído pela Lei nº 13.894, de 2019)</span></p>
+<p>§ 3º A assistência à mulher em situação de violência doméstica e familiar compreenderá o acesso aos benefícios decorrentes do desenvolvimento científico e tecnológico, incluindo os serviços de contracepção de emergência, a profilaxia das Doenças Sexualmente Transmissíveis (DST) e da Síndrome da Imunodeficiência Adquirida (AIDS) e outros procedimentos médicos necessários e cabíveis nos casos de violência sexual.</p>
+<p>§ 4º Aquele que, por ação ou omissão, causar lesão, violência física, sexual ou psicológica e dano moral ou patrimonial a mulher fica obrigado a ressarcir todos os danos causados, inclusive ressarcir ao Sistema Único de Saúde (SUS), de acordo com a tabela SUS, os custos relativos aos serviços de saúde prestados para o total tratamento das vítimas em situação de violência doméstica e familiar, recolhidos os recursos assim arrecadados ao Fundo de Saúde do ente federado responsável pelas unidades de saúde que prestarem os serviços. <span class="nota">(Vide Lei nº 13.871, de 2019)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 5º Os dispositivos de segurança destinados ao uso em caso de perigo iminente e disponibilizados para o monitoramento das vítimas de violência doméstica ou familiar amparadas por medidas protetivas terão seus custos ressarcidos pelo agressor. <span class="nota">(Vide Lei nº 13.871, de 2019)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 6º O ressarcimento de que tratam os §§ 4º e 5º deste artigo não poderá importar ônus de qualquer natureza ao patrimônio da mulher e dos seus dependentes, nem configurar atenuante ou ensejar possibilidade de substituição da pena aplicada. <span class="nota">(Vide Lei nº 13.871, de 2019)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 7º A mulher em situação de violência doméstica e familiar tem prioridade para matricular seus dependentes em instituição de educação básica mais próxima de seu domicílio, ou transferi-los para essa instituição, mediante a apresentação dos documentos comprobatórios do registro da ocorrência policial ou do processo de violência doméstica e familiar em curso. <span class="nota">(Incluído pela Lei nº 13.882,  de 2019)</span></p>
+<p>§ 8º Serão sigilosos os dados da ofendida e de seus dependentes matriculados ou transferidos conforme o disposto no § 7º deste artigo, e o acesso às informações será reservado ao juiz, ao Ministério Público e aos órgãos competentes do poder público. <span class="nota">(Incluído pela Lei nº 13.882,  de 2019)</span></p>
+</details>
+</main></div></body></html>

@@ -1,0 +1,2095 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CF/88 – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="leg-a-lei-rs-14498.html#leg-a">a) Lei RS 14.498/2014</a><a href="leg-b-estatuto-liberato.html#leg-b">b) Estatuto da Fundação</a><a href="#leg-c" class="atual">c) CF/88</a><a href="leg-d-clt.html#leg-d">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="leg-g-maria-da-penha.html#leg-g">g) Maria da Penha</a><a href="leg-h-lbi.html#leg-h">h) LBI</a><a href="leg-i-lgpd.html#leg-i">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="leg-l-bncc.html#leg-l">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>CF/88</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-c">c) Constituição Federal de 1988 — art. 37 e arts. 205 a 214</h2>
+<table class="mapa">
+<caption>
+Mapa da lei por tópico
+</caption>
+<thead>
+<tr>
+<th>
+Tópico
+</th>
+<th>
+Dispositivos
+</th>
+<th>
+Pontos do programa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="#leg-c-1">1. Administração Pública: princípios, concurso público, acumulação de cargos</a>
+</td>
+<td>
+Art. 37
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-c-2">2. Educação: direito de todos, finalidades e princípios do ensino (gestão democrática, valorização dos profissionais)</a>
+</td>
+<td>
+Arts. 205 e 206
+</td>
+<td>
+<a href="especificos.html#esp-i">Esp. i — gestão democrática e currículo</a> · <a href="leg-j-ldb.html#leg-j">Leg. j — LDB</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-c-3">3. Autonomia universitária</a>
+</td>
+<td>
+Art. 207
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-c-4">4. Dever do Estado com a educação</a>
+</td>
+<td>
+Art. 208
+</td>
+<td>
+<a href="especificos.html#esp-g">Esp. g — inclusão e dificuldades</a> · <a href="leg-m-eca.html#leg-m">Leg. m — ECA</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-c-5">5. Ensino privado, conteúdos mínimos e regime de colaboração entre os sistemas</a>
+</td>
+<td>
+Arts. 209 a 211
+</td>
+<td>
+<a href="especificos.html#esp-i">Esp. i — gestão democrática e currículo</a> · <a href="leg-l-bncc.html#leg-l">Leg. l — BNCC</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-c-6">6. Financiamento da educação e Fundeb</a>
+</td>
+<td>
+Arts. 212, 212-A e 213
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-c-7">7. Plano Nacional de Educação</a>
+</td>
+<td>
+Art. 214
+</td>
+<td>
+—
+</td>
+</tr>
+</tbody>
+</table>
+<div class="recentes">
+<p>
+<strong>Alterações recentes nesta norma (desde 2023) — potencial de prova:</strong>
+</p>
+<ul>
+<li>
+<a href="#alt-1">b) a de um cargo de professor com outro de qualquer natureza;…</a> <span class="nota">(Emenda Constitucional nº 138/2025)</span>
+</li>
+<li>
+<a href="#alt-2">§ 11. Não serão computadas, para efeito dos limites remuneratórios de que trata o inciso XI do caput deste art…</a> <span class="nota">(Emenda Constitucional nº 135/2024)</span>
+</li>
+<li>
+<a href="#alt-4">II - os fundos referidos no inciso I do caput deste artigo serão constituídos por 20% (vinte por cento):…</a> <span class="nota">(Emenda Constitucional nº 132/2023)</span>
+</li>
+<li>
+<a href="#alt-5">a\) das parcelas dos Estados no imposto de que trata o art. 156-A;…</a> <span class="nota">(Emenda Constitucional nº 132/2023)</span>
+</li>
+<li>
+<a href="#alt-6">b\) da parcela do Distrito Federal no imposto de que trata o art. 156-A, relativa ao exercício de sua competên…</a> <span class="nota">(Emenda Constitucional nº 132/2023)</span>
+</li>
+<li>
+<a href="#alt-7">c\) dos recursos a que se referem os incisos I, II e III do caput do art. 155, o inciso II do caput do art. 15…</a> <span class="nota">(Emenda Constitucional nº 132/2023)</span>
+</li>
+<li>
+<a href="#alt-8">XIV - no exercício de 2025, da complementação de que trata o inciso V docaput, até 10% (dez por cento) dos val…</a> <span class="nota">(Emenda Constitucional nº 135/2024)</span>
+</li>
+<li>
+<a href="#alt-9">XV - a partir do exercício de 2026, no mínimo 4% (quatro por cento) dos recursos dos fundos referidos no incis…</a> <span class="nota">(Emenda Constitucional nº 135/2024)</span>
+</li>
+</ul>
+</div>
+<h3 id="leg-c-1">
+1. Administração Pública: princípios, concurso público, acumulação de cargos
+</h3>
+<p class="arts">
+Art. 37
+</p>
+<details class="lei" open>
+<summary>
+CF/88 — Art. 37
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>CAPÍTULO VII</p>
+</div>
+<div class="tit">
+<p>DA ADMINISTRAÇÃO PÚBLICA</p>
+</div>
+<div class="tit">
+<p>Seção I</p>
+</div>
+<div class="tit">
+<p>DISPOSIÇÕES GERAIS</p>
+</div>
+<p><strong>Art. 37.</strong> A administração pública direta e indireta de qualquer dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência e, também, ao seguinte: <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>I - os cargos, empregos e funções públicas são acessíveis aos brasileiros que preencham os requisitos estabelecidos em lei, assim como aos estrangeiros, na forma da lei; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<details class="qart">
+<summary>
+Art. 37, inciso I na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4181749</strong> · 2026 · CISCOPAR · Contador</p>
+<p>Considerando as disposições constitucionais aplicáveis à Administração Pública, estabelecidas pela Constituição Federal de 1988, assinale a alternativa que apresenta uma informação INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> A administração fazendária e seus servidores fiscais terão, no âmbito de suas respectivas áreas de competência e jurisdição, precedência sobre os demais setores administrativos, na forma estabelecida em lei.</li>
+<li><strong>B)</strong> Os cargos, empregos e funções públicas são acessíveis aos brasileiros que preencham os requisitos previstos em lei, bem como aos estrangeiros, na forma da legislação aplicável.</li>
+<li><strong>C)</strong> A lei estabelecerá as hipóteses de contratação por tempo determinado destinadas ao atendimento de necessidade temporária de excepcional interesse público.</li>
+<li><strong>D)</strong> Poderá ser criada autarquia e fundação mediante lei específica. No caso das fundações, cabe à lei complementar definir as áreas de sua atuação.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa B (errada) — I</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4181749">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/629bd0f5-81" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>II - a investidura em cargo ou emprego público depende de aprovação prévia em concurso público de provas ou de provas e títulos, de acordo com a natureza e a complexidade do cargo ou emprego, na forma prevista em lei, ressalvadas as nomeações para cargo em comissão declarado em lei de livre nomeação e exoneração; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<details class="qart">
+<summary>
+Art. 37, inciso II na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4251805</strong> · 2023 · Prefeitura de Alvorada - RS · Odontológo</p>
+<p>Analise as partes que seguem: Segundo a Constituição Federal, a investidura em cargo ou emprego público depende de aprovação prévia em concurso público de provas ou de provas e títulos ****(1ª parte)****. O prazo de validade do concurso público será de até dois anos, prorrogável uma vez, por igual período ****(2ª parte)****. É incentivada ao servidor público civil a associação sindical ****(3ª parte)****.</p>
+<p>Das partes, pode-se afirmar que está(ão) CORRETA(S):</p>
+<ul>
+<li><strong>A)</strong> A 1ª, a 2ª e a 3ª partes.</li>
+<li><strong>B)</strong> Somente a 1ª e a 2ª partes.</li>
+<li><strong>C)</strong> Somente a 1ª e a 3ª partes.</li>
+<li><strong>D)</strong> Somente a 3ª parte.</li>
+<li><strong>E)</strong> Somente a 2ª parte.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa B (certa) — II</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa E (errada) — II</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4251805">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/a0ccefac-9d" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>III - o prazo de validade do concurso público será de até dois anos, prorrogável uma vez, por igual período;</p>
+<details class="qart">
+<summary>
+Art. 37, inciso III na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4251805</strong> · 2023 · Prefeitura de Alvorada - RS · Odontológo</p>
+<p>Analise as partes que seguem: Segundo a Constituição Federal, a investidura em cargo ou emprego público depende de aprovação prévia em concurso público de provas ou de provas e títulos ****(1ª parte)****. O prazo de validade do concurso público será de até dois anos, prorrogável uma vez, por igual período ****(2ª parte)****. É incentivada ao servidor público civil a associação sindical ****(3ª parte)****.</p>
+<p>Das partes, pode-se afirmar que está(ão) CORRETA(S):</p>
+<ul>
+<li><strong>A)</strong> A 1ª, a 2ª e a 3ª partes.</li>
+<li><strong>B)</strong> Somente a 1ª e a 2ª partes.</li>
+<li><strong>C)</strong> Somente a 1ª e a 3ª partes.</li>
+<li><strong>D)</strong> Somente a 3ª parte.</li>
+<li><strong>E)</strong> Somente a 2ª parte.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa C (errada) — III</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4251805">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/a0ccefac-9d" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>IV - durante o prazo improrrogável previsto no edital de convocação, aquele aprovado em concurso público de provas ou de provas e títulos será convocado com prioridade sobre novos concursados para assumir cargo ou emprego, na carreira;</p>
+<p>V - as funções de confiança, exercidas exclusivamente por servidores ocupantes de cargo efetivo, e os cargos em comissão, a serem preenchidos por servidores de carreira nos casos, condições e percentuais mínimos previstos em lei, destinam-se apenas às atribuições de direção, chefia e assessoramento; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>VI - é garantido ao servidor público civil o direito à livre associação sindical;</p>
+<details class="qart">
+<summary>
+Art. 37, inciso VI na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4251805</strong> · 2023 · Prefeitura de Alvorada - RS · Odontológo</p>
+<p>Analise as partes que seguem: Segundo a Constituição Federal, a investidura em cargo ou emprego público depende de aprovação prévia em concurso público de provas ou de provas e títulos ****(1ª parte)****. O prazo de validade do concurso público será de até dois anos, prorrogável uma vez, por igual período ****(2ª parte)****. É incentivada ao servidor público civil a associação sindical ****(3ª parte)****.</p>
+<p>Das partes, pode-se afirmar que está(ão) CORRETA(S):</p>
+<ul>
+<li><strong>A)</strong> A 1ª, a 2ª e a 3ª partes.</li>
+<li><strong>B)</strong> Somente a 1ª e a 2ª partes.</li>
+<li><strong>C)</strong> Somente a 1ª e a 3ª partes.</li>
+<li><strong>D)</strong> Somente a 3ª parte.</li>
+<li><strong>E)</strong> Somente a 2ª parte.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — VI</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — VI</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — VI</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4251805">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/a0ccefac-9d" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>VII - o direito de greve será exercido nos termos e nos limites definidos em lei específica; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>VIII - a lei reservará percentual dos cargos e empregos públicos para as pessoas portadoras de deficiência e definirá os critérios de sua admissão;</p>
+<p>IX - a lei estabelecerá os casos de contratação por tempo determinado para atender a necessidade temporária de excepcional interesse público; <span class="nota">(Vide Emenda constitucional nº 106, de 2020)</span></p>
+<details class="qart">
+<summary>
+Art. 37, inciso IX na prova — 2 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075514</strong> · 2026 · SEPLAG-MG · Direito</p>
+<p>Devido à necessidade de realizar um censo demográfico estadual em curto prazo, uma Fundação Pública precisa contratar mil pesquisadores por apenas seis meses. Sobre o regime jurídico aplicável a essa contratação, é CORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> A Fundação pode contratar livremente, sem necessidade de lei, por ser uma atividade de pesquisa científica.</li>
+<li><strong>B)</strong> A contratação temporária exige previsão em lei para atender à necessidade de excepcional interesse público.</li>
+<li><strong>C)</strong> Os pesquisadores contratados terão direito à estabilidade no serviço público após o término do censo.</li>
+<li><strong>D)</strong> Apenas autarquias podem realizar contratações temporárias, já Fundações devem obrigatoriamente realizar concurso para cargos efetivos.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — IX</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (certa) — IX</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075514">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/74a8c65e-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4181749</strong> · 2026 · CISCOPAR · Contador</p>
+<p>Considerando as disposições constitucionais aplicáveis à Administração Pública, estabelecidas pela Constituição Federal de 1988, assinale a alternativa que apresenta uma informação INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> A administração fazendária e seus servidores fiscais terão, no âmbito de suas respectivas áreas de competência e jurisdição, precedência sobre os demais setores administrativos, na forma estabelecida em lei.</li>
+<li><strong>B)</strong> Os cargos, empregos e funções públicas são acessíveis aos brasileiros que preencham os requisitos previstos em lei, bem como aos estrangeiros, na forma da legislação aplicável.</li>
+<li><strong>C)</strong> A lei estabelecerá as hipóteses de contratação por tempo determinado destinadas ao atendimento de necessidade temporária de excepcional interesse público.</li>
+<li><strong>D)</strong> Poderá ser criada autarquia e fundação mediante lei específica. No caso das fundações, cabe à lei complementar definir as áreas de sua atuação.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa C (errada) — IX</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4181749">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/629bd0f5-81" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>X - a remuneração dos servidores públicos e o subsídio de que trata o § 4º do art. 39 somente poderão ser fixados ou alterados por lei específica, observada a iniciativa privativa em cada caso, assegurada revisão geral anual, sempre na mesma data e sem distinção de índices; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span> <span class="nota">(Regulamento)</span></p>
+<p>XI - a remuneração e o subsídio dos ocupantes de cargos, funções e empregos públicos da administração direta, autárquica e fundacional, dos membros de qualquer dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios, dos detentores de mandato eletivo e dos demais agentes políticos e os proventos, pensões ou outra espécie remuneratória, percebidos cumulativamente ou não, incluídas as vantagens pessoais ou de qualquer outra natureza, não poderão exceder o subsídio mensal, em espécie, dos Ministros do Supremo Tribunal Federal, aplicando-se como limite, nos Municípios, o subsídio do Prefeito, e nos Estados e no Distrito Federal, o subsídio mensal do Governador no âmbito do Poder Executivo, o subsídio dos Deputados Estaduais e Distritais no âmbito do Poder Legislativo e o subsídio dos Desembargadores do Tribunal de Justiça, limitado a noventa inteiros e vinte e cinco centésimos por cento do subsídio mensal, em espécie, dos Ministros do Supremo Tribunal Federal, no âmbito do Poder Judiciário, aplicável este limite aos membros do Ministério Público, aos Procuradores e aos Defensores Públicos; <span class="nota">(Redação dada pela Emenda Constitucional nº 41, 19.12.2003)</span></p>
+<details class="qart">
+<summary>
+Art. 37, inciso XI na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4420575</strong> · 2026 · Prefeitura de Relvado - RS · Auxiliar Administrativo</p>
+<p>As alternativas que seguem apresentam algumas afirmações que envolvem conhecimentos diversos, mas ligados com o vencimento e a remuneração. Nesse sentido analise as alternativas que seguem e assinale a única que apresenta informação INCORRETA, com base no Regime Jurídico Único dos Servidores Públicos.</p>
+<ul>
+<li><strong>A)</strong> Qualquer lei pode fixar a relação de valores entre a maior e a menor remuneração dos servidores municipais.</li>
+<li><strong>B)</strong> Remuneração é o vencimento acrescido das vantagens permanentes ou parcelas pecuniárias incorporadas, estabelecidas em Lei.</li>
+<li><strong>C)</strong> Nenhum servidor poderá perceber mensalmente, a título de remuneração ou subsídio, importância maior do que a fixada como limite pela Constituição Federal.</li>
+<li><strong>D)</strong> Vencimento é a retribuição paga ao servidor pelo efetivo exercício do cargo, correspondente ao valor básico do padrão fixado em Lei.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — XI</strong>: C: certa. Teto remuneratório: nenhuma remuneração ou subsídio pode exceder o limite do art. 37, XI (nos Municípios, o subsídio do Prefeito).</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> O § 5º do art. 39 foi incluído pela EC nº 19/1998 e o teto do art. 37, XI, tem a redação da EC nº 41/2003. São alterações antigas, sem destaque recente.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4420575">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/d436438a-d4" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>XII - os vencimentos dos cargos do Poder Legislativo e do Poder Judiciário não poderão ser superiores aos pagos pelo Poder Executivo;</p>
+<p>XIII - é vedada a vinculação ou equiparação de quaisquer espécies remuneratórias para o efeito de remuneração de pessoal do serviço público; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<details class="qart">
+<summary>
+Art. 37, inciso XIII na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4176808</strong> · 2026 · CISCOPAR · Analista em Administração e Planejamento …</p>
+<p>A Constituição Federal traz que a Administração Pública direta e indireta de qualquer dos Poderes dos Municípios, por exemplo, obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência e, também, ao seguinte:</p>
+<p>**<br />
+**</p>
+<p><strong>I.</strong> O subsídio e os vencimentos dos ocupantes de cargos e empregos públicos são irredutíveis, sem ressalvas.</p>
+<p><strong>II</strong>. É vedada a vinculação ou equiparação de quaisquer espécies remuneratórias para o efeito de remuneração de pessoal do serviço público.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa D (errada) — XIII</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4176808">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/278df5b5-7f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>XIV - os acréscimos pecuniários percebidos por servidor público não serão computados nem acumulados para fins de concessão de acréscimos ulteriores; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>XV - o subsídio e os vencimentos dos ocupantes de cargos e empregos públicos são irredutíveis, ressalvado o disposto nos incisos XI e XIV deste artigo e nos arts. 39, § 4º, 150, II, 153, III, e 153, § 2º, I; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<details class="qart">
+<summary>
+Art. 37, inciso XV na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4176808</strong> · 2026 · CISCOPAR · Analista em Administração e Planejamento …</p>
+<p>A Constituição Federal traz que a Administração Pública direta e indireta de qualquer dos Poderes dos Municípios, por exemplo, obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência e, também, ao seguinte:</p>
+<p>**<br />
+**</p>
+<p><strong>I.</strong> O subsídio e os vencimentos dos ocupantes de cargos e empregos públicos são irredutíveis, sem ressalvas.</p>
+<p><strong>II</strong>. É vedada a vinculação ou equiparação de quaisquer espécies remuneratórias para o efeito de remuneração de pessoal do serviço público.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — XV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — XV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada) — XV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (certa) — XV</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4176808">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/278df5b5-7f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>XVI - é vedada a acumulação remunerada de cargos públicos, exceto, quando houver compatibilidade de horários, observado em qualquer caso o disposto no inciso XI: <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>a) a de dois cargos de professor; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<div id="alt-1" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2025 · potencial de prova</span>
+</p>
+<p>b) a de um cargo de professor com outro <span class="add">de qualquer natureza;</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 138, de 2025)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 138/2025):</strong> <span class="add">acrescentou</span> “de qualquer natureza;”; <span class="del-l">suprimiu</span> “técnico ou científico;”
+</p>
+<p>
+<strong>Redação anterior:</strong> b) a de um cargo de professor com outro <span class="del">técnico ou científico;</span>
+</p>
+</div>
+</div>
+<p>c) a de dois cargos ou empregos privativos de profissionais de saúde, com profissões regulamentadas; <span class="nota">(Redação dada pela Emenda Constitucional nº 34, de 2001)</span></p>
+<p>XVII - a proibição de acumular estende-se a empregos e funções e abrange autarquias, fundações, empresas públicas, sociedades de economia mista, suas subsidiárias, e sociedades controladas, direta ou indiretamente, pelo poder público; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>XVIII - a administração fazendária e seus servidores fiscais terão, dentro de suas áreas de competência e jurisdição, precedência sobre os demais setores administrativos, na forma da lei;</p>
+<details class="qart">
+<summary>
+Art. 37, inciso XVIII na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4181749</strong> · 2026 · CISCOPAR · Contador</p>
+<p>Considerando as disposições constitucionais aplicáveis à Administração Pública, estabelecidas pela Constituição Federal de 1988, assinale a alternativa que apresenta uma informação INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> A administração fazendária e seus servidores fiscais terão, no âmbito de suas respectivas áreas de competência e jurisdição, precedência sobre os demais setores administrativos, na forma estabelecida em lei.</li>
+<li><strong>B)</strong> Os cargos, empregos e funções públicas são acessíveis aos brasileiros que preencham os requisitos previstos em lei, bem como aos estrangeiros, na forma da legislação aplicável.</li>
+<li><strong>C)</strong> A lei estabelecerá as hipóteses de contratação por tempo determinado destinadas ao atendimento de necessidade temporária de excepcional interesse público.</li>
+<li><strong>D)</strong> Poderá ser criada autarquia e fundação mediante lei específica. No caso das fundações, cabe à lei complementar definir as áreas de sua atuação.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa A (errada) — XVIII</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4181749">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/629bd0f5-81" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>XIX - somente por lei específica poderá ser criada autarquia e autorizada a instituição de empresa pública, de sociedade de economia mista e de fundação, cabendo à lei complementar, neste último caso, definir as áreas de sua atuação; <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<details class="qart">
+<summary>
+Art. 37, inciso XIX na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4181749</strong> · 2026 · CISCOPAR · Contador</p>
+<p>Considerando as disposições constitucionais aplicáveis à Administração Pública, estabelecidas pela Constituição Federal de 1988, assinale a alternativa que apresenta uma informação INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> A administração fazendária e seus servidores fiscais terão, no âmbito de suas respectivas áreas de competência e jurisdição, precedência sobre os demais setores administrativos, na forma estabelecida em lei.</li>
+<li><strong>B)</strong> Os cargos, empregos e funções públicas são acessíveis aos brasileiros que preencham os requisitos previstos em lei, bem como aos estrangeiros, na forma da legislação aplicável.</li>
+<li><strong>C)</strong> A lei estabelecerá as hipóteses de contratação por tempo determinado destinadas ao atendimento de necessidade temporária de excepcional interesse público.</li>
+<li><strong>D)</strong> Poderá ser criada autarquia e fundação mediante lei específica. No caso das fundações, cabe à lei complementar definir as áreas de sua atuação.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — XIX</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (certa) — XIX</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4181749">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/629bd0f5-81" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>XX - depende de autorização legislativa, em cada caso, a criação de subsidiárias das entidades mencionadas no inciso anterior, assim como a participação de qualquer delas em empresa privada;</p>
+<p>XXI - ressalvados os casos especificados na legislação, as obras, serviços, compras e alienações serão contratados mediante processo de licitação pública que assegure igualdade de condições a todos os concorrentes, com cláusulas que estabeleçam obrigações de pagamento, mantidas as condições efetivas da proposta, nos termos da lei, o qual somente permitirá as exigências de qualificação técnica e econômica indispensáveis à garantia do cumprimento das obrigações. <span class="nota">(Regulamento)</span></p>
+<p>XXII - as administrações tributárias da União, dos Estados, do Distrito Federal e dos Municípios, atividades essenciais ao funcionamento do Estado, exercidas por servidores de carreiras específicas, terão recursos prioritários para a realização de suas atividades e atuarão de forma integrada, inclusive com o compartilhamento de cadastros e de informações fiscais, na forma da lei ou convênio. <span class="nota">(Incluído pela Emenda Constitucional nº 42, de 19.12.2003)</span></p>
+<details class="qart">
+<summary>
+Art. 37, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075508</strong> · 2026 · SEPLAG-MG · Direito</p>
+<p>Em uma reunião de diretoria de uma Fundação, discute-se a aplicação do princípio da moralidade administrativa. De acordo com о entendimento sobre a disponibilidade de caixa dos entes públicos, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> As disponibilidades de caixa da Fundação, por ser entidade estadual, podem ser livremente depositadas em qualquer banco comercial privado que ofereça maior rentabilidade.</li>
+<li><strong>B)</strong> A regra constitucional exige o depósito das disponibilidades de caixa em instituições financeiras oficiais, visando evitar favorecimentos indevidos a bancos privados.</li>
+<li><strong>C)</strong> Entende-se que leis locais (estaduais ou municipais) podem criar livremente exceções à regra de depósito em bancos oficiais para a Administração Indireta.</li>
+<li><strong>D)</strong> O princípio da moralidade administrativa não possui relevância jurídica prática, sendo apenas um texto normativo de conteúdo escasso.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa D (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075508">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/74997cb7-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º A publicidade dos atos, programas, obras, serviços e campanhas dos órgãos públicos deverá ter caráter educativo, informativo ou de orientação social, dela não podendo constar nomes, símbolos ou imagens que caracterizem promoção pessoal de autoridades ou servidores públicos.</p>
+<p>§ 2º A não observância do disposto nos incisos II e III implicará a nulidade do ato e a punição da autoridade responsável, nos termos da lei.</p>
+<p>§ 3º A lei disciplinará as formas de participação do usuário na administração pública direta e indireta, regulando especialmente: <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>I - as reclamações relativas à prestação dos serviços públicos em geral, asseguradas a manutenção de serviços de atendimento ao usuário e a avaliação periódica, externa e interna, da qualidade dos serviços; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>II - o acesso dos usuários a registros administrativos e a informações sobre atos de governo, observado o disposto no art. 5º, X e XXXIII; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span> <span class="nota">(Vide Lei nº 12.527, de 2011)</span></p>
+<p>III - a disciplina da representação contra o exercício negligente ou abusivo de cargo, emprego ou função na administração pública. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 4º Os atos de improbidade administrativa importarão a suspensão dos direitos políticos, a perda da função pública, a indisponibilidade dos bens e o ressarcimento ao erário, na forma e gradação previstas em lei, sem prejuízo da ação penal cabível.</p>
+<p>§ 5º A lei estabelecerá os prazos de prescrição para ilícitos praticados por qualquer agente, servidor ou não, que causem prejuízos ao erário, ressalvadas as respectivas ações de ressarcimento.</p>
+<p>§ 6º As pessoas jurídicas de direito público e as de direito privado prestadoras de serviços públicos responderão pelos danos que seus agentes, nessa qualidade, causarem a terceiros, assegurado o direito de regresso contra o responsável nos casos de dolo ou culpa.</p>
+<p>§ 7º A lei disporá sobre os requisitos e as restrições ao ocupante de cargo ou emprego da administração direta e indireta que possibilite o acesso a informações privilegiadas. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 8º A autonomia gerencial, orçamentária e financeira dos órgãos e entidades da administração direta e indireta poderá ser ampliada mediante contrato, a ser firmado entre seus administradores e o poder público, que tenha por objeto a fixação de metas de desempenho para o órgão ou entidade, cabendo à lei dispor sobre: <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span> <span class="nota">(Regulamento)</span> <span class="nota">(Vigência)</span></p>
+<p>I - o prazo de duração do contrato; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>II - os controles e critérios de avaliação de desempenho, direitos, obrigações e responsabilidade dos dirigentes; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>III - a remuneração do pessoal. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 9º O disposto no inciso XI aplica-se às empresas públicas e às sociedades de economia mista, e suas subsidiárias, que receberem recursos da União, dos Estados, do Distrito Federal ou dos Municípios para pagamento de despesas de pessoal ou de custeio em geral. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 10. É vedada a percepção simultânea de proventos de aposentadoria decorrentes do art. 40 ou dos arts. 42 e 142 com a remuneração de cargo, emprego ou função pública, ressalvados os cargos acumuláveis na forma desta Constituição, os cargos eletivos e os cargos em comissão declarados em lei de livre nomeação e exoneração. <span class="nota">(Incluído pela Emenda Constitucional nº 20, de 1998)</span> <span class="nota">(Vide Emenda Constitucional nº 20, de 1998)</span></p>
+<div id="alt-2" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2024 · potencial de prova</span>
+</p>
+<p>§ 11. Não serão computadas, para efeito dos limites remuneratórios de que trata o inciso XI do <span class="add"><strong>caput</strong></span> deste artigo, as parcelas de caráter indenizatório <span class="add">expressamente</span> previstas em <span class="add">lei ordinária, aprovada pelo Congresso Nacional, de caráter nacional, aplicada a todos os Poderes e órgãos constitucionalmente autônomos.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 135, de 2024)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 135/2024):</strong> <span class="add">acrescentou</span> “caput” … “expressamente” … “lei ordinária, aprovada pelo Congresso Nacional, de caráter nacional, aplicada a todos os …”; <span class="del-l">suprimiu</span> “caput” … “lei.”
+</p>
+<p>
+<strong>Redação anterior:</strong> § 11. Não serão computadas, para efeito dos limites remuneratórios de que trata o inciso XI do <span class="del">caput</span> deste artigo, as parcelas de caráter indenizatório previstas em <span class="del">lei.</span>
+</p>
+</div>
+</div>
+<p>§ 12. Para os fins do disposto no inciso XI do caput deste artigo, fica facultado aos Estados e ao Distrito Federal fixar, em seu âmbito, mediante emenda às respectivas Constituições e Lei Orgânica, como limite único, o subsídio mensal dos Desembargadores do respectivo Tribunal de Justiça, limitado a noventa inteiros e vinte e cinco centésimos por cento do subsídio mensal dos Ministros do Supremo Tribunal Federal, não se aplicando o disposto neste parágrafo aos subsídios dos Deputados Estaduais e Distritais e dos Vereadores. <span class="nota">(Incluído pela Emenda Constitucional nº 47, de 2005)</span></p>
+<p>§ 13. O servidor público titular de cargo efetivo poderá ser readaptado para exercício de cargo cujas atribuições e responsabilidades sejam compatíveis com a limitação que tenha sofrido em sua capacidade física ou mental, enquanto permanecer nesta condição, desde que possua a habilitação e o nível de escolaridade exigidos para o cargo de destino, mantida a remuneração do cargo de origem. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>§ 14. A aposentadoria concedida com a utilização de tempo de contribuição decorrente de cargo, emprego ou função pública, inclusive do Regime Geral de Previdência Social, acarretará o rompimento do vínculo que gerou o referido tempo de contribuição. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>§ 15. É vedada a complementação de aposentadorias de servidores públicos e de pensões por morte a seus dependentes que não seja decorrente do disposto nos §§ 14 a 16 do art. 40 ou que não seja prevista em lei que extinga regime próprio de previdência social. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>§ 16. Os órgãos e entidades da administração pública, individual ou conjuntamente, devem realizar avaliação das políticas públicas, inclusive com divulgação do objeto a ser avaliado e dos resultados alcançados, na forma da lei. <span class="nota">(Incluído pela Emenda Constitucional nº 109, de 2021)</span></p>
+<details class="qart">
+<summary>
+Art. 37 na prova — 3 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075514</strong> · 2026 · SEPLAG-MG · Direito</p>
+<p>Devido à necessidade de realizar um censo demográfico estadual em curto prazo, uma Fundação Pública precisa contratar mil pesquisadores por apenas seis meses. Sobre o regime jurídico aplicável a essa contratação, é CORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> A Fundação pode contratar livremente, sem necessidade de lei, por ser uma atividade de pesquisa científica.</li>
+<li><strong>B)</strong> A contratação temporária exige previsão em lei para atender à necessidade de excepcional interesse público.</li>
+<li><strong>C)</strong> Os pesquisadores contratados terão direito à estabilidade no serviço público após o término do censo.</li>
+<li><strong>D)</strong> Apenas autarquias podem realizar contratações temporárias, já Fundações devem obrigatoriamente realizar concurso para cargos efetivos.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa D (errada)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075514">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/74a8c65e-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4176808</strong> · 2026 · CISCOPAR · Analista em Administração e Planejamento …</p>
+<p>A Constituição Federal traz que a Administração Pública direta e indireta de qualquer dos Poderes dos Municípios, por exemplo, obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência e, também, ao seguinte:</p>
+<p>**<br />
+**</p>
+<p><strong>I.</strong> O subsídio e os vencimentos dos ocupantes de cargos e empregos públicos são irredutíveis, sem ressalvas.</p>
+<p><strong>II</strong>. É vedada a vinculação ou equiparação de quaisquer espécies remuneratórias para o efeito de remuneração de pessoal do serviço público.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4176808">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/278df5b5-7f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4181749</strong> · 2026 · CISCOPAR · Contador</p>
+<p>Considerando as disposições constitucionais aplicáveis à Administração Pública, estabelecidas pela Constituição Federal de 1988, assinale a alternativa que apresenta uma informação INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> A administração fazendária e seus servidores fiscais terão, no âmbito de suas respectivas áreas de competência e jurisdição, precedência sobre os demais setores administrativos, na forma estabelecida em lei.</li>
+<li><strong>B)</strong> Os cargos, empregos e funções públicas são acessíveis aos brasileiros que preencham os requisitos previstos em lei, bem como aos estrangeiros, na forma da legislação aplicável.</li>
+<li><strong>C)</strong> A lei estabelecerá as hipóteses de contratação por tempo determinado destinadas ao atendimento de necessidade temporária de excepcional interesse público.</li>
+<li><strong>D)</strong> Poderá ser criada autarquia e fundação mediante lei específica. No caso das fundações, cabe à lei complementar definir as áreas de sua atuação.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4181749">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/629bd0f5-81" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+</details>
+<h3 id="leg-c-2">
+2. Educação: direito de todos, finalidades e princípios do ensino (gestão democrática, valorização dos profissionais)
+</h3>
+<p class="arts">
+Arts. 205 e 206 · relacionado a: <a href="especificos.html#esp-i">Esp. i — gestão democrática e currículo</a> · <a href="leg-j-ldb.html#leg-j">Leg. j — LDB</a>
+</p>
+<details class="lei" open>
+<summary>
+CF/88 — Arts. 205 e 206
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>CAPÍTULO III</p>
+</div>
+<div class="tit">
+<p>DA EDUCAÇÃO, DA CULTURA E DO DESPORTO</p>
+</div>
+<div class="tit">
+<p>Seção I</p>
+</div>
+<div class="tit">
+<p>DA EDUCAÇÃO</p>
+</div>
+<p><strong>Art. 205.</strong> A educação, direito de todos e dever do Estado e da família, será promovida e incentivada com a colaboração da sociedade, visando ao pleno desenvolvimento da pessoa, seu preparo para o exercício da cidadania e sua qualificação para o trabalho.</p>
+<p><strong>Art. 206.</strong> O ensino será ministrado com base nos seguintes princípios:</p>
+<p>I - igualdade de condições para o acesso e permanência na escola;</p>
+<p>II - liberdade de aprender, ensinar, pesquisar e divulgar o pensamento, a arte e o saber;</p>
+<p>III - pluralismo de idéias e de concepções pedagógicas, e coexistência de instituições públicas e privadas de ensino;</p>
+<details class="qart">
+<summary>
+Art. 206, inciso III na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4042232</strong> · 2026 · Prefeitura de São Lourenço do Sul - RS · Arquiteto …</p>
+<p>Pode-se afirmar que o ensino será ministrado com base em princípios como a igualdade de condições para acesso e permanência na escola, e a liberdade de aprender, ensinar, pesquisar e divulgar o pensamento, a arte e o saber, bem como:</p>
+<p>I. Pluralismo de ideias e de concepções pedagógicas, religiosas e coexistência de instituições públicas e privadas de ensino.</p>
+<p>II. Gestão democrática do ensino público.</p>
+<p>Acerca das assertivas, pode-se afirmar que, conforme Lei Orgânica:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — III</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — III</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada) — III</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (certa) — III</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4042232">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/5021a115-49" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>IV - gratuidade do ensino público em estabelecimentos oficiais;</p>
+<p>V - valorização dos profissionais da educação escolar, garantidos, na forma da lei, planos de carreira, com ingresso exclusivamente por concurso público de provas e títulos, aos das redes públicas; <span class="nota">(Redação dada pela Emenda Constitucional nº 53, de 2006)</span> <span class="nota">(Vide Lei nº 14.817, de 2024)</span></p>
+<p>VI - gestão democrática do ensino público, na forma da lei;</p>
+<details class="qart">
+<summary>
+Art. 206, inciso VI na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4042232</strong> · 2026 · Prefeitura de São Lourenço do Sul - RS · Arquiteto …</p>
+<p>Pode-se afirmar que o ensino será ministrado com base em princípios como a igualdade de condições para acesso e permanência na escola, e a liberdade de aprender, ensinar, pesquisar e divulgar o pensamento, a arte e o saber, bem como:</p>
+<p>I. Pluralismo de ideias e de concepções pedagógicas, religiosas e coexistência de instituições públicas e privadas de ensino.</p>
+<p>II. Gestão democrática do ensino público.</p>
+<p>Acerca das assertivas, pode-se afirmar que, conforme Lei Orgânica:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa D (errada) — VI</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4042232">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/5021a115-49" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>VII - garantia de padrão de qualidade.</p>
+<p>VIII - piso salarial profissional nacional para os profissionais da educação escolar pública, nos termos de lei federal. <span class="nota">(Incluído pela Emenda Constitucional nº 53, de 2006)</span></p>
+<p>IX - garantia do direito à educação e à aprendizagem ao longo da vida. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>Parágrafo único. A lei disporá sobre as categorias de trabalhadores considerados profissionais da educação básica e sobre a fixação de prazo para a elaboração ou adequação de seus planos de carreira, no âmbito da União, dos Estados, do Distrito Federal e dos Municípios. <span class="nota">(Incluído pela Emenda Constitucional nº 53, de 2006)</span></p>
+<details class="qart">
+<summary>
+Art. 206 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4042232</strong> · 2026 · Prefeitura de São Lourenço do Sul - RS · Arquiteto …</p>
+<p>Pode-se afirmar que o ensino será ministrado com base em princípios como a igualdade de condições para acesso e permanência na escola, e a liberdade de aprender, ensinar, pesquisar e divulgar o pensamento, a arte e o saber, bem como:</p>
+<p>I. Pluralismo de ideias e de concepções pedagógicas, religiosas e coexistência de instituições públicas e privadas de ensino.</p>
+<p>II. Gestão democrática do ensino público.</p>
+<p>Acerca das assertivas, pode-se afirmar que, conforme Lei Orgânica:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4042232">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/5021a115-49" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+</details>
+<h3 id="leg-c-3">
+3. Autonomia universitária
+</h3>
+<p class="arts">
+Art. 207
+</p>
+<details class="lei" open>
+<summary>
+CF/88 — Art. 207
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 207.</strong> As universidades gozam de autonomia didático-científica, administrativa e de gestão financeira e patrimonial, e obedecerão ao princípio de indissociabilidade entre ensino, pesquisa e extensão.</p>
+<p>§ 1º É facultado às universidades admitir professores, técnicos e cientistas estrangeiros, na forma da lei. <span class="nota">(Incluído pela Emenda Constitucional nº 11, de 1996)</span></p>
+<p>§ 2º O disposto neste artigo aplica-se às instituições de pesquisa científica e tecnológica. <span class="nota">(Incluído pela Emenda Constitucional nº 11, de 1996)</span></p>
+</details>
+<h3 id="leg-c-4">
+4. Dever do Estado com a educação
+</h3>
+<p class="arts">
+Art. 208 · relacionado a: <a href="especificos.html#esp-g">Esp. g — inclusão e dificuldades</a> · <a href="leg-m-eca.html#leg-m">Leg. m — ECA</a>
+</p>
+<details class="lei" open>
+<summary>
+CF/88 — Art. 208
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 208.</strong> O dever do Estado com a educação será efetivado mediante a garantia de:</p>
+<p>I - educação básica obrigatória e gratuita dos 4 (quatro) aos 17 (dezessete) anos de idade, assegurada inclusive sua oferta gratuita para todos os que a ela não tiveram acesso na idade própria; <span class="nota">(Redação dada pela Emenda Constitucional nº 59, de 2009)</span> <span class="nota">(Vide Emenda Constitucional nº 59, de 2009)</span></p>
+<p>II - progressiva universalização do ensino médio gratuito; <span class="nota">(Redação dada pela Emenda Constitucional nº 14, de 1996)</span></p>
+<p>III - atendimento educacional especializado aos portadores de deficiência, preferencialmente na rede regular de ensino;</p>
+<p>IV - educação infantil, em creche e pré-escola, às crianças até 5 (cinco) anos de idade; <span class="nota">(Redação dada pela Emenda Constitucional nº 53, de 2006)</span></p>
+<p>V - acesso aos níveis mais elevados do ensino, da pesquisa e da criação artística, segundo a capacidade de cada um;</p>
+<p>VI - oferta de ensino noturno regular, adequado às condições do educando;</p>
+<p>VII - atendimento ao educando, em todas as etapas da educação básica, por meio de programas suplementares de material didático-escolar, transporte, alimentação e assistência à saúde. <span class="nota">(Redação dada pela Emenda Constitucional nº 59, de 2009)</span></p>
+<p>§ 1º O acesso ao ensino obrigatório e gratuito é direito público subjetivo.</p>
+<p>§ 2º O não-oferecimento do ensino obrigatório pelo Poder Público, ou sua oferta irregular, importa responsabilidade da autoridade competente.</p>
+<p>§ 3º Compete ao Poder Público recensear os educandos no ensino fundamental, fazer-lhes a chamada e zelar, junto aos pais ou responsáveis, pela freqüência à escola.</p>
+</details>
+<h3 id="leg-c-5">
+5. Ensino privado, conteúdos mínimos e regime de colaboração entre os sistemas
+</h3>
+<p class="arts">
+Arts. 209 a 211 · relacionado a: <a href="especificos.html#esp-i">Esp. i — gestão democrática e currículo</a> · <a href="leg-l-bncc.html#leg-l">Leg. l — BNCC</a>
+</p>
+<details class="lei" open>
+<summary>
+CF/88 — Arts. 209 a 211
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 209.</strong> O ensino é livre à iniciativa privada, atendidas as seguintes condições:</p>
+<p>I - cumprimento das normas gerais da educação nacional;</p>
+<p>II - autorização e avaliação de qualidade pelo Poder Público.</p>
+<details class="qart">
+<summary>
+Art. 209 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4135205</strong> · 2026 · Prefeitura de Porto Vitória - PR · Professor de Artes …</p>
+<p>O ensino é livre à iniciativa privada, atendidas quantas das seguintes condições?</p>
+<p>I. Autorização de funcionamento e avaliação de qualidade pelo Poder Público;</p>
+<p>II. Cumprimento das normas gerais da educação nacional e do respectivo sistema de ensino;</p>
+<p>III. Capacidade de autofinanciamento, sem ressalvas.</p>
+<ul>
+<li><strong>A)</strong> Nenhum deles.</li>
+<li><strong>B)</strong> Apenas 1 deles.</li>
+<li><strong>C)</strong> Apenas 2 deles.</li>
+<li><strong>D)</strong> Todos os 3.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (certa)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="leg-j-ldb.html#q-Q4135205">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ab0042a1-70" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 210.</strong> Serão fixados conteúdos mínimos para o ensino fundamental, de maneira a assegurar formação básica comum e respeito aos valores culturais e artísticos, nacionais e regionais.</p>
+<p>§ 1º O ensino religioso, de matrícula facultativa, constituirá disciplina dos horários normais das escolas públicas de ensino fundamental.</p>
+<p>§ 2º O ensino fundamental regular será ministrado em língua portuguesa, assegurada às comunidades indígenas também a utilização de suas línguas maternas e processos próprios de aprendizagem.</p>
+<p><strong>Art. 211.</strong> A União, os Estados, o Distrito Federal e os Municípios organizarão em regime de colaboração seus sistemas de ensino.</p>
+<p>§ 1º A União organizará o sistema federal de ensino e o dos Territórios, financiará as instituições de ensino públicas federais e exercerá, em matéria educacional, função redistributiva e supletiva, de forma a garantir equalização de oportunidades educacionais e padrão mínimo de qualidade do ensino mediante assistência técnica e financeira aos Estados, ao Distrito Federal e aos Municípios; <span class="nota">(Redação dada pela Emenda Constitucional nº 14, de 1996)</span></p>
+<p>§ 2º Os Municípios atuarão prioritariamente no ensino fundamental e na educação infantil. <span class="nota">(Redação dada pela Emenda Constitucional nº 14, de 1996)</span></p>
+<p>§ 3º Os Estados e o Distrito Federal atuarão prioritariamente no ensino fundamental e médio. <span class="nota">(Incluído pela Emenda Constitucional nº 14, de 1996)</span></p>
+<div id="alt-3" class="alt">
+<p>§ 4º Na organização de seus sistemas de ensino, a União, os Estados, o Distrito Federal e os Municípios definirão formas de colaboração, de <span class="add">forma</span> a assegurar a <span class="add">universalização, a qualidade e a equidade</span> do ensino obrigatório. <span class="nota">(Redação dada pela Emenda Constitucional nº 108, de 2020)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 108/2020):</strong> <span class="add">acrescentou</span> “forma” … “universalização, a qualidade e a equidade”; <span class="del-l">suprimiu</span> “modo” … “universalização”
+</p>
+<p>
+<strong>Redação anterior:</strong> § 4º Na organização de seus sistemas de ensino, a União, os Estados, o Distrito Federal e os Municípios definirão formas de colaboração, de <span class="del">modo</span> a assegurar a <span class="del">universalização</span> do ensino obrigatório.
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 4º Na organização de seus sistemas de ensino, os Estados e os Municípios definirão formas de colaboração, de modo a assegurar a universalização do ensino obrigatório. (Incluído pela Emenda Constitucional nº 14, de 1996)
+</p>
+</div>
+</div>
+<p>§ 5º A educação básica pública atenderá prioritariamente ao ensino regular. <span class="nota">(Incluído pela Emenda Constitucional nº 53, de 2006)</span></p>
+<p>§ 6º A União, os Estados, o Distrito Federal e os Municípios exercerão ação redistributiva em relação a suas escolas. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>§ 7º O padrão mínimo de qualidade de que trata o § 1º deste artigo considerará as condições adequadas de oferta e terá como referência o Custo Aluno Qualidade (CAQ), pactuados em regime de colaboração na forma disposta em lei complementar, conforme o parágrafo único do art. 23 desta Constituição. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+</details>
+<h3 id="leg-c-6">
+6. Financiamento da educação e Fundeb
+</h3>
+<p class="arts">
+Arts. 212, 212-A e 213
+</p>
+<details class="lei" open>
+<summary>
+CF/88 — Arts. 212, 212-A e 213
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 212.</strong> A União aplicará, anualmente, nunca menos de dezoito, e os Estados, o Distrito Federal e os Municípios vinte e cinco por cento, no mínimo, da receita resultante de impostos, compreendida a proveniente de transferências, na manutenção e desenvolvimento do ensino.</p>
+<p>§ 1º A parcela da arrecadação de impostos transferida pela União aos Estados, ao Distrito Federal e aos Municípios, ou pelos Estados aos respectivos Municípios, não é considerada, para efeito do cálculo previsto neste artigo, receita do governo que a transferir.</p>
+<p>§ 2º Para efeito do cumprimento do disposto no “caput” deste artigo, serão considerados os sistemas de ensino federal, estadual e municipal e os recursos aplicados na forma do art. 213.</p>
+<p>§ 3º A distribuição dos recursos públicos assegurará prioridade ao atendimento das necessidades do ensino obrigatório, no que se refere a universalização, garantia de padrão de qualidade e equidade, nos termos do plano nacional de educação. <span class="nota">(Redação dada pela Emenda Constitucional nº 59, de 2009)</span></p>
+<p>§ 4º Os programas suplementares de alimentação e assistência à saúde previstos no art. 208, VII, serão financiados com recursos provenientes de contribuições sociais e outros recursos orçamentários.</p>
+<p>§ 5º A educação básica pública terá como fonte adicional de financiamento a contribuição social do salário-educação, recolhida pelas empresas na forma da lei. <span class="nota">(Redação dada pela Emenda Constitucional nº 53, de 2006)</span> <span class="nota">(Vide Decreto nº 6.003, de 2006)</span></p>
+<p>§ 6º As cotas estaduais e municipais da arrecadação da contribuição social do salário-educação serão distribuídas proporcionalmente ao número de alunos matriculados na educação básica nas respectivas redes públicas de ensino. <span class="nota">(Incluído pela Emenda Constitucional nº 53, de 2006)</span></p>
+<p>§ 7º É vedado o uso dos recursos referidos no <strong>caput</strong> e nos §§ 5º e 6º deste artigo para pagamento de aposentadorias e de pensões. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>§ 8º Na hipótese de extinção ou de substituição de impostos, serão redefinidos os percentuais referidos no <strong>caput</strong> deste artigo e no inciso II do <strong>caput</strong> do art. 212-A, de modo que resultem recursos vinculados à manutenção e ao desenvolvimento do ensino, bem como os recursos subvinculados aos fundos de que trata o art. 212-A desta Constituição, em aplicações equivalentes às anteriormente praticadas. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>§ 9º A lei disporá sobre normas de fiscalização, de avaliação e de controle das despesas com educação nas esferas estadual, distrital e municipal. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p><strong>Art. 212-A.</strong> Os Estados, o Distrito Federal e os Municípios destinarão parte dos recursos a que se refere o <strong>caput</strong> do art. 212 desta Constituição à manutenção e ao desenvolvimento do ensino na educação básica e à remuneração condigna de seus profissionais, respeitadas as seguintes disposições:            Regulamento <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>I - a distribuição dos recursos e de responsabilidades entre o Distrito Federal, os Estados e seus Municípios é assegurada mediante a instituição, no âmbito de cada Estado e do Distrito Federal, de um Fundo de Manutenção e Desenvolvimento da Educação Básica e de Valorização dos Profissionais da Educação (Fundeb), de natureza contábil; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<div id="alt-4" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p>II - os fundos referidos no inciso I do <strong>caput</strong> deste artigo serão constituídos por 20% (vinte por <span class="add">cento):</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 132, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 132/2023):</strong> <span class="add">acrescentou</span> “cento):”; <span class="del-l">suprimiu</span> “cento) dos recursos a que se referem os incisos I, II e III do caput do art. 155, o inciso…”
+</p>
+<p>
+<strong>Redação anterior:</strong> II - os fundos referidos no inciso I do caput deste artigo serão constituídos por 20% (vinte por <span class="del">cento) dos recursos a que se referem os incisos I, II e III do caput do art. 155, o inciso II do caput do art. 157, os incisos II, III e IV do caput do art. 158 e as alíneas "a" e "b" do inciso I e o inciso II do caput do art. 159 desta Constituição;</span>
+</p>
+</div>
+</div>
+<div id="alt-5" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p><span class="add">a) das parcelas dos Estados no imposto de que trata o art. 156-A;</span> <span class="nota">(Incluído pela Emenda Constitucional nº 132, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 132/2023):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<div id="alt-6" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p><span class="add">b) da parcela do Distrito Federal no imposto de que trata o art. 156-A, relativa ao exercício de sua competência estadual, nos termos do art. 156-A, § 2º; e</span> <span class="nota">(Incluído pela Emenda Constitucional nº 132, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 132/2023):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<div id="alt-7" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p><span class="add">c) dos recursos a que se referem os incisos I, II e III do <strong>caput</strong> do art. 155, o inciso II do <strong>caput</strong> do art. 157, os incisos II, III e IV do <strong>caput</strong> do art. 158 e as alíneas “a” e “b” do inciso I e o inciso II do <strong>caput</strong> do art. 159 desta Constituição;</span> <span class="nota">(Incluído pela Emenda Constitucional nº 132, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 132/2023):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<p>III - os recursos referidos no inciso II do <strong>caput</strong> deste artigo serão distribuídos entre cada Estado e seus Municípios, proporcionalmente ao número de alunos das diversas etapas e modalidades da educação básica presencial matriculados nas respectivas redes, nos âmbitos de atuação prioritária, conforme estabelecido nos §§ 2º e 3º do art. 211 desta Constituição, observadas as ponderações referidas na alínea “a” do inciso X do <strong>caput</strong> e no § 2º deste artigo; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>IV - a União complementará os recursos dos fundos a que se refere o inciso II do <strong>caput</strong> deste artigo; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>V - a complementação da União será equivalente a, no mínimo, 23% (vinte e três por cento) do total de recursos a que se refere o inciso II do <strong>caput</strong> deste artigo, distribuída da seguinte forma: <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>a) 10 (dez) pontos percentuais no âmbito de cada Estado e do Distrito Federal, sempre que o valor anual por aluno (VAAF), nos termos do inciso III do caput deste artigo, não alcançar o mínimo definido nacionalmente; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>b) no mínimo, 10,5 (dez inteiros e cinco décimos) pontos percentuais em cada rede pública de ensino municipal, estadual ou distrital, sempre que o valor anual total por aluno (VAAT), referido no inciso VI do <strong>caput</strong> deste artigo, não alcançar o mínimo definido nacionalmente; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>c) 2,5 (dois inteiros e cinco décimos) pontos percentuais nas redes públicas que, cumpridas condicionalidades de melhoria de gestão previstas em lei, alcançarem evolução de indicadores a serem definidos, de atendimento e melhoria da aprendizagem com redução das desigualdades, nos termos do sistema nacional de avaliação da educação básica; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>VI - o VAAT será calculado, na forma da lei de que trata o inciso X do <strong>caput</strong> deste artigo, com base nos recursos a que se refere o inciso II do <strong>caput</strong> deste artigo, acrescidos de outras receitas e de transferências vinculadas à educação, observado o disposto no § 1º e consideradas as matrículas nos termos do inciso III do <strong>caput</strong> deste artigo; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>VII - os recursos de que tratam os incisos II e IV do <strong>caput</strong> deste artigo serão aplicados pelos Estados e pelos Municípios exclusivamente nos respectivos âmbitos de atuação prioritária, conforme estabelecido nos §§ 2º e 3º do art. 211 desta Constituição; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>VIII - a vinculação de recursos à manutenção e ao desenvolvimento do ensino estabelecida no art. 212 desta Constituição suportará, no máximo, 30% (trinta por cento) da complementação da União, considerados para os fins deste inciso os valores previstos no inciso V do <strong>caput</strong> deste artigo; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>IX - o disposto no <strong>caput</strong> do art. 160 desta Constituição aplica-se aos recursos referidos nos incisos II e IV do <strong>caput</strong> deste artigo, e seu descumprimento pela autoridade competente importará em crime de responsabilidade; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>X - a lei disporá, observadas as garantias estabelecidas nos incisos I, II, III e IV do <strong>caput</strong> e no § 1º do art. 208 e as metas pertinentes do plano nacional de educação, nos termos previstos no art. 214 desta Constituição, sobre: <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>a) a organização dos fundos referidos no inciso I do caput deste artigo e a distribuição proporcional de seus recursos, as diferenças e as ponderações quanto ao valor anual por aluno entre etapas, modalidades, duração da jornada e tipos de estabelecimento de ensino, observados as respectivas especificidades e os insumos necessários para a garantia de sua qualidade; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>b) a forma de cálculo do VAAF decorrente do inciso III do <strong>caput</strong> deste artigo e do VAAT referido no inciso VI do caput deste artigo; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>c) a forma de cálculo para distribuição prevista na alínea “c” do inciso V do <strong>caput</strong> deste artigo; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>d) a transparência, o monitoramento, a fiscalização e o controle interno, externo e social dos fundos referidos no inciso I do <strong>caput</strong> deste artigo, assegurada a criação, a autonomia, a manutenção e a consolidação de conselhos de acompanhamento e controle social, admitida sua integração aos conselhos de educação; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>e) o conteúdo e a periodicidade da avaliação, por parte do órgão responsável, dos efeitos redistributivos, da melhoria dos indicadores educacionais e da ampliação do atendimento; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>XI - proporção não inferior a 70% (setenta por cento) de cada fundo referido no inciso I do <strong>caput</strong> deste artigo, excluídos os recursos de que trata a alínea “c” do inciso V do <strong>caput</strong> deste artigo, será destinada ao pagamento dos profissionais da educação básica em efetivo exercício, observado, em relação aos recursos previstos na alínea “b” do inciso V do <strong>caput</strong> deste artigo, o percentual mínimo de 15% (quinze por cento) para despesas de capital; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>XII - lei específica disporá sobre o piso salarial profissional nacional para os profissionais do magistério da educação básica pública; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>XIII - a utilização dos recursos a que se refere o § 5º do art. 212 desta Constituição para a complementação da União ao Fundeb, referida no inciso V do <strong>caput</strong> deste artigo, é vedada. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<div id="alt-8" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2024 · potencial de prova</span>
+</p>
+<p><span class="add">XIV - no exercício de 2025, da complementação de que trata o inciso V do<strong>caput</strong>, até 10% (dez por cento) dos valores de cada uma das modalidades referidas nesse dispositivo poderão ser repassados pela União para ações de fomento à criação de matrículas em tempo integral na educação básica pública, considerados indicadores de atendimento, melhoria da qualidade e redução de desigualdades, mantida a classificação orçamentária do repasse como Fundeb, não se aplicando, para fins deste inciso, os critérios de que tratam as alíneas “a”, “b” e “c” do inciso V deste artigo;</span> <span class="nota">(Incluído pela Emenda Constitucional nº 135, de 2024)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 135/2024):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<div id="alt-9" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2024 · potencial de prova</span>
+</p>
+<p><span class="add">XV - a partir do exercício de 2026, no mínimo 4% (quatro por cento) dos recursos dos fundos referidos no inciso I do<strong>caput</strong>deste artigo serão destinados pelos Estados, pelo Distrito Federal e pelos Municípios à criação de matrículas em tempo integral na educação básica, conforme diretrizes pactuadas entre a União e demais entes da Federação, até o atingimento das metas de educação em tempo integral estabelecidas pelo Plano Nacional de Educação.</span> <span class="nota">(Incluído pela Emenda Constitucional nº 135, de 2024)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 135/2024):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<p>§ 1º O cálculo do VAAT, referido no inciso VI do <strong>caput</strong> deste artigo, deverá considerar, além dos recursos previstos no inciso II do <strong>caput</strong> deste artigo, pelo menos, as seguintes disponibilidades: <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>I - receitas de Estados, do Distrito Federal e de Municípios vinculadas à manutenção e ao desenvolvimento do ensino não integrantes dos fundos referidos no inciso I do <strong>caput</strong> deste artigo; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>II - cotas estaduais e municipais da arrecadação do salário-educação de que trata o § 6º do art. 212 desta Constituição; <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>III - complementação da União transferida a Estados, ao Distrito Federal e a Municípios nos termos da alínea “a” do inciso V do <strong>caput</strong> deste artigo. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>§ 2º Além das ponderações previstas na alínea “a” do inciso X do <strong>caput</strong> deste artigo, a lei definirá outras relativas ao nível socioeconômico dos educandos e aos indicadores de disponibilidade de recursos vinculados à educação e de potencial de arrecadação tributária de cada ente federado, bem como seus prazos de implementação. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p>§ 3º Será destinada à educação infantil a proporção de 50% (cinquenta por cento) dos recursos globais a que se refere a alínea “b” do inciso V do <strong>caput</strong> deste artigo, nos termos da lei. <span class="nota">(Incluído pela Emenda Constitucional nº 108, de 2020)</span></p>
+<p><strong>Art. 213.</strong> Os recursos públicos serão destinados às escolas públicas, podendo ser dirigidos a escolas comunitárias, confessionais ou filantrópicas, definidas em lei, que:</p>
+<p>I - comprovem finalidade não-lucrativa e apliquem seus excedentes financeiros em educação;</p>
+<p>II - assegurem a destinação de seu patrimônio a outra escola comunitária, filantrópica ou confessional, ou ao Poder Público, no caso de encerramento de suas atividades.</p>
+<p>§ 1º Os recursos de que trata este artigo poderão ser destinados a bolsas de estudo para o ensino fundamental e médio, na forma da lei, para os que demonstrarem insuficiência de recursos, quando houver falta de vagas e cursos regulares da rede pública na localidade da residência do educando, ficando o Poder Público obrigado a investir prioritariamente na expansão de sua rede na localidade.</p>
+<p>§ 2º As atividades de pesquisa, de extensão e de estímulo e fomento à inovação realizadas por universidades e/ou por instituições de educação profissional e tecnológica poderão receber apoio financeiro do Poder Público. <span class="nota">(Redação dada pela Emenda Constitucional nº 85, de 2015)</span></p>
+</details>
+<h3 id="leg-c-7">
+7. Plano Nacional de Educação
+</h3>
+<p class="arts">
+Art. 214
+</p>
+<details class="lei" open>
+<summary>
+CF/88 — Art. 214
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 214.</strong> A lei estabelecerá o plano nacional de educação, de duração decenal, com o objetivo de articular o sistema nacional de educação em regime de colaboração e definir diretrizes, objetivos, metas e estratégias de implementação para assegurar a manutenção e desenvolvimento do ensino em seus diversos níveis, etapas e modalidades por meio de ações integradas dos poderes públicos das diferentes esferas federativas que conduzam a: <span class="nota">(Redação dada pela Emenda Constitucional nº 59, de 2009)</span></p>
+<p>I - erradicação do analfabetismo;</p>
+<p>II - universalização do atendimento escolar;</p>
+<p>III - melhoria da qualidade do ensino;</p>
+<p>IV - formação para o trabalho;</p>
+<p>V - promoção humanística, científica e tecnológica do País.</p>
+<p>VI - estabelecimento de meta de aplicação de recursos públicos em educação como proporção do produto interno bruto. <span class="nota">(Incluído pela Emenda Constitucional nº 59, de 2009)</span></p>
+</details>
+<h3 id="outros-artigos-cobrados-nas-questões-constituição-federal-de-1988">Outros artigos cobrados nas questões — Constituição Federal de 1988</h3>
+<p class="arts">
+Artigos citados nos gabaritos comentados da Legalle e que não estão nos tópicos acima: arts. 39, 40, 41, 164, 227.
+</p>
+<details class="lei">
+<summary>
+Constituição Federal de 1988 — artigos cobrados nas questões
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 39.</strong> A União, os Estados, o Distrito Federal e os Municípios instituirão conselho de política de administração e remuneração de pessoal, integrado por servidores designados pelos respectivos Poderes. <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span> <span class="nota">(Vide ADI nº 2.135)</span></p>
+<p>§ 1º A fixação dos padrões de vencimento e dos demais componentes do sistema remuneratório observará: <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>I - a natureza, o grau de responsabilidade e a complexidade dos cargos componentes de cada carreira; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>II - os requisitos para a investidura; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>III - as peculiaridades dos cargos. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 2º A União, os Estados e o Distrito Federal manterão escolas de governo para a formação e o aperfeiçoamento dos servidores públicos, constituindo-se a participação nos cursos um dos requisitos para a promoção na carreira, facultada, para isso, a celebração de convênios ou contratos entre os entes federados. <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 3º Aplica-se aos servidores ocupantes de cargo público o disposto no art. 7º, IV, VII, VIII, IX, XII, XIII, XV, XVI, XVII, XVIII, XIX, XX, XXII e XXX, podendo a lei estabelecer requisitos diferenciados de admissão quando a natureza do cargo o exigir. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 4º O membro de Poder, o detentor de mandato eletivo, os Ministros de Estado e os Secretários Estaduais e Municipais serão remunerados exclusivamente por subsídio fixado em parcela única, vedado o acréscimo de qualquer gratificação, adicional, abono, prêmio, verba de representação ou outra espécie remuneratória, obedecido, em qualquer caso, o disposto no art. 37, X e XI. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 5º Lei da União, dos Estados, do Distrito Federal e dos Municípios poderá estabelecer a relação entre a maior e a menor remuneração dos servidores públicos, obedecido, em qualquer caso, o disposto no art. 37, XI. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<details class="qart">
+<summary>
+Art. 39, § 5º na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4420575</strong> · 2026 · Prefeitura de Relvado - RS · Auxiliar Administrativo</p>
+<p>As alternativas que seguem apresentam algumas afirmações que envolvem conhecimentos diversos, mas ligados com o vencimento e a remuneração. Nesse sentido analise as alternativas que seguem e assinale a única que apresenta informação INCORRETA, com base no Regime Jurídico Único dos Servidores Públicos.</p>
+<ul>
+<li><strong>A)</strong> Qualquer lei pode fixar a relação de valores entre a maior e a menor remuneração dos servidores municipais.</li>
+<li><strong>B)</strong> Remuneração é o vencimento acrescido das vantagens permanentes ou parcelas pecuniárias incorporadas, estabelecidas em Lei.</li>
+<li><strong>C)</strong> Nenhum servidor poderá perceber mensalmente, a título de remuneração ou subsídio, importância maior do que a fixada como limite pela Constituição Federal.</li>
+<li><strong>D)</strong> Vencimento é a retribuição paga ao servidor pelo efetivo exercício do cargo, correspondente ao valor básico do padrão fixado em Lei.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — § 5º</strong>: A: errada (é a resposta). A CF não fala em “qualquer lei”, e sim em lei da União, dos Estados, do DF e dos Municípios, obedecido o teto do art. 37, XI.</p>
+</blockquote>
+<div class="antes">
+<p>
+<strong>Na questão:</strong> <span class="del">Qualquer lei pode fixar</span> a relação <span class="del">de valores</span> entre a maior e a menor remuneração dos servidores <span class="del">municipais.</span>
+</p>
+<p>
+<strong>No texto legal:</strong> <span class="add">Lei da União, dos Estados, do Distrito Federal e dos Municípios poderá estabelecer</span> a relação entre a maior e a menor remuneração dos servidores <span class="add">públicos, obedecido, em qualquer caso, o disposto no art. 37, XI.</span>
+</p>
+</div>
+<p class="nota">
+<strong>Alteração legislativa:</strong> O § 5º do art. 39 foi incluído pela EC nº 19/1998 e o teto do art. 37, XI, tem a redação da EC nº 41/2003. São alterações antigas, sem destaque recente.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4420575">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/d436438a-d4" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 6º Os Poderes Executivo, Legislativo e Judiciário publicarão anualmente os valores do subsídio e da remuneração dos cargos e empregos públicos. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 7º Lei da União, dos Estados, do Distrito Federal e dos Municípios disciplinará a aplicação de recursos orçamentários provenientes da economia com despesas correntes em cada órgão, autarquia e fundação, para aplicação no desenvolvimento de programas de qualidade e produtividade, treinamento e desenvolvimento, modernização, reaparelhamento e racionalização do serviço público, inclusive sob a forma de adicional ou prêmio de produtividade. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 8º A remuneração dos servidores públicos organizados em carreira poderá ser fixada nos termos do § 4º. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 9º É vedada a incorporação de vantagens de caráter temporário ou vinculadas ao exercício de função de confiança ou de cargo em comissão à remuneração do cargo efetivo. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div id="alt-192" class="alt">
+<p><strong>Art. 40.</strong> <span class="add">O regime próprio de previdência social dos</span> servidores titulares de cargos efetivos <span class="add">terá</span> caráter contributivo e solidário, mediante contribuição do respectivo ente <span class="add">federativo, de</span> servidores <span class="add">ativos, de aposentados</span> e <span class="add">de</span> pensionistas, observados critérios que preservem o equilíbrio financeiro e <span class="add">atuarial.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “O regime próprio de previdência social dos” … “terá” … “federativo, de” …; <span class="del-l">suprimiu</span> “Aos” … “da União, dos Estados, do Distrito Federal e dos Municípios, incluídas suas autarquias e f…” … “público, dos” …
+</p>
+<p>
+<strong>Redação anterior:</strong> Art. 40. <span class="del">Aos</span> servidores titulares de cargos efetivos <span class="del">da União, dos Estados, do Distrito Federal e dos Municípios, incluídas suas autarquias e fundações, é assegurado regime de previdência de</span> caráter contributivo e solidário, mediante contribuição do respectivo ente <span class="del">público, dos</span> servidores <span class="del">ativos</span> e <span class="del">inativos e dos</span> pensionistas, observados critérios que preservem o equilíbrio financeiro e <span class="del">atuarial e o disposto neste artigo.</span>
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> Art. 40 - Aos servidores titulares de cargos efetivos da União, dos Estados, do Distrito Federal e dos Municípios, incluídas suas autarquias e fundações, é assegurado regime de previdência de caráter contributivo, observados critérios que preservem o equilíbrio financeiro e atuarial e o disposto neste artigo. (Redação dada pela Emenda Constitucional nº 20, de 15/12/98)
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> Art. 40. O servidor será aposentado:
+</p>
+</div>
+</div>
+<details class="qart">
+<summary>
+Art. 40, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4387624</strong> · 2026 · Prefeitura de Relvado - RS · Contador …</p>
+<p>A Lei Orgânica traz que são servidores do Município todos os que ocupam cargos, funções ou empregos da administração direta, das autarquias e fundações de direito público, bem como os admitidos por contrato para atender necessidades temporárias de excepcional interesse do Município, definidos em lei local. Ainda, o Município deve se vincular a regime previdenciário federal ou instituir regime previdenciário de que caráter?</p>
+<ul>
+<li><strong>A)</strong> Contributivo.</li>
+<li><strong>B)</strong> Facultativo.</li>
+<li><strong>C)</strong> Assistencial.</li>
+<li><strong>D)</strong> Complementar.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — caput</strong>: A: certa. O caput do art. 40 diz que o regime próprio de previdência “terá caráter contributivo e solidário”, com contribuição do ente, dos servidores ativos, dos aposentados e dos pensionistas.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> <span class="badge">Alteração com potencial de prova</span> O caput do art. 40 foi reescrito pela EC nº 103/2019 (Reforma da Previdência). A mesma emenda incluiu o § 22, que <strong>veda a instituição de novos regimes próprios</strong>. Por isso, a opção da Lei Orgânica de “instituir regime previdenciário” próprio não vale mais para Municípios que ainda não tinham um em 2019. A questão cobrou só o “caráter contributivo”, mas a vedação do § 22 é uma armadilha provável.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4387624">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1c29b791-cb" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<div id="alt-193" class="alt">
+<p>§ 1º O servidor abrangido por regime próprio de previdência social será aposentado: <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> redação <strong>reformulada</strong> — compare com a versão anterior abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> § 1º Os servidores abrangidos pelo regime de previdência de que trata este artigo serão aposentados, calculados os seus proventos a partir dos valores fixados na forma dos §§ 3º e 17:
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 1º Os servidores abrangidos pelo regime de previdência de que trata este artigo serão aposentados, calculados os seus proventos a partir dos valores fixados na forma do § 3º:
+</p>
+</div>
+</div>
+<div id="alt-194" class="alt">
+<p>I - por incapacidade permanente para o trabalho, no cargo em que estiver investido, quando insuscetível de readaptação, hipótese em que será obrigatória a realização de avaliações periódicas para verificação da continuidade das condições que ensejaram a concessão da aposentadoria, na forma de lei do respectivo ente federativo; <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> redação <strong>reformulada</strong> — compare com a versão anterior abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> I - por invalidez permanente, sendo os proventos proporcionais ao tempo de contribuição, exceto se decorrente de acidente em serviço, moléstia profissional ou doença grave, contagiosa ou incurável, na forma da lei;
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> I - por invalidez permanente, sendo os proventos proporcionais ao tempo de contribuição, exceto se decorrente de acidente em serviço, moléstia profissional ou doença grave, contagiosa ou incurável, especificadas em lei; (Redação dada pela Emenda Constitucional nº 20, de 1998)
+</p>
+</div>
+</div>
+<p>II - compulsoriamente, com proventos proporcionais ao tempo de contribuição, aos 70 (setenta) anos de idade, ou aos 75 (setenta e cinco) anos de idade, na forma de lei complementar; <span class="nota">(Redação dada pela Emenda Constitucional nº 88, de 2015)</span> <span class="nota">(Vide Lei Complementar nº 152, de 2015)</span></p>
+<div id="alt-195" class="alt">
+<p>III - no âmbito da União, aos 62 (sessenta e dois) anos de idade, se mulher, e aos 65 (sessenta e cinco) anos de idade, se homem, e, no âmbito dos Estados, do Distrito Federal e dos Municípios, na idade mínima estabelecida mediante emenda às respectivas Constituições e Leis Orgânicas, observados o tempo de contribuição e os demais requisitos estabelecidos em lei complementar do respectivo ente federativo. <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> redação <strong>reformulada</strong> — compare com a versão anterior abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> III - voluntariamente, desde que cumprido tempo mínimo de dez anos de efetivo exercício no serviço público e cinco anos no cargo efetivo em que se dará a aposentadoria, observadas as seguintes condições:
+</p>
+</div>
+</div>
+<div id="alt-196" class="alt">
+<p>§ 2º Os proventos de aposentadoria não poderão ser inferiores ao valor mínimo a que se refere o § 2º do art. 201 ou superiores ao limite máximo estabelecido para o Regime Geral de Previdência Social, observado o disposto nos §§ 14 a 16. <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> redação <strong>reformulada</strong> — compare com a versão anterior abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> § 2º Os proventos de aposentadoria e as pensões, por ocasião de sua concessão, não poderão exceder a remuneração do respectivo servidor, no cargo efetivo em que se deu a aposentadoria ou que serviu de referência para a concessão da pensão.
+</p>
+</div>
+</div>
+<div id="alt-197" class="alt">
+<p>§ 3º As regras para cálculo de proventos de aposentadoria serão disciplinadas em lei do respectivo ente federativo. <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> redação <strong>reformulada</strong> — compare com a versão anterior abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> § 3º Para o cálculo dos proventos de aposentadoria, por ocasião da sua concessão, serão consideradas as remunerações utilizadas como base para as contribuições do servidor aos regimes de previdência de que tratam este artigo e o art. 201, na forma da lei.
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 3º Os proventos de aposentadoria, por ocasião da sua concessão, serão calculados com base na remuneração do servidor no cargo efetivo em que se der a aposentadoria e, na forma da lei, corresponderão à totalidade da remuneração. (Redação dada pela Emenda Constitucional nº 20, de 15/12/98)
+</p>
+</div>
+</div>
+<div id="alt-198" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2026 · potencial de prova</span>
+</p>
+<p>§ 4º É vedada a adoção de requisitos ou critérios diferenciados para concessão de benefícios em regime próprio de previdência social, ressalvado o disposto nos §§ 4º-A, 4º-B, <span class="add">4º-C, 5º</span> e <span class="add">5º-A deste artigo.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 140, de 2026)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 140/2026):</strong> <span class="add">acrescentou</span> “4º-C, 5º” … “5º-A deste artigo.”; <span class="del-l">suprimiu</span> “4º-C” … “5º.”
+</p>
+<p>
+<strong>Redação anterior:</strong> § 4º É vedada a adoção de requisitos ou critérios diferenciados para concessão de benefícios em regime próprio de previdência social, ressalvado o disposto nos §§ 4º-A, 4º-B, <span class="del">4º-C</span> e <span class="del">5º.</span>
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 4º É vedada a adoção de requisitos e critérios diferenciados para a concessão de aposentadoria aos abrangidos pelo regime de que trata este artigo, ressalvados, nos termos definidos em leis complementares, os casos de servidores: (Redação dada pela Emenda Constitucional nº 47, de 2005)
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 4º É vedada a adoção de requisitos e critérios diferenciados para a concessão de aposentadoria aos abrangidos pelo regime de que trata este artigo, ressalvados os casos de atividades exercidas exclusivamente sob condições especiais que prejudiquem a saúde ou a integridade física, definidos em lei complementar. (Redação dada pela Emenda Constitucional nº 20, de 15/12/98)
+</p>
+</div>
+</div>
+<p>§ 4º-A. Poderão ser estabelecidos por lei complementar do respectivo ente federativo idade e tempo de contribuição diferenciados para aposentadoria de servidores com deficiência, previamente submetidos a avaliação biopsicossocial realizada por equipe multiprofissional e interdisciplinar. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>§ 4º-B. Poderão ser estabelecidos por lei complementar do respectivo ente federativo idade e tempo de contribuição diferenciados para aposentadoria de ocupantes do cargo de agente penitenciário, de agente socioeducativo ou de policial dos órgãos de que tratam o inciso IV do caput do art. 51, o inciso XIII do caput do art. 52 e os incisos I a IV do caput do art. 144. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>§ 4º-C. Poderão ser estabelecidos por lei complementar do respectivo ente federativo idade e tempo de contribuição diferenciados para aposentadoria de servidores cujas atividades sejam exercidas com efetiva exposição a agentes químicos, físicos e biológicos prejudiciais à saúde, ou associação desses agentes, vedada a caracterização por categoria profissional ou ocupação. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div id="alt-199" class="alt">
+<p>§ 5º Os <span class="add">ocupantes do cargo</span> de <span class="add">professor terão</span> idade <span class="add">mínima reduzida</span> em <span class="add">5 (cinco) anos</span> em relação <span class="add">às idades decorrentes da aplicação do</span> disposto no <span class="add">inciso III do</span> § 1º, <span class="add">desde</span> que <span class="add">comprovem</span> tempo de efetivo exercício das funções de magistério na educação infantil e no ensino fundamental e <span class="add">médio fixado em lei complementar do respectivo ente federativo.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “ocupantes do cargo” … “professor terão” … “mínima reduzida” …; <span class="del-l">suprimiu</span> “requisitos” … “e de tempo de contribuição serão reduzidos” … “cinco anos,” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § 5º Os <span class="del">requisitos</span> de idade <span class="del">e de tempo de contribuição serão reduzidos</span> em <span class="del">cinco anos,</span> em relação <span class="del">ao</span> disposto no § 1º, <span class="del">III, "a", para o professor</span> que <span class="del">comprove exclusivamente</span> tempo de efetivo exercício das funções de magistério na educação infantil e no ensino fundamental e <span class="del">médio.</span>
+</p>
+</div>
+</div>
+<div id="alt-200" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2026 · potencial de prova</span>
+</p>
+<p><span class="add">§ 5º-A. O requisito de idade a que se refere o inciso III do § 1º deste artigo será de 57 (cinquenta e sete) anos de idade, se mulher, e 60 (sessenta) anos de idade, se homem, para o agente comunitário de saúde e o agente de combate às endemias que comprovem o mínimo de 25 (vinte e cinco) anos de tempo de contribuição e de efetivo exercício na respectiva atividade profissional.</span> <span class="nota">(Incluído pela Emenda Constitucional nº 140, de 2026)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 140/2026):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<div id="alt-201" class="alt">
+<p>§ 6º Ressalvadas as aposentadorias decorrentes dos cargos acumuláveis na forma desta Constituição, é vedada a percepção de mais de uma aposentadoria à conta <span class="add">de</span> regime <span class="add">próprio</span> de previdência <span class="add">social, aplicando-se outras vedações, regras e condições para a acumulação de benefícios previdenciários estabelecidas no Regime Geral de Previdência Social.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “de” … “próprio” … “social, aplicando-se outras vedações, regras e condições para a acumulação de benefícios p…”; <span class="del-l">suprimiu</span> “do” … “previsto neste artigo.”
+</p>
+<p>
+<strong>Redação anterior:</strong> § 6º Ressalvadas as aposentadorias decorrentes dos cargos acumuláveis na forma desta Constituição, é vedada a percepção de mais de uma aposentadoria à conta <span class="del">do</span> regime de previdência <span class="del">previsto neste artigo.</span>
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 6.º As aposentadorias e pensões dos servidores públicos federais serão custeadas com recursos provenientes da União e das contribuições dos servidores, na forma da lei. (Incluído pela Emenda Constitucional nº 3, de 1993)
+</p>
+</div>
+</div>
+<div id="alt-202" class="alt">
+<p>§ 7º Observado o disposto no § 2º do art. 201, quando se tratar da única fonte de renda formal auferida pelo dependente, o benefício de pensão por morte será concedido nos termos de lei do respectivo ente federativo, a qual tratará de forma diferenciada a hipótese de morte dos servidores de que trata o § 4º-B decorrente de agressão sofrida no exercício ou em razão da função. <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> redação <strong>reformulada</strong> — compare com a versão anterior abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> § 7º Lei disporá sobre a concessão do benefício de pensão por morte, que será igual:
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 7º - Lei disporá sobre a concessão do benefício da pensão por morte, que será igual ao valor dos proventos do servidor falecido ou ao valor dos proventos a que teria direito o servidor em atividade na data de seu falecimento, observado o disposto no § 3º (Incluído pela Emenda Constitucional nº 20, de 15/12/98)
+</p>
+</div>
+</div>
+<p>§ 8º É assegurado o reajustamento dos benefícios para preservar-lhes, em caráter permanente, o valor real, conforme critérios estabelecidos em lei. <span class="nota">(Redação dada pela Emenda Constitucional nº 41, 19.12.2003)</span></p>
+<div id="alt-203" class="alt">
+<p>§ 9º O tempo de contribuição federal, <span class="add">estadual, distrital</span> ou municipal será contado para <span class="add">fins</span> de <span class="add">aposentadoria, observado o disposto nos §§ 9º e 9º-A do art. 201,</span> e o tempo de serviço correspondente <span class="add">será contado</span> para <span class="add">fins</span> de disponibilidade. <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “estadual, distrital” … “fins” … “aposentadoria, observado o disposto nos §§ 9º e 9º-A do art. 201,” …; <span class="del-l">suprimiu</span> “estadual” … “efeito” … “aposentadoria” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § 9º O tempo de contribuição federal, <span class="del">estadual</span> ou municipal será contado para <span class="del">efeito</span> de <span class="del">aposentadoria</span> e o tempo de serviço correspondente para <span class="del">efeito</span> de disponibilidade.
+</p>
+</div>
+</div>
+<p>§ 10 - A lei não poderá estabelecer qualquer forma de contagem de tempo de contribuição fictício. <span class="nota">(Incluído pela Emenda Constitucional nº 20, de 15/12/98)</span> <span class="nota">(Vide Emenda Constitucional nº 20, de 1998)</span></p>
+<p>§ 11 - Aplica-se o limite fixado no art. 37, XI, à soma total dos proventos de inatividade, inclusive quando decorrentes da acumulação de cargos ou empregos públicos, bem como de outras atividades sujeitas a contribuição para o regime geral de previdência social, e ao montante resultante da adição de proventos de inatividade com remuneração de cargo acumulável na forma desta Constituição, cargo em comissão declarado em lei de livre nomeação e exoneração, e de cargo eletivo. <span class="nota">(Incluído pela Emenda Constitucional nº 20, de 15/12/98)</span></p>
+<div id="alt-204" class="alt">
+<p>§ <span class="add">12.</span> Além do disposto neste artigo, <span class="add">serão observados, em</span> regime <span class="add">próprio</span> de previdência <span class="add">social,</span> no que couber, os requisitos e critérios fixados para o <span class="add">Regime Geral</span> de <span class="add">Previdência Social.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “12.” … “serão observados, em” … “próprio” …; <span class="del-l">suprimiu</span> “12 -” … “o” … “dos servidores públicos titulares de cargo efetivo observará,” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § <span class="del">12 -</span> Além do disposto neste artigo, <span class="del">o</span> regime de previdência <span class="del">dos servidores públicos titulares de cargo efetivo observará,</span> no que couber, os requisitos e critérios fixados para o <span class="del">regime geral</span> de <span class="del">previdência social.</span>
+</p>
+</div>
+</div>
+<div id="alt-205" class="alt">
+<p>§ <span class="add">13. Aplica-se ao agente público</span> ocupante, exclusivamente, de cargo em comissão declarado em lei de livre nomeação e <span class="add">exoneração,</span> de outro cargo <span class="add">temporário, inclusive mandato eletivo,</span> ou de emprego público, o <span class="add">Regime Geral</span> de <span class="add">Previdência Social.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “13. Aplica-se ao agente público” … “exoneração,” … “temporário, inclusive mandato eletivo,” …; <span class="del-l">suprimiu</span> “13 - Ao servidor” … “exoneração bem como” … “temporário” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § <span class="del">13 - Ao servidor</span> ocupante, exclusivamente, de cargo em comissão declarado em lei de livre nomeação e <span class="del">exoneração bem como</span> de outro cargo <span class="del">temporário</span> ou de emprego público, <span class="del">aplica-se</span> o <span class="del">regime geral</span> de <span class="del">previdência social.</span>
+</p>
+</div>
+</div>
+<div id="alt-206" class="alt">
+<p>§ <span class="add">14.</span> A União, os Estados, o Distrito Federal e os <span class="add">Municípios instituirão, por lei de iniciativa do respectivo Poder Executivo,</span> regime de previdência complementar para servidores <span class="add">públicos ocupantes</span> de cargo efetivo, <span class="add">observado o limite máximo dos benefícios do Regime Geral de Previdência Social</span> para o valor das aposentadorias e <span class="add">das</span> pensões <span class="add">em</span> regime <span class="add">próprio</span> de previdência <span class="add">social, ressalvado</span> o <span class="add">disposto no § 16.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “14.” … “Municípios instituirão, por lei de iniciativa do respectivo Poder Executivo,” … “públicos ocupantes” …; <span class="del-l">suprimiu</span> “14 -” … “Municípios, desde que instituam” … “os seus respectivos” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § <span class="del">14 -</span> A União, os Estados, o Distrito Federal e os <span class="del">Municípios, desde que instituam</span> regime de previdência complementar para <span class="del">os seus respectivos</span> servidores <span class="del">titulares</span> de cargo efetivo, <span class="del">poderão fixar,</span> para o valor das aposentadorias e pensões <span class="del">a serem concedidas pelo</span> regime <span class="del">de que trata este artigo, o limite máximo estabelecido para os benefícios do regime geral</span> de previdência <span class="del">social de que trata</span> o <span class="del">art. 201.</span>
+</p>
+</div>
+</div>
+<div id="alt-207" class="alt">
+<p>§ 15. O regime de previdência complementar de que trata o § 14 <span class="add">oferecerá plano</span> de <span class="add">benefícios somente na modalidade contribuição definida, observará</span> o disposto no art. 202 e <span class="add">será efetivado</span> por intermédio de <span class="add">entidade fechada</span> de previdência <span class="add">complementar ou</span> de <span class="add">entidade aberta</span> de <span class="add">previdência complementar.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “oferecerá plano” … “benefícios somente na modalidade contribuição definida, observará” … “será efetivado” …; <span class="del-l">suprimiu</span> “será instituído por lei” … “iniciativa do respectivo Poder Executivo, observado” … “seus parágrafos, no que couber,” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § 15. O regime de previdência complementar de que trata o § 14 <span class="del">será instituído por lei</span> de <span class="del">iniciativa do respectivo Poder Executivo, observado</span> o disposto no art. 202 e <span class="del">seus parágrafos, no que couber,</span> por intermédio de <span class="del">entidades fechadas</span> de previdência <span class="del">complementar,</span> de <span class="del">natureza pública, que oferecerão aos respectivos participantes planos</span> de <span class="del">benefícios somente na modalidade de contribuição definida.</span>
+</p>
+<p class="velha">
+<strong>Redação mais antiga:</strong> § 15 - Observado o disposto no art. 202, lei complementar disporá sobre as normas gerais para a instituição de regime de previdência complementar pela União, Estados, Distrito Federal e Municípios, para atender aos seus respectivos servidores titulares de cargo efetivo. (Incluído pela Emenda Constitucional nº 20, de 15/12/98)
+</p>
+</div>
+</div>
+<p>§ 16 - Somente mediante sua prévia e expressa opção, o disposto nos  § § 14 e 15 poderá ser aplicado ao servidor que tiver ingressado no serviço público até a data da publicação do ato de instituição do correspondente regime de previdência complementar. <span class="nota">(Incluído pela Emenda Constitucional nº 20, de 15/12/98)</span></p>
+<p>§ 17. Todos os valores de remuneração considerados para o cálculo do benefício previsto no § 3° serão devidamente atualizados, na forma da lei. <span class="nota">(Incluído pela Emenda Constitucional nº 41, 19.12.2003)</span></p>
+<p>§ 18. Incidirá contribuição sobre os proventos de aposentadorias e pensões concedidas pelo regime de que trata este artigo que superem o limite máximo estabelecido para os benefícios do regime geral de previdência social de que trata o art. 201, com percentual igual ao estabelecido para os servidores titulares de cargos efetivos. <span class="nota">(Incluído pela Emenda Constitucional nº 41, 19.12.2003)</span> <span class="nota">(Vide ADIN 3133)</span> <span class="nota">(Vide ADIN 3143)</span> <span class="nota">(Vide ADIN 3184)</span></p>
+<div id="alt-208" class="alt">
+<p>§ 19. <span class="add">Observados critérios a serem estabelecidos em lei do respectivo ente federativo, o</span> servidor <span class="add">titular</span> de <span class="add">cargo efetivo</span> que tenha completado as exigências para <span class="add">a</span> aposentadoria voluntária e que opte por permanecer em atividade <span class="add">poderá fazer</span> jus a um abono de permanência <span class="add">equivalente, no máximo,</span> ao valor da sua contribuição <span class="add">previdenciária,</span> até completar <span class="add">a idade</span> para aposentadoria <span class="add">compulsória.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “Observados critérios a serem estabelecidos em lei do respectivo ente federativo, o” … “titular” … “cargo efetivo” …; <span class="del-l">suprimiu</span> “O” … “que trata este artigo” … “estabelecidas no § 1º, III, a,” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § 19. <span class="del">O</span> servidor de <span class="del">que trata este artigo</span> que tenha completado as exigências para aposentadoria voluntária <span class="del">estabelecidas no § 1º, III, a,</span> e que opte por permanecer em atividade <span class="del">fará</span> jus a um abono de permanência <span class="del">equivalente</span> ao valor da sua contribuição <span class="del">previdenciária</span> até completar <span class="del">as exigências</span> para aposentadoria <span class="del">compulsória contidas no § 1º, II.</span>
+</p>
+</div>
+</div>
+<div id="alt-209" class="alt">
+<p>§ 20. <span class="add">É</span> vedada a existência de mais de um regime próprio de previdência social e de mais de <span class="add">um órgão ou entidade</span> gestora <span class="add">desse</span> regime em cada ente <span class="add">federativo, abrangidos todos os poderes, órgãos e entidades autárquicas e fundacionais, que serão responsáveis pelo seu financiamento, observados os critérios, os parâmetros e a natureza jurídica definidos na lei complementar de que trata</span> o § <span class="add">22.</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> <span class="add">acrescentou</span> “É” … “um órgão ou entidade” … “desse” …; <span class="del-l">suprimiu</span> “Fica” … “para os servidores titulares de cargos efetivos,” … “uma unidade” …
+</p>
+<p>
+<strong>Redação anterior:</strong> § 20. <span class="del">Fica</span> vedada a existência de mais de um regime próprio de previdência social <span class="del">para os servidores titulares de cargos efetivos,</span> e de mais de <span class="del">uma unidade</span> gestora <span class="del">do respectivo</span> regime em cada ente <span class="del">estatal, ressalvado</span> o <span class="del">disposto no art. 142,</span> § <span class="del">3º, X.</span>
+</p>
+</div>
+</div>
+<div id="alt-210" class="alt">
+<p>§ 21. . <span class="nota">(Revogado)</span> <span class="nota">(Redação dada pela Emenda Constitucional nº 103, de 2019)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Emenda Constitucional nº 103/2019):</strong> dispositivo <strong>revogado</strong>; o texto que vigorava está abaixo.
+</p>
+<p>
+<strong>Redação anterior:</strong> § 21. A contribuição prevista no § 18 deste artigo incidirá apenas sobre as parcelas de proventos de aposentadoria e de pensão que superem o dobro do limite máximo estabelecido para os benefícios do regime geral de previdência social de que trata o art. 201 desta Constituição, quando o beneficiário, na forma da lei, for portador de doença incapacitante.
+</p>
+</div>
+</div>
+<p>§ 22. Vedada a instituição de novos regimes próprios de previdência social, lei complementar federal estabelecerá, para os que já existam, normas gerais de organização, de funcionamento e de responsabilidade em sua gestão, dispondo, entre outros aspectos, sobre: <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>I - requisitos para sua extinção e consequente migração para o Regime Geral de Previdência Social; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>II - modelo de arrecadação, de aplicação e de utilização dos recursos; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>III - fiscalização pela União e controle externo e social; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>IV - definição de equilíbrio financeiro e atuarial; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>V - condições para instituição do fundo com finalidade previdenciária de que trata o art. 249 e para vinculação a ele dos recursos provenientes de contribuições e dos bens, direitos e ativos de qualquer natureza; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>VI - mecanismos de equacionamento do deficit atuarial; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>VII - estruturação do órgão ou entidade gestora do regime, observados os princípios relacionados com governança, controle interno e transparência; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>VIII - condições e hipóteses para responsabilização daqueles que desempenhem atribuições relacionadas, direta ou indiretamente, com a gestão do regime; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>IX - condições para adesão a consórcio público; <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p>X - parâmetros para apuração da base de cálculo e definição de alíquota de contribuições ordinárias e extraordinárias. <span class="nota">(Incluído pela Emenda Constitucional nº 103, de 2019)</span></p>
+<p><strong>Art. 41.</strong> São estáveis após três anos de efetivo exercício os servidores nomeados para cargo de provimento efetivo em virtude de concurso público. <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<details class="qart">
+<summary>
+Art. 41, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075514</strong> · 2026 · SEPLAG-MG · Direito</p>
+<p>Devido à necessidade de realizar um censo demográfico estadual em curto prazo, uma Fundação Pública precisa contratar mil pesquisadores por apenas seis meses. Sobre o regime jurídico aplicável a essa contratação, é CORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> A Fundação pode contratar livremente, sem necessidade de lei, por ser uma atividade de pesquisa científica.</li>
+<li><strong>B)</strong> A contratação temporária exige previsão em lei para atender à necessidade de excepcional interesse público.</li>
+<li><strong>C)</strong> Os pesquisadores contratados terão direito à estabilidade no serviço público após o término do censo.</li>
+<li><strong>D)</strong> Apenas autarquias podem realizar contratações temporárias, já Fundações devem obrigatoriamente realizar concurso para cargos efetivos.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa C (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075514">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/74a8c65e-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º O servidor público estável só perderá o cargo: <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>I - em virtude de sentença judicial transitada em julgado; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>II - mediante processo administrativo em que lhe seja assegurada ampla defesa; <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>III - mediante procedimento de avaliação periódica de desempenho, na forma de lei complementar, assegurada ampla defesa. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 2º Invalidada por sentença judicial a demissão do servidor estável, será ele reintegrado, e o eventual ocupante da vaga, se estável, reconduzido ao cargo de origem, sem direito a indenização, aproveitado em outro cargo ou posto em disponibilidade com remuneração proporcional ao tempo de serviço. <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 3º Extinto o cargo ou declarada a sua desnecessidade, o servidor estável ficará em disponibilidade, com remuneração proporcional ao tempo de serviço, até seu adequado aproveitamento em outro cargo. <span class="nota">(Redação dada pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p>§ 4º Como condição para a aquisição da estabilidade, é obrigatória a avaliação especial de desempenho por comissão instituída para essa finalidade. <span class="nota">(Incluído pela Emenda Constitucional nº 19, de 1998)</span></p>
+<p><strong>Art. 164.</strong> A competência da União para emitir moeda será exercida exclusivamente pelo banco central.</p>
+<p>§ 1º É vedado ao banco central conceder, direta ou indiretamente, empréstimos ao Tesouro Nacional e a qualquer órgão ou entidade que não seja instituição financeira.</p>
+<p>§ 2º O banco central poderá comprar e vender títulos de emissão do Tesouro Nacional, com o objetivo de regular a oferta de moeda ou a taxa de juros.</p>
+<p>§ 3º As disponibilidades de caixa da União serão depositadas no banco central; as dos Estados, do Distrito Federal, dos Municípios e dos órgãos ou entidades do Poder Público e das empresas por ele controladas, em instituições financeiras oficiais, ressalvados os casos previstos em lei.</p>
+<details class="qart">
+<summary>
+Art. 164, § 3º na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075508</strong> · 2026 · SEPLAG-MG · Direito</p>
+<p>Em uma reunião de diretoria de uma Fundação, discute-se a aplicação do princípio da moralidade administrativa. De acordo com о entendimento sobre a disponibilidade de caixa dos entes públicos, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> As disponibilidades de caixa da Fundação, por ser entidade estadual, podem ser livremente depositadas em qualquer banco comercial privado que ofereça maior rentabilidade.</li>
+<li><strong>B)</strong> A regra constitucional exige o depósito das disponibilidades de caixa em instituições financeiras oficiais, visando evitar favorecimentos indevidos a bancos privados.</li>
+<li><strong>C)</strong> Entende-se que leis locais (estaduais ou municipais) podem criar livremente exceções à regra de depósito em bancos oficiais para a Administração Indireta.</li>
+<li><strong>D)</strong> O princípio da moralidade administrativa não possui relevância jurídica prática, sendo apenas um texto normativo de conteúdo escasso.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — § 3º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — § 3º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (certa) — § 3º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — § 3º</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075508">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/74997cb7-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 227.</strong> É dever da família, da sociedade e do Estado assegurar à criança, ao adolescente e ao jovem, com absoluta prioridade, o direito à vida, à saúde, à alimentação, à educação, ao lazer, à profissionalização, à cultura, à dignidade, ao respeito, à liberdade e à convivência familiar e comunitária, além de colocá-los a salvo de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão. <span class="nota">(Redação dada Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<details class="qart">
+<summary>
+Art. 227, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4106072</strong> · 2026 · Prefeitura de Dona Emma - SC · Assistente Social Educacional</p>
+<p>A promoção, a proteção e a defesa do direito das crianças e adolescentes à convivência familiar e comunitária envolvem o esforço de toda a sociedade e o compromisso com uma mudança cultural que atinge as relações familiares, as relações comunitárias e as relações do Estado com a sociedade. Sobre a convivência familiar e comunitária, analise as assertivas a seguir:</p>
+<p><strong>I.</strong> Mesmo decidindo-se pelo afastamento da criança ou adolescente da família, deve-se perseverar na atenção à família de origem, como forma de abreviar a separação e promover a reintegração familiar.</p>
+<p><strong>II.</strong> Ainda que condicionado a uma decisão judicial, o afastamento da criança ou do adolescente da sua famÍlia de origem deve advir de uma recomendação técnica, a partir de um estudo diagnóstico, caso a caso, preferencialmente realizado por equipe interdisciplinar de instituição pública.</p>
+<p><strong>III.</strong> A convivência familiar e comunitária de crianças e adolescentes requer um conjunto articulado de ações que envolvem a desresponsabilização do Estado, mas com forte responsabilização da sociedade e da família, conforme disposto no Estatuto da Criança e do Adolescente (ECA) e na Constituição Federal.</p>
+<p><strong>IV.</strong> Uma das formas de apoio coletivo entre famílias em situação de vulnerabilidade social é a constituição de práticas informais organizadas em que a comunidade planeja projetos e cooperativas para a geração de emprego e renda, por exemplo.</p>
+<p><strong>V.</strong> Além de muito importante para o desenvolvimento pessoal, a convivência comunitária favorável contribui para o fortalecimento dos vínculos familiares e a inserção social da família.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas III e IV.</li>
+<li><strong>B)</strong> Apenas I, II e V</li>
+<li><strong>C)</strong> Apenas II e V.</li>
+<li><strong>D)</strong> I, II, Il, IV e V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="leg-m-eca.html#q-Q4106072">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ba58e0a2-65" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º O Estado promoverá programas de assistência integral à saúde da criança, do adolescente e do jovem, admitida a participação de entidades não governamentais, mediante políticas específicas e obedecendo aos seguintes preceitos: <span class="nota">(Redação dada Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<p>I - aplicação de percentual dos recursos públicos destinados à saúde na assistência materno-infantil;</p>
+<p>II - criação de programas de prevenção e atendimento especializado para as pessoas portadoras de deficiência física, sensorial ou mental, bem como de integração social do adolescente e do jovem portador de deficiência, mediante o treinamento para o trabalho e a convivência, e a facilitação do acesso aos bens e serviços coletivos, com a eliminação de obstáculos arquitetônicos e de todas as formas de discriminação. <span class="nota">(Redação dada Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<p>§ 2º A lei disporá sobre normas de construção dos logradouros e dos edifícios de uso público e de fabricação de veículos de transporte coletivo, a fim de garantir acesso adequado às pessoas portadoras de deficiência.</p>
+<p>§ 3º O direito a proteção especial abrangerá os seguintes aspectos:</p>
+<p>I - idade mínima de quatorze anos para admissão ao trabalho, observado o disposto no art. 7º, XXXIII;</p>
+<p>II - garantia de direitos previdenciários e trabalhistas;</p>
+<p>III - garantia de acesso do trabalhador adolescente e jovem à escola; <span class="nota">(Redação dada Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<p>IV - garantia de pleno e formal conhecimento da atribuição de ato infracional, igualdade na relação processual e defesa técnica por profissional habilitado, segundo dispuser a legislação tutelar específica;</p>
+<p>V - obediência aos princípios de brevidade, excepcionalidade e respeito à condição peculiar de pessoa em desenvolvimento, quando da aplicação de qualquer medida privativa da liberdade;</p>
+<p>VI - estímulo do Poder Público, através de assistência jurídica, incentivos fiscais e subsídios, nos termos da lei, ao acolhimento, sob a forma de guarda, de criança ou adolescente órfão ou abandonado;</p>
+<p>VII - programas de prevenção e atendimento especializado à criança, ao adolescente e ao jovem dependente de entorpecentes e drogas afins. <span class="nota">(Redação dada Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<p>§ 4º A lei punirá severamente o abuso, a violência e a exploração sexual da criança e do adolescente.</p>
+<p>§ 5º A adoção será assistida pelo Poder Público, na forma da lei, que estabelecerá casos e condições de sua efetivação por parte de estrangeiros.</p>
+<p>§ 6º Os filhos, havidos ou não da relação do casamento, ou por adoção, terão os mesmos direitos e qualificações, proibidas quaisquer designações discriminatórias relativas à filiação.</p>
+<p>§ 7º No atendimento dos direitos da criança e do adolescente levar-se- á em consideração o disposto no art. 204.</p>
+<p>§ 8º A lei estabelecerá: <span class="nota">(Incluído Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<p>I - o estatuto da juventude, destinado a regular os direitos dos jovens; <span class="nota">(Incluído Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<p>II - o plano nacional de juventude, de duração decenal, visando à articulação das várias esferas do poder público para a execução de políticas públicas. <span class="nota">(Incluído Pela Emenda Constitucional nº 65, de 2010)</span></p>
+<details class="qart">
+<summary>
+Art. 227 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4106072</strong> · 2026 · Prefeitura de Dona Emma - SC · Assistente Social Educacional</p>
+<p>A promoção, a proteção e a defesa do direito das crianças e adolescentes à convivência familiar e comunitária envolvem o esforço de toda a sociedade e o compromisso com uma mudança cultural que atinge as relações familiares, as relações comunitárias e as relações do Estado com a sociedade. Sobre a convivência familiar e comunitária, analise as assertivas a seguir:</p>
+<p><strong>I.</strong> Mesmo decidindo-se pelo afastamento da criança ou adolescente da família, deve-se perseverar na atenção à família de origem, como forma de abreviar a separação e promover a reintegração familiar.</p>
+<p><strong>II.</strong> Ainda que condicionado a uma decisão judicial, o afastamento da criança ou do adolescente da sua famÍlia de origem deve advir de uma recomendação técnica, a partir de um estudo diagnóstico, caso a caso, preferencialmente realizado por equipe interdisciplinar de instituição pública.</p>
+<p><strong>III.</strong> A convivência familiar e comunitária de crianças e adolescentes requer um conjunto articulado de ações que envolvem a desresponsabilização do Estado, mas com forte responsabilização da sociedade e da família, conforme disposto no Estatuto da Criança e do Adolescente (ECA) e na Constituição Federal.</p>
+<p><strong>IV.</strong> Uma das formas de apoio coletivo entre famílias em situação de vulnerabilidade social é a constituição de práticas informais organizadas em que a comunidade planeja projetos e cooperativas para a geração de emprego e renda, por exemplo.</p>
+<p><strong>V.</strong> Além de muito importante para o desenvolvimento pessoal, a convivência comunitária favorável contribui para o fortalecimento dos vínculos familiares e a inserção social da família.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas III e IV.</li>
+<li><strong>B)</strong> Apenas I, II e V</li>
+<li><strong>C)</strong> Apenas II e V.</li>
+<li><strong>D)</strong> I, II, Il, IV e V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa B (certa)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="leg-m-eca.html#q-Q4106072">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ba58e0a2-65" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+</details>
+<details class="questoes">
+<summary>
+Questões da Legalle — 12 questões
+</summary>
+<details class="qcom" id="q-Q4042232">
+<summary>
+Q4042232 · 2026 · Prefeitura de São Lourenço do Sul - RS · Arquiteto … <span class="nota">(Ordem Social, Educação, Cultura e Desporto)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 206, inciso III; Constituição Federal de 1988, art. 206, inciso VI; Constituição Federal de 1988, art. 206.
+</p>
+<p>Pode-se afirmar que o ensino será ministrado com base em princípios como a igualdade de condições para acesso e permanência na escola, e a liberdade de aprender, ensinar, pesquisar e divulgar o pensamento, a arte e o saber, bem como:</p>
+<p>I. Pluralismo de ideias e de concepções pedagógicas, religiosas e coexistência de instituições públicas e privadas de ensino.</p>
+<p>II. Gestão democrática do ensino público.</p>
+<p>Acerca das assertivas, pode-se afirmar que, conforme Lei Orgânica:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/5021a115-49" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4044851">
+<summary>
+Q4044851 · 2026 · Prefeitura de Dom Feliciano - RS · Dentista … <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos, Organização Político-Administrativa do Estado)</span>
+</summary>
+<p>Conforme a Lei Orgânica, a Procuradoria Geral do Município tem caráter _________, competindo-lhe as atividades de consultoria e assessoramento jurídico do Poder Executivo, e, privativamente, a representação judicial ___________, a inscrição e a cobrança judicial e extrajudicial da dívida ativa e o processamento dos procedimentos relativos ao patrimônio imóvel do Município, sem prejuízo de outras atribuições compatíveis com a natureza de suas funções.</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas</p>
+<ul>
+<li><strong>A)</strong> provisório; do Município.</li>
+<li><strong>B)</strong> provisório; da Câmara de Vereadores.</li>
+<li><strong>C)</strong> permanente; do Município.</li>
+<li><strong>D)</strong> permanente; da Câmara de Vereadores.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/d9ba8bf6-4a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4075508">
+<summary>
+Q4075508 · 2026 · SEPLAG-MG · Direito <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 37, caput; Constituição Federal de 1988, art. 164, § 3º.
+</p>
+<p>Em uma reunião de diretoria de uma Fundação, discute-se a aplicação do princípio da moralidade administrativa. De acordo com о entendimento sobre a disponibilidade de caixa dos entes públicos, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> As disponibilidades de caixa da Fundação, por ser entidade estadual, podem ser livremente depositadas em qualquer banco comercial privado que ofereça maior rentabilidade.</li>
+<li><strong>B)</strong> A regra constitucional exige o depósito das disponibilidades de caixa em instituições financeiras oficiais, visando evitar favorecimentos indevidos a bancos privados.</li>
+<li><strong>C)</strong> Entende-se que leis locais (estaduais ou municipais) podem criar livremente exceções à regra de depósito em bancos oficiais para a Administração Indireta.</li>
+<li><strong>D)</strong> O princípio da moralidade administrativa não possui relevância jurídica prática, sendo apenas um texto normativo de conteúdo escasso.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/74997cb7-59" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4075514">
+<summary>
+Q4075514 · 2026 · SEPLAG-MG · Direito <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 37, inciso IX; Constituição Federal de 1988, art. 37; Constituição Federal de 1988, art. 41, caput.
+</p>
+<p>Devido à necessidade de realizar um censo demográfico estadual em curto prazo, uma Fundação Pública precisa contratar mil pesquisadores por apenas seis meses. Sobre o regime jurídico aplicável a essa contratação, é CORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> A Fundação pode contratar livremente, sem necessidade de lei, por ser uma atividade de pesquisa científica.</li>
+<li><strong>B)</strong> A contratação temporária exige previsão em lei para atender à necessidade de excepcional interesse público.</li>
+<li><strong>C)</strong> Os pesquisadores contratados terão direito à estabilidade no serviço público após o término do censo.</li>
+<li><strong>D)</strong> Apenas autarquias podem realizar contratações temporárias, já Fundações devem obrigatoriamente realizar concurso para cargos efetivos.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/74a8c65e-59" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4081128">
+<summary>
+Q4081128 · 2026 · Prefeitura de Presidente Lucena - RS · Professor de Ensino Fundamental <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos, Servidores Públicos)</span>
+</summary>
+<p>Analise as partes que seguem, com base na Lei Orgânica: São servidores do Município todos os que ocupam cargos, funções ou empregos da administração direta, das autarquias e fundações de direito público <strong>(1ª parte),</strong> bem como os admitidos por contrato para atender necessidades temporárias de excepcional interesse do Município, definidos em lei local (2ª parte).</p>
+<p>Acerca das partes, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Assim como a 1ª parte está correta, pode-se afirmar que a 2” parte também está.</li>
+<li><strong>B)</strong> Enquanto a ’l^(a) parte está correta, sabe-se que a 2^(a) parte não está.</li>
+<li><strong>C)</strong> Assim como a 1^(a) parte está incorreta, pode-se afirmar que a 2^(a) parte também está.</li>
+<li><strong>D)</strong> Enquanto a 1^(a) parte está incorreta, sabe-se que a 2^(a) parte não está.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/df447c9e-5b" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4081129">
+<summary>
+Q4081129 · 2026 · Prefeitura de Presidente Lucena - RS · Professor de Ensino Fundamental <span class="nota">(Ordem Social, Educação, Cultura e Desporto)</span>
+</summary>
+<p>Sabe-se que o Município deve promover o desenvolvimento cultural da comunidade local, nos termos da Constituição Federal, especialmente mediante, por exemplo, a criação e manutenção de núcleos culturais e de espaços públicos devidamente equipados, segundo as possibilidades municipais, para a formação e difusão das expressões artístico-culturais populares, bem como mediante o previsto nas alternativas que seguem, com base na Lei Orgânica, EXCETO.</p>
+<ul>
+<li><strong>A)</strong> A proteção aos locais e objetos de interesse histórico-cultural e paisagístico.</li>
+<li><strong>B)</strong> Criação e manutenção de bibliotecas públicas.</li>
+<li><strong>C)</strong> Oferecimento de estímulos concretos ao cultivo das ciências, artes e letras.</li>
+<li><strong>D)</strong> Incentivo à promoção e divulgação da história, dos valores humanos e das religiões locais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/df476e30-5b" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4176808">
+<summary>
+Q4176808 · 2026 · CISCOPAR · Analista em Administração e Planejamento … <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos, Servidores Públicos)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 37, inciso XV; Constituição Federal de 1988, art. 37, inciso XIII; Constituição Federal de 1988, art. 37.
+</p>
+<p>A Constituição Federal traz que a Administração Pública direta e indireta de qualquer dos Poderes dos Municípios, por exemplo, obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência e, também, ao seguinte:</p>
+<p>**<br />
+**</p>
+<p><strong>I.</strong> O subsídio e os vencimentos dos ocupantes de cargos e empregos públicos são irredutíveis, sem ressalvas.</p>
+<p><strong>II</strong>. É vedada a vinculação ou equiparação de quaisquer espécies remuneratórias para o efeito de remuneração de pessoal do serviço público.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/278df5b5-7f" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4181749">
+<summary>
+Q4181749 · 2026 · CISCOPAR · Contador <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos, Disposições Gerais na Administração Pública, Servidores Públicos)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 37, inciso XIX; Constituição Federal de 1988, art. 37, inciso XVIII; Constituição Federal de 1988, art. 37, inciso I; Constituição Federal de 1988, art. 37, inciso IX; Constituição Federal de 1988, art. 37.
+</p>
+<p>Considerando as disposições constitucionais aplicáveis à Administração Pública, estabelecidas pela Constituição Federal de 1988, assinale a alternativa que apresenta uma informação INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> A administração fazendária e seus servidores fiscais terão, no âmbito de suas respectivas áreas de competência e jurisdição, precedência sobre os demais setores administrativos, na forma estabelecida em lei.</li>
+<li><strong>B)</strong> Os cargos, empregos e funções públicas são acessíveis aos brasileiros que preencham os requisitos previstos em lei, bem como aos estrangeiros, na forma da legislação aplicável.</li>
+<li><strong>C)</strong> A lei estabelecerá as hipóteses de contratação por tempo determinado destinadas ao atendimento de necessidade temporária de excepcional interesse público.</li>
+<li><strong>D)</strong> Poderá ser criada autarquia e fundação mediante lei específica. No caso das fundações, cabe à lei complementar definir as áreas de sua atuação.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/629bd0f5-81" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4289460">
+<summary>
+Q4289460 · 2026 · Prefeitura de Morro Redondo - RS · Assistente Social … <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos, Servidores Públicos)</span>
+</summary>
+<p>O servidor pode ser aposentado de algumas formas, como por invalidez permanente, sendo os proventos integrais quando decorrentes de acidentes em serviço, moléstia profissional ou doença grave, contagiosa ou incurável, especificados em lei e proporcionais nos demais casos, além de compulsoriamente, aos anos de idade, com proventos proporcionais ao tempo de serviço.</p>
+<p>Preenche, conforme a Lei Orgânica, CORRETAMENTE, a lacuna:</p>
+<ul>
+<li><strong>A)</strong> cinquenta.</li>
+<li><strong>B)</strong> setenta.</li>
+<li><strong>C)</strong> oitenta.</li>
+<li><strong>D)</strong> sessenta.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/e1f59365-ac" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4387624">
+<summary>
+Q4387624 · 2026 · Prefeitura de Relvado - RS · Contador … <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 40, caput.
+</p>
+<p>A Lei Orgânica traz que são servidores do Município todos os que ocupam cargos, funções ou empregos da administração direta, das autarquias e fundações de direito público, bem como os admitidos por contrato para atender necessidades temporárias de excepcional interesse do Município, definidos em lei local. Ainda, o Município deve se vincular a regime previdenciário federal ou instituir regime previdenciário de que caráter?</p>
+<ul>
+<li><strong>A)</strong> Contributivo.</li>
+<li><strong>B)</strong> Facultativo.</li>
+<li><strong>C)</strong> Assistencial.</li>
+<li><strong>D)</strong> Complementar.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e análise
+</summary>
+<p><strong>Gabarito: A</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<p class="nota">
+Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.
+</p>
+<p>A Lei Orgânica de Relvado repete a regra da CF, art. 40, caput: o regime próprio de previdência dos servidores efetivos tem <strong>caráter contributivo</strong> (e solidário). Facultativo, assistencial e complementar não descrevem o regime próprio.</p>
+<ul>
+<li><strong>A — certa</strong> (CF/88, art. 40): O caput do art. 40 diz que o regime próprio de previdência “terá caráter contributivo e solidário”, com contribuição do ente, dos servidores ativos, dos aposentados e dos pensionistas.</li>
+</ul>
+<p><strong>Alteração legislativa:</strong> <span class="badge">Alteração com potencial de prova</span> O caput do art. 40 foi reescrito pela EC nº 103/2019 (Reforma da Previdência). A mesma emenda incluiu o § 22, que <strong>veda a instituição de novos regimes próprios</strong>. Por isso, a opção da Lei Orgânica de “instituir regime previdenciário” próprio não vale mais para Municípios que ainda não tinham um em 2019. A questão cobrou só o “caráter contributivo”, mas a vedação do § 22 é uma armadilha provável.</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1c29b791-cb" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4420575">
+<summary>
+Q4420575 · 2026 · Prefeitura de Relvado - RS · Auxiliar Administrativo <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos, Servidores Públicos)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 37, inciso XI; Constituição Federal de 1988, art. 39, § 5º.
+</p>
+<p>As alternativas que seguem apresentam algumas afirmações que envolvem conhecimentos diversos, mas ligados com o vencimento e a remuneração. Nesse sentido analise as alternativas que seguem e assinale a única que apresenta informação INCORRETA, com base no Regime Jurídico Único dos Servidores Públicos.</p>
+<ul>
+<li><strong>A)</strong> Qualquer lei pode fixar a relação de valores entre a maior e a menor remuneração dos servidores municipais.</li>
+<li><strong>B)</strong> Remuneração é o vencimento acrescido das vantagens permanentes ou parcelas pecuniárias incorporadas, estabelecidas em Lei.</li>
+<li><strong>C)</strong> Nenhum servidor poderá perceber mensalmente, a título de remuneração ou subsídio, importância maior do que a fixada como limite pela Constituição Federal.</li>
+<li><strong>D)</strong> Vencimento é a retribuição paga ao servidor pelo efetivo exercício do cargo, correspondente ao valor básico do padrão fixado em Lei.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e análise
+</summary>
+<p><strong>Gabarito: A</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<p class="nota">
+Análise própria, coincidente com os comentários de usuários (3 comentários: indicam a letra A e o art. 39, § 5º, da CF). Gabarito confirmado no Qconcursos em 19/11/2026.
+</p>
+<p>A relação entre a maior e a menor remuneração não pode ser fixada por “qualquer lei”: a CF, art. 39, § 5º, atribui essa tarefa à lei <strong>do próprio ente</strong> (União, Estados, DF e Municípios), sempre respeitado o teto do art. 37, XI. As demais alternativas são definições do regime jurídico (vencimento = valor básico; remuneração = vencimento + vantagens permanentes) e o teto constitucional.</p>
+<ul>
+<li><strong>A — errada (é a resposta)</strong> (CF/88, art. 39, § 5º): A CF não fala em “qualquer lei”, e sim em lei da União, dos Estados, do DF e dos Municípios, obedecido o teto do art. 37, XI.</li>
+</ul>
+<div class="antes">
+<p>
+<strong>Na questão:</strong> <span class="del">Qualquer lei pode fixar</span> a relação <span class="del">de valores</span> entre a maior e a menor remuneração dos servidores <span class="del">municipais.</span>
+</p>
+<p>
+<strong>No texto legal:</strong> <span class="add">Lei da União, dos Estados, do Distrito Federal e dos Municípios poderá estabelecer</span> a relação entre a maior e a menor remuneração dos servidores <span class="add">públicos, obedecido, em qualquer caso, o disposto no art. 37, XI.</span>
+</p>
+</div>
+<ul>
+<li><strong>C — certa</strong> (CF/88, art. 37, XI): Teto remuneratório: nenhuma remuneração ou subsídio pode exceder o limite do art. 37, XI (nos Municípios, o subsídio do Prefeito).</li>
+</ul>
+<p><strong>Alteração legislativa:</strong> O § 5º do art. 39 foi incluído pela EC nº 19/1998 e o teto do art. 37, XI, tem a redação da EC nº 41/2003. São alterações antigas, sem destaque recente.</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/d436438a-d4" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4251805">
+<summary>
+Q4251805 · 2023 · Prefeitura de Alvorada - RS · Odontológo <span class="nota">(Administração Pública – Disposições Gerais e Servidores Públicos, Servidores Públicos)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: Constituição Federal de 1988, art. 37, inciso VI; Constituição Federal de 1988, art. 37, inciso II; Constituição Federal de 1988, art. 37, inciso III.
+</p>
+<p>Analise as partes que seguem: Segundo a Constituição Federal, a investidura em cargo ou emprego público depende de aprovação prévia em concurso público de provas ou de provas e títulos ****(1ª parte)****. O prazo de validade do concurso público será de até dois anos, prorrogável uma vez, por igual período ****(2ª parte)****. É incentivada ao servidor público civil a associação sindical ****(3ª parte)****.</p>
+<p>Das partes, pode-se afirmar que está(ão) CORRETA(S):</p>
+<ul>
+<li><strong>A)</strong> A 1ª, a 2ª e a 3ª partes.</li>
+<li><strong>B)</strong> Somente a 1ª e a 2ª partes.</li>
+<li><strong>C)</strong> Somente a 1ª e a 3ª partes.</li>
+<li><strong>D)</strong> Somente a 3ª parte.</li>
+<li><strong>E)</strong> Somente a 2ª parte.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/a0ccefac-9d" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+</details>
+</main></div></body></html>

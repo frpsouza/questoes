@@ -137,7 +137,7 @@ def trecho(arquivo: str, ini: str, fim: str | None = None, titulos_antes=True) -
         if c is not None and c > kf:
             break
         t = c is None and eh_titulo(b, ant_tit or RE_HEAD.match(b.replace("*", "").strip()) is not None)
-        res.append(("tit", b) if t else ("txt", b, av.get(i, [])))
+        res.append(("tit", b) if t else ("txt", b, av.get(i, []), arquivo))
         ant_tit = t
     def fim_titulo(b):
         t = b.replace("*", "").strip()
@@ -156,7 +156,7 @@ def integral(arquivo: str) -> list[tuple[str, str]]:
     for i in range(i0, len(bl)):
         b = bl[i]
         t = chave(b) is None and eh_titulo(b, ant)
-        res.append(("tit", b) if t else ("txt", b, av.get(i, [])))
+        res.append(("tit", b) if t else ("txt", b, av.get(i, []), arquivo))
         ant = t
     return res
 
@@ -209,10 +209,63 @@ def _curto(xs, n=3, lim=90):
     return t + (" …" if len(xs) > n else "")
 
 
+MARCAR = [False]              # True enquanto gera a Parte II: marca o fim de cada artigo para as questões
+RENDERIZADOS: set = set()     # (arquivo, chave do artigo) transcritos na Parte II
+
+
 def md_lei(partes) -> str:
+    """Texto legal em Markdown. Na Parte II (MARCAR), marca o fim de cada dispositivo cobrado em questão
+    (<!--QART:arq|n|suf|alvo-->, alvo = parágrafo~inciso~alínea) e o fim de cada artigo (alvo vazio)."""
     out = []
+    atual = [None]
+    disp = {"caminho": (None, None, None), "alvos": set(), "abertos": []}
+
+    def marca(alvo):
+        arq, (n, suf) = atual[0]
+        DISP_EMIT.setdefault(atual[0], set()).add(alvo)
+        out.append(f"<!--QART:{arq}|{n}|{suf}|{cod_alvo(alvo)}-->")
+
+    def fecha():
+        if atual[0] and MARCAR[0]:
+            for alvo in reversed(disp["abertos"]):
+                marca(alvo)
+            arq, (n, suf) = atual[0]
+            RENDERIZADOS.add(atual[0])
+            out.append(f"<!--QART:{arq}|{n}|{suf}|-->")
+        atual[0] = None
+        disp.update(caminho=(None, None, None), alvos=set(), abertos=[])
+
+    def avanca(b):
+        """Atualiza o dispositivo corrente com o bloco `b`; fecha (marca) os dispositivos que terminaram
+        antes dele e abre os que começam nele."""
+        if not (atual[0] and MARCAR[0] and disp["alvos"]):
+            return
+        nv = nivel_bloco(b)
+        if nv:
+            c = list(disp["caminho"])
+            c[nv[0]] = nv[1]
+            c[nv[0] + 1:] = [None] * (2 - nv[0])
+            disp["caminho"] = tuple(c)
+        for alvo in [a for a in disp["abertos"] if not dentro(disp["caminho"], a)][::-1]:
+            disp["abertos"].remove(alvo)
+            marca(alvo)
+        for alvo in sorted(disp["alvos"], key=lambda a: [x or "" for x in a]):
+            if alvo not in disp["abertos"] and dentro(disp["caminho"], alvo) and alvo not in disp.get("feitos", set()):
+                disp["abertos"].append(alvo)
+                disp.setdefault("feitos", set()).add(alvo)
+
     for p in partes:
         tipo, b = p[0], p[1]
+        c = chave(b) if tipo == "txt" else None
+        if c is not None or tipo == "tit":
+            fecha()
+        if c is not None:
+            if len(p) > 3:
+                atual[0] = (p[3], c)
+                disp["alvos"] = {a[0] for e in ART_Q.get(atual[0], []) if (a := alvos(e["detalhe"]))}
+                disp["feitos"] = set()
+        if tipo == "txt":
+            avanca(b)
         if tipo == "tit":
             out.append(f"::: tit\n{b.replace('*', '')}\n:::")
             continue
@@ -271,6 +324,7 @@ def md_lei(partes) -> str:
                 h.append(f'<p class="velha"><strong>Redação mais antiga:</strong> {esc(velho)}</p>')
         out.append(f"::: {{#{ident} .alt{' .recente' if recente else ''}}}\n{selo}{corpo_md}\n\n"
                    f'<div class="antes">{"".join(h)}</div>\n:::')
+    fecha()
     return "\n\n".join(out)
 
 
@@ -405,6 +459,315 @@ def QPT_BLOCO(grupo: str) -> str:
             f'<ul>{"".join(itens)}</ul></details>\n\n')
 
 
+QLEG_JSON = RAIZ / "q" / "leg" / "questoes.json"
+SAIDA_LOCAL = RAIZ / "apostilas" / "orientador-educacional-local.html"   # com gabaritos comentados; não publicar
+
+
+def _secao_leg(q) -> str:
+    """Seção da Parte II (leg-a … leg-m) de uma questão de legislação, pelo assunto do Qconcursos."""
+    d, ass = q["disciplina"], " | ".join(q["assuntos"])
+    if "Criança e do Adolescente" in d:
+        return "leg-m"
+    if "Pessoa com Deficiência" in d:
+        return "leg-h"
+    if "13.709" in ass:
+        return "leg-i"
+    if "12.288" in ass:
+        return "leg-e"
+    if d == "Direito Constitucional":
+        return "leg-c"
+    if "9.394" in ass:
+        return "leg-j"
+    if "BNCC" in ass:
+        return "leg-l"
+    return "leg-j"
+
+
+ANALISES_JSON = RAIZ / "q" / "leg" / "analises.json"   # questões sem gabarito comentado, analisadas à mão
+
+
+def _questoes_leg():
+    if not QLEG_JSON.exists():
+        return {}
+    qs = {q["codigo"]: q for q in json.loads(QLEG_JSON.read_text(encoding="utf-8"))}
+    if ANALISES_JSON.exists():
+        for a in json.loads(ANALISES_JSON.read_text(encoding="utf-8")):
+            q = qs.setdefault(a["codigo"], {**{c: a[c] for c in ("codigo", "url", "disciplina", "assuntos", "ano", "banca",
+                                                                     "orgao", "prova", "enunciado", "alternativas")},
+                                            "pagina": 0, "autor": "", "comentario": ""})
+            q["gabarito"], q["analise"] = a["gabarito"], a
+    por = {}
+    for q in qs.values():
+        por.setdefault(_secao_leg(q), []).append(q)
+    for g in por:
+        por[g].sort(key=lambda q: (-(q["ano"] or 0), q["codigo"]))
+    return por
+
+
+QLEG = _questoes_leg()
+
+
+def COMPARA(questao: str, lei: str) -> str:
+    """Questão × texto legal, palavra a palavra: o que a questão tem a mais (riscado) e o texto correto (em verde)."""
+    if not (questao and lei):
+        return ""
+    h_q, m_lei, *_ = diff(questao, lei)
+    return (f'<div class="antes"><p><strong>Na questão:</strong> {h_q}</p>'
+            f'<p><strong>No texto legal:</strong> {m_lei}</p></div>')
+
+
+def ANALISE_MD(a: dict) -> str:
+    """Análise própria completa (questões sem gabarito comentado): resumo, itens por artigo e alterações."""
+    nome = {"ECA": "ECA", "LBI": "LBI", "CF": "CF/88", "LDB": "LDB", "LGPD": "LGPD"}
+    linhas = [f'<p class="nota">{a["fonte"]}</p>', "", a["resumo"], ""]
+    for it in a["itens"]:
+        art = f'{nome.get(it["lei"], it["lei"])}, art. {it["art"]}' + (f', {it["detalhe"]}' if it["detalhe"] != "caput" else "")
+        linhas += [f'- **{it["alt"]} — {it["veredito"]}** ({art}): {it["explicacao"]}', ""]
+        if it.get("questao"):
+            linhas += [COMPARA(it["questao"], it["lei_texto"]), ""]
+    if a.get("alteracao"):
+        linhas += [f'**Alteração legislativa:** {a["alteracao"]}', ""]
+    return "\n".join(linhas)
+
+
+def _cargo(q):
+    return q["prova"].split(" - ")[-1] if q.get("prova") else ""
+
+
+def _rotulo_gab(q):
+    a = q.get("analise")
+    if a and a.get("confirmado"):
+        return f'**Gabarito: {q["gabarito"]}** <span class="nota">(confirmado no Qconcursos em {a["confirmado"]})</span>'
+    return f'**Gabarito: {q["gabarito"]}**' if q.get("gabarito") else ""
+
+
+def QLEG_BLOCO(ident: str, completo: bool) -> str:
+    """Todas as questões da Legalle da lei, ao fim da seção: enunciado, alternativas e, recolhidos, o gabarito e
+    o comentário. Publicada: análise própria (quando houver), sem os comentários do Qconcursos; local: com eles."""
+    qs = QLEG.get(ident, [])
+    if not qs:
+        return ""
+    n = len(qs)
+    tit = f'Questões da Legalle — {n} {"questão" if n == 1 else "questões"}'
+    partes = [f'\n\n<details class="questoes"><summary>{tit}{", com gabarito comentado" if completo else ""}</summary>\n']
+    for q in qs:
+        alts = "\n".join(f"- **{a})** {t}" for a, t in q["alternativas"])
+        if completo and q["comentario"]:
+            com = re.sub(r"(?m)^#{1,6}\s*(.+)$", r"**\1**", q["comentario"])
+            gab = _rotulo_gab(q) + (f' · {q["autor"]}' if q["autor"] else "")
+            resumo = "Ver gabarito comentado"
+        elif q.get("analise"):
+            com, gab, resumo = ANALISE_MD(q["analise"]), _rotulo_gab(q), "Ver gabarito e análise"
+        else:
+            com = ('<p class="nota">Gabarito comentado na versão local e no Qconcursos.</p>' if q["comentario"]
+                   else "*Sem gabarito comentado.*")
+            gab, resumo = _rotulo_gab(q), "Ver gabarito"
+        disp = DISP_DA_Q.get(q["codigo"])
+        cobra = f'<p class="nota">Dispositivos cobrados: {"; ".join(disp)}.</p>\n\n' if disp else ""
+        partes.append(
+            f'\n<details class="qcom" id="q-{q["codigo"]}"><summary>{q["codigo"]} · {q["ano"]} · {html.escape(q["orgao"])} · {html.escape(_cargo(q))}'
+            f' <span class="nota">({html.escape(", ".join(q["assuntos"]))})</span></summary>\n\n'
+            f'{cobra}{q["enunciado"]}\n\n{alts}\n\n<details class="gab"><summary>{resumo}</summary>\n\n'
+            f'{gab}\n\n{com}\n\n<p class="nota"><a href="{html.escape(q["url"])}" target="_blank" rel="noopener">abrir no Qconcursos</a></p>\n\n'
+            f'</details>\n\n</details>\n')
+    partes.append("\n</details>\n\n")
+    return "".join(partes)
+
+
+# ------------------------------------------- artigos de lei × questões --
+
+ARTIGOS_JSON = RAIZ / "q" / "leg" / "artigos.json"     # gerado por q/leg/artigos.py
+QIDX = {q["codigo"]: q for qs in QLEG.values() for q in qs}
+ART_Q: dict = {}       # (arquivo, chave) -> [{codigo, papel, detalhe, trecho}]
+NOME_LEI: dict = {}    # arquivo -> nome da lei
+if ARTIGOS_JSON.exists():
+    for _e in json.loads(ARTIGOS_JSON.read_text(encoding="utf-8")):
+        if _e["arquivo"]:
+            ART_Q[(_e["arquivo"], k(_e["art"]))] = _e["questoes"]
+            NOME_LEI[_e["arquivo"]] = _e["nome"]
+
+# leis transcritas em cada seção da Parte II (para os artigos cobrados que ainda não estão na apostila)
+SECAO_ARQS = {"leg-c": ["cf88.md"], "leg-e": ["lei12288-estatuto-igualdade-racial.md"], "leg-h": ["lei13146-lbi.md"],
+              "leg-i": ["lei13709-lgpd-compilada.md"], "leg-j": ["lei9394-ldb.md", "lei14533-educacao-digital.md"],
+              "leg-m": ["lei8069-eca.md"]}
+
+
+def _art_txt(n, suf):
+    return f"{n}{'-' + suf if suf else ''}"
+
+
+# ------------------------------------------- dispositivos (§, inciso, alínea) --
+
+ROMANO = r"[IVXLC]+"
+
+
+def alvos(det: str) -> list:
+    """Dispositivos citados no complemento do artigo -> [(parágrafo, inciso, alínea)], None = não indicado.
+    Parágrafo: None (caput), "1", "2"…, "pu" (parágrafo único). Ex.: "§ 1º, II" -> [("1", "II", None)];
+    "V, VIII" -> [(None, "V", None), (None, "VIII", None)]; "" -> []."""
+    det = (det or "").strip()
+    if not det:
+        return []
+    caminhos, cur, ultimo = [], [None, None, None], -1
+    for tok in re.split(r"\s*,\s*|\s+e\s+", det):
+        tok = tok.strip()
+        if re.fullmatch(r"caput", tok):
+            nivel, val = 0, None
+        elif m := re.fullmatch(r"§\s*(\d+)\s*[º°]?", tok):
+            nivel, val = 0, m.group(1)
+        elif re.fullmatch(r"parágrafo único", tok, flags=re.I):
+            nivel, val = 0, "pu"
+        elif m := re.fullmatch(rf"(?:inciso\s+)?({ROMANO})", tok):
+            nivel, val = 1, m.group(1)
+        elif m := re.fullmatch(r"(?:alínea\s+)?“?([a-z])”?\)?", tok):
+            nivel, val = 2, m.group(1)
+        else:
+            continue
+        if nivel <= ultimo:
+            caminhos.append(tuple(cur))
+            cur = cur[:nivel] + [None] * (3 - nivel)
+        cur[nivel], ultimo = val, nivel
+    if ultimo >= 0:
+        caminhos.append(tuple(cur))
+    return caminhos
+
+
+def nivel_bloco(b: str):
+    """(nível, valor) do dispositivo que abre o bloco: § (0), inciso (1), alínea (2); None se não abre."""
+    t = b.replace("*", "").strip()
+    if m := re.match(r"§\s*(\d+)", t):
+        return 0, m.group(1)
+    if re.match(r"Parágrafo único", t, flags=re.I):
+        return 0, "pu"
+    if m := re.match(rf"({ROMANO})\s*[-–]", t):
+        return 1, m.group(1)
+    if m := re.match(r"([a-z])\)", t):
+        return 2, m.group(1)
+    return None
+
+
+def dentro(caminho, alvo) -> bool:
+    """O bloco no `caminho` pertence ao dispositivo `alvo` (ele próprio ou um subdispositivo)."""
+    return (caminho[0] == alvo[0] and (alvo[1] is None or caminho[1] == alvo[1])
+            and (alvo[2] is None or caminho[2] == alvo[2]))
+
+
+def rot_alvo(n, suf, alvo) -> str:
+    par, inc, ali = alvo
+    p = [f"art. {_art_txt(n, suf)}"]
+    if par is None:
+        p.append("" if inc else "caput")
+    elif par == "pu":
+        p.append("parágrafo único")
+    else:
+        p.append(f"§ {par}º" if int(par) < 10 else f"§ {par}")
+    if inc:
+        p.append(f"inciso {inc}")
+    if ali:
+        p.append(f"alínea {ali}")
+    return ", ".join(x for x in p if x)
+
+
+def cod_alvo(alvo) -> str:
+    return "~".join(x or "-" for x in alvo)
+
+
+def de_cod(s: str):
+    return tuple(None if x == "-" else x for x in s.split("~"))
+
+
+DISP_EMIT: dict = {}      # (arquivo, chave do artigo) -> alvos que ganharam caixa própria na apostila
+DISP_DA_Q: dict = {}      # código da questão -> ["ECA, art. 18-A, parágrafo único, inciso II, alínea c", …]
+for (_arq, (_n, _suf)), _ents in ART_Q.items():
+    for _e in _ents:
+        _al = alvos(_e["detalhe"])
+        _r = (f"{NOME_LEI.get(_arq, _arq).split(' — ')[0]}, "
+              + (rot_alvo(_n, _suf, _al[0]) if _al else f"art. {_art_txt(_n, _suf)}"))
+        if _r not in DISP_DA_Q.setdefault(_e["codigo"], []):
+            DISP_DA_Q[_e["codigo"]].append(_r)
+
+
+def QART_BLOCO(arq: str, n: int, suf: str, alvo: str, completo: bool) -> str:
+    """Questões que cobram o dispositivo, logo abaixo dele. `alvo` vazio: questões do artigo sem dispositivo
+    localizado (ou cujo dispositivo não aparece no trecho transcrito), ao fim do artigo.
+    Publicada: questão, gabarito e análise própria; o texto dos comentários do Qconcursos só entra na local."""
+    todas = ART_Q.get((arq, (n, suf)), [])
+    if alvo:
+        a = de_cod(alvo)
+        ents = [e for e in todas if alvos(e["detalhe"])[:1] == [a]]
+        titulo = rot_alvo(n, suf, a)
+        titulo = titulo[0].upper() + titulo[1:]
+    else:
+        emit = DISP_EMIT.get((arq, (n, suf)), set())
+        ents = [e for e in todas if not alvos(e["detalhe"]) or alvos(e["detalhe"])[0] not in emit]
+        titulo = f"Art. {_art_txt(n, suf)}"
+    por = {}
+    for e in ents:
+        por.setdefault(e["codigo"], []).append(e)
+    cods = sorted((c for c in por if c in QIDX),
+                  key=lambda c: (not any(e["papel"] in ("Fundamento decisivo", "Análise própria") for e in por[c]), c))
+    if not cods:
+        return ""
+    partes = [f'<details class="qart"><summary>{titulo} na prova — {len(cods)} '
+              f'{"questão" if len(cods) == 1 else "questões"} da Legalle</summary>\n']
+    for c in cods:
+        q = QIDX[c]
+        alts = "\n".join(f"- **{l})** {t}" for l, t in q["alternativas"])
+        blocos = []
+        for e in por[c]:
+            rot = f'**{e["papel"]}{" — " + e["detalhe"] if e["detalhe"] else ""}**'
+            if completo or e["papel"] == "Análise própria":
+                blocos.append(f'> {rot}: {e["trecho"]}')
+                if e.get("questao"):
+                    blocos.append(COMPARA(e["questao"], e["lei_texto"]))
+            elif e["papel"].startswith(("Alternativa", "Fundamento")) and f'> {rot}' not in blocos:
+                blocos.append(f'> {rot}')      # publicada: só o rótulo (qual alternativa / fundamento), sem o texto
+        alt = next((e["alteracao"] for e in por[c] if e.get("alteracao")), "")
+        if alt:
+            blocos.append(f'<p class="nota"><strong>Alteração legislativa:</strong> {alt}</p>')
+        if not completo and not q.get("analise"):
+            blocos.append('<p class="nota">Gabarito comentado: versão local / Qconcursos.</p>')
+        partes.append(
+            f'\n<div class="qa">\n\n**{c}** · {q["ano"]} · {html.escape(q["orgao"])} · {html.escape(_cargo(q))}\n\n'
+            f'{q["enunciado"]}\n\n{alts}\n\n'
+            f'<details class="gab"><summary>Ver gabarito e comentário</summary>\n\n'
+            f'{_rotulo_gab(q)}\n\n' + "\n\n".join(blocos) + "\n\n</details>\n\n"
+            f'<p class="nota"><a href="#q-{c}">questão na lista da lei</a> · '
+            f'<a href="{html.escape(q["url"])}" target="_blank" rel="noopener">Qconcursos</a></p>\n\n</div>\n')
+    partes.append("\n</details>")
+    return "".join(partes)
+
+
+def outros_artigos(ident: str) -> str:
+    """Artigos citados nos gabaritos que não estão nos trechos transcritos da seção."""
+    s = ""
+    for arq in SECAO_ARQS.get(ident, []):
+        faltam = sorted(c for (a, c) in ART_Q if a == arq and (a, c) not in RENDERIZADOS)
+        partes, ok = [], []
+        for n, suf in faltam:
+            try:
+                partes += trecho(arq, _art_txt(n, suf), titulos_antes=False)
+                ok.append(_art_txt(n, suf))
+            except ValueError:
+                print(f"aviso: {arq}: art. {_art_txt(n, suf)} citado em questão, mas não encontrado no texto")
+        if partes:
+            s += (f"\n\n### Outros artigos cobrados nas questões — {NOME_LEI[arq]}\n\n"
+                  f'<p class="arts">Artigos citados nos gabaritos comentados da Legalle e que não estão nos tópicos acima: '
+                  f'arts. {", ".join(ok)}.</p>\n'
+                  + caixa_lei(f"{NOME_LEI[arq]} — artigos cobrados nas questões", F(arq), partes))
+    return s
+
+
+def com_questoes_leg(s: str) -> str:
+    """Ao fim de cada seção ## da Parte II: artigos cobrados ainda não transcritos + bloco de questões."""
+    pedacos = re.split(r"(?m)^(?=## )", s)
+    out = []
+    for p in pedacos:
+        m = re.match(r"## .*\{#(leg-[a-m])\}", p)
+        out.append(p.rstrip("\n") + outros_artigos(m.group(1)) + f"\n\n<!--QLEG:{m.group(1)}-->\n\n" if m else p)
+    return "".join(out)
+
+
 def topicos_q(*itens) -> str:
     """Lista de tópicos em HTML; um item pode ser (texto, grupo) para trazer logo abaixo
     as questões da Legalle daquele assunto."""
@@ -497,6 +860,7 @@ def MAPA(ident, nome, arq, itens):
 
 
 def parte_legislacao():
+    MARCAR[0] = True
     s = """
 # Parte II — Legislação {#leg}
 
@@ -686,6 +1050,8 @@ def parte_legislacao():
         ("Conselho Tutelar", "Arts. 131 a 137", [("131", "137")], ["esp-f"]),
         ("Infração administrativa: falta de comunicação de maus-tratos", "Art. 245", [("245",)], ["esp-f"]),
     ])
+    s = com_questoes_leg(s)
+    MARCAR[0] = False
     return s
 
 
@@ -883,6 +1249,7 @@ nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-ri
 nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
 nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
 nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
 nav .tools{display:flex;gap:6px;flex-wrap:wrap}
 nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
 main{padding:32px 40px 80px;min-width:0}
@@ -900,6 +1267,17 @@ details.lei{background:var(--law);border:1px solid var(--line);border-left:4px s
 details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
 details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
 details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
 ul.topicos>li{margin:6px 0}
 ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
 ul.topicos p.ref{padding:2px 10px}
@@ -945,32 +1323,49 @@ function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open
 function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
 try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
 window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
 """
 
 
-def nav():
-    pt = [("pt-a", "a) Leitura e compreensão"), ("pt-b", "b) Léxico"), ("pt-c", "c) Aspectos linguísticos")]
-    leg = [("leg-a", "a) Lei RS 14.498/2014"), ("leg-b", "b) Estatuto da Fundação"), ("leg-c", "c) CF/88"),
-           ("leg-d", "d) CLT"), ("leg-e", "e) Lei 12.288/2010"), ("leg-f", "f) Lei RS 13.694/2011"),
-           ("leg-g", "g) Maria da Penha"), ("leg-h", "h) LBI"), ("leg-i", "i) LGPD"), ("leg-j", "j) LDB"),
-           ("leg-k", "k) PNEPT"), ("leg-l", "l) BNCC"), ("leg-m", "m) ECA")]
-    esp = [("esp-a", "a) Pensadores e história"), ("esp-b", "b) Prática pedagógica"), ("esp-c", "c) Aprendizagem e conhecimento"),
-           ("esp-d", "d) Orientação Educacional"), ("esp-e", "e) Desenvolvimento e subjetividade"), ("esp-f", "f) Família, escola e conflitos"),
-           ("esp-g", "g) Dificuldades e inclusão"), ("esp-h", "h) Trabalho e cidadania"), ("esp-i", "i) Gestão, planejamento e currículo"),
-           ("esp-j", "j) Avaliação e supervisão")]
-    def bloco(t, ancora, itens):
-        return f'<h2><a href="#{ancora}">{t}</a></h2>' + "".join(f'<a href="#{a}">{n}</a>' for a, n in itens)
+PARTES = {"pt": ("portugues.html", "I · Português"), "leg": ("legislacao.html", "II · Legislação"),
+          "esp": ("especificos.html", "III · Específicos")}
+PASTA_DIV = RAIZ / "apostilas" / "orientador-educacional"     # versão dividida: uma página por parte e por lei
+ITENS = {
+    "pt": [("pt-a", "a) Leitura e compreensão"), ("pt-b", "b) Léxico"), ("pt-c", "c) Aspectos linguísticos")],
+    "leg": [("leg-a", "a) Lei RS 14.498/2014"), ("leg-b", "b) Estatuto da Fundação"), ("leg-c", "c) CF/88"),
+            ("leg-d", "d) CLT"), ("leg-e", "e) Lei 12.288/2010"), ("leg-f", "f) Lei RS 13.694/2011"),
+            ("leg-g", "g) Maria da Penha"), ("leg-h", "h) LBI"), ("leg-i", "i) LGPD"), ("leg-j", "j) LDB"),
+            ("leg-k", "k) PNEPT"), ("leg-l", "l) BNCC"), ("leg-m", "m) ECA")],
+    "esp": [("esp-a", "a) Pensadores e história"), ("esp-b", "b) Prática pedagógica"), ("esp-c", "c) Aprendizagem e conhecimento"),
+            ("esp-d", "d) Orientação Educacional"), ("esp-e", "e) Desenvolvimento e subjetividade"), ("esp-f", "f) Família, escola e conflitos"),
+            ("esp-g", "g) Dificuldades e inclusão"), ("esp-h", "h) Trabalho e cidadania"), ("esp-i", "i) Gestão, planejamento e currículo"),
+            ("esp-j", "j) Avaliação e supervisão")],
+}
+# arquivo de cada lei na versão dividida
+ARQ_LEI = {"leg-a": "leg-a-lei-rs-14498.html", "leg-b": "leg-b-estatuto-liberato.html", "leg-c": "leg-c-cf88.html",
+           "leg-d": "leg-d-clt.html", "leg-e": "leg-e-lei-12288.html", "leg-f": "leg-f-lei-rs-13694.html",
+           "leg-g": "leg-g-maria-da-penha.html", "leg-h": "leg-h-lbi.html", "leg-i": "leg-i-lgpd.html",
+           "leg-j": "leg-j-ldb.html", "leg-k": "leg-k-pnept.html", "leg-l": "leg-l-bncc.html", "leg-m": "leg-m-eca.html"}
+
+
+def nav(atual=None, inicio=None):
+    """Menu lateral com âncoras locais (#id); na versão dividida, links_entre_paginas aponta cada uma para o
+    seu arquivo. `atual` marca o item da página aberta."""
+    def item(a, n):
+        marca = ' class="atual"' if a == atual else ""
+        return f'<a href="#{a}"{marca}>{n}</a>'
     return ('<nav><div class="tools"><button onclick="todos(true)">Abrir leis</button>'
             '<button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div>'
-            + bloco("I · Português", "pt", pt) + bloco("II · Legislação", "leg", leg)
-            + bloco("III · Específicos", "esp", esp) + "</nav>")
+            + (f'<a href="{inicio}">← Início</a>' if inicio else "")
+            + "".join(f'<h2><a href="#{p}">{PARTES[p][1]}</a></h2>' + "".join(item(a, n) for a, n in ITENS[p])
+                      for p in PARTES) + "</nav>")
 
 
-def main():
-    md = parte_portugues() + parte_legislacao() + parte_especificos()
+def html_corpo(md: str) -> str:
     # converte seção por seção (## ...) para limitar o uso de memória do pandoc
     pedacos = [p for p in re.split(r"(?m)^(?=#{1,2} )", md) if p.strip()]
-    corpo = "\n".join(
+    return "\n".join(
         subprocess.run(
             ["pandoc", "+RTS", "-K512m", "-RTS", "-f", "markdown-fancy_lists-example_lists-implicit_figures-tex_math_dollars-subscript-superscript",
              "-t", "html5", "--wrap=none"],
@@ -978,20 +1373,122 @@ def main():
         ).stdout.decode("utf-8")
         for p in pedacos
     )
-    capa = ('<header class="capa"><h1>Apostila — Analista Educacional: Orientador Educacional</h1>'
-            '<p>Fundação Escola Técnica Liberato Salzano Vieira da Cunha · Concurso Público 001/2026 · Banca: Legalle Concursos</p>'
-            '<p>Prova teórico-objetiva (data provável): 07/03/2027 · 60 questões: Português (10) · Legislação (10) · Específicos (40)</p>'
-            '<p>Versão inicial: tópicos de cada ponto do programa (Anexo II) e textos legais transcritos das fontes oficiais. '
-            'Redações revogadas foram omitidas; as notas de alteração aparecem em cinza.</p></header>')
-    pagina = f"""<!doctype html>
+
+
+TITULO = "Material de Estudos – Orientador Educacional"
+CAPA_INFO = ('<p>Analista Educacional: Orientador Educacional</p>'
+             '<p>Fundação Escola Técnica Liberato Salzano Vieira da Cunha · Concurso Público 001/2026 · Banca: Legalle Concursos</p>'
+             '<p>Prova teórico-objetiva (data provável): 07/03/2027 · 60 questões: Português (10) · Legislação (10) · Específicos (40)</p>')
+
+
+def pagina(corpo: str, titulo=TITULO, menu=None, capa=None) -> str:
+    if capa is None:
+        capa = (f'<header class="capa"><h1>{TITULO}</h1>{CAPA_INFO}'
+                '<p>Versão inicial: tópicos de cada ponto do programa (Anexo II) e textos legais transcritos das fontes oficiais. '
+                'Redações revogadas foram omitidas; as notas de alteração aparecem em cinza.</p></header>')
+    return f"""<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Apostila Orientador Educacional</title>
+<title>{titulo}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>{CSS}</style><script>{JS}</script></head>
-<body><div class="wrap">{nav()}<main>{capa}{corpo}</main></div></body></html>"""
-    SAIDA.write_text(pagina, encoding="utf-8")
-    (RAIZ / "index.html").write_text(pagina, encoding="utf-8")   # página do GitHub Pages
+<body><div class="wrap">{menu if menu is not None else nav()}<main>{capa}{corpo}</main></div></body></html>"""
+
+
+def render(md: str) -> str:
+    return pagina(html_corpo(md))
+
+
+def links_entre_paginas(htmls: dict, arquivos: dict):
+    """Devolve fixa(p, html): href="#id" de âncora que está em outra página vira href="outra.html#id"."""
+    ids = {p: set(re.findall(r'\sid="([^"]+)"', h)) for p, h in htmls.items()}
+    def fixa(p, h):
+        def troca(m):
+            i = m.group(1)
+            if i in ids.get(p, ()):
+                return m.group(0)
+            dono = next((o for o in htmls if i in ids[o]), None)
+            return f'href="{arquivos[dono]}#{i}"' if dono else m.group(0)
+        return re.sub(r'href="#([^"]+)"', troca, h)
+    return fixa
+
+
+def gerar_dividida(mds: dict, completo: bool):
+    """Uma página por parte e, na Legislação, uma por lei, em apostilas/orientador-educacional/.
+    A versão completa (gabaritos comentados) só muda a Legislação: grava legislacao-local.html,
+    leg-*-local.html e index-local.html; Português e Específicos são os mesmos da versão publicada."""
+    suf = "-local" if completo else ""
+    # divide a Legislação: introdução + uma seção "## x) ... {#leg-x}" por lei
+    leis = {}
+    intro, *secoes = re.split(r"(?m)^(?=## .*\{#leg-[a-m]\})", mds["leg"])
+    for sec in secoes:
+        leis[re.search(r"\{#(leg-[a-m])\}", sec).group(1)] = sec
+    legenda = re.search(r'<div class="legenda">.*?</div>', intro, flags=re.S)
+    rotulo = dict(ITENS["leg"])
+    intro += ('\n\n## Normas do programa\n\n<ul class="topicos">'
+              + "".join(f'<li><a href="#{k}">{rotulo[k]}</a></li>' for k in leis) + "</ul>\n")
+    paginas = {"pt": mds["pt"], "leg": intro, **leis, "esp": mds["esp"]}
+    arquivos = {"pt": "portugues.html", "esp": "especificos.html", "leg": f"legislacao{suf}.html",
+                **{k: ARQ_LEI[k].replace(".html", f"{suf}.html") for k in leis}}
+    htmls = {p: html_corpo(m) for p, m in paginas.items()}
+    fixa = links_entre_paginas(htmls, arquivos)
+    PASTA_DIV.mkdir(exist_ok=True)
+    gravar = [p for p in paginas if p.startswith("leg") or not completo]
+    idx = f"index{suf}.html"
+    for p in gravar:
+        if p in leis:
+            nome = rotulo[p].split(") ", 1)[1]
+            trilha = f'<a href="{idx}">{TITULO}</a> · <a href="{arquivos["leg"]}">Legislação</a>'
+            corpo = (legenda.group(0) if legenda else "") + htmls[p]
+        else:
+            nome = PARTES[p][1].split("· ")[1]
+            trilha = f'<a href="{idx}">{TITULO}</a>'
+            corpo = htmls[p]
+        capa = f'<header class="capa"><h1>{nome}</h1><p>{trilha}</p></header>'
+        (PASTA_DIV / arquivos[p]).write_text(
+            pagina(fixa(p, corpo), f"{nome} – {TITULO}", fixa(p, nav(p, idx)), capa), encoding="utf-8")
+    desc = {"pt": "Leitura e compreensão, léxico e aspectos linguísticos, com questões da Legalle por tópico.",
+            "leg": "As 13 normas do programa, uma página por lei, com o texto legal dos artigos mais prováveis e as questões da Legalle"
+                   + (" com gabarito comentado abaixo de cada artigo." if completo else " por artigo."),
+            "esp": "Os 10 pontos (a–j) de Conhecimentos Específicos: tópicos, autores e base legal."}
+    def sub(p):     # índice geral: cada tópico/lei da parte (âncoras resolvidas para o arquivo por `fixa`)
+        def n_q(a):
+            n = len(QLEG.get(a, [])) if p == "leg" else 0
+            return f' <span class="nota">· {n} {"questão" if n == 1 else "questões"}</span>' if n else ""
+        return "<ul>" + "".join(f'<li><a href="#{a}">{t}</a>{n_q(a)}</li>' for a, t in ITENS[p]) + "</ul>"
+    lista = "".join(f'<li><a href="{arquivos[p]}"><strong>{PARTES[p][1]}</strong></a> — {desc[p]}{sub(p)}</li>' for p in PARTES)
+    inicio = (f'<header class="capa"><h1>{TITULO}</h1>{CAPA_INFO}</header>'
+              f'<h2>Índice geral</h2><ul class="topicos">{lista}</ul>'
+              f'<p class="ref">Versão em arquivo único: <a href="../orientador-educacional{suf}.html">orientador-educacional{suf}.html</a>.</p>')
+    pag_idx = pagina(fixa("index", inicio), TITULO, fixa("index", nav()), "")
+    (PASTA_DIV / idx).write_text(pag_idx, encoding="utf-8")
+    if not completo:
+        # raiz do GitHub Pages: o mesmo índice geral, com os links apontando para a pasta da versão dividida
+        rel = PASTA_DIV.relative_to(RAIZ).as_posix() + "/"
+        def raiz(m):
+            h = m.group(1)
+            if h.startswith(("http:", "https:", "#", "mailto:")):
+                return m.group(0)
+            return f'href="{rel[:rel.rindex("/", 0, -1) + 1] + h[3:] if h.startswith("../") else rel + h}"'
+        (RAIZ / "index.html").write_text(re.sub(r'href="([^"]+)"', raiz, pag_idx), encoding="utf-8")
+    tam = sum((PASTA_DIV / arquivos[p]).stat().st_size for p in gravar) // 1024
+    print(f"gerado {PASTA_DIV} — {len(gravar) + 1} páginas{' locais' if completo else ''} ({tam} KB)")
+
+
+def main():
+    mds = {"pt": parte_portugues(), "leg": parte_legislacao(), "esp": parte_especificos()}
+    def versao(md, completo):
+        t = re.sub(r"<!--QLEG:(leg-[a-m])-->", lambda m: QLEG_BLOCO(m.group(1), completo), md)
+        return re.sub(r"<!--QART:([^|]+)\|(\d+)\|([A-Z]*)\|([^>]*)-->",
+                      lambda m: QART_BLOCO(m.group(1), int(m.group(2)), m.group(3), m.group(4), completo), t)
+    md = "".join(mds.values())
+    html = render(versao(md, False))
+    SAIDA.write_text(html, encoding="utf-8")
     print(f"gerado {SAIDA} ({SAIDA.stat().st_size // 1024} KB)")
+    gerar_dividida({p: versao(m, False) for p, m in mds.items()}, False)   # grava também o index.html da raiz (GitHub Pages)
+    if QLEG:
+        SAIDA_LOCAL.write_text(render(versao(md, True)), encoding="utf-8")
+        print(f"gerado {SAIDA_LOCAL} ({SAIDA_LOCAL.stat().st_size // 1024} KB) — versão local, com gabaritos comentados")
+        gerar_dividida({p: versao(m, True) for p, m in mds.items()}, True)
 
 
 if __name__ == "__main__":

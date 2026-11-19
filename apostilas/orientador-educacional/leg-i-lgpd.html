@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LGPD – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="leg-a-lei-rs-14498.html#leg-a">a) Lei RS 14.498/2014</a><a href="leg-b-estatuto-liberato.html#leg-b">b) Estatuto da Fundação</a><a href="leg-c-cf88.html#leg-c">c) CF/88</a><a href="leg-d-clt.html#leg-d">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="leg-g-maria-da-penha.html#leg-g">g) Maria da Penha</a><a href="leg-h-lbi.html#leg-h">h) LBI</a><a href="#leg-i" class="atual">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="leg-l-bncc.html#leg-l">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>LGPD</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-i">i) Lei nº 13.709/2018 — LGPD</h2>
+<table class="mapa">
+<caption>
+Mapa da lei por tópico
+</caption>
+<thead>
+<tr>
+<th>
+Tópico
+</th>
+<th>
+Dispositivos
+</th>
+<th>
+Pontos do programa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="#leg-i-1">1. Disposições preliminares: objetivo, fundamentos, aplicação, conceitos e princípios</a>
+</td>
+<td>
+Arts. 1º a 6º
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-i-2">2. Requisitos (bases legais) para o tratamento de dados pessoais</a>
+</td>
+<td>
+Art. 7º
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-i-3">3. Tratamento de dados pessoais sensíveis</a>
+</td>
+<td>
+Art. 11
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-i-4">4. Tratamento de dados pessoais de crianças e adolescentes — aplicação na escola</a>
+</td>
+<td>
+Art. 14
+</td>
+<td>
+<a href="especificos.html#esp-d">Esp. d — orientação educacional</a> · <a href="especificos.html#esp-f">Esp. f — família, escola e conflitos</a> · <a href="leg-m-eca.html#leg-m">Leg. m — ECA</a>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="leg-i-1">
+1. Disposições preliminares: objetivo, fundamentos, aplicação, conceitos e princípios
+</h3>
+<p class="arts">
+Arts. 1º a 6º
+</p>
+<details class="lei" open>
+<summary>
+LGPD — Arts. 1º a 6º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>CAPÍTULO I</p>
+</div>
+<div class="tit">
+<p>DISPOSIÇÕES PRELIMINARES</p>
+</div>
+<p><strong>Art. 1º</strong> Esta Lei dispõe sobre o tratamento de dados pessoais, inclusive nos meios digitais, por pessoa natural ou por pessoa jurídica de direito público ou privado, com o objetivo de proteger os direitos fundamentais de liberdade e de privacidade e o livre desenvolvimento da personalidade da pessoa natural.</p>
+<p>Parágrafo único. As normas gerais contidas nesta Lei são de interesse nacional e devem ser observadas pela União, Estados, Distrito Federal e Municípios.             Vigência <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p><strong>Art. 2º</strong> A disciplina da proteção de dados pessoais tem como fundamentos:</p>
+<p>I - o respeito à privacidade;</p>
+<p>II - a autodeterminação informativa;</p>
+<p>III - a liberdade de expressão, de informação, de comunicação e de opinião;</p>
+<p>IV - a inviolabilidade da intimidade, da honra e da imagem;</p>
+<p>V - o desenvolvimento econômico e tecnológico e a inovação;</p>
+<p>VI - a livre iniciativa, a livre concorrência e a defesa do consumidor; e</p>
+<p>VII - os direitos humanos, o livre desenvolvimento da personalidade, a dignidade e o exercício da cidadania pelas pessoas naturais.</p>
+<p><strong>Art. 3º</strong> Esta Lei aplica-se a qualquer operação de tratamento realizada por pessoa natural ou por pessoa jurídica de direito público ou privado, independentemente do meio, do país de sua sede ou do país onde estejam localizados os dados, desde que:</p>
+<p>I - a operação de tratamento seja realizada no território nacional;</p>
+<p>II - a atividade de tratamento tenha por objetivo a oferta ou o fornecimento de bens ou serviços ou o tratamento de dados de indivíduos localizados no território nacional; ou         Vigência <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>III - os dados pessoais objeto do tratamento tenham sido coletados no território nacional.</p>
+<p>§ 1º Consideram-se coletados no território nacional os dados pessoais cujo titular nele se encontre no momento da coleta.</p>
+<p>§ 2º Excetua-se do disposto no inciso I deste artigo o tratamento de dados previsto no inciso IV do caput do art. 4º desta Lei.</p>
+<p><strong>Art. 4º</strong> Esta Lei não se aplica ao tratamento de dados pessoais:</p>
+<p>I - realizado por pessoa natural para fins exclusivamente particulares e não econômicos;</p>
+<p>II - realizado para fins exclusivamente:</p>
+<p>a) jornalístico e artísticos; ou</p>
+<p>b) acadêmicos, aplicando-se a esta hipótese os arts. 7º e 11 desta Lei;</p>
+<p>III - realizado para fins exclusivos de:</p>
+<p>a) segurança pública;</p>
+<p>b) defesa nacional;</p>
+<p>c) segurança do Estado; ou</p>
+<p>d) atividades de investigação e repressão de infrações penais; ou</p>
+<p>IV - provenientes de fora do território nacional e que não sejam objeto de comunicação, uso compartilhado de dados com agentes de tratamento brasileiros ou objeto de transferência internacional de dados com outro país que não o de proveniência, desde que o país de proveniência proporcione grau de proteção de dados pessoais adequado ao previsto nesta Lei.</p>
+<p>§ 1º O tratamento de dados pessoais previsto no inciso III será regido por legislação específica, que deverá prever medidas proporcionais e estritamente necessárias ao atendimento do interesse público, observados o devido processo legal, os princípios gerais de proteção e os direitos do titular previstos nesta Lei.</p>
+<p>§ 2º É vedado o tratamento dos dados a que se refere o inciso III do caput deste artigo por pessoa de direito privado, exceto em procedimentos sob tutela de pessoa jurídica de direito público, que serão objeto de informe específico à autoridade nacional e que deverão observar a limitação imposta no § 4º deste artigo.</p>
+<p>§ 3º A autoridade nacional emitirá opiniões técnicas ou recomendações referentes às exceções previstas no inciso III do caput deste artigo e deverá solicitar aos responsáveis relatórios de impacto à proteção de dados pessoais.</p>
+<p>§ 4º Em nenhum caso a totalidade dos dados pessoais de banco de dados de que trata o inciso III do caput deste artigo poderá ser tratada por pessoa de direito privado, salvo por aquela que possua capital integralmente constituído pelo poder público.                 Vigência <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p><strong>Art. 5º</strong> Para os fins desta Lei, considera-se:</p>
+<p>I - dado pessoal: informação relacionada a pessoa natural identificada ou identificável;</p>
+<p>II - dado pessoal sensível: dado pessoal sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à saúde ou à vida sexual, dado genético ou biométrico, quando vinculado a uma pessoa natural;</p>
+<p>III - dado anonimizado: dado relativo a titular que não possa ser identificado, considerando a utilização de meios técnicos razoáveis e disponíveis na ocasião de seu tratamento;</p>
+<p>IV - banco de dados: conjunto estruturado de dados pessoais, estabelecido em um ou em vários locais, em suporte eletrônico ou físico;</p>
+<p>V - titular: pessoa natural a quem se referem os dados pessoais que são objeto de tratamento;</p>
+<p>VI - controlador: pessoa natural ou jurídica, de direito público ou privado, a quem competem as decisões referentes ao tratamento de dados pessoais;</p>
+<p>VII - operador: pessoa natural ou jurídica, de direito público ou privado, que realiza o tratamento de dados pessoais em nome do controlador;</p>
+<p>VIII - encarregado: pessoa indicada pelo controlador e operador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a Agência Nacional de Proteção de Dados (ANPD); <span class="nota">(Redação dada pela Lei nº 15.352, de 2026)</span></p>
+<details class="qart">
+<summary>
+Art. 5, inciso VIII na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3967994</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Engenheiro Civil …</p>
+<p>Conforme o Decreto Municipal nº 21.641/2021, o Encarregado é responsável por atuar como canal de comunicação entre o controlador, os Titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD). A partir disso, qual das alternativas apresenta uma das atividades previstas para o Encarregado, de forma INCORRETA?</p>
+<ul>
+<li><strong>A)</strong> Orientar os funcionários e os contratados do órgão ou entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais.</li>
+<li><strong>B)</strong> Aceitar reclamações e comunicações dos titulares, prestar esclarecimentos e adotar providências.</li>
+<li><strong>C)</strong> Realizar alterações pontuais no banco de dados pessoais sob seu domínio, para fins dê interesse do Gabinete do Chefe do Executivo.</li>
+<li><strong>D)</strong> Determinar ao responsável por unidade administrativa, a realização de estudos técnicos para elaboração das diretrizes previstas no relatório de impacto à proteção de dados pessoais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa C (certa) — VIII</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3967994">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/68144c24-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>IX - agentes de tratamento: o controlador e o operador;</p>
+<p>X - tratamento: toda operação realizada com dados pessoais, como as que se referem a coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, distribuição, processamento, arquivamento, armazenamento, eliminação, avaliação ou controle da informação, modificação, comunicação, transferência, difusão ou extração;</p>
+<p>XI - anonimização: utilização de meios técnicos razoáveis e disponíveis no momento do tratamento, por meio dos quais um dado perde a possibilidade de associação, direta ou indireta, a um indivíduo;</p>
+<details class="qart">
+<summary>
+Art. 5, inciso XI na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3970080</strong> · 2024 · UNIR · Analista de Tecnologia de Informação</p>
+<p>De acordo com a Lei n.° 13.709/2018, conhecida como Lei Geral de Proteção de Dados Pessoais (LGPD), são estabelecidos vários conceitos e diretrizes para o tratamento de dados pessoais no Brasil, entre eles, o de anonimização. Com base nisso, assinale a alternativa que apresenta, CORRETAMENTE, a descrição desse conceito, conforme estipulado pela LGPD.</p>
+<ul>
+<li><strong>A)</strong> Manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.</li>
+<li><strong>B)</strong> Suspensão temporária de qualquer operação de tratamento, mediante guarda do dado pessoal ou do banco de dados</li>
+<li><strong>C)</strong> Exclusão de dado ou de conjunto de dados armazenados em banco de dados, independentemente do procedimento empregado.</li>
+<li><strong>D)</strong> Utilização de meios técnicos razoáveis e disponíveis no momento do tratamento, por meio dos quais um dado perde a possibilidade de associação, direta ou indireta, a um indivíduo.</li>
+<li><strong>E)</strong> Transferência de dados pessoais para país estrangeiro ou organismo internacional do qual o país seja membro.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — XI</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (certa) — XI</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3970080">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/07e48196-2f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>XII - consentimento: manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada;</p>
+<p>XIII - bloqueio: suspensão temporária de qualquer operação de tratamento, mediante guarda do dado pessoal ou do banco de dados;</p>
+<p>XIV - eliminação: exclusão de dado ou de conjunto de dados armazenados em banco de dados, independentemente do procedimento empregado;</p>
+<p>XV - transferência internacional de dados: transferência de dados pessoais para país estrangeiro ou organismo internacional do qual o país seja membro;</p>
+<p>XVI - uso compartilhado de dados: comunicação, difusão, transferência internacional, interconexão de dados pessoais ou tratamento compartilhado de bancos de dados pessoais por órgãos e entidades públicos no cumprimento de suas competências legais, ou entre esses e entes privados, reciprocamente, com autorização específica, para uma ou mais modalidades de tratamento permitidas por esses entes públicos, ou entre entes privados;</p>
+<p>XVII - relatório de impacto à proteção de dados pessoais: documentação do controlador que contém a descrição dos processos de tratamento de dados pessoais que podem gerar riscos às liberdades civis e aos direitos fundamentais, bem como medidas, salvaguardas e mecanismos de mitigação de risco;</p>
+<p>XVIII - órgão de pesquisa: órgão ou entidade da administração pública direta ou indireta ou pessoa jurídica de direito privado sem fins lucrativos legalmente constituída sob as leis brasileiras, com sede e foro no País, que inclua em sua missão institucional ou em seu objetivo social ou estatutário a pesquisa básica ou aplicada de caráter histórico, científico, tecnológico ou estatístico; e            Vigência <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>XIX - autoridade nacional: entidade da administração pública responsável por zelar, implementar e fiscalizar o cumprimento desta Lei em todo o território nacional. <span class="nota">(Redação dada pela Lei nº 15.352, de 2026)</span></p>
+<details class="qart">
+<summary>
+Art. 5 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3970080</strong> · 2024 · UNIR · Analista de Tecnologia de Informação</p>
+<p>De acordo com a Lei n.° 13.709/2018, conhecida como Lei Geral de Proteção de Dados Pessoais (LGPD), são estabelecidos vários conceitos e diretrizes para o tratamento de dados pessoais no Brasil, entre eles, o de anonimização. Com base nisso, assinale a alternativa que apresenta, CORRETAMENTE, a descrição desse conceito, conforme estipulado pela LGPD.</p>
+<ul>
+<li><strong>A)</strong> Manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.</li>
+<li><strong>B)</strong> Suspensão temporária de qualquer operação de tratamento, mediante guarda do dado pessoal ou do banco de dados</li>
+<li><strong>C)</strong> Exclusão de dado ou de conjunto de dados armazenados em banco de dados, independentemente do procedimento empregado.</li>
+<li><strong>D)</strong> Utilização de meios técnicos razoáveis e disponíveis no momento do tratamento, por meio dos quais um dado perde a possibilidade de associação, direta ou indireta, a um indivíduo.</li>
+<li><strong>E)</strong> Transferência de dados pessoais para país estrangeiro ou organismo internacional do qual o país seja membro.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3970080">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/07e48196-2f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 6º</strong> As atividades de tratamento de dados pessoais deverão observar a boa-fé e os seguintes princípios:</p>
+<p>I - finalidade: realização do tratamento para propósitos legítimos, específicos, explícitos e informados ao titular, sem possibilidade de tratamento posterior de forma incompatível com essas finalidades;</p>
+<p>II - adequação: compatibilidade do tratamento com as finalidades informadas ao titular, de acordo com o contexto do tratamento;</p>
+<p>III - necessidade: limitação do tratamento ao mínimo necessário para a realização de suas finalidades, com abrangência dos dados pertinentes, proporcionais e não excessivos em relação às finalidades do tratamento de dados;</p>
+<details class="qart">
+<summary>
+Art. 6, inciso III na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4042788</strong> · 2026 · Prefeitura de São Lourenço do Sul - RS · Assessor de Imprensa</p>
+<p>A Lei Geral de Proteção de Dados (LGPD) traz princípios essenciais sobre o tratamento da informação pública institucional. O princípio da necessidade determina a ___________ do tratamento ao mínimo necessário para a realização de suas finalidades. Já o princípio do livre acesso garante aos titulares a consulta facilitada e _____________ sobre a forma do tratamento de seus dados.</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas:</p>
+<ul>
+<li><strong>A)</strong> expansão - onerosa.</li>
+<li><strong>B)</strong> exclusão - restrita.</li>
+<li><strong>C)</strong> repetição - tarifada.</li>
+<li><strong>D)</strong> limitação - gratuita.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — III</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — III</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — III</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (certa) — III</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4042788">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/f3a5071e-49" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>IV - livre acesso: garantia, aos titulares, de consulta facilitada e gratuita sobre a forma e a duração do tratamento, bem como sobre a integralidade de seus dados pessoais;</p>
+<p>V - qualidade dos dados: garantia, aos titulares, de exatidão, clareza, relevância e atualização dos dados, de acordo com a necessidade e para o cumprimento da finalidade de seu tratamento;</p>
+<p>VI - transparência: garantia, aos titulares, de informações claras, precisas e facilmente acessíveis sobre a realização do tratamento e os respectivos agentes de tratamento, observados os segredos comercial e industrial;</p>
+<p>VII - segurança: utilização de medidas técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração, comunicação ou difusão;</p>
+<p>VIII - prevenção: adoção de medidas para prevenir a ocorrência de danos em virtude do tratamento de dados pessoais;</p>
+<p>IX - não discriminação: impossibilidade de realização do tratamento para fins discriminatórios ilícitos ou abusivos;</p>
+<p>X - responsabilização e prestação de contas: demonstração, pelo agente, da adoção de medidas eficazes e capazes de comprovar a observância e o cumprimento das normas de proteção de dados pessoais e, inclusive, da eficácia dessas medidas.</p>
+<details class="qart">
+<summary>
+Art. 6 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4042788</strong> · 2026 · Prefeitura de São Lourenço do Sul - RS · Assessor de Imprensa</p>
+<p>A Lei Geral de Proteção de Dados (LGPD) traz princípios essenciais sobre o tratamento da informação pública institucional. O princípio da necessidade determina a ___________ do tratamento ao mínimo necessário para a realização de suas finalidades. Já o princípio do livre acesso garante aos titulares a consulta facilitada e _____________ sobre a forma do tratamento de seus dados.</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas:</p>
+<ul>
+<li><strong>A)</strong> expansão - onerosa.</li>
+<li><strong>B)</strong> exclusão - restrita.</li>
+<li><strong>C)</strong> repetição - tarifada.</li>
+<li><strong>D)</strong> limitação - gratuita.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4042788">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/f3a5071e-49" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+</details>
+<h3 id="leg-i-2">
+2. Requisitos (bases legais) para o tratamento de dados pessoais
+</h3>
+<p class="arts">
+Art. 7º
+</p>
+<details class="lei" open>
+<summary>
+LGPD — Art. 7º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>CAPÍTULO II</p>
+</div>
+<div class="tit">
+<p>DO TRATAMENTO DE DADOS PESSOAIS</p>
+</div>
+<div class="tit">
+<p>Seção I</p>
+</div>
+<div class="tit">
+<p>Dos Requisitos para o Tratamento de Dados Pessoais</p>
+</div>
+<p><strong>Art. 7º</strong> O tratamento de dados pessoais somente poderá ser realizado nas seguintes hipóteses:</p>
+<p>I - mediante o fornecimento de consentimento pelo titular;</p>
+<p>II - para o cumprimento de obrigação legal ou regulatória pelo controlador;</p>
+<p>III - pela administração pública, para o tratamento e uso compartilhado de dados necessários à execução de políticas públicas previstas em leis e regulamentos ou respaldadas em contratos, convênios ou instrumentos congêneres, observadas as disposições do Capítulo IV desta Lei;</p>
+<p>IV - para a realização de estudos por órgão de pesquisa, garantida, sempre que possível, a anonimização dos dados pessoais;</p>
+<p>V - quando necessário para a execução de contrato ou de procedimentos preliminares relacionados a contrato do qual seja parte o titular, a pedido do titular dos dados;</p>
+<p>VI - para o exercício regular de direitos em processo judicial, administrativo ou arbitral, esse último nos termos da Lei nº 9.307, de 23 de setembro de 1996 (Lei de Arbitragem) ;</p>
+<p>VII - para a proteção da vida ou da incolumidade física do titular ou de terceiro;</p>
+<p>VIII - para a tutela da saúde, exclusivamente, em procedimento realizado por profissionais de saúde, serviços de saúde ou autoridade sanitária;            Vigência <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>IX - quando necessário para atender aos interesses legítimos do controlador ou de terceiro, exceto no caso de prevalecerem direitos e liberdades fundamentais do titular que exijam a proteção dos dados pessoais; ou</p>
+<p>X - para a proteção do crédito, inclusive quanto ao disposto na legislação pertinente.</p>
+<p>§ 1º .           Vigência <span class="nota">(Revogado)</span> <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>§ 2º .           Vigência <span class="nota">(Revogado)</span> <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>§ 3º O tratamento de dados pessoais cujo acesso é público deve considerar a finalidade, a boa-fé e o interesse público que justificaram sua disponibilização.</p>
+<p>§ 4º É dispensada a exigência do consentimento previsto no caput deste artigo para os dados tornados manifestamente públicos pelo titular, resguardados os direitos do titular e os princípios previstos nesta Lei.</p>
+<p>§ 5º O controlador que obteve o consentimento referido no inciso I do caput deste artigo que necessitar comunicar ou compartilhar dados pessoais com outros controladores deverá obter consentimento específico do titular para esse fim, ressalvadas as hipóteses de dispensa do consentimento previstas nesta Lei.</p>
+<p>§ 6º A eventual dispensa da exigência do consentimento não desobriga os agentes de tratamento das demais obrigações previstas nesta Lei, especialmente da observância dos princípios gerais e da garantia dos direitos do titular.</p>
+<p>§ 7º O tratamento posterior dos dados pessoais a que se referem os §§ 3º e 4º deste artigo poderá ser realizado para novas finalidades, desde que observados os propósitos legítimos e específicos para o novo tratamento e a preservação dos direitos do titular, assim como os fundamentos e os princípios previstos nesta Lei.            Vigência <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+</details>
+<h3 id="leg-i-3">
+3. Tratamento de dados pessoais sensíveis
+</h3>
+<p class="arts">
+Art. 11
+</p>
+<details class="lei" open>
+<summary>
+LGPD — Art. 11
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>Seção II</p>
+</div>
+<div class="tit">
+<p>Do Tratamento de Dados Pessoais Sensíveis</p>
+</div>
+<p><strong>Art. 11.</strong> O tratamento de dados pessoais sensíveis somente poderá ocorrer nas seguintes hipóteses:</p>
+<p>I - quando o titular ou seu responsável legal consentir, de forma específica e destacada, para finalidades específicas;</p>
+<p>II - sem fornecimento de consentimento do titular, nas hipóteses em que for indispensável para:</p>
+<p>a) cumprimento de obrigação legal ou regulatória pelo controlador;</p>
+<p>b) tratamento compartilhado de dados necessários à execução, pela administração pública, de políticas públicas previstas em leis ou regulamentos;</p>
+<p>c) realização de estudos por órgão de pesquisa, garantida, sempre que possível, a anonimização dos dados pessoais sensíveis;</p>
+<p>d) exercício regular de direitos, inclusive em contrato e em processo judicial, administrativo e arbitral, este último nos termos da Lei nº 9.307, de 23 de setembro de 1996 (Lei de Arbitragem) ;</p>
+<p>e) proteção da vida ou da incolumidade física do titular ou de terceiro;</p>
+<p>f) tutela da saúde, exclusivamente, em procedimento realizado por profissionais de saúde, serviços de saúde ou autoridade sanitária; ou         Vigência <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>g) garantia da prevenção à fraude e à segurança do titular, nos processos de identificação e autenticação de cadastro em sistemas eletrônicos, resguardados os direitos mencionados no art. 9º desta Lei e exceto no caso de prevalecerem direitos e liberdades fundamentais do titular que exijam a proteção dos dados pessoais.</p>
+<details class="qart">
+<summary>
+Art. 11, inciso II na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3970399</strong> · 2025 · TCE-SP · Processo de Promoção 2023</p>
+<p>Analise o texto a seguir acerca de tratamento de dados pessoais sensíveis.</p>
+<p><em>O tratamento de dados pessoals sensíveis somente poderá ocorrer sem fornecimento de consentimento do titular em situações específicos, como realização de estudos por órgão de pesquisa, garantida, sempre, a anonimização dos dados pessoais sensíveis.</em></p>
+<p>Acerca do texto, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Totalmente adequado, conforme legislação vigente.</li>
+<li><strong>B)</strong> Parcialmente adequado, visto que a garantia de anonimização deve ser observada sempre que possível, não necessariamente em qualquer ocasião.</li>
+<li><strong>C)</strong> Parcialmente adequado, visto que não há hipótese de utilização de dados pessoais sensiveis sem consentimento.</li>
+<li><strong>D)</strong> Parcialmente adequado, visto que órgãos de pesquisa são uma exceção à permissão de uso de dados pessoais, não sendo possivel tal uso.</li>
+<li><strong>E)</strong> Totalmente inadequado, visto que náo se pode utilizar dados pessoais sensíveis para fins quaisquer.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa A (errada) — II</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — II</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3970399">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/dc629630-2f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º Aplica-se o disposto neste artigo a qualquer tratamento de dados pessoais que revele dados pessoais sensíveis e que possa causar dano ao titular, ressalvado o disposto em legislação específica.</p>
+<p>§ 2º Nos casos de aplicação do disposto nas alíneas “a” e “b” do inciso II do caput deste artigo pelos órgãos e pelas entidades públicas, será dada publicidade à referida dispensa de consentimento, nos termos do inciso I do caput do art. 23 desta Lei.</p>
+<p>§ 3º A comunicação ou o uso compartilhado de dados pessoais sensíveis entre controladores com objetivo de obter vantagem econômica poderá ser objeto de vedação ou de regulamentação por parte da autoridade nacional, ouvidos os órgãos setoriais do Poder Público, no âmbito de suas competências.</p>
+<p>§ 4º É vedada a comunicação ou o uso compartilhado entre controladores de dados pessoais sensíveis referentes à saúde com objetivo de obter vantagem econômica, exceto nas hipóteses relativas a prestação de serviços de saúde, de assistência farmacêutica e de assistência à saúde, desde que observado o § 5º deste artigo, incluídos os serviços auxiliares de diagnose e terapia, em benefício dos interesses dos titulares de dados, e para permitir:            Vigência <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>I - a portabilidade de dados quando solicitada pelo titular; ou           Vigência <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>II - as transações financeiras e administrativas resultantes do uso e da prestação dos serviços de que trata este parágrafo.          Vigência <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>§ 5º É vedado às operadoras de planos privados de assistência à saúde o tratamento de dados de saúde para a prática de seleção de riscos na contratação de qualquer modalidade, assim como na contratação e exclusão de beneficiários.            Vigência <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<details class="qart">
+<summary>
+Art. 11 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3970399</strong> · 2025 · TCE-SP · Processo de Promoção 2023</p>
+<p>Analise o texto a seguir acerca de tratamento de dados pessoais sensíveis.</p>
+<p><em>O tratamento de dados pessoals sensíveis somente poderá ocorrer sem fornecimento de consentimento do titular em situações específicos, como realização de estudos por órgão de pesquisa, garantida, sempre, a anonimização dos dados pessoais sensíveis.</em></p>
+<p>Acerca do texto, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Totalmente adequado, conforme legislação vigente.</li>
+<li><strong>B)</strong> Parcialmente adequado, visto que a garantia de anonimização deve ser observada sempre que possível, não necessariamente em qualquer ocasião.</li>
+<li><strong>C)</strong> Parcialmente adequado, visto que não há hipótese de utilização de dados pessoais sensiveis sem consentimento.</li>
+<li><strong>D)</strong> Parcialmente adequado, visto que órgãos de pesquisa são uma exceção à permissão de uso de dados pessoais, não sendo possivel tal uso.</li>
+<li><strong>E)</strong> Totalmente inadequado, visto que náo se pode utilizar dados pessoais sensíveis para fins quaisquer.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3970399">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/dc629630-2f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+</details>
+<h3 id="leg-i-4">
+4. Tratamento de dados pessoais de crianças e adolescentes — aplicação na escola
+</h3>
+<p class="arts">
+Art. 14 · relacionado a: <a href="especificos.html#esp-d">Esp. d — orientação educacional</a> · <a href="especificos.html#esp-f">Esp. f — família, escola e conflitos</a> · <a href="leg-m-eca.html#leg-m">Leg. m — ECA</a>
+</p>
+<details class="lei" open>
+<summary>
+LGPD — Art. 14
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>Seção III</p>
+</div>
+<div class="tit">
+<p>Do Tratamento de Dados Pessoais de Crianças e de Adolescentes</p>
+</div>
+<p><strong>Art. 14.</strong> O tratamento de dados pessoais de crianças e de adolescentes deverá ser realizado em seu melhor interesse, nos termos deste artigo e da legislação pertinente.</p>
+<p>§ 1º O tratamento de dados pessoais de crianças deverá ser realizado com o consentimento específico e em destaque dado por pelo menos um dos pais ou pelo responsável legal.</p>
+<p>§ 2º No tratamento de dados de que trata o § 1º deste artigo, os controladores deverão manter pública a informação sobre os tipos de dados coletados, a forma de sua utilização e os procedimentos para o exercício dos direitos a que se refere o art. 18 desta Lei.</p>
+<p>§ 3º Poderão ser coletados dados pessoais de crianças sem o consentimento a que se refere o § 1º deste artigo quando a coleta for necessária para contatar os pais ou o responsável legal, utilizados uma única vez e sem armazenamento, ou para sua proteção, e em nenhum caso poderão ser repassados a terceiro sem o consentimento de que trata o § 1º deste artigo.</p>
+<p>§ 4º Os controladores não deverão condicionar a participação dos titulares de que trata o § 1º deste artigo em jogos, aplicações de internet ou outras atividades ao fornecimento de informações pessoais além das estritamente necessárias à atividade.</p>
+<p>§ 5º O controlador deve realizar todos os esforços razoáveis para verificar que o consentimento a que se refere o § 1º deste artigo foi dado pelo responsável pela criança, consideradas as tecnologias disponíveis.</p>
+<p>§ 6º As informações sobre o tratamento de dados referidas neste artigo deverão ser fornecidas de maneira simples, clara e acessível, consideradas as características físico-motoras, perceptivas, sensoriais, intelectuais e mentais do usuário, com uso de recursos audiovisuais quando adequado, de forma a proporcionar a informação necessária aos pais ou ao responsável legal e adequada ao entendimento da criança.</p>
+</details>
+<h3 id="outros-artigos-cobrados-nas-questões-lgpd-lei-nº-13.7092018">Outros artigos cobrados nas questões — LGPD — Lei nº 13.709/2018</h3>
+<p class="arts">
+Artigos citados nos gabaritos comentados da Legalle e que não estão nos tópicos acima: arts. 41, 42, 52.
+</p>
+<details class="lei">
+<summary>
+LGPD — Lei nº 13.709/2018 — artigos cobrados nas questões
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 41.</strong> O controlador deverá indicar encarregado pelo tratamento de dados pessoais.</p>
+<p>§ 1º A identidade e as informações de contato do encarregado deverão ser divulgadas publicamente, de forma clara e objetiva, preferencialmente no sítio eletrônico do controlador.</p>
+<p>§ 2º As atividades do encarregado consistem em:</p>
+<p>I - aceitar reclamações e comunicações dos titulares, prestar esclarecimentos e adotar providências;</p>
+<details class="qart">
+<summary>
+Art. 41, § 2º, inciso I na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3967994</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Engenheiro Civil …</p>
+<p>Conforme o Decreto Municipal nº 21.641/2021, o Encarregado é responsável por atuar como canal de comunicação entre o controlador, os Titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD). A partir disso, qual das alternativas apresenta uma das atividades previstas para o Encarregado, de forma INCORRETA?</p>
+<ul>
+<li><strong>A)</strong> Orientar os funcionários e os contratados do órgão ou entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais.</li>
+<li><strong>B)</strong> Aceitar reclamações e comunicações dos titulares, prestar esclarecimentos e adotar providências.</li>
+<li><strong>C)</strong> Realizar alterações pontuais no banco de dados pessoais sob seu domínio, para fins dê interesse do Gabinete do Chefe do Executivo.</li>
+<li><strong>D)</strong> Determinar ao responsável por unidade administrativa, a realização de estudos técnicos para elaboração das diretrizes previstas no relatório de impacto à proteção de dados pessoais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa B (errada) — § 2º, I</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3967994">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/68144c24-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>II - receber comunicações da autoridade nacional e adotar providências;</p>
+<p>III - orientar os funcionários e os contratados da entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais; e</p>
+<details class="qart">
+<summary>
+Art. 41, § 2º, inciso III na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3967994</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Engenheiro Civil …</p>
+<p>Conforme o Decreto Municipal nº 21.641/2021, o Encarregado é responsável por atuar como canal de comunicação entre o controlador, os Titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD). A partir disso, qual das alternativas apresenta uma das atividades previstas para o Encarregado, de forma INCORRETA?</p>
+<ul>
+<li><strong>A)</strong> Orientar os funcionários e os contratados do órgão ou entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais.</li>
+<li><strong>B)</strong> Aceitar reclamações e comunicações dos titulares, prestar esclarecimentos e adotar providências.</li>
+<li><strong>C)</strong> Realizar alterações pontuais no banco de dados pessoais sob seu domínio, para fins dê interesse do Gabinete do Chefe do Executivo.</li>
+<li><strong>D)</strong> Determinar ao responsável por unidade administrativa, a realização de estudos técnicos para elaboração das diretrizes previstas no relatório de impacto à proteção de dados pessoais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa A (errada) — § 2º, III</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3967994">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/68144c24-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>IV - executar as demais atribuições determinadas pelo controlador ou estabelecidas em normas complementares.</p>
+<details class="qart">
+<summary>
+Art. 41, § 2º, inciso IV na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3967994</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Engenheiro Civil …</p>
+<p>Conforme o Decreto Municipal nº 21.641/2021, o Encarregado é responsável por atuar como canal de comunicação entre o controlador, os Titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD). A partir disso, qual das alternativas apresenta uma das atividades previstas para o Encarregado, de forma INCORRETA?</p>
+<ul>
+<li><strong>A)</strong> Orientar os funcionários e os contratados do órgão ou entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais.</li>
+<li><strong>B)</strong> Aceitar reclamações e comunicações dos titulares, prestar esclarecimentos e adotar providências.</li>
+<li><strong>C)</strong> Realizar alterações pontuais no banco de dados pessoais sob seu domínio, para fins dê interesse do Gabinete do Chefe do Executivo.</li>
+<li><strong>D)</strong> Determinar ao responsável por unidade administrativa, a realização de estudos técnicos para elaboração das diretrizes previstas no relatório de impacto à proteção de dados pessoais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa D (errada) — § 2º, IV</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3967994">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/68144c24-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<details class="qart">
+<summary>
+Art. 41, § 2º na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3967994</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Engenheiro Civil …</p>
+<p>Conforme o Decreto Municipal nº 21.641/2021, o Encarregado é responsável por atuar como canal de comunicação entre o controlador, os Titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD). A partir disso, qual das alternativas apresenta uma das atividades previstas para o Encarregado, de forma INCORRETA?</p>
+<ul>
+<li><strong>A)</strong> Orientar os funcionários e os contratados do órgão ou entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais.</li>
+<li><strong>B)</strong> Aceitar reclamações e comunicações dos titulares, prestar esclarecimentos e adotar providências.</li>
+<li><strong>C)</strong> Realizar alterações pontuais no banco de dados pessoais sob seu domínio, para fins dê interesse do Gabinete do Chefe do Executivo.</li>
+<li><strong>D)</strong> Determinar ao responsável por unidade administrativa, a realização de estudos técnicos para elaboração das diretrizes previstas no relatório de impacto à proteção de dados pessoais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — § 2º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (certa) — § 2º</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3967994">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/68144c24-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 3º A autoridade nacional poderá estabelecer normas complementares sobre a definição e as atribuições do encarregado, inclusive hipóteses de dispensa da necessidade de sua indicação, conforme a natureza e o porte da entidade ou o volume de operações de tratamento de dados.</p>
+<p>§ 4º .         Vigência <span class="nota">(VETADO)</span> <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p><strong>Art. 42.</strong> O controlador ou o operador que, em razão do exercício de atividade de tratamento de dados pessoais, causar a outrem dano patrimonial, moral, individual ou coletivo, em violação à legislação de proteção de dados pessoais, é obrigado a repará-lo.</p>
+<details class="qart">
+<summary>
+Art. 42, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3967599</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Secretário de Escola</p>
+<p>О Decreto Municipal n.° 21.641/2021 determina que cada pessoa física ou juridica, que realize tratamento de dados pessoais em nome do órgão ou entidade, será considerada um operador, e quem o auxilia em nome do controlador é o suboperador. Acerca do das funções de operador e suboperador, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Em hipótese alguma o suboperador pode desempenhar a função de operador, visto que a legislação já traz a segregação dessas funções.</li>
+<li><strong>B)</strong> A depender do caso concreto, o suboperador pode desempenhar funções de operador, salvo quanto às responsabilidades, que permanecem com este</li>
+<li><strong>C)</strong> Não existe o suboperador dentro da estrutura institucional, sendo somente o operador como possivel, podendo haver vários servidores ocupando esse papel.</li>
+<li><strong>D)</strong> Assim como exerce as funções de operador, o suboperador também compartilha responsabilidades, a depender do caso concreto.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa B (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3967599">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/5876f125-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º A fim de assegurar a efetiva indenização ao titular dos dados:</p>
+<p>I - o operador responde solidariamente pelos danos causados pelo tratamento quando descumprir as obrigações da legislação de proteção de dados ou quando não tiver seguido as instruções lícitas do controlador, hipótese em que o operador equipara-se ao controlador, salvo nos casos de exclusão previstos no art. 43 desta Lei;</p>
+<p>II - os controladores que estiverem diretamente envolvidos no tratamento do qual decorreram danos ao titular dos dados respondem solidariamente, salvo nos casos de exclusão previstos no art. 43 desta Lei.</p>
+<p>§ 2º O juiz, no processo civil, poderá inverter o ônus da prova a favor do titular dos dados quando, a seu juízo, for verossímil a alegação, houver hipossuficiência para fins de produção de prova ou quando a produção de prova pelo titular resultar-lhe excessivamente onerosa.</p>
+<p>§ 3º As ações de reparação por danos coletivos que tenham por objeto a responsabilização nos termos do caput deste artigo podem ser exercidas coletivamente em juízo, observado o disposto na legislação pertinente.</p>
+<p>§ 4º Aquele que reparar o dano ao titular tem direito de regresso contra os demais responsáveis, na medida de sua participação no evento danoso.</p>
+<details class="qart">
+<summary>
+Art. 42 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3967599</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Secretário de Escola</p>
+<p>О Decreto Municipal n.° 21.641/2021 determina que cada pessoa física ou juridica, que realize tratamento de dados pessoais em nome do órgão ou entidade, será considerada um operador, e quem o auxilia em nome do controlador é o suboperador. Acerca do das funções de operador e suboperador, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Em hipótese alguma o suboperador pode desempenhar a função de operador, visto que a legislação já traz a segregação dessas funções.</li>
+<li><strong>B)</strong> A depender do caso concreto, o suboperador pode desempenhar funções de operador, salvo quanto às responsabilidades, que permanecem com este</li>
+<li><strong>C)</strong> Não existe o suboperador dentro da estrutura institucional, sendo somente o operador como possivel, podendo haver vários servidores ocupando esse papel.</li>
+<li><strong>D)</strong> Assim como exerce as funções de operador, o suboperador também compartilha responsabilidades, a depender do caso concreto.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3967599">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/5876f125-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 52.</strong> Os agentes de tratamento de dados, em razão das infrações cometidas às normas previstas nesta Lei, ficam sujeitos às seguintes sanções administrativas aplicáveis pela autoridade nacional: <span class="nota">(Vigência)</span></p>
+<p>I - advertência, com indicação de prazo para adoção de medidas corretivas;</p>
+<p>II - multa simples, de até 2% (dois por cento) do faturamento da pessoa jurídica de direito privado, grupo ou conglomerado no Brasil no seu último exercício, excluídos os tributos, limitada, no total, a R$ 50.000.000,00 (cinquenta milhões de reais) por infração;</p>
+<p>III - multa diária, observado o limite total a que se refere o inciso II;</p>
+<p>IV - publicização da infração após devidamente apurada e confirmada a sua ocorrência;</p>
+<p>V - bloqueio dos dados pessoais a que se refere a infração até a sua regularização;</p>
+<p>VI - eliminação dos dados pessoais a que se refere a infração;</p>
+<p>VII - ; <span class="nota">(VETADO)</span></p>
+<p>VIII - ; <span class="nota">(VETADO)</span></p>
+<p>IX - . <span class="nota">(VETADO)</span></p>
+<p>X - suspensão parcial do funcionamento do banco de dados a que se refere a infração pelo período máximo de 6 (seis) meses, prorrogável por igual período, até a regularização da atividade de tratamento pelo controlador; <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>XI - suspensão do exercício da atividade de tratamento dos dados pessoais a que se refere a infração pelo período máximo de 6 (seis) meses, prorrogável por igual período; <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>XII - proibição parcial ou total do exercício de atividades relacionadas a tratamento de dados. <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>§ 1º As sanções serão aplicadas após procedimento administrativo que possibilite a oportunidade da ampla defesa, de forma gradativa, isolada ou cumulativa, de acordo com as peculiaridades do caso concreto e considerados os seguintes parâmetros e critérios:</p>
+<p>I - a gravidade e a natureza das infrações e dos direitos pessoais afetados;</p>
+<p>II - a boa-fé do infrator;</p>
+<p>III - a vantagem auferida ou pretendida pelo infrator;</p>
+<p>IV - a condição econômica do infrator;</p>
+<p>V - a reincidência;</p>
+<p>VI - o grau do dano;</p>
+<p>VII - a cooperação do infrator;</p>
+<p>VIII - a adoção reiterada e demonstrada de mecanismos e procedimentos internos capazes de minimizar o dano, voltados ao tratamento seguro e adequado de dados, em consonância com o disposto no inciso II do § 2º do art. 48 desta Lei;</p>
+<p>IX - a adoção de política de boas práticas e governança;</p>
+<p>X - a pronta adoção de medidas corretivas; e</p>
+<p>XI - a proporcionalidade entre a gravidade da falta e a intensidade da sanção.</p>
+<details class="qart">
+<summary>
+Art. 52, § 1º na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3972132</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Professor de Português</p>
+<p>Conforme a LGPD, a sanção administrativa de proibição total do exercício de atividades relacionadas a tratamento de dados só pode ser aplicada após as sanções de multa diária e eliminação dos dados pessoais a que se refere a infração, no mesmo caso. Esse cenário está:</p>
+<ul>
+<li><strong>A)</strong> Adequado ao que prevê a Lei Geral de Proteção de Dados Pessoais, mas contrário à legislação municipal.</li>
+<li><strong>B)</strong> Inadequado, visto que somente a multa ou a eliminação citadas seria suficiente para a proibição.</li>
+<li><strong>C)</strong> Adequado, visto serem necessárias aplicações de duas sanções antes da proibição citada.</li>
+<li><strong>D)</strong> Inadequado, visto que somente a proibição parcial exige a ocorrência primeira de outras sanções.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — § 1º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — § 1º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — § 1º</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3972132">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/cd608c67-2f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 2º O disposto neste artigo não substitui a aplicação de sanções administrativas, civis ou penais definidas na Lei nº 8.078, de 11 de setembro de 1990, e em legislação específica. <span class="nota">(Redação dada pela Lei nº 13.853, de 2019)</span></p>
+<p>§ 3º O disposto nos incisos I, IV, V, VI, X, XI e XII do <strong>caput</strong> deste artigo poderá ser aplicado às entidades e aos órgãos públicos, sem prejuízo do disposto na Lei nº 8.112, de 11 de dezembro de 1990, na Lei nº 8.429, de 2 de junho de 1992, e na Lei nº 12.527, de 18 de novembro de 2011. <span class="nota">(Promulgação partes vetadas)</span></p>
+<p>§ 4º No cálculo do valor da multa de que trata o inciso II do caput deste artigo, a autoridade nacional poderá considerar o faturamento total da empresa ou grupo de empresas, quando não dispuser do valor do faturamento no ramo de atividade empresarial em que ocorreu a infração, definido pela autoridade nacional, ou quando o valor for apresentado de forma incompleta ou não for demonstrado de forma inequívoca e idônea.</p>
+<p>§ 5º O produto da arrecadação das multas aplicadas pela ANPD, inscritas ou não em dívida ativa, será destinado ao Fundo de Defesa de Direitos Difusos de que tratam o art. 13 da Lei nº 7.347, de 24 de julho de 1985, e a Lei nº 9.008, de 21 de março de 1995. <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>§ 6º As sanções previstas nos incisos X, XI e XII do <strong>caput</strong> deste artigo serão aplicadas: <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>I - somente após já ter sido imposta ao menos 1 (uma) das sanções de que tratam os incisos II, III, IV, V e VI do <strong>caput</strong> deste artigo para o mesmo caso concreto; e <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>II - em caso de controladores submetidos a outros órgãos e entidades com competências sancionatórias, ouvidos esses órgãos. <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<p>§ 7º Os vazamentos individuais ou os acessos não autorizados de que trata o caput do art. 46 desta Lei poderão ser objeto de conciliação direta entre controlador e titular e, caso não haja acordo, o controlador estará sujeito à aplicação das penalidades de que trata este artigo. <span class="nota">(Incluído pela Lei nº 13.853, de 2019)</span></p>
+<details class="qart">
+<summary>
+Art. 52 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3972132</strong> · 2025 · Prefeitura de Caxias do Sul - RS · Professor de Português</p>
+<p>Conforme a LGPD, a sanção administrativa de proibição total do exercício de atividades relacionadas a tratamento de dados só pode ser aplicada após as sanções de multa diária e eliminação dos dados pessoais a que se refere a infração, no mesmo caso. Esse cenário está:</p>
+<ul>
+<li><strong>A)</strong> Adequado ao que prevê a Lei Geral de Proteção de Dados Pessoais, mas contrário à legislação municipal.</li>
+<li><strong>B)</strong> Inadequado, visto que somente a multa ou a eliminação citadas seria suficiente para a proibição.</li>
+<li><strong>C)</strong> Adequado, visto serem necessárias aplicações de duas sanções antes da proibição citada.</li>
+<li><strong>D)</strong> Inadequado, visto que somente a proibição parcial exige a ocorrência primeira de outras sanções.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa B (certa)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3972132">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/cd608c67-2f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+</details>
+<details class="questoes">
+<summary>
+Questões da Legalle — 6 questões
+</summary>
+<details class="qcom" id="q-Q4042788">
+<summary>
+Q4042788 · 2026 · Prefeitura de São Lourenço do Sul - RS · Assessor de Imprensa <span class="nota">(Lei nº 13.709 de 2018 - Lei Geral de Proteção de Dados Pessoais (LGPD), Direitos do Titular)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LGPD, art. 6, inciso III; LGPD, art. 6.
+</p>
+<p>A Lei Geral de Proteção de Dados (LGPD) traz princípios essenciais sobre o tratamento da informação pública institucional. O princípio da necessidade determina a ___________ do tratamento ao mínimo necessário para a realização de suas finalidades. Já o princípio do livre acesso garante aos titulares a consulta facilitada e _____________ sobre a forma do tratamento de seus dados.</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas:</p>
+<ul>
+<li><strong>A)</strong> expansão - onerosa.</li>
+<li><strong>B)</strong> exclusão - restrita.</li>
+<li><strong>C)</strong> repetição - tarifada.</li>
+<li><strong>D)</strong> limitação - gratuita.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/f3a5071e-49" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q3967599">
+<summary>
+Q3967599 · 2025 · Prefeitura de Caxias do Sul - RS · Secretário de Escola <span class="nota">(Lei nº 13.709 de 2018 - Lei Geral de Proteção de Dados Pessoais (LGPD))</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LGPD, art. 42, caput; LGPD, art. 42.
+</p>
+<p>О Decreto Municipal n.° 21.641/2021 determina que cada pessoa física ou juridica, que realize tratamento de dados pessoais em nome do órgão ou entidade, será considerada um operador, e quem o auxilia em nome do controlador é o suboperador. Acerca do das funções de operador e suboperador, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Em hipótese alguma o suboperador pode desempenhar a função de operador, visto que a legislação já traz a segregação dessas funções.</li>
+<li><strong>B)</strong> A depender do caso concreto, o suboperador pode desempenhar funções de operador, salvo quanto às responsabilidades, que permanecem com este</li>
+<li><strong>C)</strong> Não existe o suboperador dentro da estrutura institucional, sendo somente o operador como possivel, podendo haver vários servidores ocupando esse papel.</li>
+<li><strong>D)</strong> Assim como exerce as funções de operador, o suboperador também compartilha responsabilidades, a depender do caso concreto.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/5876f125-2e" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q3967994">
+<summary>
+Q3967994 · 2025 · Prefeitura de Caxias do Sul - RS · Engenheiro Civil … <span class="nota">(Lei nº 13.709 de 2018 - Lei Geral de Proteção de Dados Pessoais (LGPD))</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LGPD, art. 5, inciso VIII; LGPD, art. 41, § 2º; LGPD, art. 41, § 2º, inciso III; LGPD, art. 41, § 2º, inciso I; LGPD, art. 41, § 2º, inciso IV.
+</p>
+<p>Conforme o Decreto Municipal nº 21.641/2021, o Encarregado é responsável por atuar como canal de comunicação entre o controlador, os Titulares dos dados e a Autoridade Nacional de Proteção de Dados (ANPD). A partir disso, qual das alternativas apresenta uma das atividades previstas para o Encarregado, de forma INCORRETA?</p>
+<ul>
+<li><strong>A)</strong> Orientar os funcionários e os contratados do órgão ou entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais.</li>
+<li><strong>B)</strong> Aceitar reclamações e comunicações dos titulares, prestar esclarecimentos e adotar providências.</li>
+<li><strong>C)</strong> Realizar alterações pontuais no banco de dados pessoais sob seu domínio, para fins dê interesse do Gabinete do Chefe do Executivo.</li>
+<li><strong>D)</strong> Determinar ao responsável por unidade administrativa, a realização de estudos técnicos para elaboração das diretrizes previstas no relatório de impacto à proteção de dados pessoais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/68144c24-2e" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q3970399">
+<summary>
+Q3970399 · 2025 · TCE-SP · Processo de Promoção 2023 <span class="nota">(Lei nº 13.709 de 2018 - Lei Geral de Proteção de Dados Pessoais (LGPD))</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LGPD, art. 11; LGPD, art. 11, inciso II.
+</p>
+<p>Analise o texto a seguir acerca de tratamento de dados pessoais sensíveis.</p>
+<p><em>O tratamento de dados pessoals sensíveis somente poderá ocorrer sem fornecimento de consentimento do titular em situações específicos, como realização de estudos por órgão de pesquisa, garantida, sempre, a anonimização dos dados pessoais sensíveis.</em></p>
+<p>Acerca do texto, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Totalmente adequado, conforme legislação vigente.</li>
+<li><strong>B)</strong> Parcialmente adequado, visto que a garantia de anonimização deve ser observada sempre que possível, não necessariamente em qualquer ocasião.</li>
+<li><strong>C)</strong> Parcialmente adequado, visto que não há hipótese de utilização de dados pessoais sensiveis sem consentimento.</li>
+<li><strong>D)</strong> Parcialmente adequado, visto que órgãos de pesquisa são uma exceção à permissão de uso de dados pessoais, não sendo possivel tal uso.</li>
+<li><strong>E)</strong> Totalmente inadequado, visto que náo se pode utilizar dados pessoais sensíveis para fins quaisquer.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/dc629630-2f" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q3972132">
+<summary>
+Q3972132 · 2025 · Prefeitura de Caxias do Sul - RS · Professor de Português <span class="nota">(Lei nº 13.709 de 2018 - Lei Geral de Proteção de Dados Pessoais (LGPD))</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LGPD, art. 52, § 1º; LGPD, art. 52.
+</p>
+<p>Conforme a LGPD, a sanção administrativa de proibição total do exercício de atividades relacionadas a tratamento de dados só pode ser aplicada após as sanções de multa diária e eliminação dos dados pessoais a que se refere a infração, no mesmo caso. Esse cenário está:</p>
+<ul>
+<li><strong>A)</strong> Adequado ao que prevê a Lei Geral de Proteção de Dados Pessoais, mas contrário à legislação municipal.</li>
+<li><strong>B)</strong> Inadequado, visto que somente a multa ou a eliminação citadas seria suficiente para a proibição.</li>
+<li><strong>C)</strong> Adequado, visto serem necessárias aplicações de duas sanções antes da proibição citada.</li>
+<li><strong>D)</strong> Inadequado, visto que somente a proibição parcial exige a ocorrência primeira de outras sanções.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/cd608c67-2f" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q3970080">
+<summary>
+Q3970080 · 2024 · UNIR · Analista de Tecnologia de Informação <span class="nota">(Lei nº 13.709 de 2018 - Lei Geral de Proteção de Dados Pessoais (LGPD))</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LGPD, art. 5, inciso XI; LGPD, art. 5.
+</p>
+<p>De acordo com a Lei n.° 13.709/2018, conhecida como Lei Geral de Proteção de Dados Pessoais (LGPD), são estabelecidos vários conceitos e diretrizes para o tratamento de dados pessoais no Brasil, entre eles, o de anonimização. Com base nisso, assinale a alternativa que apresenta, CORRETAMENTE, a descrição desse conceito, conforme estipulado pela LGPD.</p>
+<ul>
+<li><strong>A)</strong> Manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.</li>
+<li><strong>B)</strong> Suspensão temporária de qualquer operação de tratamento, mediante guarda do dado pessoal ou do banco de dados</li>
+<li><strong>C)</strong> Exclusão de dado ou de conjunto de dados armazenados em banco de dados, independentemente do procedimento empregado.</li>
+<li><strong>D)</strong> Utilização de meios técnicos razoáveis e disponíveis no momento do tratamento, por meio dos quais um dado perde a possibilidade de associação, direta ou indireta, a um indivíduo.</li>
+<li><strong>E)</strong> Transferência de dados pessoais para país estrangeiro ou organismo internacional do qual o país seja membro.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/07e48196-2f" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+</details>
+</main></div></body></html>

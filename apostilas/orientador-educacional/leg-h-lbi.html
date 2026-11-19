@@ -1,0 +1,2881 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LBI – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="leg-a-lei-rs-14498.html#leg-a">a) Lei RS 14.498/2014</a><a href="leg-b-estatuto-liberato.html#leg-b">b) Estatuto da Fundação</a><a href="leg-c-cf88.html#leg-c">c) CF/88</a><a href="leg-d-clt.html#leg-d">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="leg-g-maria-da-penha.html#leg-g">g) Maria da Penha</a><a href="#leg-h" class="atual">h) LBI</a><a href="leg-i-lgpd.html#leg-i">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="leg-l-bncc.html#leg-l">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>LBI</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-h">h) Lei nº 13.146/2015 — Lei Brasileira de Inclusão (Estatuto da Pessoa com Deficiência)</h2>
+<table class="mapa">
+<caption>
+Mapa da lei por tópico
+</caption>
+<thead>
+<tr>
+<th>
+Tópico
+</th>
+<th>
+Dispositivos
+</th>
+<th>
+Pontos do programa
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="#leg-h-1">1. Disposições gerais: finalidade, conceito de pessoa com deficiência, definições (acessibilidade, desenho universal, adaptação razoável, profissional de apoio escolar)</a>
+</td>
+<td>
+Arts. 1º a 3º
+</td>
+<td>
+<a href="especificos.html#esp-g">Esp. g — inclusão e dificuldades</a>
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-h-2">2. Igualdade e não discriminação</a>
+</td>
+<td>
+Arts. 4º a 8º
+</td>
+<td>
+—
+</td>
+</tr>
+<tr>
+<td>
+<a href="#leg-h-3">3. Direito à educação: sistema educacional inclusivo; incumbências do poder público; escolas privadas</a>
+</td>
+<td>
+Arts. 27 a 30
+</td>
+<td>
+<a href="especificos.html#esp-g">Esp. g — inclusão e dificuldades</a> · <a href="leg-j-ldb.html#leg-j">Leg. j — LDB</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="recentes">
+<p>
+<strong>Alterações recentes nesta norma (desde 2023) — potencial de prova:</strong>
+</p>
+<ul>
+<li>
+<a href="#alt-32">§ 3º O exame médico-pericial componente da avaliação biopsicossocial da deficiência de que trata o § 1º deste…</a> <span class="nota">(Lei nº 14.724/2023)</span>
+</li>
+<li>
+<a href="#alt-33">Art. 2º-A. É instituído o cordão de fita com desenhos de girassóis como símbolo nacional de identificação de p…</a> <span class="nota">(Lei nº 14.624/2023)</span>
+</li>
+<li>
+<a href="#alt-34">§ 1º O uso do símbolo de que trata o caput deste artigo é opcional, e sua ausência não prejudica o exercício…</a> <span class="nota">(Lei nº 14.624/2023)</span>
+</li>
+<li>
+<a href="#alt-35">§ 2º A utilização do símbolo de que trata o caput deste artigo não dispensa a apresentação de documento compro…</a> <span class="nota">(Lei nº 14.624/2023)</span>
+</li>
+<li>
+<a href="#alt-36">XV – pessoa com necessidades complexas de comunicação: aquela que, por qualquer motivo, tem dificuldades signi…</a> <span class="nota">(Lei nº 15.249/2025)</span>
+</li>
+<li>
+<a href="#alt-37">XIX – sistemas de comunicação aumentativa e alternativa de baixa tecnologia para o atendimento educacional esp…</a> <span class="nota">(Lei nº 15.249/2025)</span>
+</li>
+</ul>
+</div>
+<h3 id="leg-h-1">
+1. Disposições gerais: finalidade, conceito de pessoa com deficiência, definições (acessibilidade, desenho universal, adaptação razoável, profissional de apoio escolar)
+</h3>
+<p class="arts">
+Arts. 1º a 3º · relacionado a: <a href="especificos.html#esp-g">Esp. g — inclusão e dificuldades</a>
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 13.146/2015 — Arts. 1º a 3º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>LIVRO I</p>
+</div>
+<div class="tit">
+<p>PARTE GERAL</p>
+</div>
+<div class="tit">
+<p>TÍTULO I</p>
+</div>
+<div class="tit">
+<p>DISPOSIÇÕES PRELIMINARES</p>
+</div>
+<div class="tit">
+<p>CAPÍTULO I</p>
+</div>
+<div class="tit">
+<p>DISPOSIÇÕES GERAIS</p>
+</div>
+<p><strong>Art. 1º</strong> É instituída a Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência), destinada a assegurar e a promover, em condições de igualdade, o exercício dos direitos e das liberdades fundamentais por pessoa com deficiência, visando à sua inclusão social e cidadania.</p>
+<p>Parágrafo único. Esta Lei tem como base a Convenção sobre os Direitos das Pessoas com Deficiência e seu Protocolo Facultativo, ratificados pelo Congresso Nacional por meio do Decreto Legislativo nº 186, de 9 de julho de 2008 , em conformidade com o procedimento previsto no § 3º do art. 5º da Constituição da República Federativa do Brasil , em vigor para o Brasil, no plano jurídico externo, desde 31 de agosto de 2008, e promulgados pelo Decreto nº 6.949, de 25 de agosto de 2009 , data de início de sua vigência no plano interno.</p>
+<p><strong>Art. 2º</strong> Considera-se pessoa com deficiência aquela que tem impedimento de longo prazo de natureza física, mental, intelectual ou sensorial, o qual, em interação com uma ou mais barreiras, pode obstruir sua participação plena e efetiva na sociedade em igualdade de condições com as demais pessoas.</p>
+<details class="qart">
+<summary>
+Art. 2, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4106078</strong> · 2026 · Prefeitura de Dona Emma - SC · Assistente Social Educacional</p>
+<p>São inegáveis os avanços adquiridos no que se refere aos direitos das pessoas com deficiência. No ano de 2015, foi promulgada a Lei Brasileira de Inclusão - LBI, que tambem ficou conhecida como Estatuto da Pessoa com Deficiência. Dentre as alternativas abaixo, assinale aquela que NÃO corresponde às características da LBI.</p>
+<ul>
+<li><strong>A)</strong> A LBI pode ser considerada o instrumento de conquista de emancipação política das pessoas com deficiência.</li>
+<li><strong>B)</strong> É possível pensar que essa legislação, que apresenta concepções conservadoras, no que se refere à deficiência, contraditoriamente, também, seria um instrumento concreto de reconhecimento de status de cidadão.</li>
+<li><strong>C)</strong> A LBI no Brasil vem tendo força, pois determina que os entes federais façam um esforço para criar uma avaliação unificada da deficiência.</li>
+<li><strong>D)</strong> A avaliação unificada deverá ter caráter biopsicossocial, de forma a contemplar os aspectos do corpo, ambientais, psicológicos, pessoais, de desempenho de atividades e de restrição de participação social.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4106078">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ba6ad02e-65" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º A avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar e considerará: <span class="nota">(Vigência)</span> <span class="nota">(Vide Decreto nº 11.063, de 2022)</span></p>
+<p>I - os impedimentos nas funções e nas estruturas do corpo;</p>
+<details class="qart">
+<summary>
+Art. 2, § 1º, inciso I na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4106078</strong> · 2026 · Prefeitura de Dona Emma - SC · Assistente Social Educacional</p>
+<p>São inegáveis os avanços adquiridos no que se refere aos direitos das pessoas com deficiência. No ano de 2015, foi promulgada a Lei Brasileira de Inclusão - LBI, que tambem ficou conhecida como Estatuto da Pessoa com Deficiência. Dentre as alternativas abaixo, assinale aquela que NÃO corresponde às características da LBI.</p>
+<ul>
+<li><strong>A)</strong> A LBI pode ser considerada o instrumento de conquista de emancipação política das pessoas com deficiência.</li>
+<li><strong>B)</strong> É possível pensar que essa legislação, que apresenta concepções conservadoras, no que se refere à deficiência, contraditoriamente, também, seria um instrumento concreto de reconhecimento de status de cidadão.</li>
+<li><strong>C)</strong> A LBI no Brasil vem tendo força, pois determina que os entes federais façam um esforço para criar uma avaliação unificada da deficiência.</li>
+<li><strong>D)</strong> A avaliação unificada deverá ter caráter biopsicossocial, de forma a contemplar os aspectos do corpo, ambientais, psicológicos, pessoais, de desempenho de atividades e de restrição de participação social.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa D (errada) — § 1º, I</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4106078">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ba6ad02e-65" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>II - os fatores socioambientais, psicológicos e pessoais;</p>
+<p>III - a limitação no desempenho de atividades; e</p>
+<details class="qart">
+<summary>
+Art. 2, § 1º, inciso III na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4064197</strong> · 2026 · Prefeitura de Pinto Bandeira - RS · Assistente Social</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência) destina-se a assegurar e a promover, em condições de igualdade, o exercício dos direitos e das liberdades fundamentais por pessoa com deficiência, visando à sua inclusão social e cidadania. Sobre o Estatuto da Pessoa com Deficiência, analise as assertivas que seguem.</p>
+<p>I. Em caso de pessoa com deficiência em situação de curatela, deve ser assegurada sua participação, no menor grau possível, para a obtenção de consentimento prévio, livre e esclarecido.</p>
+<p>II. É vedada a pessoa com deficiência a adoção de processo de tomada de decisão apoiada.</p>
+<p>III. A avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar e considerará, dentre outras, a limitação no desempenho de atividades.</p>
+<p>IV. Para fins de aplicação da lei, considera-se desenho universal: concepção de produtos, ambientes, programas e serviços a serem usados por todas as pessoas, sem necessidade de adaptação ou de projeto específico, incluindo os recursos de tecnologia assistiva.</p>
+<p>Estão CORRETAS</p>
+<ul>
+<li><strong>A)</strong> Apenas l e lV.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I, II e IV</li>
+<li><strong>D)</strong> Apenas III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — § 1º, III</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4064197">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bea843d7-54" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>IV - a restrição de participação.</p>
+<details class="qart">
+<summary>
+Art. 2, § 1º na prova — 3 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3969043</strong> · 2025 · Prefeitura de Vacaria - RS · Atendente de Creche</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência, mais conhecida como Estatuto da Pessoa com Deficiência, NÃO considera qual fator na avaliação da deficiência?</p>
+<ul>
+<li><strong>A)</strong> Fatores socioambientais, psicológicos e pessoais.</li>
+<li><strong>B)</strong> Impedimentos nas funções e nas estruturas do corpo.</li>
+<li><strong>C)</strong> Renda per capita.</li>
+<li><strong>D)</strong> Limitação no desempenho de atividades.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — § 1º</strong>: C: é a resposta (fator não previsto). A renda per capita não está entre os quatro incisos do § 1º. As alternativas A, B e D reproduzem os incisos II, I e III.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> <span class="badge">Alteração recente · potencial de prova</span> A Lei nº 14.724/2023 incluiu o § 3º no art. 2º: o exame médico-pericial da avaliação biopsicossocial pode ser feito por <strong>telemedicina ou análise documental</strong>. A Lei nº 14.624/2023 incluiu o art. 2º-A: o <strong>cordão de fita com girassóis</strong> como símbolo das deficiências ocultas.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3969043">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/28d37757-2e" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4064197</strong> · 2026 · Prefeitura de Pinto Bandeira - RS · Assistente Social</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência) destina-se a assegurar e a promover, em condições de igualdade, o exercício dos direitos e das liberdades fundamentais por pessoa com deficiência, visando à sua inclusão social e cidadania. Sobre o Estatuto da Pessoa com Deficiência, analise as assertivas que seguem.</p>
+<p>I. Em caso de pessoa com deficiência em situação de curatela, deve ser assegurada sua participação, no menor grau possível, para a obtenção de consentimento prévio, livre e esclarecido.</p>
+<p>II. É vedada a pessoa com deficiência a adoção de processo de tomada de decisão apoiada.</p>
+<p>III. A avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar e considerará, dentre outras, a limitação no desempenho de atividades.</p>
+<p>IV. Para fins de aplicação da lei, considera-se desenho universal: concepção de produtos, ambientes, programas e serviços a serem usados por todas as pessoas, sem necessidade de adaptação ou de projeto específico, incluindo os recursos de tecnologia assistiva.</p>
+<p>Estão CORRETAS</p>
+<ul>
+<li><strong>A)</strong> Apenas l e lV.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I, II e IV</li>
+<li><strong>D)</strong> Apenas III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa D (certa) — § 1º</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4064197">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bea843d7-54" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4106078</strong> · 2026 · Prefeitura de Dona Emma - SC · Assistente Social Educacional</p>
+<p>São inegáveis os avanços adquiridos no que se refere aos direitos das pessoas com deficiência. No ano de 2015, foi promulgada a Lei Brasileira de Inclusão - LBI, que tambem ficou conhecida como Estatuto da Pessoa com Deficiência. Dentre as alternativas abaixo, assinale aquela que NÃO corresponde às características da LBI.</p>
+<ul>
+<li><strong>A)</strong> A LBI pode ser considerada o instrumento de conquista de emancipação política das pessoas com deficiência.</li>
+<li><strong>B)</strong> É possível pensar que essa legislação, que apresenta concepções conservadoras, no que se refere à deficiência, contraditoriamente, também, seria um instrumento concreto de reconhecimento de status de cidadão.</li>
+<li><strong>C)</strong> A LBI no Brasil vem tendo força, pois determina que os entes federais façam um esforço para criar uma avaliação unificada da deficiência.</li>
+<li><strong>D)</strong> A avaliação unificada deverá ter caráter biopsicossocial, de forma a contemplar os aspectos do corpo, ambientais, psicológicos, pessoais, de desempenho de atividades e de restrição de participação social.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4106078">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ba6ad02e-65" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 2º O Poder Executivo criará instrumentos para avaliação da deficiência. <span class="nota">(Vide Lei nº 13.846, de 2019)</span> <span class="nota">(Vide Lei nº 14.126, de 2021)</span> <span class="nota">(Vide Lei nº 14.768, de 2023)</span></p>
+<div id="alt-32" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p><span class="add">§ 3º O exame médico-pericial componente da avaliação biopsicossocial da deficiência de que trata o § 1º deste artigo poderá ser realizado com o uso de tecnologia de telemedicina ou por análise documental conforme situações e requisitos definidos em regulamento.</span> <span class="nota">(Incluído pela Lei nº 14.724, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 14.724/2023):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<details class="qart">
+<summary>
+Art. 2 na prova — 2 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075993</strong> · 2026 · SEPLAG-MG · Administração, Gestão Pública e Transversalidade …</p>
+<p>Suponha que um estabelecimento de saúde nega atendimento especializado a um paciente com deficiência física, alegando que o custo das adaptações necessárias para o procedimento não está previsto no orçamento. De acordo com a Convencão sobre os Direitos das Pessoas com Deficiência, é INCORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Adaptação razoável significa as modificações e os ajustes necessários e adequados que não acarretem ônus desproporcional ou indevido.</li>
+<li><strong>B)</strong> A negativa de adaptação razoável constitui uma forma de discriminação por motivo de deficiência.</li>
+<li><strong>C)</strong> As pessoas com deficiência devem ter acesso a serviços de saúde na mesma gama, qualidade e padrão que os serviços gratuitos ou a custos acessíveis oferecidos às demais pessoas.</li>
+<li><strong>D)</strong> O direito à saúde das pessoas com deficiência é facultativo e depende da disponibilidade orçamentária imediata, sem necessidade de planejamento progressivo.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (certa)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (certa)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075993">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1e346b57-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4106078</strong> · 2026 · Prefeitura de Dona Emma - SC · Assistente Social Educacional</p>
+<p>São inegáveis os avanços adquiridos no que se refere aos direitos das pessoas com deficiência. No ano de 2015, foi promulgada a Lei Brasileira de Inclusão - LBI, que tambem ficou conhecida como Estatuto da Pessoa com Deficiência. Dentre as alternativas abaixo, assinale aquela que NÃO corresponde às características da LBI.</p>
+<ul>
+<li><strong>A)</strong> A LBI pode ser considerada o instrumento de conquista de emancipação política das pessoas com deficiência.</li>
+<li><strong>B)</strong> É possível pensar que essa legislação, que apresenta concepções conservadoras, no que se refere à deficiência, contraditoriamente, também, seria um instrumento concreto de reconhecimento de status de cidadão.</li>
+<li><strong>C)</strong> A LBI no Brasil vem tendo força, pois determina que os entes federais façam um esforço para criar uma avaliação unificada da deficiência.</li>
+<li><strong>D)</strong> A avaliação unificada deverá ter caráter biopsicossocial, de forma a contemplar os aspectos do corpo, ambientais, psicológicos, pessoais, de desempenho de atividades e de restrição de participação social.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Alternativa C (errada)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4106078">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ba6ad02e-65" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<div id="alt-33" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p><span class="add"><strong>Art. 2º-A.</strong> É instituído o cordão de fita com desenhos de girassóis como símbolo nacional de identificação de pessoas com deficiências ocultas.</span> <span class="nota">(Incluído pela Lei nº 14.624, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 14.624/2023):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<div id="alt-34" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p><span class="add">§ 1º O uso do símbolo de que trata o <strong>caput</strong> deste artigo é opcional, e sua ausência não prejudica o exercício de direitos e garantias previstos em lei.</span> <span class="nota">(Incluído pela Lei nº 14.624, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 14.624/2023):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<div id="alt-35" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2023 · potencial de prova</span>
+</p>
+<p><span class="add">§ 2º A utilização do símbolo de que trata o <strong>caput</strong> deste artigo não dispensa a apresentação de documento comprobatório da deficiência, caso seja solicitado pelo atendente ou pela autoridade competente.</span> <span class="nota">(Incluído pela Lei nº 14.624, de 2023)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 14.624/2023):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<p><strong>Art. 3º</strong> Para fins de aplicação desta Lei, consideram-se:</p>
+<p>I - acessibilidade: possibilidade e condição de alcance para utilização, com segurança e autonomia, de espaços, mobiliários, equipamentos urbanos, edificações, transportes, informação e comunicação, inclusive seus sistemas e tecnologias, bem como de outros serviços e instalações abertos ao público, de uso público ou privados de uso coletivo, tanto na zona urbana como na rural, por pessoa com deficiência ou com mobilidade reduzida;</p>
+<details class="qart">
+<summary>
+Art. 3, inciso I na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4449207</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>A organização do ambiente físico e dos recursos didáticos é dimensão central do planejamento pedagógico inclusivo, devendo orientar-se pelos princípios do Desenho Universal e da Acessibilidade. A respeito da eliminação de barreiras e da organização dos espaços escolares na perspectiva da Educação Inclusiva, analise as assertivas abaixo, julgando-as V, se Verdadeiras, ou F, se Falsas:</p>
+<p>( ) A preservação da arquitetura original e do padrão estético dos edifícios escolares constituem prioridades jurídicas que se sobrepõem às adaptações físicas exigidas para a remoção de barreiras arquitetônicas.</p>
+<p>( ) As adequações de acessibilidade e a eliminação de barreiras físicas na escola devem ficar restritas à Sala de Recursos, por ser o único espaço de atendimento do estudante público-alvo da Educação Especial.</p>
+<p>( ) A organização de materiais pedagógicos e equipamentos em locais de alcance físico adequado reflete o princípio da acessibilidade no uso do ambiente escolar, promovendo a independência do estudante no cotidiano pedagógico.</p>
+<p>Qual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?</p>
+<ul>
+<li><strong>A)</strong> V - F - V.</li>
+<li><strong>B)</strong> F - F - F.</li>
+<li><strong>C)</strong> V - V - V.</li>
+<li><strong>D)</strong> F - F - V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — I e II</strong>: 3ª assertiva: verdadeira. Acessibilidade é a condição de alcance para utilização, com <strong>segurança e autonomia</strong>, de espaços, mobiliários e equipamentos (I). O desenho universal (II) é a concepção de ambientes usáveis por todos sem adaptação específica.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449207">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40de0398-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>II - desenho universal: concepção de produtos, ambientes, programas e serviços a serem usados por todas as pessoas, sem necessidade de adaptação ou de projeto específico, incluindo os recursos de tecnologia assistiva;</p>
+<details class="qart">
+<summary>
+Art. 3, inciso II na prova — 2 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4043537</strong> · 2026 · Prefeitura de Dom Feliciano - RS · Psicólogo</p>
+<p>De acordo com a Lei Brasileira de Inclusão, a chamada adaptação razoável diferencia-se do desenho universal porque:</p>
+<ul>
+<li><strong>A)</strong> A adaptação razoável é obrigatória apenas para o setor público, enquanto o desenho universal é para o privado.</li>
+<li><strong>B)</strong> A adaptação razoável permite cobrar taxas extras do usuário com deficiência para cobrir custos de acessibilidade.</li>
+<li><strong>C)</strong> O desenho universal é pensado para todos desde a concepção, enquanto a adaptação razoável atende necessidades específicas caso a caso.</li>
+<li><strong>D)</strong> O desenho universal foca apenas em acessibilidade digital, enquanto a adaptação razoável foca em barreiras físicas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — II</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — II</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — II</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4043537">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/b08067a4-4a" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4064197</strong> · 2026 · Prefeitura de Pinto Bandeira - RS · Assistente Social</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência) destina-se a assegurar e a promover, em condições de igualdade, o exercício dos direitos e das liberdades fundamentais por pessoa com deficiência, visando à sua inclusão social e cidadania. Sobre o Estatuto da Pessoa com Deficiência, analise as assertivas que seguem.</p>
+<p>I. Em caso de pessoa com deficiência em situação de curatela, deve ser assegurada sua participação, no menor grau possível, para a obtenção de consentimento prévio, livre e esclarecido.</p>
+<p>II. É vedada a pessoa com deficiência a adoção de processo de tomada de decisão apoiada.</p>
+<p>III. A avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar e considerará, dentre outras, a limitação no desempenho de atividades.</p>
+<p>IV. Para fins de aplicação da lei, considera-se desenho universal: concepção de produtos, ambientes, programas e serviços a serem usados por todas as pessoas, sem necessidade de adaptação ou de projeto específico, incluindo os recursos de tecnologia assistiva.</p>
+<p>Estão CORRETAS</p>
+<ul>
+<li><strong>A)</strong> Apenas l e lV.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I, II e IV</li>
+<li><strong>D)</strong> Apenas III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — II</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (certa) — II</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4064197">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bea843d7-54" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>III - tecnologia assistiva ou ajuda técnica: produtos, equipamentos, dispositivos, recursos, metodologias, estratégias, práticas e serviços que objetivem promover a funcionalidade, relacionada à atividade e à participação da pessoa com deficiência ou com mobilidade reduzida, visando à sua autonomia, independência, qualidade de vida e inclusão social;</p>
+<p>IV - barreiras: qualquer entrave, obstáculo, atitude ou comportamento que limite ou impeça a participação social da pessoa, bem como o gozo, a fruição e o exercício de seus direitos à acessibilidade, à liberdade de movimento e de expressão, à comunicação, ao acesso à informação, à compreensão, à circulação com segurança, entre outros, classificadas em:</p>
+<p>a) barreiras urbanísticas: as existentes nas vias e nos espaços públicos e privados abertos ao público ou de uso coletivo;</p>
+<p>b) barreiras arquitetônicas: as existentes nos edifícios públicos e privados;</p>
+<p>c) barreiras nos transportes: as existentes nos sistemas e meios de transportes;</p>
+<p>d) barreiras nas comunicações e na informação: qualquer entrave, obstáculo, atitude ou comportamento que dificulte ou impossibilite a expressão ou o recebimento de mensagens e de informações por intermédio de sistemas de comunicação e de tecnologia da informação;</p>
+<p>e) barreiras atitudinais: atitudes ou comportamentos que impeçam ou prejudiquem a participação social da pessoa com deficiência em igualdade de condições e oportunidades com as demais pessoas;</p>
+<p>f) barreiras tecnológicas: as que dificultam ou impedem o acesso da pessoa com deficiência às tecnologias;</p>
+<details class="qart">
+<summary>
+Art. 3, inciso IV na prova — 2 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4162769</strong> · 2026 · Prefeitura de Rio das Antas - SC · Educação Infantil e Séries Iniciais do Ensino Fundamental …</p>
+<p>A barreira é qualquer entrave, obstáculo, atitude ou comportamento que limite ou impeça a participação social da pessoa, bem como o gozo, a fruição e o exercício de seus direitos à acessibilidade, à liberdade de movimento e de expressão, à comunicação, ao acesso à informação, à compreensão, à circulação com segurança, entre outros. Quando se fala sobre comportamentos que impeçam ou prejudiquem a participação social da pessoa com deficiência em igualdade de condições e oportunidades com as demais pessoas, fala-se em barreira:</p>
+<ul>
+<li><strong>A)</strong> Atitudinal.</li>
+<li><strong>B)</strong> Tecnológica.</li>
+<li><strong>C)</strong> Urbanística.</li>
+<li><strong>D)</strong> Arquitetônica.</li>
+<li><strong>E)</strong> Informativa.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (certa) — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada) — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — IV</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4162769">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/832f9219-7a" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4449210</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>Uma Professora do Ensino Fundamental identifica que um estudante com deficiência visual apresenta dificuldades para acompanhar atividades que utilizam exclusivamente imagens projetadas e textos impressos em tamanho convencional. Em vez de dispensá-lo dessas experiências, a docente reorganiza os materiais, disponibiliza recursos acessíveis e planeja estratégias para garantir sua participação nas mesmas situações de aprendizagem propostas à turma. Essa prática fundamenta-se no princípio de que:</p>
+<ul>
+<li><strong>A)</strong> A equidade educacional depende da oferta de atividades idênticas a todos os alunos, ainda que os recursos utilizados impeçam o acesso de alguns deles.</li>
+<li><strong>B)</strong> A remoção de barreiras e a disponibilização de recursos acessíveis favorecem o acesso ao currículo e a participação, sem exigir que o estudante utilize necessariamente os mesmos meios dos demais.</li>
+<li><strong>C)</strong> A inclusão exige a substituição de todas as atividades coletivas por tarefas individuais, pois a participação conjunta pode comprometer o atendimento às necessidades específicas da turma.</li>
+<li><strong>D)</strong> A utilização de recursos diferenciados representa privilégio individual e, por esse motivo, deve ocorrer apenas quando os demais estudantes não estiverem realizando atividades curriculares.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — IV e VI</strong>: A, C e D: erradas. Imagens só projetadas e textos em tamanho convencional são barreiras na comunicação e na informação (IV). Os recursos diferenciados são adaptações razoáveis (VI), não privilégio. Negá-los configura discriminação (art. 4º, § 1º).</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449210">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40e54884-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>V - comunicação: forma de interação dos cidadãos que abrange, entre outras opções, as línguas, inclusive a Língua Brasileira de Sinais (Libras), a visualização de textos, o Braille, o sistema de sinalização ou de comunicação tátil, os caracteres ampliados, os dispositivos multimídia, assim como a linguagem simples, escrita e oral, os sistemas auditivos e os meios de voz digitalizados e os modos, meios e formatos aumentativos e alternativos de comunicação, incluindo as tecnologias da informação e das comunicações;</p>
+<p>VI - adaptações razoáveis: adaptações, modificações e ajustes necessários e adequados que não acarretem ônus desproporcional e indevido, quando requeridos em cada caso, a fim de assegurar que a pessoa com deficiência possa gozar ou exercer, em igualdade de condições e oportunidades com as demais pessoas, todos os direitos e liberdades fundamentais;</p>
+<details class="qart">
+<summary>
+Art. 3, inciso VI na prova — 2 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4449200</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>No acompanhamento do processo de ensino e aprendizagem, um Professor identifica que um estudante com deficiência física necessita de tempo adicional para realizar determinadas atividades escritas, bem como de adequações arquitetônicas e mobiliárias no ambiente escolar, a fim de assegurar sua participação efetiva nas atividades pedagógicas. Considerando os princípios da Educação Inclusiva e o compromisso ético do docente, analise as partes que seguem:</p>
+<p>(1ª parte): A adoção de adaptações metodológicas e de medidas de acessibilidade deve ser evitada pela equipe escolar, a fim de preservar o princípio da isonomia e garantir tratamento igualitário a todos os estudantes. (2ª parte): O estudante deve ser dispensado das atividades pedagógicas que exijam condições diferenciadas de participação, limitando-se sua permanência na escola ao acompanhamento passivo das aulas.</p>
+<p>Pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas a 1ª parte está incorreta.</li>
+<li><strong>B)</strong> Apenas a 2ª parte está incorreta.</li>
+<li><strong>C)</strong> Ambas as partes estão incorretas.</li>
+<li><strong>D)</strong> Ambas as partes estão corretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — VI</strong>: contexto: conceito. O tempo adicional e as adequações de mobiliário são exemplos de <strong>adaptações razoáveis</strong>: ajustes necessários que não acarretam ônus desproporcional, para que o estudante exerça seus direitos em igualdade de condições.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449200">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40cdc363-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4043537</strong> · 2026 · Prefeitura de Dom Feliciano - RS · Psicólogo</p>
+<p>De acordo com a Lei Brasileira de Inclusão, a chamada adaptação razoável diferencia-se do desenho universal porque:</p>
+<ul>
+<li><strong>A)</strong> A adaptação razoável é obrigatória apenas para o setor público, enquanto o desenho universal é para o privado.</li>
+<li><strong>B)</strong> A adaptação razoável permite cobrar taxas extras do usuário com deficiência para cobrir custos de acessibilidade.</li>
+<li><strong>C)</strong> O desenho universal é pensado para todos desde a concepção, enquanto a adaptação razoável atende necessidades específicas caso a caso.</li>
+<li><strong>D)</strong> O desenho universal foca apenas em acessibilidade digital, enquanto a adaptação razoável foca em barreiras físicas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa B (errada) — VI</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4043537">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/b08067a4-4a" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>VII - elemento de urbanização: quaisquer componentes de obras de urbanização, tais como os referentes a pavimentação, saneamento, encanamento para esgotos, distribuição de energia elétrica e de gás, iluminação pública, serviços de comunicação, abastecimento e distribuição de água, paisagismo e os que materializam as indicações do planejamento urbanístico;</p>
+<p>VIII - mobiliário urbano: conjunto de objetos existentes nas vias e nos espaços públicos, superpostos ou adicionados aos elementos de urbanização ou de edificação, de forma que sua modificação ou seu traslado não provoque alterações substanciais nesses elementos, tais como semáforos, postes de sinalização e similares, terminais e pontos de acesso coletivo às telecomunicações, fontes de água, lixeiras, toldos, marquises, bancos, quiosques e quaisquer outros de natureza análoga;</p>
+<p>IX - pessoa com mobilidade reduzida: aquela que tenha, por qualquer motivo, dificuldade de movimentação, permanente ou temporária, gerando redução efetiva da mobilidade, da flexibilidade, da coordenação motora ou da percepção, incluindo idoso, gestante, lactante, pessoa com criança de colo e obeso;</p>
+<p>X - residências inclusivas: unidades de oferta do Serviço de Acolhimento do Sistema Único de Assistência Social (Suas) localizadas em áreas residenciais da comunidade, com estruturas adequadas, que possam contar com apoio psicossocial para o atendimento das necessidades da pessoa acolhida, destinadas a jovens e adultos com deficiência, em situação de dependência, que não dispõem de condições de autossustentabilidade e com vínculos familiares fragilizados ou rompidos;</p>
+<p>XI - moradia para a vida independente da pessoa com deficiência: moradia com estruturas adequadas capazes de proporcionar serviços de apoio coletivos e individualizados que respeitem e ampliem o grau de autonomia de jovens e adultos com deficiência;</p>
+<p>XII - atendente pessoal: pessoa, membro ou não da família, que, com ou sem remuneração, assiste ou presta cuidados básicos e essenciais à pessoa com deficiência no exercício de suas atividades diárias, excluídas as técnicas ou os procedimentos identificados com profissões legalmente estabelecidas;</p>
+<p>XIII - profissional de apoio escolar: pessoa que exerce atividades de alimentação, higiene e locomoção do estudante com deficiência e atua em todas as atividades escolares nas quais se fizer necessária, em todos os níveis e modalidades de ensino, em instituições públicas e privadas, excluídas as técnicas ou os procedimentos identificados com profissões legalmente estabelecidas;</p>
+<details class="qart">
+<summary>
+Art. 3, inciso XIII na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4070846</strong> · 2026 · Prefeitura de Pinto Bandeira - RS · Professor de Educação Especial …</p>
+<p>Conforme a Lei Brasileira de Inclusão da Pessoa corn DeÍiciência (Lei n° 13.146/2015), considera-se profissional de apoio escolar a pessoa que atua em todos os níveis e modalidades de ensino, em instituições públicas e privadas, exercendo atividades de:</p>
+<ul>
+<li><strong>A)</strong> Alimentação, higiene e locomoção do estudante com deficiência.</li>
+<li><strong>B)</strong> Mediação pedagogica, adaptação curricular e elaboração de instrumentos avaliativos do estudante com deficiência.</li>
+<li><strong>C)</strong> Reforço escolar, planejamento de estudos e definição de estratégias pedagógicas para o estudante com deficiência.</li>
+<li><strong>D)</strong> Avaliação psicopedagogica, emissão de relatorios e encaminhamento para atendimento especializado do estudante com deficiência.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — XIII</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (certa) — XIII</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — XIII</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4070846">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/dde606dd-58" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>XIV - acompanhante: aquele que acompanha a pessoa com deficiência, podendo ou não desempenhar as funções de atendente pessoal.</p>
+<div id="alt-36" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2025 · potencial de prova</span>
+</p>
+<p><span class="add">XV – pessoa com necessidades complexas de comunicação: aquela que, por qualquer motivo, tem dificuldades significativas para compreender ou expressar mensagens de forma oral, escrita, gestual ou por meio de outras formas convencionais de comunicação, necessitando de recursos e estratégias alternativas ou aumentativas para viabilizar a interação social, o acesso à informação e a participação em atividades da vida cotidiana.</span> <span class="nota">(Incluído pela Lei nº 15.249, de 2025)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 15.249/2025):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+</details>
+<h3 id="leg-h-2">
+2. Igualdade e não discriminação
+</h3>
+<p class="arts">
+Arts. 4º a 8º
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 13.146/2015 — Arts. 4º a 8º
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>CAPÍTULO II</p>
+</div>
+<div class="tit">
+<p>DA IGUALDADE E DA NÃO DISCRIMINAÇÃO</p>
+</div>
+<p><strong>Art. 4º</strong> Toda pessoa com deficiência tem direito à igualdade de oportunidades com as demais pessoas e não sofrerá nenhuma espécie de discriminação.</p>
+<p>§ 1º Considera-se discriminação em razão da deficiência toda forma de distinção, restrição ou exclusão, por ação ou omissão, que tenha o propósito ou o efeito de prejudicar, impedir ou anular o reconhecimento ou o exercício dos direitos e das liberdades fundamentais de pessoa com deficiência, incluindo a recusa de adaptações razoáveis e de fornecimento de tecnologias assistivas.</p>
+<details class="qart">
+<summary>
+Art. 4, § 1º na prova — 3 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4162770</strong> · 2026 · Prefeitura de Rio das Antas - SC · Educação Infantil e Séries Iniciais do Ensino Fundamental …</p>
+<p>Analise as partes que seguem: Considera-se discriminação em razão da deficiência toda forma de distinção, restrição ou exclusão, por ação ou omissão (1^(a) parte), que tenha o proposito ou o efeito de prejudicar, impedir ou anular o reconhecimento ou o exercício dos direitos e das liberdades fundamentais de pessoa com deficiência (2^(a) parte), salvo a recusa de adaptações razoáveis e de fornecimento de tecnologias assistivas (3^(a) Parte).</p>
+<p>Acerca das partes, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas a 1^(a) parte está correta.</li>
+<li><strong>B)</strong> Apenas a 2^(a) parte está correta.</li>
+<li><strong>C)</strong> Apenas a 3^(a) parte está correta.</li>
+<li><strong>D)</strong> Apenas a 2^(a) parte está incorreta.</li>
+<li><strong>E)</strong> Apenas a 3^(a) parte está incorreta.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: E</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — § 1º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — § 1º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — § 1º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — § 1º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa E (certa) — § 1º</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4162770">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/83324969-7a" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4449200</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>No acompanhamento do processo de ensino e aprendizagem, um Professor identifica que um estudante com deficiência física necessita de tempo adicional para realizar determinadas atividades escritas, bem como de adequações arquitetônicas e mobiliárias no ambiente escolar, a fim de assegurar sua participação efetiva nas atividades pedagógicas. Considerando os princípios da Educação Inclusiva e o compromisso ético do docente, analise as partes que seguem:</p>
+<p>(1ª parte): A adoção de adaptações metodológicas e de medidas de acessibilidade deve ser evitada pela equipe escolar, a fim de preservar o princípio da isonomia e garantir tratamento igualitário a todos os estudantes. (2ª parte): O estudante deve ser dispensado das atividades pedagógicas que exijam condições diferenciadas de participação, limitando-se sua permanência na escola ao acompanhamento passivo das aulas.</p>
+<p>Pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas a 1ª parte está incorreta.</li>
+<li><strong>B)</strong> Apenas a 2ª parte está incorreta.</li>
+<li><strong>C)</strong> Ambas as partes estão incorretas.</li>
+<li><strong>D)</strong> Ambas as partes estão corretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — § 1º</strong>: 1ª parte: incorreta. A recusa de adaptações razoáveis e de tecnologias assistivas é expressamente considerada <strong>discriminação</strong> em razão da deficiência. Evitar adaptações “em nome da isonomia” é o contrário do que a lei manda.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449200">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40cdc363-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4043537</strong> · 2026 · Prefeitura de Dom Feliciano - RS · Psicólogo</p>
+<p>De acordo com a Lei Brasileira de Inclusão, a chamada adaptação razoável diferencia-se do desenho universal porque:</p>
+<ul>
+<li><strong>A)</strong> A adaptação razoável é obrigatória apenas para o setor público, enquanto o desenho universal é para o privado.</li>
+<li><strong>B)</strong> A adaptação razoável permite cobrar taxas extras do usuário com deficiência para cobrir custos de acessibilidade.</li>
+<li><strong>C)</strong> O desenho universal é pensado para todos desde a concepção, enquanto a adaptação razoável atende necessidades específicas caso a caso.</li>
+<li><strong>D)</strong> O desenho universal foca apenas em acessibilidade digital, enquanto a adaptação razoável foca em barreiras físicas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa B (errada) — § 1º</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4043537">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/b08067a4-4a" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 2º A pessoa com deficiência não está obrigada à fruição de benefícios decorrentes de ação afirmativa.</p>
+<p><strong>Art. 5º</strong> A pessoa com deficiência será protegida de toda forma de negligência, discriminação, exploração, violência, tortura, crueldade, opressão e tratamento desumano ou degradante.</p>
+<details class="qart">
+<summary>
+Art. 5, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4135204</strong> · 2026 · Prefeitura de Porto Vitória - PR · Professor de Artes …</p>
+<p>Analise as assertivas que seguem:</p>
+<p>I. A pessoa com deficiência deve ser protegida de toda forma de negligência, discriminação, exploração, violência, tortura, crueldade, opressão e tratamento desumano ou degradante.</p>
+<p>II. É dever de todos comunicar à autoridade competente qualquer forma de ameaça ou de violação aos direitos da pessoa com deficiência.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (certa) — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4135204">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/aafdba9a-70" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>Parágrafo único. Para os fins da proteção mencionada no <strong>caput</strong> deste artigo, são considerados especialmente vulneráveis a criança, o adolescente, a mulher e o idoso, com deficiência.</p>
+<details class="qart">
+<summary>
+Art. 5 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4135204</strong> · 2026 · Prefeitura de Porto Vitória - PR · Professor de Artes …</p>
+<p>Analise as assertivas que seguem:</p>
+<p>I. A pessoa com deficiência deve ser protegida de toda forma de negligência, discriminação, exploração, violência, tortura, crueldade, opressão e tratamento desumano ou degradante.</p>
+<p>II. É dever de todos comunicar à autoridade competente qualquer forma de ameaça ou de violação aos direitos da pessoa com deficiência.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4135204">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/aafdba9a-70" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 6º</strong> A deficiência não afeta a plena capacidade civil da pessoa, inclusive para:</p>
+<p>I - casar-se e constituir união estável;</p>
+<p>II - exercer direitos sexuais e reprodutivos;</p>
+<p>III - exercer o direito de decidir sobre o número de filhos e de ter acesso a informações adequadas sobre reprodução e planejamento familiar;</p>
+<p>IV - conservar sua fertilidade, sendo vedada a esterilização compulsória;</p>
+<p>V - exercer o direito à família e à convivência familiar e comunitária; e</p>
+<p>VI - exercer o direito à guarda, à tutela, à curatela e à adoção, como adotante ou adotando, em igualdade de oportunidades com as demais pessoas.</p>
+<p><strong>Art. 7º</strong> É dever de todos comunicar à autoridade competente qualquer forma de ameaça ou de violação aos direitos da pessoa com deficiência.</p>
+<p>Parágrafo único. Se, no exercício de suas funções, os juízes e os tribunais tiverem conhecimento de fatos que caracterizem as violações previstas nesta Lei, devem remeter peças ao Ministério Público para as providências cabíveis.</p>
+<details class="qart">
+<summary>
+Art. 7 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4135204</strong> · 2026 · Prefeitura de Porto Vitória - PR · Professor de Artes …</p>
+<p>Analise as assertivas que seguem:</p>
+<p>I. A pessoa com deficiência deve ser protegida de toda forma de negligência, discriminação, exploração, violência, tortura, crueldade, opressão e tratamento desumano ou degradante.</p>
+<p>II. É dever de todos comunicar à autoridade competente qualquer forma de ameaça ou de violação aos direitos da pessoa com deficiência.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (certa)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4135204">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/aafdba9a-70" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 8º</strong> É dever do Estado, da sociedade e da família assegurar à pessoa com deficiência, com prioridade, a efetivação dos direitos referentes à vida, à saúde, à sexualidade, à paternidade e à maternidade, à alimentação, à habitação, à educação, à profissionalização, ao trabalho, à previdência social, à habilitação e à reabilitação, ao transporte, à acessibilidade, à cultura, ao desporto, ao turismo, ao lazer, à informação, à comunicação, aos avanços científicos e tecnológicos, à dignidade, ao respeito, à liberdade, à convivência familiar e comunitária, entre outros decorrentes da Constituição Federal, da Convenção sobre os Direitos das Pessoas com Deficiência e seu Protocolo Facultativo e das leis e de outras normas que garantam seu bem-estar pessoal, social e econômico.</p>
+</details>
+<h3 id="leg-h-3">
+3. Direito à educação: sistema educacional inclusivo; incumbências do poder público; escolas privadas
+</h3>
+<p class="arts">
+Arts. 27 a 30 · relacionado a: <a href="especificos.html#esp-g">Esp. g — inclusão e dificuldades</a> · <a href="leg-j-ldb.html#leg-j">Leg. j — LDB</a>
+</p>
+<details class="lei" open>
+<summary>
+Lei nº 13.146/2015 — Arts. 27 a 30
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<div class="tit">
+<p>CAPÍTULO IV</p>
+</div>
+<div class="tit">
+<p>DO DIREITO À EDUCAÇÃO</p>
+</div>
+<p><strong>Art. 27.</strong> A educação constitui direito da pessoa com deficiência, assegurados sistema educacional inclusivo em todos os níveis e aprendizado ao longo de toda a vida, de forma a alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem.</p>
+<details class="qart">
+<summary>
+Art. 27, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4316098</strong> · 2026 · Prefeitura de Silveira Martins - RS · Professor de Anos Iniciais …</p>
+<p>Sobre o direito à educação, de acordo com a Lei nº 13.146/2015, analise as afirmativas que seguem:</p>
+<p><strong>I</strong>. É dever do Estado, da família, da comunidade escolar e da sociedade assegurar educação de qualidade à pessoa com deficiência, colocando-a a salvo de toda forma de violência, negligência e discriminação.</p>
+<p><strong>II</strong>. A educação constitui direito da pessoa com deficiência, assegurado sistema educacional inclusivo nos níveis iniciais de aprendizado ao longo dos primeiros anos de vida.</p>
+<p><strong>III</strong>. A educação da pessoa com deficiência visa alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem.</p>
+<p><strong>IV</strong>. Incumbe exclusivamente ao setor privado assegurar, criar, desenvolver, implementar, incentivar, acompanhar e avaliar a participação dos estudantes com deficiência e de suas famílias nas diversas instâncias de atuação da comunidade escolar.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas I e III.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I e IV.</li>
+<li><strong>D)</strong> Apenas II, III e IV.</li>
+<li><strong>E)</strong> I, II, III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada) — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa E (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4316098">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/6a7773fd-b3" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>Parágrafo único. É dever do Estado, da família, da comunidade escolar e da sociedade assegurar educação de qualidade à pessoa com deficiência, colocando-a a salvo de toda forma de violência, negligência e discriminação.</p>
+<details class="qart">
+<summary>
+Art. 27, parágrafo único na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4316098</strong> · 2026 · Prefeitura de Silveira Martins - RS · Professor de Anos Iniciais …</p>
+<p>Sobre o direito à educação, de acordo com a Lei nº 13.146/2015, analise as afirmativas que seguem:</p>
+<p><strong>I</strong>. É dever do Estado, da família, da comunidade escolar e da sociedade assegurar educação de qualidade à pessoa com deficiência, colocando-a a salvo de toda forma de violência, negligência e discriminação.</p>
+<p><strong>II</strong>. A educação constitui direito da pessoa com deficiência, assegurado sistema educacional inclusivo nos níveis iniciais de aprendizado ao longo dos primeiros anos de vida.</p>
+<p><strong>III</strong>. A educação da pessoa com deficiência visa alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem.</p>
+<p><strong>IV</strong>. Incumbe exclusivamente ao setor privado assegurar, criar, desenvolver, implementar, incentivar, acompanhar e avaliar a participação dos estudantes com deficiência e de suas famílias nas diversas instâncias de atuação da comunidade escolar.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas I e III.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I e IV.</li>
+<li><strong>D)</strong> Apenas II, III e IV.</li>
+<li><strong>E)</strong> I, II, III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4316098">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/6a7773fd-b3" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<details class="qart">
+<summary>
+Art. 27 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4316098</strong> · 2026 · Prefeitura de Silveira Martins - RS · Professor de Anos Iniciais …</p>
+<p>Sobre o direito à educação, de acordo com a Lei nº 13.146/2015, analise as afirmativas que seguem:</p>
+<p><strong>I</strong>. É dever do Estado, da família, da comunidade escolar e da sociedade assegurar educação de qualidade à pessoa com deficiência, colocando-a a salvo de toda forma de violência, negligência e discriminação.</p>
+<p><strong>II</strong>. A educação constitui direito da pessoa com deficiência, assegurado sistema educacional inclusivo nos níveis iniciais de aprendizado ao longo dos primeiros anos de vida.</p>
+<p><strong>III</strong>. A educação da pessoa com deficiência visa alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem.</p>
+<p><strong>IV</strong>. Incumbe exclusivamente ao setor privado assegurar, criar, desenvolver, implementar, incentivar, acompanhar e avaliar a participação dos estudantes com deficiência e de suas famílias nas diversas instâncias de atuação da comunidade escolar.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas I e III.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I e IV.</li>
+<li><strong>D)</strong> Apenas II, III e IV.</li>
+<li><strong>E)</strong> I, II, III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Alternativa A (certa)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4316098">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/6a7773fd-b3" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 28.</strong> Incumbe ao poder público assegurar, criar, desenvolver, implementar, incentivar, acompanhar e avaliar:</p>
+<p>I - sistema educacional inclusivo em todos os níveis e modalidades, bem como o aprendizado ao longo de toda a vida;</p>
+<details class="qart">
+<summary>
+Art. 28, inciso I na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4449207</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>A organização do ambiente físico e dos recursos didáticos é dimensão central do planejamento pedagógico inclusivo, devendo orientar-se pelos princípios do Desenho Universal e da Acessibilidade. A respeito da eliminação de barreiras e da organização dos espaços escolares na perspectiva da Educação Inclusiva, analise as assertivas abaixo, julgando-as V, se Verdadeiras, ou F, se Falsas:</p>
+<p>( ) A preservação da arquitetura original e do padrão estético dos edifícios escolares constituem prioridades jurídicas que se sobrepõem às adaptações físicas exigidas para a remoção de barreiras arquitetônicas.</p>
+<p>( ) As adequações de acessibilidade e a eliminação de barreiras físicas na escola devem ficar restritas à Sala de Recursos, por ser o único espaço de atendimento do estudante público-alvo da Educação Especial.</p>
+<p>( ) A organização de materiais pedagógicos e equipamentos em locais de alcance físico adequado reflete o princípio da acessibilidade no uso do ambiente escolar, promovendo a independência do estudante no cotidiano pedagógico.</p>
+<p>Qual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?</p>
+<ul>
+<li><strong>A)</strong> V - F - V.</li>
+<li><strong>B)</strong> F - F - F.</li>
+<li><strong>C)</strong> V - V - V.</li>
+<li><strong>D)</strong> F - F - V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — I</strong>: 2ª assertiva: falsa. O sistema educacional deve ser inclusivo em todos os níveis e modalidades. O AEE complementa a sala comum, não a substitui, e a acessibilidade não se limita a um espaço.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449207">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40de0398-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>II - aprimoramento dos sistemas educacionais, visando a garantir condições de acesso, permanência, participação e aprendizagem, por meio da oferta de serviços e de recursos de acessibilidade que eliminem as barreiras e promovam a inclusão plena;</p>
+<details class="qart">
+<summary>
+Art. 28, inciso II na prova — 2 questões da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4449200</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>No acompanhamento do processo de ensino e aprendizagem, um Professor identifica que um estudante com deficiência física necessita de tempo adicional para realizar determinadas atividades escritas, bem como de adequações arquitetônicas e mobiliárias no ambiente escolar, a fim de assegurar sua participação efetiva nas atividades pedagógicas. Considerando os princípios da Educação Inclusiva e o compromisso ético do docente, analise as partes que seguem:</p>
+<p>(1ª parte): A adoção de adaptações metodológicas e de medidas de acessibilidade deve ser evitada pela equipe escolar, a fim de preservar o princípio da isonomia e garantir tratamento igualitário a todos os estudantes. (2ª parte): O estudante deve ser dispensado das atividades pedagógicas que exijam condições diferenciadas de participação, limitando-se sua permanência na escola ao acompanhamento passivo das aulas.</p>
+<p>Pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas a 1ª parte está incorreta.</li>
+<li><strong>B)</strong> Apenas a 2ª parte está incorreta.</li>
+<li><strong>C)</strong> Ambas as partes estão incorretas.</li>
+<li><strong>D)</strong> Ambas as partes estão corretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — II e III</strong>: 2ª parte: incorreta. O poder público deve garantir condições de acesso, permanência, <strong>participação e aprendizagem</strong>, com recursos que eliminem barreiras (II), e adaptações razoáveis para o pleno acesso ao currículo (III). Dispensar o aluno e reduzi-lo a acompanhamento passivo viola esses incisos.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449200">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40cdc363-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+<div class="qa">
+<p><strong>Q4449210</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>Uma Professora do Ensino Fundamental identifica que um estudante com deficiência visual apresenta dificuldades para acompanhar atividades que utilizam exclusivamente imagens projetadas e textos impressos em tamanho convencional. Em vez de dispensá-lo dessas experiências, a docente reorganiza os materiais, disponibiliza recursos acessíveis e planeja estratégias para garantir sua participação nas mesmas situações de aprendizagem propostas à turma. Essa prática fundamenta-se no princípio de que:</p>
+<ul>
+<li><strong>A)</strong> A equidade educacional depende da oferta de atividades idênticas a todos os alunos, ainda que os recursos utilizados impeçam o acesso de alguns deles.</li>
+<li><strong>B)</strong> A remoção de barreiras e a disponibilização de recursos acessíveis favorecem o acesso ao currículo e a participação, sem exigir que o estudante utilize necessariamente os mesmos meios dos demais.</li>
+<li><strong>C)</strong> A inclusão exige a substituição de todas as atividades coletivas por tarefas individuais, pois a participação conjunta pode comprometer o atendimento às necessidades específicas da turma.</li>
+<li><strong>D)</strong> A utilização de recursos diferenciados representa privilégio individual e, por esse motivo, deve ocorrer apenas quando os demais estudantes não estiverem realizando atividades curriculares.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — II e III</strong>: B: certa. Recursos de acessibilidade “que eliminem as barreiras e promovam a inclusão plena” (II) e adaptações razoáveis para “pleno acesso ao currículo em condições de igualdade” (III).</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449210">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40e54884-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>III - projeto pedagógico que institucionalize o atendimento educacional especializado, assim como os demais serviços e adaptações razoáveis, para atender às características dos estudantes com deficiência e garantir o seu pleno acesso ao currículo em condições de igualdade, promovendo a conquista e o exercício de sua autonomia;</p>
+<p>IV - oferta de educação bilíngue, em Libras como primeira língua e na modalidade escrita da língua portuguesa como segunda língua, em escolas e classes bilíngues e em escolas inclusivas;</p>
+<p>V - adoção de medidas individualizadas e coletivas em ambientes que maximizem o desenvolvimento acadêmico e social dos estudantes com deficiência, favorecendo o acesso, a permanência, a participação e a aprendizagem em instituições de ensino;</p>
+<p>VI - pesquisas voltadas para o desenvolvimento de novos métodos e técnicas pedagógicas, de materiais didáticos, de equipamentos e de recursos de tecnologia assistiva;</p>
+<p>VII - planejamento de estudo de caso, de elaboração de plano de atendimento educacional especializado, de organização de recursos e serviços de acessibilidade e de disponibilização e usabilidade pedagógica de recursos de tecnologia assistiva;</p>
+<p>VIII - participação dos estudantes com deficiência e de suas famílias nas diversas instâncias de atuação da comunidade escolar;</p>
+<p>IX - adoção de medidas de apoio que favoreçam o desenvolvimento dos aspectos linguísticos, culturais, vocacionais e profissionais, levando-se em conta o talento, a criatividade, as habilidades e os interesses do estudante com deficiência;</p>
+<p>X - adoção de práticas pedagógicas inclusivas pelos programas de formação inicial e continuada de professores e oferta de formação continuada para o atendimento educacional especializado;</p>
+<p>XI - formação e disponibilização de professores para o atendimento educacional especializado, de tradutores e intérpretes da Libras, de guias intérpretes e de profissionais de apoio;</p>
+<p>XII - oferta de ensino da Libras, do Sistema Braille e de uso de recursos de tecnologia assistiva, de forma a ampliar habilidades funcionais dos estudantes, promovendo sua autonomia e participação;</p>
+<p>XIII - acesso à educação superior e à educação profissional e tecnológica em igualdade de oportunidades e condições com as demais pessoas;</p>
+<p>XIV - inclusão em conteúdos curriculares, em cursos de nível superior e de educação profissional técnica e tecnológica, de temas relacionados à pessoa com deficiência nos respectivos campos de conhecimento;</p>
+<p>XV - acesso da pessoa com deficiência, em igualdade de condições, a jogos e a atividades recreativas, esportivas e de lazer, no sistema escolar;</p>
+<p>XVI - acessibilidade para todos os estudantes, trabalhadores da educação e demais integrantes da comunidade escolar às edificações, aos ambientes e às atividades concernentes a todas as modalidades, etapas e níveis de ensino;</p>
+<p>XVII - oferta de profissionais de apoio escolar;</p>
+<p>XVIII - articulação intersetorial na implementação de políticas públicas.</p>
+<div id="alt-37" class="alt recente">
+<p class="selo">
+<span class="badge">Alteração recente · 2025 · potencial de prova</span>
+</p>
+<p><span class="add">XIX – sistemas de comunicação aumentativa e alternativa de baixa tecnologia para o atendimento educacional especializado de estudantes com necessidades complexas de comunicação.</span> <span class="nota">(Incluído pela Lei nº 15.249, de 2025)</span></p>
+<div class="antes">
+<p class="mudou">
+<strong>O que mudou (Lei nº 15.249/2025):</strong> dispositivo <strong>incluído</strong> — não existia na redação anterior.
+</p>
+</div>
+</div>
+<details class="qart">
+<summary>
+Art. 28, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4316098</strong> · 2026 · Prefeitura de Silveira Martins - RS · Professor de Anos Iniciais …</p>
+<p>Sobre o direito à educação, de acordo com a Lei nº 13.146/2015, analise as afirmativas que seguem:</p>
+<p><strong>I</strong>. É dever do Estado, da família, da comunidade escolar e da sociedade assegurar educação de qualidade à pessoa com deficiência, colocando-a a salvo de toda forma de violência, negligência e discriminação.</p>
+<p><strong>II</strong>. A educação constitui direito da pessoa com deficiência, assegurado sistema educacional inclusivo nos níveis iniciais de aprendizado ao longo dos primeiros anos de vida.</p>
+<p><strong>III</strong>. A educação da pessoa com deficiência visa alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem.</p>
+<p><strong>IV</strong>. Incumbe exclusivamente ao setor privado assegurar, criar, desenvolver, implementar, incentivar, acompanhar e avaliar a participação dos estudantes com deficiência e de suas famílias nas diversas instâncias de atuação da comunidade escolar.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas I e III.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I e IV.</li>
+<li><strong>D)</strong> Apenas II, III e IV.</li>
+<li><strong>E)</strong> I, II, III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada) — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa E (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4316098">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/6a7773fd-b3" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º Às instituições privadas, de qualquer nível e modalidade de ensino, aplica-se obrigatoriamente o disposto nos incisos I, II, III, V, VII, VIII, IX, X, XI, XII, XIII, XIV, XV, XVI, XVII e XVIII do <strong>caput</strong> deste artigo, sendo vedada a cobrança de valores adicionais de qualquer natureza em suas mensalidades, anuidades e matrículas no cumprimento dessas determinações.</p>
+<p>§ 2º Na disponibilização de tradutores e intérpretes da Libras a que se refere o inciso XI do <strong>caput</strong> deste artigo, deve-se observar o seguinte:</p>
+<p>I - os tradutores e intérpretes da Libras atuantes na educação básica devem, no mínimo, possuir ensino médio completo e certificado de proficiência na Libras; <span class="nota">(Vigência)</span></p>
+<p>II - os tradutores e intérpretes da Libras, quando direcionados à tarefa de interpretar nas salas de aula dos cursos de graduação e pós-graduação, devem possuir nível superior, com habilitação, prioritariamente, em Tradução e Interpretação em Libras. <span class="nota">(Vigência)</span></p>
+<details class="qart">
+<summary>
+Art. 28 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4316098</strong> · 2026 · Prefeitura de Silveira Martins - RS · Professor de Anos Iniciais …</p>
+<p>Sobre o direito à educação, de acordo com a Lei nº 13.146/2015, analise as afirmativas que seguem:</p>
+<p><strong>I</strong>. É dever do Estado, da família, da comunidade escolar e da sociedade assegurar educação de qualidade à pessoa com deficiência, colocando-a a salvo de toda forma de violência, negligência e discriminação.</p>
+<p><strong>II</strong>. A educação constitui direito da pessoa com deficiência, assegurado sistema educacional inclusivo nos níveis iniciais de aprendizado ao longo dos primeiros anos de vida.</p>
+<p><strong>III</strong>. A educação da pessoa com deficiência visa alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem.</p>
+<p><strong>IV</strong>. Incumbe exclusivamente ao setor privado assegurar, criar, desenvolver, implementar, incentivar, acompanhar e avaliar a participação dos estudantes com deficiência e de suas famílias nas diversas instâncias de atuação da comunidade escolar.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas I e III.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I e IV.</li>
+<li><strong>D)</strong> Apenas II, III e IV.</li>
+<li><strong>E)</strong> I, II, III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4316098">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/6a7773fd-b3" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 29.</strong> . <span class="nota">(VETADO)</span></p>
+<p><strong>Art. 30.</strong> Nos processos seletivos para ingresso e permanência nos cursos oferecidos pelas instituições de ensino superior e de educação profissional e tecnológica, públicas e privadas, devem ser adotadas as seguintes medidas:</p>
+<p>I - atendimento preferencial à pessoa com deficiência nas dependências das Instituições de Ensino Superior (IES) e nos serviços;</p>
+<p>II - disponibilização de formulário de inscrição de exames com campos específicos para que o candidato com deficiência informe os recursos de acessibilidade e de tecnologia assistiva necessários para sua participação;</p>
+<p>III - disponibilização de provas em formatos acessíveis para atendimento às necessidades específicas do candidato com deficiência;</p>
+<p>IV - disponibilização de recursos de acessibilidade e de tecnologia assistiva adequados, previamente solicitados e escolhidos pelo candidato com deficiência;</p>
+<details class="qart">
+<summary>
+Art. 30, inciso IV na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q3969867</strong> · 2024 · UFPEL · Pedagogo / Área: Psicopedagogia</p>
+<p>De acordo com a Lei n.° 13.146/2015 (Lei de Inclusão da Pessoa com Deficiência), nos processos seletivos para ingresso e permanência nos cursos oferecidos pelas instituições de ensino superior e de educação profissional e tecnológica, públicas e privadas, deve ser adotada, entre outras medidas, a disponibilização de recursos de acessibilidade e de adequados, solicitados e escolhidos .</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas:</p>
+<ul>
+<li><strong>A)</strong> tecnologia assistiva; quando; pelo candidato com deficiência.</li>
+<li><strong>B)</strong> tecnologia reabilitativa; previamente; pelo candidato com deficiência.</li>
+<li><strong>C)</strong> tecnologia social; quando; pela instituição.</li>
+<li><strong>D)</strong> tecnologia assistiva; previamente; pelo candidato com deficiência.</li>
+<li><strong>E)</strong> tecnologia assistiva; previamente; pela instituição.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada) — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (certa) — IV</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa E (errada) — IV</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q3969867">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/d0d84111-2f" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>V - dilação de tempo, conforme demanda apresentada pelo candidato com deficiência, tanto na realização de exame para seleção quanto nas atividades acadêmicas, mediante prévia solicitação e comprovação da necessidade;</p>
+<p>VI - adoção de critérios de avaliação das provas escritas, discursivas ou de redação que considerem a singularidade linguística da pessoa com deficiência, no domínio da modalidade escrita da língua portuguesa;</p>
+<p>VII - tradução completa do edital e de suas retificações em Libras.</p>
+</details>
+<h3 id="outros-artigos-cobrados-nas-questões-lbi-lei-nº-13.1462015">Outros artigos cobrados nas questões — LBI — Lei nº 13.146/2015</h3>
+<p class="arts">
+Artigos citados nos gabaritos comentados da Legalle e que não estão nos tópicos acima: arts. 11, 14, 15, 16, 25, 47, 55, 56, 57, 63, 84, 94.
+</p>
+<details class="lei">
+<summary>
+LBI — Lei nº 13.146/2015 — artigos cobrados nas questões
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm">planalto.gov.br</a> (texto compilado)
+</p>
+<p><strong>Art. 11.</strong> A pessoa com deficiência não poderá ser obrigada a se submeter a intervenção clínica ou cirúrgica, a tratamento ou a institucionalização forçada.</p>
+<p>Parágrafo único. O consentimento da pessoa com deficiência em situação de curatela poderá ser suprido, na forma da lei.</p>
+<details class="qart">
+<summary>
+Art. 11, parágrafo único na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4064197</strong> · 2026 · Prefeitura de Pinto Bandeira - RS · Assistente Social</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência) destina-se a assegurar e a promover, em condições de igualdade, o exercício dos direitos e das liberdades fundamentais por pessoa com deficiência, visando à sua inclusão social e cidadania. Sobre o Estatuto da Pessoa com Deficiência, analise as assertivas que seguem.</p>
+<p>I. Em caso de pessoa com deficiência em situação de curatela, deve ser assegurada sua participação, no menor grau possível, para a obtenção de consentimento prévio, livre e esclarecido.</p>
+<p>II. É vedada a pessoa com deficiência a adoção de processo de tomada de decisão apoiada.</p>
+<p>III. A avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar e considerará, dentre outras, a limitação no desempenho de atividades.</p>
+<p>IV. Para fins de aplicação da lei, considera-se desenho universal: concepção de produtos, ambientes, programas e serviços a serem usados por todas as pessoas, sem necessidade de adaptação ou de projeto específico, incluindo os recursos de tecnologia assistiva.</p>
+<p>Estão CORRETAS</p>
+<ul>
+<li><strong>A)</strong> Apenas l e lV.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I, II e IV</li>
+<li><strong>D)</strong> Apenas III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — parágrafo único</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (errada) — parágrafo único</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — parágrafo único</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4064197">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bea843d7-54" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 14.</strong> O processo de habilitação e de reabilitação é um direito da pessoa com deficiência.</p>
+<p>Parágrafo único. O processo de habilitação e de reabilitação tem por objetivo o desenvolvimento de potencialidades, talentos, habilidades e aptidões físicas, cognitivas, sensoriais, psicossociais, atitudinais, profissionais e artísticas que contribuam para a conquista da autonomia da pessoa com deficiência e de sua participação social em igualdade de condições e oportunidades com as demais pessoas.</p>
+<details class="qart">
+<summary>
+Art. 14, parágrafo único na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4289677</strong> · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial …</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa A (errada) — parágrafo único</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4289677">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<details class="qart">
+<summary>
+Art. 14 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4289677</strong> · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial …</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4289677">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 15.</strong> O processo mencionado no art. 14 desta Lei baseia-se em avaliação multidisciplinar das necessidades, habilidades e potencialidades de cada pessoa, observadas as seguintes diretrizes:</p>
+<p>I - diagnóstico e intervenção precoces;</p>
+<details class="qart">
+<summary>
+Art. 15, inciso I na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4289677</strong> · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial …</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa B (errada) — I</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4289677">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>II - adoção de medidas para compensar perda ou limitação funcional, buscando o desenvolvimento de aptidões;</p>
+<p>III - atuação permanente, integrada e articulada de políticas públicas que possibilitem a plena participação social da pessoa com deficiência;</p>
+<p>IV - oferta de rede de serviços articulados, com atuação intersetorial, nos diferentes níveis de complexidade, para atender às necessidades específicas da pessoa com deficiência;</p>
+<p>V - prestação de serviços próximo ao domicílio da pessoa com deficiência, inclusive na zona rural, respeitadas a organização das Redes de Atenção à Saúde (RAS) nos territórios locais e as normas do Sistema Único de Saúde (SUS).</p>
+<details class="qart">
+<summary>
+Art. 15, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4289677</strong> · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial …</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa C (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4289677">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<details class="qart">
+<summary>
+Art. 15 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4289677</strong> · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial …</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4289677">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 16.</strong> Nos programas e serviços de habilitação e de reabilitação para a pessoa com deficiência, são garantidos:</p>
+<p>I - organização, serviços, métodos, técnicas e recursos para atender às características de cada pessoa com deficiência;</p>
+<p>II - acessibilidade em todos os ambientes e serviços;</p>
+<p>III - tecnologia assistiva, tecnologia de reabilitação, materiais e equipamentos adequados e apoio técnico profissional, de acordo com as especificidades de cada pessoa com deficiência;</p>
+<p>IV - capacitação continuada de todos os profissionais que participem dos programas e serviços.</p>
+<details class="qart">
+<summary>
+Art. 16, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4289677</strong> · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial …</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4289677">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<details class="qart">
+<summary>
+Art. 16 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4289677</strong> · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial …</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4289677">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 25.</strong> Os espaços dos serviços de saúde, tanto públicos quanto privados, devem assegurar o acesso da pessoa com deficiência, em conformidade com a legislação em vigor, mediante a remoção de barreiras, por meio de projetos arquitetônico, de ambientação de interior e de comunicação que atendam às especificidades das pessoas com deficiência física, sensorial, intelectual e mental.</p>
+<details class="qart">
+<summary>
+Art. 25, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075993</strong> · 2026 · SEPLAG-MG · Administração, Gestão Pública e Transversalidade …</p>
+<p>Suponha que um estabelecimento de saúde nega atendimento especializado a um paciente com deficiência física, alegando que o custo das adaptações necessárias para o procedimento não está previsto no orçamento. De acordo com a Convencão sobre os Direitos das Pessoas com Deficiência, é INCORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Adaptação razoável significa as modificações e os ajustes necessários e adequados que não acarretem ônus desproporcional ou indevido.</li>
+<li><strong>B)</strong> A negativa de adaptação razoável constitui uma forma de discriminação por motivo de deficiência.</li>
+<li><strong>C)</strong> As pessoas com deficiência devem ter acesso a serviços de saúde na mesma gama, qualidade e padrão que os serviços gratuitos ou a custos acessíveis oferecidos às demais pessoas.</li>
+<li><strong>D)</strong> O direito à saúde das pessoas com deficiência é facultativo e depende da disponibilidade orçamentária imediata, sem necessidade de planejamento progressivo.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075993">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1e346b57-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<details class="qart">
+<summary>
+Art. 25 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4075993</strong> · 2026 · SEPLAG-MG · Administração, Gestão Pública e Transversalidade …</p>
+<p>Suponha que um estabelecimento de saúde nega atendimento especializado a um paciente com deficiência física, alegando que o custo das adaptações necessárias para o procedimento não está previsto no orçamento. De acordo com a Convencão sobre os Direitos das Pessoas com Deficiência, é INCORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Adaptação razoável significa as modificações e os ajustes necessários e adequados que não acarretem ônus desproporcional ou indevido.</li>
+<li><strong>B)</strong> A negativa de adaptação razoável constitui uma forma de discriminação por motivo de deficiência.</li>
+<li><strong>C)</strong> As pessoas com deficiência devem ter acesso a serviços de saúde na mesma gama, qualidade e padrão que os serviços gratuitos ou a custos acessíveis oferecidos às demais pessoas.</li>
+<li><strong>D)</strong> O direito à saúde das pessoas com deficiência é facultativo e depende da disponibilidade orçamentária imediata, sem necessidade de planejamento progressivo.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Alternativa C (certa)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa D (errada)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4075993">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1e346b57-59" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 47.</strong> Em todas as áreas de estacionamento aberto ao público, de uso público ou privado de uso coletivo e em vias públicas, devem ser reservadas vagas próximas aos acessos de circulação de pedestres, devidamente sinalizadas, para veículos que transportem pessoa com deficiência com comprometimento de mobilidade, desde que devidamente identificados.</p>
+<p>§ 1º As vagas a que se refere o <strong>caput</strong> deste artigo devem equivaler a 2% (dois por cento) do total, garantida, no mínimo, 1 (uma) vaga devidamente sinalizada e com as especificações de desenho e traçado de acordo com as normas técnicas vigentes de acessibilidade.</p>
+<p>§ 2º Os veículos estacionados nas vagas reservadas devem exibir, em local de ampla visibilidade, a credencial de beneficiário, a ser confeccionada e fornecida pelos órgãos de trânsito, que disciplinarão suas características e condições de uso.</p>
+<p>§ 3º A utilização indevida das vagas de que trata este artigo sujeita os infratores às sanções previstas no inciso XVII do art. 181 da Lei nº 9.503, de 23 de setembro de 1997 (Código de Trânsito Brasileiro) .</p>
+<p>§ 3º A utilização indevida das vagas de que trata este artigo sujeita os infratores às sanções previstas no inciso XX do art. 181 da Lei nº 9.503, de 23 de setembro de 1997 (Código de Trânsito Brasileiro) . <span class="nota">(Redação dada pela Lei nº 13.281, de 2016)</span> <span class="nota">(Vigência)</span></p>
+<p>§ 4º A credencial a que se refere o § 2º deste artigo é vinculada à pessoa com deficiência que possui comprometimento de mobilidade e é válida em todo o território nacional.</p>
+<details class="qart">
+<summary>
+Art. 47 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4103468</strong> · 2026 · Prefeitura de Dona Emma - SC · Professor …</p>
+<p>O planejamento demográfico moderno exige que os gestores municipais convertam dados estatísticos em ações concretas de inclusão. Sabendo que aproximadamente 6,90/o da população residente de Dona Emma possui algum tipo de deficiência, a Administração Pública local deve pautar suas obras e serviços nos conceitos de Acessibilidade e Desenho Universal. Com base nessa perspectiva e nas diretrizes aplicadas à gestão municipal, analise as seguintes ações:</p>
+<p>I. Nos estacionamentos públicos demarcados nas vias urbanas, devem ser reservadas vagas exclusivas próximas aos acessos principais, devidamente sinalizadas com o Símbolo Internacional de Acesso.</p>
+<p>II. As calçadas construídas ou reformadas devem possuir rebaixamento de meio-fio nas faixas de pedestres para viabilizar a travessia segura de usuários de cadeiras de rodas.</p>
+<p>III. O portal da transparência e o site de serviços da Prefeitura devem conter o selo de acessibilidade digital, permitindo que deficientes visuais utilizem softwares de leitura de tela para consultar decretos e leis.</p>
+<p>Está CORRETO o que se afirma em:</p>
+<ul>
+<li><strong>A)</strong> I, ll e III</li>
+<li><strong>B)</strong> I e ll, apenas.</li>
+<li><strong>C)</strong> II e III, apenas.</li>
+<li><strong>D)</strong> I e lll, apenas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (certa)</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4103468">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1ace4a91-64" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 55.</strong> A concepção e a implantação de projetos que tratem do meio físico, de transporte, de informação e comunicação, inclusive de sistemas e tecnologias da informação e comunicação, e de outros serviços, equipamentos e instalações abertos ao público, de uso público ou privado de uso coletivo, tanto na zona urbana como na rural, devem atender aos princípios do desenho universal, tendo como referência as normas de acessibilidade.</p>
+<p>§ 1º O desenho universal será sempre tomado como regra de caráter geral.</p>
+<p>§ 2º Nas hipóteses em que comprovadamente o desenho universal não possa ser empreendido, deve ser adotada adaptação razoável.</p>
+<p>§ 3º Caberá ao poder público promover a inclusão de conteúdos temáticos referentes ao desenho universal nas diretrizes curriculares da educação profissional e tecnológica e do ensino superior e na formação das carreiras de Estado.</p>
+<p>§ 4º Os programas, os projetos e as linhas de pesquisa a serem desenvolvidos com o apoio de organismos públicos de auxílio à pesquisa e de agências de fomento deverão incluir temas voltados para o desenho universal.</p>
+<p>§ 5º Desde a etapa de concepção, as políticas públicas deverão considerar a adoção do desenho universal.</p>
+<details class="qart">
+<summary>
+Art. 55 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4103468</strong> · 2026 · Prefeitura de Dona Emma - SC · Professor …</p>
+<p>O planejamento demográfico moderno exige que os gestores municipais convertam dados estatísticos em ações concretas de inclusão. Sabendo que aproximadamente 6,90/o da população residente de Dona Emma possui algum tipo de deficiência, a Administração Pública local deve pautar suas obras e serviços nos conceitos de Acessibilidade e Desenho Universal. Com base nessa perspectiva e nas diretrizes aplicadas à gestão municipal, analise as seguintes ações:</p>
+<p>I. Nos estacionamentos públicos demarcados nas vias urbanas, devem ser reservadas vagas exclusivas próximas aos acessos principais, devidamente sinalizadas com o Símbolo Internacional de Acesso.</p>
+<p>II. As calçadas construídas ou reformadas devem possuir rebaixamento de meio-fio nas faixas de pedestres para viabilizar a travessia segura de usuários de cadeiras de rodas.</p>
+<p>III. O portal da transparência e o site de serviços da Prefeitura devem conter o selo de acessibilidade digital, permitindo que deficientes visuais utilizem softwares de leitura de tela para consultar decretos e leis.</p>
+<p>Está CORRETO o que se afirma em:</p>
+<ul>
+<li><strong>A)</strong> I, ll e III</li>
+<li><strong>B)</strong> I e ll, apenas.</li>
+<li><strong>C)</strong> II e III, apenas.</li>
+<li><strong>D)</strong> I e lll, apenas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa A (certa)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4103468">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1ace4a91-64" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 56.</strong> A construção, a reforma, a ampliação ou a mudança de uso de edificações abertas ao público, de uso público ou privadas de uso coletivo deverão ser executadas de modo a serem acessíveis.</p>
+<details class="qart">
+<summary>
+Art. 56, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4449374</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Engenheiro Civil</p>
+<p>Na análise de um projeto de reforma de um prédio público municipal, o Engenheiro Civil deve verificar as condições de acessibilidade dos acessos, das rotas de circulação e dos dispositivos de controle de entrada. Com base nos requisitos apresentados, julgue as afirmativas a seguir como Verdadeiras (V) ou Falsas (F):</p>
+<p>( ) Em edificações existentes, quando não for possível adaptar todas as entradas, mediante comprovação técnica, deve ser adaptado o maior número de acessos, respeitando-se a distância máxima de 50 m entre cada entrada acessível e as demais.</p>
+<p>( ) Os acessos devem ser vinculados por rota acessível à circulação principal e às circulações de emergência, sendo admitidos obstáculos permanentes quando houver sinalização tátil e visual que permita sua identificação.</p>
+<p>( ) Quando não for viável executar uma rota acessível entre o estacionamento e os acessos, devem ser previstas vagas destinadas a pessoas com deficiência e pessoas idosas, a uma distância máxima de 50 m até um acesso acessível.</p>
+<p>( ) Quando houver dispositivos de controle de acesso, pelo menos um dispositivo em cada conjunto deve ser acessível, permitindo o acesso, a manobra, a circulação e a aproximação para utilização com autonomia.</p>
+<p>( ) Quando houver porta giratória, deve ser prevista outra entrada acessível junto a ela, podendo essa entrada ser substituída por uma passagem alternativa localizada a até 50 m, desde que vinculada à rota acessível da edificação.</p>
+<p>Qual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?</p>
+<ul>
+<li><strong>A)</strong> F-V- F-F- V.</li>
+<li><strong>B)</strong> V-F-V-V-F.</li>
+<li><strong>C)</strong> V-V-V-F-F.</li>
+<li><strong>D)</strong> F-F-F-V-V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: B</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — caput</strong>: todas: base legal. A construção, a <strong>reforma</strong>, a ampliação ou a mudança de uso de edificações abertas ao público ou de uso público devem ser executadas de modo a serem acessíveis. Os requisitos técnicos estão nas normas de acessibilidade da ABNT.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente no art. 56. A NBR 9050 teve nova edição em 2020.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449374">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/4510db00-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º As entidades de fiscalização profissional das atividades de Engenharia, de Arquitetura e correlatas, ao anotarem a responsabilidade técnica de projetos, devem exigir a responsabilidade profissional declarada de atendimento às regras de acessibilidade previstas em legislação e em normas técnicas pertinentes.</p>
+<p>§ 2º Para a aprovação, o licenciamento ou a emissão de certificado de projeto executivo arquitetônico, urbanístico e de instalações e equipamentos temporários ou permanentes e para o licenciamento ou a emissão de certificado de conclusão de obra ou de serviço, deve ser atestado o atendimento às regras de acessibilidade.</p>
+<p>§ 3º O poder público, após certificar a acessibilidade de edificação ou de serviço, determinará a colocação, em espaços ou em locais de ampla visibilidade, do símbolo internacional de acesso, na forma prevista em legislação e em normas técnicas correlatas.</p>
+<p><strong>Art. 57.</strong> As edificações públicas e privadas de uso coletivo já existentes devem garantir acessibilidade à pessoa com deficiência em todas as suas dependências e serviços, tendo como referência as normas de acessibilidade vigentes.</p>
+<details class="qart">
+<summary>
+Art. 57, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4449207</strong> · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE)</p>
+<p>A organização do ambiente físico e dos recursos didáticos é dimensão central do planejamento pedagógico inclusivo, devendo orientar-se pelos princípios do Desenho Universal e da Acessibilidade. A respeito da eliminação de barreiras e da organização dos espaços escolares na perspectiva da Educação Inclusiva, analise as assertivas abaixo, julgando-as V, se Verdadeiras, ou F, se Falsas:</p>
+<p>( ) A preservação da arquitetura original e do padrão estético dos edifícios escolares constituem prioridades jurídicas que se sobrepõem às adaptações físicas exigidas para a remoção de barreiras arquitetônicas.</p>
+<p>( ) As adequações de acessibilidade e a eliminação de barreiras físicas na escola devem ficar restritas à Sala de Recursos, por ser o único espaço de atendimento do estudante público-alvo da Educação Especial.</p>
+<p>( ) A organização de materiais pedagógicos e equipamentos em locais de alcance físico adequado reflete o princípio da acessibilidade no uso do ambiente escolar, promovendo a independência do estudante no cotidiano pedagógico.</p>
+<p>Qual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?</p>
+<ul>
+<li><strong>A)</strong> V - F - V.</li>
+<li><strong>B)</strong> F - F - F.</li>
+<li><strong>C)</strong> V - V - V.</li>
+<li><strong>D)</strong> F - F - V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<blockquote>
+<p><strong>Análise própria — caput</strong>: 1ª e 2ª assertivas: falsas. As edificações públicas e privadas de uso coletivo já existentes devem garantir acessibilidade “em <strong>todas as suas dependências</strong> e serviços”. Nem a estética do prédio nem a restrição à Sala de Recursos afastam esse dever.</p>
+</blockquote>
+<p class="nota">
+<strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4449207">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40de0398-e2" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 63.</strong> É obrigatória a acessibilidade nos sítios da internet mantidos por empresas com sede ou representação comercial no País ou por órgãos de governo, para uso da pessoa com deficiência, garantindo-lhe acesso às informações disponíveis, conforme as melhores práticas e diretrizes de acessibilidade adotadas internacionalmente.</p>
+<details class="qart">
+<summary>
+Art. 63, caput na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4103468</strong> · 2026 · Prefeitura de Dona Emma - SC · Professor …</p>
+<p>O planejamento demográfico moderno exige que os gestores municipais convertam dados estatísticos em ações concretas de inclusão. Sabendo que aproximadamente 6,90/o da população residente de Dona Emma possui algum tipo de deficiência, a Administração Pública local deve pautar suas obras e serviços nos conceitos de Acessibilidade e Desenho Universal. Com base nessa perspectiva e nas diretrizes aplicadas à gestão municipal, analise as seguintes ações:</p>
+<p>I. Nos estacionamentos públicos demarcados nas vias urbanas, devem ser reservadas vagas exclusivas próximas aos acessos principais, devidamente sinalizadas com o Símbolo Internacional de Acesso.</p>
+<p>II. As calçadas construídas ou reformadas devem possuir rebaixamento de meio-fio nas faixas de pedestres para viabilizar a travessia segura de usuários de cadeiras de rodas.</p>
+<p>III. O portal da transparência e o site de serviços da Prefeitura devem conter o selo de acessibilidade digital, permitindo que deficientes visuais utilizem softwares de leitura de tela para consultar decretos e leis.</p>
+<p>Está CORRETO o que se afirma em:</p>
+<ul>
+<li><strong>A)</strong> I, ll e III</li>
+<li><strong>B)</strong> I e ll, apenas.</li>
+<li><strong>C)</strong> II e III, apenas.</li>
+<li><strong>D)</strong> I e lll, apenas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — caput</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada) — caput</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4103468">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1ace4a91-64" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 1º Os sítios devem conter símbolo de acessibilidade em destaque.</p>
+<p>§ 2º Telecentros comunitários que receberem recursos públicos federais para seu custeio ou sua instalação e <strong>lan houses</strong> devem possuir equipamentos e instalações acessíveis.</p>
+<p>§ 3º Os telecentros e as <strong>lan houses</strong> de que trata o § 2º deste artigo devem garantir, no mínimo, 10% (dez por cento) de seus computadores com recursos de acessibilidade para pessoa com deficiência visual, sendo assegurado pelo menos 1 (um) equipamento, quando o resultado percentual for inferior a 1 (um).</p>
+<details class="qart">
+<summary>
+Art. 63 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4103468</strong> · 2026 · Prefeitura de Dona Emma - SC · Professor …</p>
+<p>O planejamento demográfico moderno exige que os gestores municipais convertam dados estatísticos em ações concretas de inclusão. Sabendo que aproximadamente 6,90/o da população residente de Dona Emma possui algum tipo de deficiência, a Administração Pública local deve pautar suas obras e serviços nos conceitos de Acessibilidade e Desenho Universal. Com base nessa perspectiva e nas diretrizes aplicadas à gestão municipal, analise as seguintes ações:</p>
+<p>I. Nos estacionamentos públicos demarcados nas vias urbanas, devem ser reservadas vagas exclusivas próximas aos acessos principais, devidamente sinalizadas com o Símbolo Internacional de Acesso.</p>
+<p>II. As calçadas construídas ou reformadas devem possuir rebaixamento de meio-fio nas faixas de pedestres para viabilizar a travessia segura de usuários de cadeiras de rodas.</p>
+<p>III. O portal da transparência e o site de serviços da Prefeitura devem conter o selo de acessibilidade digital, permitindo que deficientes visuais utilizem softwares de leitura de tela para consultar decretos e leis.</p>
+<p>Está CORRETO o que se afirma em:</p>
+<ul>
+<li><strong>A)</strong> I, ll e III</li>
+<li><strong>B)</strong> I e ll, apenas.</li>
+<li><strong>C)</strong> II e III, apenas.</li>
+<li><strong>D)</strong> I e lll, apenas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<blockquote>
+<p><strong>Alternativa A (certa)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4103468">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1ace4a91-64" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p><strong>Art. 84.</strong> A pessoa com deficiência tem assegurado o direito ao exercício de sua capacidade legal em igualdade de condições com as demais pessoas.</p>
+<p>§ 1º Quando necessário, a pessoa com deficiência será submetida à curatela, conforme a lei.</p>
+<p>§ 2º É facultado à pessoa com deficiência a adoção de processo de tomada de decisão apoiada.</p>
+<details class="qart">
+<summary>
+Art. 84, § 2º na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4064197</strong> · 2026 · Prefeitura de Pinto Bandeira - RS · Assistente Social</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência) destina-se a assegurar e a promover, em condições de igualdade, o exercício dos direitos e das liberdades fundamentais por pessoa com deficiência, visando à sua inclusão social e cidadania. Sobre o Estatuto da Pessoa com Deficiência, analise as assertivas que seguem.</p>
+<p>I. Em caso de pessoa com deficiência em situação de curatela, deve ser assegurada sua participação, no menor grau possível, para a obtenção de consentimento prévio, livre e esclarecido.</p>
+<p>II. É vedada a pessoa com deficiência a adoção de processo de tomada de decisão apoiada.</p>
+<p>III. A avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar e considerará, dentre outras, a limitação no desempenho de atividades.</p>
+<p>IV. Para fins de aplicação da lei, considera-se desenho universal: concepção de produtos, ambientes, programas e serviços a serem usados por todas as pessoas, sem necessidade de adaptação ou de projeto específico, incluindo os recursos de tecnologia assistiva.</p>
+<p>Estão CORRETAS</p>
+<ul>
+<li><strong>A)</strong> Apenas l e lV.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I, II e IV</li>
+<li><strong>D)</strong> Apenas III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<blockquote>
+<p><strong>Fundamento decisivo — § 2º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa B (errada) — § 2º</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Alternativa C (errada) — § 2º</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4064197">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bea843d7-54" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+<p>§ 3º A definição de curatela de pessoa com deficiência constitui medida protetiva extraordinária, proporcional às necessidades e às circunstâncias de cada caso, e durará o menor tempo possível.</p>
+<p>§ 4º Os curadores são obrigados a prestar, anualmente, contas de sua administração ao juiz, apresentando o balanço do respectivo ano.</p>
+<p><strong>Art. 94.</strong> Terá direito a auxílio-inclusão, nos termos da lei, a pessoa com deficiência moderada ou grave que:</p>
+<p>I - receba o benefício de prestação continuada previsto no art. 20 da Lei nº 8.742, de 7 de dezembro de 1993 , e que passe a exercer atividade remunerada que a enquadre como segurado obrigatório do RGPS;</p>
+<p>II - tenha recebido, nos últimos 5 (cinco) anos, o benefício de prestação continuada previsto no art. 20 da Lei nº 8.742, de 7 de dezembro de 1993 , e que exerça atividade remunerada que a enquadre como segurado obrigatório do RGPS.</p>
+<details class="qart">
+<summary>
+Art. 94 na prova — 1 questão da Legalle
+</summary>
+<div class="qa">
+<p><strong>Q4162165</strong> · 2026 · Prefeitura de Rio das Antas - SC · Assistente Social</p>
+<p>Terá direito à concessão do auxílio-inclusão a pessoa com deficiência moderada ou grave que passe a exercer atividade remunerada limitada a __________ salários-mínimos, sendo que o valor do referido auxílio corresponderá a __________ do valor do benefício de prestação continuada em vigor.</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas:</p>
+<ul>
+<li><strong>A)</strong> 1 (um) – 50% (cinquenta por cento).</li>
+<li><strong>B)</strong> 2 (dois) - 25% (vinte e cinco por cento).</li>
+<li><strong>C)</strong> 2 (dois) - 50% (cinquenta por cento).</li>
+<li><strong>D)</strong> 3 (três) – 50% (cinquenta por cento).</li>
+<li><strong>E)</strong> 1 (um) - 70% (setenta por cento).</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e comentário
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<blockquote>
+<p><strong>Alternativa C (certa)</strong></p>
+</blockquote>
+<p class="nota">
+Gabarito comentado: versão local / Qconcursos.
+</p>
+</details>
+<p class="nota">
+<a href="#q-Q4162165">questão na lista da lei</a> · <a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/c69f4af2-7a" target="_blank" rel="noopener">Qconcursos</a>
+</p>
+</div>
+</details>
+</details>
+<details class="questoes">
+<summary>
+Questões da Legalle — 27 questões
+</summary>
+<details class="qcom" id="q-Q4043530">
+<summary>
+Q4043530 · 2026 · Prefeitura de Dom Feliciano - RS · Psicólogo <span class="nota">(Acessibilidade, Direitos Fundamentais no Estatuto da Pessoa com Deficiência)</span>
+</summary>
+<p>Para uma atuação anticapacitista no âmbito da psicologia, de acordo com diretrizes do Conselho Federal de Psicologia, o modelo social da deficiência propõе que:</p>
+<ul>
+<li><strong>A)</strong> A deficiência deve ser tratada como um problema médico que requer reabilitação constante para normalizar o corpo.</li>
+<li><strong>B)</strong> A acessibilidade é uma responsabilidade exclusiva da arquitetura e do urbanismo, não da psicologia.</li>
+<li><strong>C)</strong> O capacitismo é um fenômeno psicológico individual que não possui raízes estruturais na sociedade.</li>
+<li><strong>D)</strong> A deficiência é entendida como o resultado da interação entre impedimentos corporais e barreiras sociais.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/b06ba5c6-4a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4043537">
+<summary>
+Q4043537 · 2026 · Prefeitura de Dom Feliciano - RS · Psicólogo <span class="nota">(Acessibilidade)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 3, inciso II; LBI, art. 3, inciso VI; LBI, art. 4, § 1º.
+</p>
+<p>De acordo com a Lei Brasileira de Inclusão, a chamada adaptação razoável diferencia-se do desenho universal porque:</p>
+<ul>
+<li><strong>A)</strong> A adaptação razoável é obrigatória apenas para o setor público, enquanto o desenho universal é para o privado.</li>
+<li><strong>B)</strong> A adaptação razoável permite cobrar taxas extras do usuário com deficiência para cobrir custos de acessibilidade.</li>
+<li><strong>C)</strong> O desenho universal é pensado para todos desde a concepção, enquanto a adaptação razoável atende necessidades específicas caso a caso.</li>
+<li><strong>D)</strong> O desenho universal foca apenas em acessibilidade digital, enquanto a adaptação razoável foca em barreiras físicas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/b08067a4-4a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4064190">
+<summary>
+Q4064190 · 2026 · Prefeitura de Pinto Bandeira - RS · Assistente Social <span class="nota">(Acessibilidade, Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Assistência Social e à Previdência Social)</span>
+</summary>
+<p>A criação do Programa BPC na Escola constitui-se em importante mecanismo para fomentar a inclusão socioeducacional, a ampliação das aquisições para construção de autonomia e a melhoria da qualidade de vida das pessoas com deficiência, beneficiárias do BPC. As ações do Programa BPC na Escola são estruturadas a partir de quatro eixos, sendo um deles o que consta em qual das seguintes alternativas?</p>
+<ul>
+<li><strong>A)</strong> Eliminação das barreiras para o acesso e permanência na escola das pessoas com deficiência beneficiárias do BPC.</li>
+<li><strong>B)</strong> Realização do acompanhamento eventual das ações implementadas por meio do Programa.</li>
+<li><strong>C)</strong> Instituir e capacitar a equipe técnica local responsável pela aplicação do Questionário de Identificação de Barreiras.</li>
+<li><strong>D)</strong> Identificação dos beneficiários do BPC até 18 anos que estão na escola e os que estão fora da escola.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/be96b62c-54" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4064197">
+<summary>
+Q4064197 · 2026 · Prefeitura de Pinto Bandeira - RS · Assistente Social <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Tutela, da Curatela e Tomada de Decisão Apoiada)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 2, § 1º, inciso III; LBI, art. 2, § 1º; LBI, art. 3, inciso II; LBI, art. 11, parágrafo único; LBI, art. 84, § 2º.
+</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência (Estatuto da Pessoa com Deficiência) destina-se a assegurar e a promover, em condições de igualdade, o exercício dos direitos e das liberdades fundamentais por pessoa com deficiência, visando à sua inclusão social e cidadania. Sobre o Estatuto da Pessoa com Deficiência, analise as assertivas que seguem.</p>
+<p>I. Em caso de pessoa com deficiência em situação de curatela, deve ser assegurada sua participação, no menor grau possível, para a obtenção de consentimento prévio, livre e esclarecido.</p>
+<p>II. É vedada a pessoa com deficiência a adoção de processo de tomada de decisão apoiada.</p>
+<p>III. A avaliação da deficiência, quando necessária, será biopsicossocial, realizada por equipe multiprofissional e interdisciplinar e considerará, dentre outras, a limitação no desempenho de atividades.</p>
+<p>IV. Para fins de aplicação da lei, considera-se desenho universal: concepção de produtos, ambientes, programas e serviços a serem usados por todas as pessoas, sem necessidade de adaptação ou de projeto específico, incluindo os recursos de tecnologia assistiva.</p>
+<p>Estão CORRETAS</p>
+<ul>
+<li><strong>A)</strong> Apenas l e lV.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I, II e IV</li>
+<li><strong>D)</strong> Apenas III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bea843d7-54" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4070846">
+<summary>
+Q4070846 · 2026 · Prefeitura de Pinto Bandeira - RS · Professor de Educação Especial … <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Educação)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 3, inciso XIII.
+</p>
+<p>Conforme a Lei Brasileira de Inclusão da Pessoa corn DeÍiciência (Lei n° 13.146/2015), considera-se profissional de apoio escolar a pessoa que atua em todos os níveis e modalidades de ensino, em instituições públicas e privadas, exercendo atividades de:</p>
+<ul>
+<li><strong>A)</strong> Alimentação, higiene e locomoção do estudante com deficiência.</li>
+<li><strong>B)</strong> Mediação pedagogica, adaptação curricular e elaboração de instrumentos avaliativos do estudante com deficiência.</li>
+<li><strong>C)</strong> Reforço escolar, planejamento de estudos e definição de estratégias pedagógicas para o estudante com deficiência.</li>
+<li><strong>D)</strong> Avaliação psicopedagogica, emissão de relatorios e encaminhamento para atendimento especializado do estudante com deficiência.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/dde606dd-58" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4070861">
+<summary>
+Q4070861 · 2026 · Prefeitura de Pinto Bandeira - RS · Professor de Educação Especial <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Educação)</span>
+</summary>
+<p>Sobre o Atendimento Educacional Especializado, analise a sentença abaixo:</p>
+<p>O professor para dtuar em sala de Atendimento Educacional Especíalízado, precísa estdr preparddo, bem como buscar qualificação permanente, poís as mudanças são instantâneas, sendo que cada aluno necessita ser atendído em sud individualidade, com propostas diversifícadas e díferenciadas</p>
+<p>(</p>
+<p>1ª parte) Uma das funções do Atendimento Educacíonal Especializado é de fomentar ações nos maís diversos campos do conhecimento para os setores mais vulneráveis da sociedade</p>
+<p>(2ª parte).</p>
+<p>A sentença está:</p>
+<ul>
+<li><strong>A)</strong> Totalmente correta.</li>
+<li><strong>B)</strong> Correta somente em sua 1ª parte.</li>
+<li><strong>C)</strong> Correta somente em sua 2ª parte</li>
+<li><strong>D)</strong> Totalmente incorreta.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/de17fbf9-58" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4070864">
+<summary>
+Q4070864 · 2026 · Prefeitura de Pinto Bandeira - RS · Professor de Educação Especial <span class="nota">(Acessibilidade)</span>
+</summary>
+<p>Sobre o conceito de acessibilidade no contexto educacional, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> Refere-se à eliminação de barreiras arquitetônicas, comunicacionais, metodologicas e atitudinais, de modo a assegurar condições de participação, autonomia e aprendizagem para todos os alunos.</li>
+<li><strong>B)</strong> Consiste na implementação de adaptações estruturais e pedagogicas, organizadas segundo critérios institucionais de viabilidade, priorizando a adequação gradual dos ambientes escolares às demandas educacionais emergentes.</li>
+<li><strong>C)</strong> Corresponde à reorganização dos espaços educacionais e dos instrumentos didáticos, considerando a diversidade funcional dos alunos e a necessidade de mediações pedagogicas diferenciadas.</li>
+<li><strong>D)</strong> Caracteriza-se pela adoção de recursos educacionais específicos e estratégias metodologicas adaptadas, voltadas à promoção de condições equitativas de acesso ao currículo escolar.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/de24abd5-58" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4075993">
+<summary>
+Q4075993 · 2026 · SEPLAG-MG · Administração, Gestão Pública e Transversalidade … <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Saúde da Pessoa com Deficiência, Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 2; LBI, art. 25, caput; LBI, art. 25.
+</p>
+<p>Suponha que um estabelecimento de saúde nega atendimento especializado a um paciente com deficiência física, alegando que o custo das adaptações necessárias para o procedimento não está previsto no orçamento. De acordo com a Convencão sobre os Direitos das Pessoas com Deficiência, é INCORRETO afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Adaptação razoável significa as modificações e os ajustes necessários e adequados que não acarretem ônus desproporcional ou indevido.</li>
+<li><strong>B)</strong> A negativa de adaptação razoável constitui uma forma de discriminação por motivo de deficiência.</li>
+<li><strong>C)</strong> As pessoas com deficiência devem ter acesso a serviços de saúde na mesma gama, qualidade e padrão que os serviços gratuitos ou a custos acessíveis oferecidos às demais pessoas.</li>
+<li><strong>D)</strong> O direito à saúde das pessoas com deficiência é facultativo e depende da disponibilidade orçamentária imediata, sem necessidade de planejamento progressivo.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1e346b57-59" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4079878">
+<summary>
+Q4079878 · 2026 · Prefeitura de Presidente Lucena - RS · Professor de Educação Infantil <span class="nota">(Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário, Legislação das Pessoas com Deficiência)</span>
+</summary>
+<p>A respeito da inclusão escolar, analise a sentença abaixo:</p>
+<p><em>Falar da inclusão não significa necessariamente falar das diferenças que as pessoas possuem, pois deve-se valorizar o sujeito independentemente de qualquer diferença existente, reconhecendo e valorizando o sujeito que deve estar incluído em quaisquer âmbitos <strong>(1ª parte)</strong>. A inclusão está relacionada a uma perspectiva de incluir todos sem levar em consideração ds suas condições físicas <strong>(2ª parte)</strong>.</em></p>
+<p>A sentença está:</p>
+<ul>
+<li><strong>A)</strong> Totalmente correta.</li>
+<li><strong>B)</strong> Correta somente em sua 1ª parte.</li>
+<li><strong>C)</strong> Correta somente em sua 2ª parte.</li>
+<li><strong>D)</strong> Totalmente incorreta.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/acd7b6d5-5a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4103468">
+<summary>
+Q4103468 · 2026 · Prefeitura de Dona Emma - SC · Professor … <span class="nota">(Acessibilidade, Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito ao Transporte e à Mobilidade)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 47; LBI, art. 55; LBI, art. 63, caput; LBI, art. 63.
+</p>
+<p>O planejamento demográfico moderno exige que os gestores municipais convertam dados estatísticos em ações concretas de inclusão. Sabendo que aproximadamente 6,90/o da população residente de Dona Emma possui algum tipo de deficiência, a Administração Pública local deve pautar suas obras e serviços nos conceitos de Acessibilidade e Desenho Universal. Com base nessa perspectiva e nas diretrizes aplicadas à gestão municipal, analise as seguintes ações:</p>
+<p>I. Nos estacionamentos públicos demarcados nas vias urbanas, devem ser reservadas vagas exclusivas próximas aos acessos principais, devidamente sinalizadas com o Símbolo Internacional de Acesso.</p>
+<p>II. As calçadas construídas ou reformadas devem possuir rebaixamento de meio-fio nas faixas de pedestres para viabilizar a travessia segura de usuários de cadeiras de rodas.</p>
+<p>III. O portal da transparência e o site de serviços da Prefeitura devem conter o selo de acessibilidade digital, permitindo que deficientes visuais utilizem softwares de leitura de tela para consultar decretos e leis.</p>
+<p>Está CORRETO o que se afirma em:</p>
+<ul>
+<li><strong>A)</strong> I, ll e III</li>
+<li><strong>B)</strong> I e ll, apenas.</li>
+<li><strong>C)</strong> II e III, apenas.</li>
+<li><strong>D)</strong> I e lll, apenas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/1ace4a91-64" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4106078">
+<summary>
+Q4106078 · 2026 · Prefeitura de Dona Emma - SC · Assistente Social Educacional <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Legislação das Pessoas com Deficiência)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 2, caput; LBI, art. 2; LBI, art. 2, § 1º, inciso I; LBI, art. 2, § 1º.
+</p>
+<p>São inegáveis os avanços adquiridos no que se refere aos direitos das pessoas com deficiência. No ano de 2015, foi promulgada a Lei Brasileira de Inclusão - LBI, que tambem ficou conhecida como Estatuto da Pessoa com Deficiência. Dentre as alternativas abaixo, assinale aquela que NÃO corresponde às características da LBI.</p>
+<ul>
+<li><strong>A)</strong> A LBI pode ser considerada o instrumento de conquista de emancipação política das pessoas com deficiência.</li>
+<li><strong>B)</strong> É possível pensar que essa legislação, que apresenta concepções conservadoras, no que se refere à deficiência, contraditoriamente, também, seria um instrumento concreto de reconhecimento de status de cidadão.</li>
+<li><strong>C)</strong> A LBI no Brasil vem tendo força, pois determina que os entes federais façam um esforço para criar uma avaliação unificada da deficiência.</li>
+<li><strong>D)</strong> A avaliação unificada deverá ter caráter biopsicossocial, de forma a contemplar os aspectos do corpo, ambientais, psicológicos, pessoais, de desempenho de atividades e de restrição de participação social.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/ba6ad02e-65" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4106222">
+<summary>
+Q4106222 · 2026 · Prefeitura de Dona Emma - SC · Engenheiro Civil <span class="nota">(Acessibilidade, Legislação das Pessoas com Deficiência, Lei nº 10.048 de 2000, Lei nº 10.098 de 2000 e Decreto nº 5.296 de 2004: Acessibilidade e Atendimento Prioritário)</span>
+</summary>
+<p>Na adequação de acessibilidade de uma praça, o Engenheiro Civil responsável pela fiscalização da obra avaliou o posicionamento da sinalização tátil de direcionamento em áreas de circulação próximas a pilares, balcões de atendimento e trechos com maior concentração de pessoas. Com relação às distâncias aplicáveis à sinalização tátil de direcionamento, assinale a a lternativa INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> Recomenda-se distância mínima de 1,00 m entre a sinalização tátil de direcionamento e paredes, pilares ou outros obstáculos.</li>
+<li><strong>B)</strong> Em adequações de calçadas e edificações existentes, podem ser admitidas distâncias inferiores a 1,00 m, desde que a circulação permaneÇa livre de obstácu los.</li>
+<li><strong>C)</strong> Junto a balcões de atendimento ou locais de permanência de pessoas, a distância da sinalização tátil de direcionamento deve ser igual ou superior a 1,20 m.</li>
+<li><strong>D)</strong> Em locais com concentração de pessoas, admite-se obstrução pontual de até 0,30 m sobre a faixa de sinalização tátil de direcionamento, desde que mantida a continuidade do percurso acessível.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/dc049065-65" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4135204">
+<summary>
+Q4135204 · 2026 · Prefeitura de Porto Vitória - PR · Professor de Artes … <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 5, caput; LBI, art. 5; LBI, art. 7.
+</p>
+<p>Analise as assertivas que seguem:</p>
+<p>I. A pessoa com deficiência deve ser protegida de toda forma de negligência, discriminação, exploração, violência, tortura, crueldade, opressão e tratamento desumano ou degradante.</p>
+<p>II. É dever de todos comunicar à autoridade competente qualquer forma de ameaça ou de violação aos direitos da pessoa com deficiência.</p>
+<p>Acerca das assertivas, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas I está correta.</li>
+<li><strong>B)</strong> I e II estão corretas.</li>
+<li><strong>C)</strong> Apenas I está incorreta.</li>
+<li><strong>D)</strong> I e II estão incorretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: B</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/aafdba9a-70" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4162165">
+<summary>
+Q4162165 · 2026 · Prefeitura de Rio das Antas - SC · Assistente Social <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Assistência Social e à Previdência Social, Inclusão da Pessoa com Deficiência no Trabalho)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 94.
+</p>
+<p>Terá direito à concessão do auxílio-inclusão a pessoa com deficiência moderada ou grave que passe a exercer atividade remunerada limitada a __________ salários-mínimos, sendo que o valor do referido auxílio corresponderá a __________ do valor do benefício de prestação continuada em vigor.</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas:</p>
+<ul>
+<li><strong>A)</strong> 1 (um) – 50% (cinquenta por cento).</li>
+<li><strong>B)</strong> 2 (dois) - 25% (vinte e cinco por cento).</li>
+<li><strong>C)</strong> 2 (dois) - 50% (cinquenta por cento).</li>
+<li><strong>D)</strong> 3 (três) – 50% (cinquenta por cento).</li>
+<li><strong>E)</strong> 1 (um) - 70% (setenta por cento).</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/c69f4af2-7a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4162602">
+<summary>
+Q4162602 · 2026 · Prefeitura de Rio das Antas - SC · Engenheiro Civil <span class="nota">(Acessibilidade)</span>
+</summary>
+<p>Durante a reforma de uma unidade de saúde municipal, alguns setores de atendimento foram temporariamente transferidos para outros ambientes da edificação. Para orientar os usuários durante o período de intervenção, a equipe técnica previu a implantação de sinalização temporária de caráter informativo, conforme a NBR 9050. Considerando os critérios dessa norma, assinale a alternativa INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> A identificação provisória da nova localização da farmácia e dos consultórios constitui aplicação compatível com a sinalização informativa.</li>
+<li><strong>B)</strong> Para a identificação temporária dos setores transferidos em decorrência da reforma, podem ser empregados recursos visuais e táteis, sem necessidade de utilização de sinalização sonora.</li>
+<li><strong>C)</strong> A sinalização informativa pode ser utilizada para identificar elementos provisoriamente incorporados ao funcionamento da unidade durante a reforma.</li>
+<li><strong>D)</strong> As informações essenciais relativas à localização dos setores transferidos devem observar o princípio dos dois sentidos.</li>
+<li><strong>E)</strong> A sinalização informativa pode ser utilizada para indicar a direção dos percursos alternativos por meio de setas e outros recursos de direcionamento aos usuários.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: E</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/8d210e7e-7a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4162769">
+<summary>
+Q4162769 · 2026 · Prefeitura de Rio das Antas - SC · Educação Infantil e Séries Iniciais do Ensino Fundamental … <span class="nota">(Acessibilidade, Direitos Fundamentais no Estatuto da Pessoa com Deficiência)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 3, inciso IV.
+</p>
+<p>A barreira é qualquer entrave, obstáculo, atitude ou comportamento que limite ou impeça a participação social da pessoa, bem como o gozo, a fruição e o exercício de seus direitos à acessibilidade, à liberdade de movimento e de expressão, à comunicação, ao acesso à informação, à compreensão, à circulação com segurança, entre outros. Quando se fala sobre comportamentos que impeçam ou prejudiquem a participação social da pessoa com deficiência em igualdade de condições e oportunidades com as demais pessoas, fala-se em barreira:</p>
+<ul>
+<li><strong>A)</strong> Atitudinal.</li>
+<li><strong>B)</strong> Tecnológica.</li>
+<li><strong>C)</strong> Urbanística.</li>
+<li><strong>D)</strong> Arquitetônica.</li>
+<li><strong>E)</strong> Informativa.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/832f9219-7a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4162770">
+<summary>
+Q4162770 · 2026 · Prefeitura de Rio das Antas - SC · Educação Infantil e Séries Iniciais do Ensino Fundamental … <span class="nota">(Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 4, § 1º.
+</p>
+<p>Analise as partes que seguem: Considera-se discriminação em razão da deficiência toda forma de distinção, restrição ou exclusão, por ação ou omissão (1^(a) parte), que tenha o proposito ou o efeito de prejudicar, impedir ou anular o reconhecimento ou o exercício dos direitos e das liberdades fundamentais de pessoa com deficiência (2^(a) parte), salvo a recusa de adaptações razoáveis e de fornecimento de tecnologias assistivas (3^(a) Parte).</p>
+<p>Acerca das partes, pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas a 1^(a) parte está correta.</li>
+<li><strong>B)</strong> Apenas a 2^(a) parte está correta.</li>
+<li><strong>C)</strong> Apenas a 3^(a) parte está correta.</li>
+<li><strong>D)</strong> Apenas a 2^(a) parte está incorreta.</li>
+<li><strong>E)</strong> Apenas a 3^(a) parte está incorreta.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: E</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/83324969-7a" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4289677">
+<summary>
+Q4289677 · 2026 · Prefeitura de Morro Redondo - RS · Professor de Educação Especial … <span class="nota">(Acessibilidade, Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Habilitação e à Reabilitação)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 14, parágrafo único; LBI, art. 14; LBI, art. 15, inciso I; LBI, art. 15, caput; LBI, art. 15; LBI, art. 16, caput; LBI, art. 16.
+</p>
+<p>Com relação ao disposto na Lei n° 13.146/2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), sobre o direito à habilitação e à reabilitação, assinale a alternativa CORRETA.</p>
+<ul>
+<li><strong>A)</strong> O objetivo exclusivo da habilitação é o tratamento clínico da deficiência, não abrangendo o desenvolvimento de aptidões psicossociais, artísticas ou profissionais.</li>
+<li><strong>B)</strong> O diagnóstico e as intervenções devem ocorrer preferencialmente na idade adulta, sendo desencorajadas medidas precoces.</li>
+<li><strong>C)</strong> O processo de reabilitação baseia-se em uma avaliação médica unidisciplinar.</li>
+<li><strong>D)</strong> Nos programas e serviços de habilitação e de reabilitação, a acessibilidade deve ser garantida em todos os ambientes e serviços.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/bacd8de1-ac" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4296098">
+<summary>
+Q4296098 · 2026 · Prefeitura de Morro Redondo - RS · Engenheiro Civil <span class="nota">(Acessibilidade)</span>
+</summary>
+<p>Durante a fiscalização de uma obra de uma edificação pública municipal, o Engenheiro Civil responsável verificou que uma circulação interna, integrante de uma rota acessível, possuía uma escada fixa para vencer um desnível entre pavimentos. Ao analisar as condições executadas, o profissional deverá verificar se os elementos construtivos atendem aos critérios estabelecidos pela NBR 9050. Considerando isso, assinale a alternativa INCORRETA.</p>
+<ul>
+<li><strong>A)</strong> Nos degraus e escadas fixas localizados em rotas acessíveis, deve ser instalado piso tátil de alerta em cada degrau, de forma a garantir a percepção individual de cada mudança de nível pelo usuário.</li>
+<li><strong>B)</strong> Escadas fixas em rotas acessíveis devem estar associadas a rampas ou equipamentos eletromecânicos de transporte vertical, dando-se preferência às rampas.</li>
+<li><strong>C)</strong> Sequências de até dois degraus são consideradas degraus isolados e devem possuir dimensionamento adequado, corrimão e sinalização.</li>
+<li><strong>D)</strong> Degraus e escadas fixas em rotas acessíveis não devem possuir espelhos vazados ou saliências excessivas nas bordas dos degraus.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/83f4d731-ad" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4316098">
+<summary>
+Q4316098 · 2026 · Prefeitura de Silveira Martins - RS · Professor de Anos Iniciais … <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Educação, Legislação das Pessoas com Deficiência)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 27, caput; LBI, art. 27; LBI, art. 27, parágrafo único; LBI, art. 28, caput; LBI, art. 28.
+</p>
+<p>Sobre o direito à educação, de acordo com a Lei nº 13.146/2015, analise as afirmativas que seguem:</p>
+<p><strong>I</strong>. É dever do Estado, da família, da comunidade escolar e da sociedade assegurar educação de qualidade à pessoa com deficiência, colocando-a a salvo de toda forma de violência, negligência e discriminação.</p>
+<p><strong>II</strong>. A educação constitui direito da pessoa com deficiência, assegurado sistema educacional inclusivo nos níveis iniciais de aprendizado ao longo dos primeiros anos de vida.</p>
+<p><strong>III</strong>. A educação da pessoa com deficiência visa alcançar o máximo desenvolvimento possível de seus talentos e habilidades físicas, sensoriais, intelectuais e sociais, segundo suas características, interesses e necessidades de aprendizagem.</p>
+<p><strong>IV</strong>. Incumbe exclusivamente ao setor privado assegurar, criar, desenvolver, implementar, incentivar, acompanhar e avaliar a participação dos estudantes com deficiência e de suas famílias nas diversas instâncias de atuação da comunidade escolar.</p>
+<p>Estão CORRETAS:</p>
+<ul>
+<li><strong>A)</strong> Apenas I e III.</li>
+<li><strong>B)</strong> Apenas II e III.</li>
+<li><strong>C)</strong> Apenas I e IV.</li>
+<li><strong>D)</strong> Apenas II, III e IV.</li>
+<li><strong>E)</strong> I, II, III e IV.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: A</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/6a7773fd-b3" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4323659">
+<summary>
+Q4323659 · 2026 · Prefeitura de Silveira Martins - RS · Professor de Educação Especial <span class="nota">(Legislação das Pessoas com Deficiência)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LDB, art. 58, caput; LDB, art. 58.
+</p>
+<p>Sobre a realidade da Educação Especial no Brasil, analise as assertivas a seguir:</p>
+<p>**<br />
+**</p>
+<p>**<br />
+**</p>
+<p><strong>I.</strong> A Educação Especial constitui uma modalidade de educação escolar oferecida preferencialmente na rede regular de ensino.</p>
+<p>**<br />
+**</p>
+<p><strong>II.</strong> São considerados público-alvo da Educação Especial os/as estudantes com deficiência, Transtornos Globais do Desenvolvimento e Altas Habilidades ou Superdotação.</p>
+<p>**<br />
+**</p>
+<p><strong>III.</strong> A utilização do termo “preferencialmente” determina que a escolarização dos estudantes público-alvo da Educação Especial ocorra prioritariamente em instituições especializadas, sem vinculação com o ensino regular.</p>
+<p>Está CORRETO o que se afirma em</p>
+<ul>
+<li><strong>A)</strong> I, apenas.</li>
+<li><strong>B)</strong> II, apenas.</li>
+<li><strong>C)</strong> I e lI, apenas.</li>
+<li><strong>D)</strong> I, II e III.</li>
+<li><strong>E)</strong> II e III, apenas</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: C</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/82d588fb-b7" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4449200">
+<summary>
+Q4449200 · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE) <span class="nota">(Acessibilidade, Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 3, inciso VI; LBI, art. 4, § 1º; LBI, art. 28, inciso II.
+</p>
+<p>No acompanhamento do processo de ensino e aprendizagem, um Professor identifica que um estudante com deficiência física necessita de tempo adicional para realizar determinadas atividades escritas, bem como de adequações arquitetônicas e mobiliárias no ambiente escolar, a fim de assegurar sua participação efetiva nas atividades pedagógicas. Considerando os princípios da Educação Inclusiva e o compromisso ético do docente, analise as partes que seguem:</p>
+<p>(1ª parte): A adoção de adaptações metodológicas e de medidas de acessibilidade deve ser evitada pela equipe escolar, a fim de preservar o princípio da isonomia e garantir tratamento igualitário a todos os estudantes. (2ª parte): O estudante deve ser dispensado das atividades pedagógicas que exijam condições diferenciadas de participação, limitando-se sua permanência na escola ao acompanhamento passivo das aulas.</p>
+<p>Pode-se afirmar que:</p>
+<ul>
+<li><strong>A)</strong> Apenas a 1ª parte está incorreta.</li>
+<li><strong>B)</strong> Apenas a 2ª parte está incorreta.</li>
+<li><strong>C)</strong> Ambas as partes estão incorretas.</li>
+<li><strong>D)</strong> Ambas as partes estão corretas.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e análise
+</summary>
+<p><strong>Gabarito: C</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<p class="nota">
+Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.
+</p>
+<p>As duas partes contrariam a LBI. A isonomia material <strong>exige</strong> adaptações razoáveis, e recusá-las é discriminação. Dispensar o aluno das atividades é exclusão, quando a lei garante participação e aprendizagem.</p>
+<ul>
+<li><p><strong>1ª parte — incorreta</strong> (LBI, art. 4, § 1º): A recusa de adaptações razoáveis e de tecnologias assistivas é expressamente considerada <strong>discriminação</strong> em razão da deficiência. Evitar adaptações “em nome da isonomia” é o contrário do que a lei manda.</p></li>
+<li><p><strong>2ª parte — incorreta</strong> (LBI, art. 28, II e III): O poder público deve garantir condições de acesso, permanência, <strong>participação e aprendizagem</strong>, com recursos que eliminem barreiras (II), e adaptações razoáveis para o pleno acesso ao currículo (III). Dispensar o aluno e reduzi-lo a acompanhamento passivo viola esses incisos.</p></li>
+<li><p><strong>contexto — conceito</strong> (LBI, art. 3, VI): O tempo adicional e as adequações de mobiliário são exemplos de <strong>adaptações razoáveis</strong>: ajustes necessários que não acarretam ônus desproporcional, para que o estudante exerça seus direitos em igualdade de condições.</p></li>
+</ul>
+<p><strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40cdc363-e2" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4449207">
+<summary>
+Q4449207 · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE) <span class="nota">(Acessibilidade)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 3, inciso I; LBI, art. 28, inciso I; LBI, art. 57, caput.
+</p>
+<p>A organização do ambiente físico e dos recursos didáticos é dimensão central do planejamento pedagógico inclusivo, devendo orientar-se pelos princípios do Desenho Universal e da Acessibilidade. A respeito da eliminação de barreiras e da organização dos espaços escolares na perspectiva da Educação Inclusiva, analise as assertivas abaixo, julgando-as V, se Verdadeiras, ou F, se Falsas:</p>
+<p>( ) A preservação da arquitetura original e do padrão estético dos edifícios escolares constituem prioridades jurídicas que se sobrepõem às adaptações físicas exigidas para a remoção de barreiras arquitetônicas.</p>
+<p>( ) As adequações de acessibilidade e a eliminação de barreiras físicas na escola devem ficar restritas à Sala de Recursos, por ser o único espaço de atendimento do estudante público-alvo da Educação Especial.</p>
+<p>( ) A organização de materiais pedagógicos e equipamentos em locais de alcance físico adequado reflete o princípio da acessibilidade no uso do ambiente escolar, promovendo a independência do estudante no cotidiano pedagógico.</p>
+<p>Qual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?</p>
+<ul>
+<li><strong>A)</strong> V - F - V.</li>
+<li><strong>B)</strong> F - F - F.</li>
+<li><strong>C)</strong> V - V - V.</li>
+<li><strong>D)</strong> F - F - V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e análise
+</summary>
+<p><strong>Gabarito: D</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<p class="nota">
+Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.
+</p>
+<p>F – F – V. A estética não se sobrepõe à acessibilidade: as edificações existentes devem ser acessíveis em <strong>todas as dependências</strong>. A acessibilidade vale para toda a escola, não só para a Sala de Recursos. Pôr materiais ao alcance do aluno é aplicar o conceito legal de acessibilidade, que é utilização com segurança e autonomia.</p>
+<ul>
+<li><p><strong>1ª e 2ª assertivas — falsas</strong> (LBI, art. 57): As edificações públicas e privadas de uso coletivo já existentes devem garantir acessibilidade “em <strong>todas as suas dependências</strong> e serviços”. Nem a estética do prédio nem a restrição à Sala de Recursos afastam esse dever.</p></li>
+<li><p><strong>2ª assertiva — falsa</strong> (LBI, art. 28, I): O sistema educacional deve ser inclusivo em todos os níveis e modalidades. O AEE complementa a sala comum, não a substitui, e a acessibilidade não se limita a um espaço.</p></li>
+<li><p><strong>3ª assertiva — verdadeira</strong> (LBI, art. 3, I e II): Acessibilidade é a condição de alcance para utilização, com <strong>segurança e autonomia</strong>, de espaços, mobiliários e equipamentos (I). O desenho universal (II) é a concepção de ambientes usáveis por todos sem adaptação específica.</p></li>
+</ul>
+<p><strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40de0398-e2" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4449210">
+<summary>
+Q4449210 · 2026 · Prefeitura de Três Forquilhas - RS · Professor de Atendimento Educacional Especializado (AEE) <span class="nota">(Acessibilidade, Direitos Fundamentais no Estatuto da Pessoa com Deficiência)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 3, inciso IV; LBI, art. 28, inciso II.
+</p>
+<p>Uma Professora do Ensino Fundamental identifica que um estudante com deficiência visual apresenta dificuldades para acompanhar atividades que utilizam exclusivamente imagens projetadas e textos impressos em tamanho convencional. Em vez de dispensá-lo dessas experiências, a docente reorganiza os materiais, disponibiliza recursos acessíveis e planeja estratégias para garantir sua participação nas mesmas situações de aprendizagem propostas à turma. Essa prática fundamenta-se no princípio de que:</p>
+<ul>
+<li><strong>A)</strong> A equidade educacional depende da oferta de atividades idênticas a todos os alunos, ainda que os recursos utilizados impeçam o acesso de alguns deles.</li>
+<li><strong>B)</strong> A remoção de barreiras e a disponibilização de recursos acessíveis favorecem o acesso ao currículo e a participação, sem exigir que o estudante utilize necessariamente os mesmos meios dos demais.</li>
+<li><strong>C)</strong> A inclusão exige a substituição de todas as atividades coletivas por tarefas individuais, pois a participação conjunta pode comprometer o atendimento às necessidades específicas da turma.</li>
+<li><strong>D)</strong> A utilização de recursos diferenciados representa privilégio individual e, por esse motivo, deve ocorrer apenas quando os demais estudantes não estiverem realizando atividades curriculares.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e análise
+</summary>
+<p><strong>Gabarito: B</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<p class="nota">
+Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.
+</p>
+<p>A professora remove barreiras e oferece recursos de acessibilidade para que o aluno participe das <strong>mesmas</strong> situações de aprendizagem, por meios diferentes. É a lógica da LBI: acesso ao currículo com eliminação de barreiras e adaptações razoáveis. Atividades idênticas que excluem (A), isolamento em tarefas individuais (C) e recurso visto como “privilégio” (D) contrariam a lei.</p>
+<ul>
+<li><p><strong>B — certa</strong> (LBI, art. 28, II e III): Recursos de acessibilidade “que eliminem as barreiras e promovam a inclusão plena” (II) e adaptações razoáveis para “pleno acesso ao currículo em condições de igualdade” (III).</p></li>
+<li><p><strong>A, C e D — erradas</strong> (LBI, art. 3, IV e VI): Imagens só projetadas e textos em tamanho convencional são barreiras na comunicação e na informação (IV). Os recursos diferenciados são adaptações razoáveis (VI), não privilégio. Negá-los configura discriminação (art. 4º, § 1º).</p></li>
+</ul>
+<p><strong>Alteração legislativa:</strong> Sem alteração recente nos dispositivos cobrados.</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/40e54884-e2" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q4449374">
+<summary>
+Q4449374 · 2026 · Prefeitura de Três Forquilhas - RS · Engenheiro Civil <span class="nota">(Acessibilidade)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 56, caput.
+</p>
+<p>Na análise de um projeto de reforma de um prédio público municipal, o Engenheiro Civil deve verificar as condições de acessibilidade dos acessos, das rotas de circulação e dos dispositivos de controle de entrada. Com base nos requisitos apresentados, julgue as afirmativas a seguir como Verdadeiras (V) ou Falsas (F):</p>
+<p>( ) Em edificações existentes, quando não for possível adaptar todas as entradas, mediante comprovação técnica, deve ser adaptado o maior número de acessos, respeitando-se a distância máxima de 50 m entre cada entrada acessível e as demais.</p>
+<p>( ) Os acessos devem ser vinculados por rota acessível à circulação principal e às circulações de emergência, sendo admitidos obstáculos permanentes quando houver sinalização tátil e visual que permita sua identificação.</p>
+<p>( ) Quando não for viável executar uma rota acessível entre o estacionamento e os acessos, devem ser previstas vagas destinadas a pessoas com deficiência e pessoas idosas, a uma distância máxima de 50 m até um acesso acessível.</p>
+<p>( ) Quando houver dispositivos de controle de acesso, pelo menos um dispositivo em cada conjunto deve ser acessível, permitindo o acesso, a manobra, a circulação e a aproximação para utilização com autonomia.</p>
+<p>( ) Quando houver porta giratória, deve ser prevista outra entrada acessível junto a ela, podendo essa entrada ser substituída por uma passagem alternativa localizada a até 50 m, desde que vinculada à rota acessível da edificação.</p>
+<p>Qual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?</p>
+<ul>
+<li><strong>A)</strong> F-V- F-F- V.</li>
+<li><strong>B)</strong> V-F-V-V-F.</li>
+<li><strong>C)</strong> V-V-V-F-F.</li>
+<li><strong>D)</strong> F-F-F-V-V.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e análise
+</summary>
+<p><strong>Gabarito: B</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<p class="nota">
+Análise própria. Os detalhes vêm da norma técnica ABNT NBR 9050 (acessos e circulação), não da letra da LBI. Sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.
+</p>
+<p>V – F – V – V – F. A LBI só exige que a reforma de edificação de uso público seja acessível (art. 56) e remete às normas técnicas. Os parâmetros (50 m, rota acessível, vagas, controle de acesso, porta giratória) são da NBR 9050. São falsas a 2ª assertiva, porque a rota acessível não admite obstáculos permanentes mesmo com sinalização, e a 5ª, porque junto à porta giratória deve haver outra entrada acessível, sem a alternativa “a até 50 m”.</p>
+<ul>
+<li><strong>todas — base legal</strong> (LBI, art. 56): A construção, a <strong>reforma</strong>, a ampliação ou a mudança de uso de edificações abertas ao público ou de uso público devem ser executadas de modo a serem acessíveis. Os requisitos técnicos estão nas normas de acessibilidade da ABNT.</li>
+</ul>
+<p><strong>Alteração legislativa:</strong> Sem alteração recente no art. 56. A NBR 9050 teve nova edição em 2020.</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/4510db00-e2" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q3969043">
+<summary>
+Q3969043 · 2025 · Prefeitura de Vacaria - RS · Atendente de Creche <span class="nota">(Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 2, § 1º.
+</p>
+<p>A Lei Brasileira de Inclusão da Pessoa com Deficiência, mais conhecida como Estatuto da Pessoa com Deficiência, NÃO considera qual fator na avaliação da deficiência?</p>
+<ul>
+<li><strong>A)</strong> Fatores socioambientais, psicológicos e pessoais.</li>
+<li><strong>B)</strong> Impedimentos nas funções e nas estruturas do corpo.</li>
+<li><strong>C)</strong> Renda per capita.</li>
+<li><strong>D)</strong> Limitação no desempenho de atividades.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito e análise
+</summary>
+<p><strong>Gabarito: C</strong> <span class="nota">(confirmado no Qconcursos em 19/11/2026)</span></p>
+<p class="nota">
+Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.
+</p>
+<p>A avaliação biopsicossocial da deficiência (LBI, art. 2º, § 1º) considera: I. impedimentos nas funções e estruturas do corpo; II. fatores socioambientais, psicológicos e pessoais; III. limitação no desempenho de atividades; IV. restrição de participação. A renda não entra na avaliação da deficiência; ela aparece em outros contextos, como o BPC.</p>
+<ul>
+<li><strong>C — é a resposta (fator não previsto)</strong> (LBI, art. 2, § 1º): A renda per capita não está entre os quatro incisos do § 1º. As alternativas A, B e D reproduzem os incisos II, I e III.</li>
+</ul>
+<p><strong>Alteração legislativa:</strong> <span class="badge">Alteração recente · potencial de prova</span> A Lei nº 14.724/2023 incluiu o § 3º no art. 2º: o exame médico-pericial da avaliação biopsicossocial pode ser feito por <strong>telemedicina ou análise documental</strong>. A Lei nº 14.624/2023 incluiu o art. 2º-A: o <strong>cordão de fita com girassóis</strong> como símbolo das deficiências ocultas.</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/28d37757-2e" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+<details class="qcom" id="q-Q3969867">
+<summary>
+Q3969867 · 2024 · UFPEL · Pedagogo / Área: Psicopedagogia <span class="nota">(Direitos Fundamentais no Estatuto da Pessoa com Deficiência, Direito à Educação)</span>
+</summary>
+<p class="nota">
+Dispositivos cobrados: LBI, art. 30, inciso IV.
+</p>
+<p>De acordo com a Lei n.° 13.146/2015 (Lei de Inclusão da Pessoa com Deficiência), nos processos seletivos para ingresso e permanência nos cursos oferecidos pelas instituições de ensino superior e de educação profissional e tecnológica, públicas e privadas, deve ser adotada, entre outras medidas, a disponibilização de recursos de acessibilidade e de adequados, solicitados e escolhidos .</p>
+<p>Preenche, CORRETA e respectivamente, as lacunas:</p>
+<ul>
+<li><strong>A)</strong> tecnologia assistiva; quando; pelo candidato com deficiência.</li>
+<li><strong>B)</strong> tecnologia reabilitativa; previamente; pelo candidato com deficiência.</li>
+<li><strong>C)</strong> tecnologia social; quando; pela instituição.</li>
+<li><strong>D)</strong> tecnologia assistiva; previamente; pelo candidato com deficiência.</li>
+<li><strong>E)</strong> tecnologia assistiva; previamente; pela instituição.</li>
+</ul>
+<details class="gab">
+<summary>
+Ver gabarito
+</summary>
+<p><strong>Gabarito: D</strong></p>
+<p class="nota">
+Gabarito comentado na versão local e no Qconcursos.
+</p>
+<p class="nota">
+<a href="https://elite.qconcursos.com/questoes-de-concursos/questoes/d0d84111-2f" target="_blank" rel="noopener">abrir no Qconcursos</a>
+</p>
+</details>
+</details>
+</details>
+</main></div></body></html>

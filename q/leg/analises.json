@@ -1,0 +1,539 @@
+[
+  {
+    "codigo": "Q4449223",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/a2026821-e2",
+    "disciplina": "Direito da Criança e do Adolescente - Estatuto da Criança e do Adolescente (ECA) - Lei nº 8.069 de 1990",
+    "assuntos": [
+      "Direitos Fundamentais no ECA",
+      "Direito à Liberdade, ao Respeito e à Dignidade no ECA"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Três Forquilhas - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Três Forquilhas - RS - Assistente Social",
+    "enunciado": "Sobre o disposto na Lei Federal nº 8.069/1990, conhecida como Estatuto da Criança e do Adolescente, assinale a alternativa CORRETA.",
+    "alternativas": [
+      [
+        "A",
+        "É direito de todos velar pela dignidade da criança e do adolescente, pondo-os a salvo de qualquer tratamento desumano, violento, aterrorizante, vexatório ou constrangedor."
+      ],
+      [
+        "B",
+        "A criança e o adolescente têm direito à liberdade, ao respeito e à dignidade como pessoas humanas em processo de desenvolvimento e como sujeitos de direitos políticos e econômicos."
+      ],
+      [
+        "C",
+        "Considera-se como tratamento cruel ou degradante conduta ou forma cruel de tratamento em relação à criança ou ao adolescente que o ridicularize."
+      ],
+      [
+        "D",
+        "O direito à liberdade plena compreende a possibilidade de ir, vir e estar nos logradouros públicos e espaços comunitários, sem restrições legais."
+      ]
+    ],
+    "gabarito": "C",
+    "fonte": "Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "Questão de “lei seca” do Capítulo II do ECA (arts. 15 a 18-A). Cada alternativa errada troca uma palavra-chave do artigo: “dever” → “direito” (art. 18), “civis, humanos e sociais” → “políticos e econômicos” (art. 15), “ressalvadas as restrições legais” → “sem restrições legais” (art. 16, I). A C reproduz o art. 18-A, parágrafo único, II, “c”.",
+    "itens": [
+      {
+        "lei": "ECA",
+        "art": "18",
+        "detalhe": "caput",
+        "alt": "A",
+        "veredito": "errada",
+        "explicacao": "O art. 18 diz que velar pela dignidade da criança é <strong>dever</strong> de todos, não direito.",
+        "questao": "É direito de todos velar pela dignidade da criança e do adolescente, pondo-os a salvo de qualquer tratamento desumano, violento, aterrorizante, vexatório ou constrangedor.",
+        "lei_texto": "É dever de todos velar pela dignidade da criança e do adolescente, pondo-os a salvo de qualquer tratamento desumano, violento, aterrorizante, vexatório ou constrangedor."
+      },
+      {
+        "lei": "ECA",
+        "art": "15",
+        "detalhe": "caput",
+        "alt": "B",
+        "veredito": "errada",
+        "explicacao": "O art. 15 fala em sujeitos de direitos <strong>civis, humanos e sociais</strong> garantidos na Constituição e nas leis; a alternativa trocou por “políticos e econômicos”.",
+        "questao": "A criança e o adolescente têm direito à liberdade, ao respeito e à dignidade como pessoas humanas em processo de desenvolvimento e como sujeitos de direitos políticos e econômicos.",
+        "lei_texto": "A criança e o adolescente têm direito à liberdade, ao respeito e à dignidade como pessoas humanas em processo de desenvolvimento e como sujeitos de direitos civis, humanos e sociais garantidos na Constituição e nas leis."
+      },
+      {
+        "lei": "ECA",
+        "art": "18-A",
+        "detalhe": "parágrafo único, II, c",
+        "alt": "C",
+        "veredito": "certa",
+        "explicacao": "Reproduz a definição de tratamento cruel ou degradante: conduta que humilhe, ameace gravemente <strong>ou ridicularize</strong> a criança ou o adolescente. Dispositivo incluído pela Lei nº 13.010/2014 (Lei Menino Bernardo).",
+        "questao": "Considera-se como tratamento cruel ou degradante conduta ou forma cruel de tratamento em relação à criança ou ao adolescente que o ridicularize.",
+        "lei_texto": "considera-se: tratamento cruel ou degradante: conduta ou forma cruel de tratamento em relação à criança ou ao adolescente que: ridicularize."
+      },
+      {
+        "lei": "ECA",
+        "art": "16",
+        "detalhe": "I",
+        "alt": "D",
+        "veredito": "errada",
+        "explicacao": "O art. 16, I, garante ir, vir e estar nos logradouros públicos <strong>ressalvadas as restrições legais</strong>; a liberdade não é “plena” nem “sem restrições”.",
+        "questao": "O direito à liberdade plena compreende a possibilidade de ir, vir e estar nos logradouros públicos e espaços comunitários, sem restrições legais.",
+        "lei_texto": "O direito à liberdade compreende os seguintes aspectos: ir, vir e estar nos logradouros públicos e espaços comunitários, ressalvadas as restrições legais;"
+      }
+    ],
+    "alteracao": "O art. 18-A foi incluído pela Lei nº 13.010/2014. É alteração com mais de 10 anos, mas o tema (castigo físico) é recorrente em provas da área de educação.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q4449490",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/db52aa73-e2",
+    "disciplina": "Direito da Criança e do Adolescente - Estatuto da Criança e do Adolescente (ECA) - Lei nº 8.069 de 1990",
+    "assuntos": [
+      "Adoção",
+      "Procedimentos do Estatuto da Criança e do Adolescente",
+      "Colocação em Família Substituta"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Três Forquilhas - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Três Forquilhas - RS - Psicólogo",
+    "enunciado": "O Estatuto da Criança e do Adolescente (ECA) estabelece as garantias, as etapas e os prazos para o atendimento à gestante ou mãe que manifeste o interesse em entregar seu filho para adoção. Com base nessa legislação, assinale a alternativa INCORRETA.",
+    "alternativas": [
+      [
+        "A",
+        "A busca à família extensa da criança respeitará o prazo máximo de noventa dias, sendo este prazo prorrogável por igual período."
+      ],
+      [
+        "B",
+        "Na hipótese de desistência da entrega da criança pelos genitores, a criança será mantida com os pais, e a Justiça da Infância e da Juventude determinará o acompanhamento familiar pelo prazo de cento e oitenta dias."
+      ],
+      [
+        "C",
+        "Os detentores da guarda provisória possuem o prazo de trinta dias para propor a ação de adoção, contado a partir do primeiro dia do estágio de convivência."
+      ],
+      [
+        "D",
+        "Serão cadastrados para adoção os recém-nascidos e as crianças acolhidas que não forem procurados por suas famílias no prazo de trinta dias, contado a partir do dia do acolhimento."
+      ]
+    ],
+    "gabarito": "C",
+    "fonte": "Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "Questão de prazos da entrega voluntária para adoção (art. 19-A do ECA). Decore os quatro prazos: família extensa 90 dias prorrogáveis por mais 90 (§ 3º); ação de adoção em 15 dias após o fim do estágio de convivência (§ 7º); acompanhamento familiar de 180 dias se houver desistência (§ 8º); cadastro para adoção após 30 dias do acolhimento (§ 10). A única incorreta é a C.",
+    "itens": [
+      {
+        "lei": "ECA",
+        "art": "19-A",
+        "detalhe": "§ 7º",
+        "alt": "C",
+        "veredito": "errada (é a resposta)",
+        "explicacao": "O prazo é de <strong>15 dias</strong>, contado do <strong>dia seguinte ao término</strong> do estágio de convivência; a alternativa trocou por 30 dias contados do primeiro dia do estágio.",
+        "questao": "Os detentores da guarda provisória possuem o prazo de trinta dias para propor a ação de adoção, contado a partir do primeiro dia do estágio de convivência.",
+        "lei_texto": "Os detentores da guarda possuem o prazo de 15 (quinze) dias para propor a ação de adoção, contado do dia seguinte à data do término do estágio de convivência."
+      },
+      {
+        "lei": "ECA",
+        "art": "19-A",
+        "detalhe": "§ 3º",
+        "alt": "A",
+        "veredito": "certa",
+        "explicacao": "Reproduz o § 3º: busca à família extensa em até 90 dias, prorrogável por igual período."
+      },
+      {
+        "lei": "ECA",
+        "art": "19-A",
+        "detalhe": "§ 8º",
+        "alt": "B",
+        "veredito": "certa",
+        "explicacao": "Reproduz o § 8º: na desistência, a criança fica com os genitores e há acompanhamento familiar por 180 dias."
+      },
+      {
+        "lei": "ECA",
+        "art": "19-A",
+        "detalhe": "§ 10",
+        "alt": "D",
+        "veredito": "certa",
+        "explicacao": "Reproduz o § 10: cadastro para adoção das crianças não procuradas pela família em 30 dias do acolhimento."
+      }
+    ],
+    "alteracao": "Todo o art. 19-A foi incluído pela Lei nº 13.509/2017 (dentro dos últimos 10 anos). Os prazos (90 + 90, 15, 180 e 30 dias) são o alvo típico das bancas.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q4420575",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/d436438a-d4",
+    "disciplina": "Direito Constitucional",
+    "assuntos": [
+      "Administração Pública – Disposições Gerais e Servidores Públicos",
+      "Servidores Públicos"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Relvado - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Relvado - RS - Auxiliar Administrativo",
+    "enunciado": "As alternativas que seguem apresentam algumas afirmações que envolvem conhecimentos diversos, mas ligados com o vencimento e a remuneração. Nesse sentido analise as alternativas que seguem e assinale a única que apresenta informação INCORRETA, com base no Regime Jurídico Único dos Servidores Públicos.",
+    "alternativas": [
+      [
+        "A",
+        "Qualquer lei pode fixar a relação de valores entre a maior e a menor remuneração dos servidores municipais."
+      ],
+      [
+        "B",
+        "Remuneração é o vencimento acrescido das vantagens permanentes ou parcelas pecuniárias incorporadas, estabelecidas em Lei."
+      ],
+      [
+        "C",
+        "Nenhum servidor poderá perceber mensalmente, a título de remuneração ou subsídio, importância maior do que a fixada como limite pela Constituição Federal."
+      ],
+      [
+        "D",
+        "Vencimento é a retribuição paga ao servidor pelo efetivo exercício do cargo, correspondente ao valor básico do padrão fixado em Lei."
+      ]
+    ],
+    "gabarito": "A",
+    "fonte": "Análise própria, coincidente com os comentários de usuários (3 comentários: indicam a letra A e o art. 39, § 5º, da CF). Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "A relação entre a maior e a menor remuneração não pode ser fixada por “qualquer lei”: a CF, art. 39, § 5º, atribui essa tarefa à lei <strong>do próprio ente</strong> (União, Estados, DF e Municípios), sempre respeitado o teto do art. 37, XI. As demais alternativas são definições do regime jurídico (vencimento = valor básico; remuneração = vencimento + vantagens permanentes) e o teto constitucional.",
+    "itens": [
+      {
+        "lei": "CF",
+        "art": "39",
+        "detalhe": "§ 5º",
+        "alt": "A",
+        "veredito": "errada (é a resposta)",
+        "explicacao": "A CF não fala em “qualquer lei”, e sim em lei da União, dos Estados, do DF e dos Municípios, obedecido o teto do art. 37, XI.",
+        "questao": "Qualquer lei pode fixar a relação de valores entre a maior e a menor remuneração dos servidores municipais.",
+        "lei_texto": "Lei da União, dos Estados, do Distrito Federal e dos Municípios poderá estabelecer a relação entre a maior e a menor remuneração dos servidores públicos, obedecido, em qualquer caso, o disposto no art. 37, XI."
+      },
+      {
+        "lei": "CF",
+        "art": "37",
+        "detalhe": "XI",
+        "alt": "C",
+        "veredito": "certa",
+        "explicacao": "Teto remuneratório: nenhuma remuneração ou subsídio pode exceder o limite do art. 37, XI (nos Municípios, o subsídio do Prefeito)."
+      }
+    ],
+    "alteracao": "O § 5º do art. 39 foi incluído pela EC nº 19/1998 e o teto do art. 37, XI, tem a redação da EC nº 41/2003. São alterações antigas, sem destaque recente.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q4387624",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/1c29b791-cb",
+    "disciplina": "Direito Constitucional",
+    "assuntos": [
+      "Administração Pública – Disposições Gerais e Servidores Públicos"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Relvado - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Relvado - RS - Contador",
+    "enunciado": "A Lei Orgânica traz que são servidores do Município todos os que ocupam cargos, funções ou empregos da administração direta, das autarquias e fundações de direito público, bem como os admitidos por contrato para atender necessidades temporárias de excepcional interesse do Município, definidos em lei local. Ainda, o Município deve se vincular a regime previdenciário federal ou instituir regime previdenciário de que caráter?",
+    "alternativas": [
+      [
+        "A",
+        "Contributivo."
+      ],
+      [
+        "B",
+        "Facultativo."
+      ],
+      [
+        "C",
+        "Assistencial."
+      ],
+      [
+        "D",
+        "Complementar."
+      ]
+    ],
+    "gabarito": "A",
+    "fonte": "Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "A Lei Orgânica de Relvado repete a regra da CF, art. 40, caput: o regime próprio de previdência dos servidores efetivos tem <strong>caráter contributivo</strong> (e solidário). Facultativo, assistencial e complementar não descrevem o regime próprio.",
+    "itens": [
+      {
+        "lei": "CF",
+        "art": "40",
+        "detalhe": "caput",
+        "alt": "A",
+        "veredito": "certa",
+        "explicacao": "O caput do art. 40 diz que o regime próprio de previdência “terá caráter contributivo e solidário”, com contribuição do ente, dos servidores ativos, dos aposentados e dos pensionistas."
+      }
+    ],
+    "alteracao": "<span class=\"badge\">Alteração com potencial de prova</span> O caput do art. 40 foi reescrito pela EC nº 103/2019 (Reforma da Previdência). A mesma emenda incluiu o § 22, que <strong>veda a instituição de novos regimes próprios</strong>. Por isso, a opção da Lei Orgânica de “instituir regime previdenciário” próprio não vale mais para Municípios que ainda não tinham um em 2019. A questão cobrou só o “caráter contributivo”, mas a vedação do § 22 é uma armadilha provável.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q3969043",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/28d37757-2e",
+    "disciplina": "Estatuto da Pessoa com Deficiência - Lei nº 13.146 de 2015",
+    "assuntos": [
+      "Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário"
+    ],
+    "ano": 2025,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Vacaria - RS",
+    "prova": "LEGALLE Concursos - 2025 - Prefeitura de Vacaria - RS - Atendente de Creche",
+    "enunciado": "A Lei Brasileira de Inclusão da Pessoa com Deficiência, mais conhecida como Estatuto da Pessoa com Deficiência, NÃO considera qual fator na avaliação da deficiência?",
+    "alternativas": [
+      [
+        "A",
+        "Fatores socioambientais, psicológicos e pessoais."
+      ],
+      [
+        "B",
+        "Impedimentos nas funções e nas estruturas do corpo."
+      ],
+      [
+        "C",
+        "Renda per capita."
+      ],
+      [
+        "D",
+        "Limitação no desempenho de atividades."
+      ]
+    ],
+    "gabarito": "C",
+    "fonte": "Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "A avaliação biopsicossocial da deficiência (LBI, art. 2º, § 1º) considera: I. impedimentos nas funções e estruturas do corpo; II. fatores socioambientais, psicológicos e pessoais; III. limitação no desempenho de atividades; IV. restrição de participação. A renda não entra na avaliação da deficiência; ela aparece em outros contextos, como o BPC.",
+    "itens": [
+      {
+        "lei": "LBI",
+        "art": "2",
+        "detalhe": "§ 1º",
+        "alt": "C",
+        "veredito": "é a resposta (fator não previsto)",
+        "explicacao": "A renda per capita não está entre os quatro incisos do § 1º. As alternativas A, B e D reproduzem os incisos II, I e III."
+      }
+    ],
+    "alteracao": "<span class=\"badge\">Alteração recente · potencial de prova</span> A Lei nº 14.724/2023 incluiu o § 3º no art. 2º: o exame médico-pericial da avaliação biopsicossocial pode ser feito por <strong>telemedicina ou análise documental</strong>. A Lei nº 14.624/2023 incluiu o art. 2º-A: o <strong>cordão de fita com girassóis</strong> como símbolo das deficiências ocultas.",
+    "recente": true,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q4449200",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/40cdc363-e2",
+    "disciplina": "Estatuto da Pessoa com Deficiência - Lei nº 13.146 de 2015",
+    "assuntos": [
+      "Acessibilidade",
+      "Disposições Preliminares, Igualdade, Não-Discriminação e Atendimento Prioritário"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Três Forquilhas - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Três Forquilhas - RS - Professor de Atendimento Educacional Especializado (AEE)",
+    "enunciado": "No acompanhamento do processo de ensino e aprendizagem, um Professor identifica que um estudante com deficiência física necessita de tempo adicional para realizar determinadas atividades escritas, bem como de adequações arquitetônicas e mobiliárias no ambiente escolar, a fim de assegurar sua participação efetiva nas atividades pedagógicas. Considerando os princípios da Educação Inclusiva e o compromisso ético do docente, analise as partes que seguem:\n\n(1ª parte): A adoção de adaptações metodológicas e de medidas de acessibilidade deve ser evitada pela equipe escolar, a fim de preservar o princípio da isonomia e garantir tratamento igualitário a todos os estudantes. (2ª parte): O estudante deve ser dispensado das atividades pedagógicas que exijam condições diferenciadas de participação, limitando-se sua permanência na escola ao acompanhamento passivo das aulas.\n\nPode-se afirmar que:",
+    "alternativas": [
+      [
+        "A",
+        "Apenas a 1ª parte está incorreta."
+      ],
+      [
+        "B",
+        "Apenas a 2ª parte está incorreta."
+      ],
+      [
+        "C",
+        "Ambas as partes estão incorretas."
+      ],
+      [
+        "D",
+        "Ambas as partes estão corretas."
+      ]
+    ],
+    "gabarito": "C",
+    "fonte": "Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "As duas partes contrariam a LBI. A isonomia material <strong>exige</strong> adaptações razoáveis, e recusá-las é discriminação. Dispensar o aluno das atividades é exclusão, quando a lei garante participação e aprendizagem.",
+    "itens": [
+      {
+        "lei": "LBI",
+        "art": "4",
+        "detalhe": "§ 1º",
+        "alt": "1ª parte",
+        "veredito": "incorreta",
+        "explicacao": "A recusa de adaptações razoáveis e de tecnologias assistivas é expressamente considerada <strong>discriminação</strong> em razão da deficiência. Evitar adaptações “em nome da isonomia” é o contrário do que a lei manda."
+      },
+      {
+        "lei": "LBI",
+        "art": "28",
+        "detalhe": "II e III",
+        "alt": "2ª parte",
+        "veredito": "incorreta",
+        "explicacao": "O poder público deve garantir condições de acesso, permanência, <strong>participação e aprendizagem</strong>, com recursos que eliminem barreiras (II), e adaptações razoáveis para o pleno acesso ao currículo (III). Dispensar o aluno e reduzi-lo a acompanhamento passivo viola esses incisos."
+      },
+      {
+        "lei": "LBI",
+        "art": "3",
+        "detalhe": "VI",
+        "alt": "contexto",
+        "veredito": "conceito",
+        "explicacao": "O tempo adicional e as adequações de mobiliário são exemplos de <strong>adaptações razoáveis</strong>: ajustes necessários que não acarretam ônus desproporcional, para que o estudante exerça seus direitos em igualdade de condições."
+      }
+    ],
+    "alteracao": "Sem alteração recente nos dispositivos cobrados.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q4449207",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/40de0398-e2",
+    "disciplina": "Estatuto da Pessoa com Deficiência - Lei nº 13.146 de 2015",
+    "assuntos": [
+      "Acessibilidade"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Três Forquilhas - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Três Forquilhas - RS - Professor de Atendimento Educacional Especializado (AEE)",
+    "enunciado": "A organização do ambiente físico e dos recursos didáticos é dimensão central do planejamento pedagógico inclusivo, devendo orientar-se pelos princípios do Desenho Universal e da Acessibilidade. A respeito da eliminação de barreiras e da organização dos espaços escolares na perspectiva da Educação Inclusiva, analise as assertivas abaixo, julgando-as V, se Verdadeiras, ou F, se Falsas:\n\n( ) A preservação da arquitetura original e do padrão estético dos edifícios escolares constituem prioridades jurídicas que se sobrepõem às adaptações físicas exigidas para a remoção de barreiras arquitetônicas.\n\n( ) As adequações de acessibilidade e a eliminação de barreiras físicas na escola devem ficar restritas à Sala de Recursos, por ser o único espaço de atendimento do estudante público-alvo da Educação Especial.\n\n( ) A organização de materiais pedagógicos e equipamentos em locais de alcance físico adequado reflete o princípio da acessibilidade no uso do ambiente escolar, promovendo a independência do estudante no cotidiano pedagógico.\n\nQual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?",
+    "alternativas": [
+      [
+        "A",
+        "V - F - V."
+      ],
+      [
+        "B",
+        "F - F - F."
+      ],
+      [
+        "C",
+        "V - V - V."
+      ],
+      [
+        "D",
+        "F - F - V."
+      ]
+    ],
+    "gabarito": "D",
+    "fonte": "Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "F – F – V. A estética não se sobrepõe à acessibilidade: as edificações existentes devem ser acessíveis em <strong>todas as dependências</strong>. A acessibilidade vale para toda a escola, não só para a Sala de Recursos. Pôr materiais ao alcance do aluno é aplicar o conceito legal de acessibilidade, que é utilização com segurança e autonomia.",
+    "itens": [
+      {
+        "lei": "LBI",
+        "art": "57",
+        "detalhe": "caput",
+        "alt": "1ª e 2ª assertivas",
+        "veredito": "falsas",
+        "explicacao": "As edificações públicas e privadas de uso coletivo já existentes devem garantir acessibilidade “em <strong>todas as suas dependências</strong> e serviços”. Nem a estética do prédio nem a restrição à Sala de Recursos afastam esse dever."
+      },
+      {
+        "lei": "LBI",
+        "art": "28",
+        "detalhe": "I",
+        "alt": "2ª assertiva",
+        "veredito": "falsa",
+        "explicacao": "O sistema educacional deve ser inclusivo em todos os níveis e modalidades. O AEE complementa a sala comum, não a substitui, e a acessibilidade não se limita a um espaço."
+      },
+      {
+        "lei": "LBI",
+        "art": "3",
+        "detalhe": "I e II",
+        "alt": "3ª assertiva",
+        "veredito": "verdadeira",
+        "explicacao": "Acessibilidade é a condição de alcance para utilização, com <strong>segurança e autonomia</strong>, de espaços, mobiliários e equipamentos (I). O desenho universal (II) é a concepção de ambientes usáveis por todos sem adaptação específica."
+      }
+    ],
+    "alteracao": "Sem alteração recente nos dispositivos cobrados.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q4449210",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/40e54884-e2",
+    "disciplina": "Estatuto da Pessoa com Deficiência - Lei nº 13.146 de 2015",
+    "assuntos": [
+      "Acessibilidade",
+      "Direitos Fundamentais no Estatuto da Pessoa com Deficiência"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Três Forquilhas - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Três Forquilhas - RS - Professor de Atendimento Educacional Especializado (AEE)",
+    "enunciado": "Uma Professora do Ensino Fundamental identifica que um estudante com deficiência visual apresenta dificuldades para acompanhar atividades que utilizam exclusivamente imagens projetadas e textos impressos em tamanho convencional. Em vez de dispensá-lo dessas experiências, a docente reorganiza os materiais, disponibiliza recursos acessíveis e planeja estratégias para garantir sua participação nas mesmas situações de aprendizagem propostas à turma. Essa prática fundamenta-se no princípio de que:",
+    "alternativas": [
+      [
+        "A",
+        "A equidade educacional depende da oferta de atividades idênticas a todos os alunos, ainda que os recursos utilizados impeçam o acesso de alguns deles."
+      ],
+      [
+        "B",
+        "A remoção de barreiras e a disponibilização de recursos acessíveis favorecem o acesso ao currículo e a participação, sem exigir que o estudante utilize necessariamente os mesmos meios dos demais."
+      ],
+      [
+        "C",
+        "A inclusão exige a substituição de todas as atividades coletivas por tarefas individuais, pois a participação conjunta pode comprometer o atendimento às necessidades específicas da turma."
+      ],
+      [
+        "D",
+        "A utilização de recursos diferenciados representa privilégio individual e, por esse motivo, deve ocorrer apenas quando os demais estudantes não estiverem realizando atividades curriculares."
+      ]
+    ],
+    "gabarito": "B",
+    "fonte": "Análise própria: sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "A professora remove barreiras e oferece recursos de acessibilidade para que o aluno participe das <strong>mesmas</strong> situações de aprendizagem, por meios diferentes. É a lógica da LBI: acesso ao currículo com eliminação de barreiras e adaptações razoáveis. Atividades idênticas que excluem (A), isolamento em tarefas individuais (C) e recurso visto como “privilégio” (D) contrariam a lei.",
+    "itens": [
+      {
+        "lei": "LBI",
+        "art": "28",
+        "detalhe": "II e III",
+        "alt": "B",
+        "veredito": "certa",
+        "explicacao": "Recursos de acessibilidade “que eliminem as barreiras e promovam a inclusão plena” (II) e adaptações razoáveis para “pleno acesso ao currículo em condições de igualdade” (III)."
+      },
+      {
+        "lei": "LBI",
+        "art": "3",
+        "detalhe": "IV e VI",
+        "alt": "A, C e D",
+        "veredito": "erradas",
+        "explicacao": "Imagens só projetadas e textos em tamanho convencional são barreiras na comunicação e na informação (IV). Os recursos diferenciados são adaptações razoáveis (VI), não privilégio. Negá-los configura discriminação (art. 4º, § 1º)."
+      }
+    ],
+    "alteracao": "Sem alteração recente nos dispositivos cobrados.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  },
+  {
+    "codigo": "Q4449374",
+    "url": "https://elite.qconcursos.com/questoes-de-concursos/questoes/4510db00-e2",
+    "disciplina": "Estatuto da Pessoa com Deficiência - Lei nº 13.146 de 2015",
+    "assuntos": [
+      "Acessibilidade"
+    ],
+    "ano": 2026,
+    "banca": "LEGALLE Concursos",
+    "orgao": "Prefeitura de Três Forquilhas - RS",
+    "prova": "LEGALLE Concursos - 2026 - Prefeitura de Três Forquilhas - RS - Engenheiro Civil",
+    "enunciado": "Na análise de um projeto de reforma de um prédio público municipal, o Engenheiro Civil deve verificar as condições de acessibilidade dos acessos, das rotas de circulação e dos dispositivos de controle de entrada. Com base nos requisitos apresentados, julgue as afirmativas a seguir como Verdadeiras (V) ou Falsas (F):\n\n( ) Em edificações existentes, quando não for possível adaptar todas as entradas, mediante comprovação técnica, deve ser adaptado o maior número de acessos, respeitando-se a distância máxima de 50 m entre cada entrada acessível e as demais.\n\n( ) Os acessos devem ser vinculados por rota acessível à circulação principal e às circulações de emergência, sendo admitidos obstáculos permanentes quando houver sinalização tátil e visual que permita sua identificação.\n\n( ) Quando não for viável executar uma rota acessível entre o estacionamento e os acessos, devem ser previstas vagas destinadas a pessoas com deficiência e pessoas idosas, a uma distância máxima de 50 m até um acesso acessível.\n\n( ) Quando houver dispositivos de controle de acesso, pelo menos um dispositivo em cada conjunto deve ser acessível, permitindo o acesso, a manobra, a circulação e a aproximação para utilização com autonomia.\n\n( ) Quando houver porta giratória, deve ser prevista outra entrada acessível junto a ela, podendo essa entrada ser substituída por uma passagem alternativa localizada a até 50 m, desde que vinculada à rota acessível da edificação.\n\nQual alternativa preenche, CORRETAMENTE, de cima para baixo, os parênteses acima?",
+    "alternativas": [
+      [
+        "A",
+        "F-V- F-F- V."
+      ],
+      [
+        "B",
+        "V-F-V-V-F."
+      ],
+      [
+        "C",
+        "V-V-V-F-F."
+      ],
+      [
+        "D",
+        "F-F-F-V-V."
+      ]
+    ],
+    "gabarito": "B",
+    "fonte": "Análise própria. Os detalhes vêm da norma técnica ABNT NBR 9050 (acessos e circulação), não da letra da LBI. Sem gabarito comentado e sem comentários de usuários. Gabarito confirmado no Qconcursos em 19/11/2026.",
+    "resumo": "V – F – V – V – F. A LBI só exige que a reforma de edificação de uso público seja acessível (art. 56) e remete às normas técnicas. Os parâmetros (50 m, rota acessível, vagas, controle de acesso, porta giratória) são da NBR 9050. São falsas a 2ª assertiva, porque a rota acessível não admite obstáculos permanentes mesmo com sinalização, e a 5ª, porque junto à porta giratória deve haver outra entrada acessível, sem a alternativa “a até 50 m”.",
+    "itens": [
+      {
+        "lei": "LBI",
+        "art": "56",
+        "detalhe": "caput",
+        "alt": "todas",
+        "veredito": "base legal",
+        "explicacao": "A construção, a <strong>reforma</strong>, a ampliação ou a mudança de uso de edificações abertas ao público ou de uso público devem ser executadas de modo a serem acessíveis. Os requisitos técnicos estão nas normas de acessibilidade da ABNT."
+      }
+    ],
+    "alteracao": "Sem alteração recente no art. 56. A NBR 9050 teve nova edição em 2020.",
+    "recente": false,
+    "confirmado": "19/11/2026"
+  }
+]

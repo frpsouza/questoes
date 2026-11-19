@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estatuto da Fundação – Material de Estudos – Orientador Educacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5d646d;--line:#e3e0d8;--card:#ffffff;--accent:#1d5fa8;--accent-bg:#e9f1fb;--law:#f6f4ee;--note:#7a6f5a;--warn:#8a5a00;--warn-bg:#fff4dc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}}
+:root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e6;--muted:#a2a8b0;--line:#2c3036;--card:#1c1f23;--accent:#7fb0ea;--accent-bg:#1c2a3b;--law:#1a1d21;--note:#b5a98f;--warn:#f0c068;--warn-bg:#2e2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+a{color:var(--accent)}
+.wrap{display:grid;grid-template-columns:290px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 16px;border-right:1px solid var(--line);font:14px/1.45 system-ui,sans-serif}
+nav h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 6px}
+nav a{display:block;padding:3px 6px;border-radius:4px;text-decoration:none;color:var(--fg)}
+nav a:hover{background:var(--accent-bg)}
+nav a.atual{background:var(--accent-bg);font-weight:600}
+nav .tools{display:flex;gap:6px;flex-wrap:wrap}
+nav button{font:13px system-ui,sans-serif;padding:5px 8px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;cursor:pointer}
+main{padding:32px 40px 80px;min-width:0}
+header.capa{border-bottom:2px solid var(--fg);padding-bottom:16px;margin-bottom:24px}
+header.capa h1{font-size:32px;line-height:1.2;margin:0 0 6px}
+header.capa p{margin:4px 0;color:var(--muted);font-family:system-ui,sans-serif;font-size:14px}
+h1{font-size:28px;margin:56px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+h2{font-size:21px;margin:36px 0 10px;color:var(--fg)}
+.meta,.autores,.ref{font:14px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 12px}
+.autores{color:var(--fg);background:var(--accent-bg);padding:6px 10px;border-radius:6px;display:inline-block}
+ul{padding-left:22px}
+li{margin:3px 0}
+.aviso{font:14px/1.5 system-ui,sans-serif;background:var(--warn-bg);color:var(--warn);padding:8px 12px;border-radius:6px}
+details.lei{background:var(--law);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;margin:12px 0;padding:0 16px}
+details.questoes{border:1px solid var(--line);border-radius:6px;margin:8px 0;padding:0 12px;background:var(--card);font:14px/1.5 system-ui,sans-serif}
+details.questoes>summary{cursor:pointer;padding:7px 0;font-weight:600}
+details.questoes ul{margin:4px 0 10px}
+details.qcom{border-top:1px solid var(--line);padding:4px 0}
+details.qcom>summary{cursor:pointer;font-weight:500;padding:4px 0}
+details.qcom p,details.qcom li{font-size:14.5px}
+p.qart{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:2px 0 10px;padding-left:10px;border-left:3px solid var(--accent)}
+details.qart{font:14px/1.55 system-ui,sans-serif;border:1px dashed var(--accent);border-radius:6px;margin:4px 0 14px;padding:0 10px;background:var(--card)}
+details.qart>summary{cursor:pointer;padding:5px 0;font-weight:600;color:var(--accent)}
+details.qart .qa{border-top:1px solid var(--line);padding:6px 0}
+details.qart .qa p,details.qart .qa li{font-size:14px;margin:4px 0}
+details.qart blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--accent);background:var(--accent-bg);border-radius:0 6px 6px 0}
+details.gab{background:var(--accent-bg);border-radius:6px;padding:2px 10px;margin:8px 0 12px}
+details.gab>summary{cursor:pointer;font-weight:600;padding:4px 0;color:var(--accent)}
+ul.topicos>li{margin:6px 0}
+ul.topicos details.questoes,ul.topicos p.ref{margin:6px 0 10px;border-left:3px solid var(--accent)}
+ul.topicos p.ref{padding:2px 10px}
+details.lei>summary{cursor:pointer;padding:10px 0;font:600 15px/1.4 system-ui,sans-serif;color:var(--accent)}
+table.mapa{display:table;width:100%;font:14px/1.45 system-ui,sans-serif;margin:12px 0 20px}
+table.mapa caption{text-align:left;font-weight:600;padding:4px 0;color:var(--muted)}
+table.mapa th{background:var(--accent-bg);text-align:left}
+table.mapa td:nth-child(2){white-space:nowrap}
+@media (max-width:860px){table.mapa{display:block}table.mapa td:nth-child(2){white-space:normal}}
+h3{font-size:17px;margin:28px 0 4px}
+:root{--add-bg:#d7f5dd;--add-fg:#0b5d1e;--del-bg:#fde2e1;--del-fg:#9b1c1c;--hot:#c2410c;--hot-bg:#fff4ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}}
+:root[data-theme="dark"]{--add-bg:#12391d;--add-fg:#8ee6a3;--del-bg:#45191a;--del-fg:#ffaaa5;--hot:#fb923c;--hot-bg:#2a1a10}
+.add{background:var(--add-bg);color:var(--add-fg);border-radius:3px;padding:0 2px}
+.del{background:var(--del-bg);color:var(--del-fg);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.del-l{background:var(--del-bg);color:var(--del-fg);border-radius:3px;padding:0 2px}
+.alt{border-left:3px solid var(--line);padding:2px 0 2px 10px;margin:8px 0}
+.alt.recente{border-left-color:var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.selo{margin:4px 0 0}
+.badge{display:inline-block;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.02em;color:#fff;background:var(--hot);border-radius:10px;padding:0 8px}
+.antes{font:12.5px/1.5 system-ui,sans-serif;color:var(--muted);margin:4px 0 8px;padding:4px 10px;border:1px dashed var(--line);border-radius:6px}
+.antes p{margin:3px 0;font-size:12.5px}
+.antes .velha{opacity:.8}
+.recentes{font:14px/1.5 system-ui,sans-serif;background:var(--hot-bg);border:1px solid var(--hot);border-radius:6px;padding:6px 12px;margin:0 0 18px}
+.recentes ul{margin:4px 0}
+.legenda{font:13px/1.6 system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:var(--card)}
+.arts{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin:0 0 6px}
+details.lei>summary p{display:inline;margin:0;font:inherit}
+details.lei[open]>summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.lei p{margin:6px 0;font-size:15px}
+details.lei .fonte{font:12px system-ui,sans-serif;color:var(--muted)}
+.tit{text-align:center;font:600 13px/1.4 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:16px 0 4px;color:var(--muted)}
+.tit p{margin:0}
+.nota{font:12px system-ui,sans-serif;color:var(--note)}
+table{border-collapse:collapse;font-size:13px;display:block;overflow-x:auto;margin:8px 0}
+td,th{border:1px solid var(--line);padding:3px 6px;vertical-align:top}
+@media (max-width:860px){.wrap{display:block}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:16px}main{padding:16px 16px 60px}h1{font-size:24px}}
+@media print{nav{display:none}.wrap{display:block}main{padding:0}details.lei{break-inside:auto}}
+</style><script>
+function todos(abrir){document.querySelectorAll('details.lei').forEach(d=>d.open=abrir)}
+function tema(){const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('tema',r.dataset.theme)}catch(e){}}
+try{const t=localStorage.getItem('tema');if(t)document.documentElement.dataset.theme=t}catch(e){}
+window.addEventListener('beforeprint',()=>todos(true));
+function abreAlvo(){const id=decodeURIComponent(location.hash.slice(1));const e=id&&document.getElementById(id);if(!e)return;for(let d=e;d;d=d.parentElement)if(d.tagName==='DETAILS')d.open=true;e.scrollIntoView()}
+window.addEventListener('hashchange',abreAlvo);window.addEventListener('DOMContentLoaded',abreAlvo);
+</script></head>
+<body><div class="wrap"><nav><div class="tools"><button onclick="todos(true)">Abrir leis</button><button onclick="todos(false)">Fechar leis</button><button onclick="tema()">Tema</button></div><a href="index.html">← Início</a><h2><a href="portugues.html#pt">I · Português</a></h2><a href="portugues.html#pt-a">a) Leitura e compreensão</a><a href="portugues.html#pt-b">b) Léxico</a><a href="portugues.html#pt-c">c) Aspectos linguísticos</a><h2><a href="legislacao.html#leg">II · Legislação</a></h2><a href="leg-a-lei-rs-14498.html#leg-a">a) Lei RS 14.498/2014</a><a href="#leg-b" class="atual">b) Estatuto da Fundação</a><a href="leg-c-cf88.html#leg-c">c) CF/88</a><a href="leg-d-clt.html#leg-d">d) CLT</a><a href="leg-e-lei-12288.html#leg-e">e) Lei 12.288/2010</a><a href="leg-f-lei-rs-13694.html#leg-f">f) Lei RS 13.694/2011</a><a href="leg-g-maria-da-penha.html#leg-g">g) Maria da Penha</a><a href="leg-h-lbi.html#leg-h">h) LBI</a><a href="leg-i-lgpd.html#leg-i">i) LGPD</a><a href="leg-j-ldb.html#leg-j">j) LDB</a><a href="leg-k-pnept.html#leg-k">k) PNEPT</a><a href="leg-l-bncc.html#leg-l">l) BNCC</a><a href="leg-m-eca.html#leg-m">m) ECA</a><h2><a href="especificos.html#esp">III · Específicos</a></h2><a href="especificos.html#esp-a">a) Pensadores e história</a><a href="especificos.html#esp-b">b) Prática pedagógica</a><a href="especificos.html#esp-c">c) Aprendizagem e conhecimento</a><a href="especificos.html#esp-d">d) Orientação Educacional</a><a href="especificos.html#esp-e">e) Desenvolvimento e subjetividade</a><a href="especificos.html#esp-f">f) Família, escola e conflitos</a><a href="especificos.html#esp-g">g) Dificuldades e inclusão</a><a href="especificos.html#esp-h">h) Trabalho e cidadania</a><a href="especificos.html#esp-i">i) Gestão, planejamento e currículo</a><a href="especificos.html#esp-j">j) Avaliação e supervisão</a></nav><main><header class="capa"><h1>Estatuto da Fundação</h1><p><a href="index.html">Material de Estudos – Orientador Educacional</a> · <a href="legislacao.html">Legislação</a></p></header><div class="legenda"><strong>Legenda das alterações:</strong> <span class="add">texto acrescido</span> · <span class="del">texto suprimido</span> · <span class="badge">Alteração recente · potencial de prova</span> (mudança feita a partir de 2023). Só são destacadas as alterações dos últimos 10 anos (desde 2016); alterações mais antigas aparecem apenas na nota cinza. Abaixo de cada dispositivo alterado aparecem, em letra menor, <em>o que mudou</em> e a <em>redação anterior</em>. O comentário é gerado automaticamente pela comparação entre as redações; a nota cinza indica a norma que fez a alteração.</div><h2 id="leg-b">b) Estatuto da Fundação Liberato (Decreto nº 18.446/1967, alterado pelo Decreto nº 52.101/2014)</h2>
+<ul>
+<li>Natureza jurídica (pessoa jurídica de direito privado), sede e regência (Estatuto, Regimento Geral, Resoluções do Conselho Técnico Deliberativo)</li>
+<li>Finalidades da Fundação (art. 3º): educação profissional e tecnológica; pesquisa e inovação</li>
+<li>Patrimônio, rendas e aplicação de recursos (art. 5º)</li>
+</ul>
+<p class="aviso">
+O texto integral do Decreto 18.446/1967 não está disponível em meio digital no LEGIS/AL-RS. Abaixo está a íntegra do Decreto 52.101/2014, que dá nova redação aos dispositivos alterados do Estatuto.
+</p>
+<details class="lei">
+<summary>
+Decreto nº 52.101, de 27 de novembro de 2014 — íntegra
+</summary>
+<p class="fonte">
+Fonte oficial: <a href="https://ww3.al.rs.gov.br/filerepository/repLegis/arquivos/DEC%2052.101.pdf">AL-RS / LEGIS</a>
+</p>
+<p><strong>Art. 1º</strong> Fica alterado o Anexo do Decreto nº 18.446, de 28 de fevereiro de 1967, e alterações, que aprova o Estatuto da Fundação Escola Técnica “Liberato Salzano Vieira da Cunha”, de Novo Hamburgo, conforme segue:</p>
+<p><strong>I</strong> – no art. 1º e no art. 3º, alíneas <em>a</em> e <em>g,</em> ficam alteradas as redações para as seguintes: <em>Art. 1º A Fundação Escola Técnica Liberato Salzano Vieira da Cunha, instituída nos termos do Decreto Estadual nº</em> <em>18.418, de 28 de janeiro de 1967, é uma pessoa jurídica de direito privado, com sede e foro no Município de Novo Hamburgo, Estado do Rio Grande do Sul, e que se regerá pelo presente Estatuto, por seu Regimento Geral e pelas Resoluções do Conselho Técnico Deliberativo.</em></p>
+<p><em>Art. 3º……….</em></p>
+<p><em>a) ofertar educação profissional e tecnológica, nos níveis básico, médio, técnico e superior, em todas as suas modalidades, com vista ao preparo do indivíduo para que possa interagir, criar e executar atividades ligadas à inovação, à pesquisa, ao desenvolvimento e à expansão científicas e tecnológicas, que venham beneficiar a sociedade;</em></p>
+<p><em>g) realizar atividades de pesquisa básica ou aplicada, de caráter científico ou tecnológico, especialmente por meio da experimentação com materiais, com máquinas e com processos de fabricação, buscando fomentar o conhecimento técnico e tecnológico que viabilizem a geração, o aprimoramento, o desenvolvimento e a fabricação de produtos, sistemas, serviços e processos inovadores;</em></p>
+<p><strong>II</strong> – no art. 5º fica alterada a redação do § 2º e incluído o § 3º, conforme segue: <em>Art. 5º ……….</em></p>
+<p><em>§ 2º A Fundação Escola Técnica Liberato Salzano Vieira da Cunha aplica suas rendas, seus recursos e seu “superávit” integralmente no território nacional, na manutenção e no desenvolvimento de seus objetivos institucionais.</em></p>
+<p><em>§ 3º A entidade é sem fins lucrativos e não distribui a nenhum de seus integrantes ou a terceiros, sob qualquer forma ou pretexto, resultados, dividendos, bonificações, participações ou parcelas do seu patrimônio.</em></p>
+<p><strong>III</strong> – no art. 6º fica transformado o parágrafo único em § 1º e incluídos os §§ 2º e 3º, nos seguintes termos:</p>
+<p><em>Art. 6º ……….</em></p>
+<p><em>§ 1º Os mandatos dos integrantes do Conselho Técnico Deliberativo e do(a) Diretor(a) Executivo(a) são exercidos por prazos certos, suscetíveis de renovação, na forma estabelecida neste Estatuto.</em></p>
+<p><em>§ 2º Os(As) conselheiros(as) não recebem remuneração, vantagens ou benefícios, direta ou indiretamente, sob qualquer forma ou título, em razão das competências, das funções ou das atividades que lhes sejam atribuídas por integrarem o Conselho Técnico Deliberativo, restando salvaguardadas as remunerações dos(as) Conselheiros(as) integrantes do Quadro de Pessoal da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, percebidas em decorrência de suas relações de emprego.</em></p>
+<p><em>§ 3º O(A) Diretor(a) Executivo(a) será remunerado(a) por suas funções enquanto perdurar o seu mandato, sendo que sua remuneração deverá adequar-se em qualquer caso ao que dispõe o art. 29, § 1º, incisos I e II, e § 2º, incisos I e II da Lei Federal nº 12.101, de 27 de novembro de 2009, com a redação incluída pela Lei Federal nº 12.868, de 15 de outubro de 2013, regulamentada pelo Decreto Federal nº 8.242, de 23 de maio de 2014.</em></p>
+<p><strong>IV</strong> – os arts. 7º, 11 e 12 passam a ter as seguintes redações:</p>
+<p><em>Art. 7º O Conselho Técnico Deliberativo - CTD, do qual só poderão fazer parte brasileiros(as) maiores de dezoito anos, será constituído pelos seguintes representantes, designados(as) pela Chefia do Poder Executivo:</em></p>
+<p><em>I – um(a) da Secretaria da Educação;</em></p>
+<p><em>II – um(a) do Ministério de Educação;</em></p>
+<p><em>III - três especialistas em educação, de reconhecida idoneidade, de livre escolha da Chefia do Poder Executivo;</em></p>
+<p><em>IV – um(a) da</em> <em>Federação das Indústrias do Rio Grande do Sul - FIERGS;</em></p>
+<p><em>V – dois(duas) do corpo discente, escolhidos(as) e indicados(as) pelos(as) estudantes; e</em></p>
+<p><em>VI – um(a) do Conselho Regional de Desenvolvimento do Vale do Rio dos Sinos – CONSINOS.</em></p>
+<p><em>Art. 11 Os membros do Conselho Técnico Deliberativo que sem motivo justificado, deixarem de comparecer a três sessões consecutivas, perderão o mandato.</em></p>
+<p><em>Art. 12. Ao Conselho Técnico Deliberativo da Fundação, compete:</em></p>
+<p><em>I - eleger o(a) seu(sua) Presidente(a) e Vice-Presidente(a), nos termos do art. 8º deste Estatuto;</em></p>
+<p><em>II - apresentar à Administração Pública Estadual, para efeito de nomeação do(a) Diretor(a) Executivo(a), o(a) candidato(a) escolhido(a) pelos segmentos da comunidade escolar,</em></p>
+<p><em>composta por professores(as), por pais, por funcionários(as) e por alunos(as), nos termos da Lei nº 10.799, de 10 de junho de 1996, e Decreto nº 36.990, de 04 de novembro de 1996;</em></p>
+<p><em>III - elaborar o Regimento Escolar;</em></p>
+<p><em>IV - apreciar e aprovar as emendas ou alterações do Estatuto da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, pelo voto de, no mínimo, dois terços de seus integrantes, encaminhando tais emendas ou alterações à Administração Pública Estadual;</em></p>
+<p><em>V - emendar e reformar, pelo voto de, no mínimo, dois terços de seus integrantes, o Regimento Escolar;</em></p>
+<p><em>VI - apreciar e aprovar, à vista de proposta do(a) Diretor(a) Executivo(a), as medidas de ordem didática ou administrativa que as necessidades escolares e os interesses do ensino exigirem;</em></p>
+<p><em>VII - apreciar a forma de organização do corpo docente e do pessoal técnico,</em></p>
+<p><em>administrativo e auxiliar, bem como o modo de prover os respectivos cargos;</em></p>
+<p><em>VIII - deliberar sobre a criação e a extinção de cargos e funções e a fixação de salário e gratificação dos(as) servidores(as) da Fundação;</em></p>
+<p><em>IX - homologar o resultado dos concursos para admissão de pessoal docente, técnico e administrativo;</em></p>
+<p><em>X - aprovar o orçamento para o novo exercício financeiro;</em></p>
+<p><em>XI - aprovar o Balanço Geral de cada ano, apresentado pelo(a) Diretor(a)</em></p>
+<p><em>Executivo(a), com o parecer do Conselho de Curadores – CC;</em></p>
+<p><em>XII – examinar o relatório anual das atividades da Entidade dentro do primeiro</em></p>
+<p><em>semestre de cada ano;</em></p>
+<p><em>XIII – deliberar sobre a instalação de novos cursos da Fundação, bem como sobre o funcionamento de cursos extraordinários e de cursos complementares;</em></p>
+<p><em>XIV – aprovar as taxas e mensalidades a serem cobradas dos(as) alunos(as);</em></p>
+<p><em>XV – aprovar o Regimento Geral e o Regimento Escolar, bem como deliberar sobre as alterações que venham a ser propostas pelo(a) Diretor(a) Executivo(a);</em></p>
+<p><em>XVI – aprovar, mediante proposta do(a) Diretor(a) Executivo(a), os Regulamentos dos diversos setores e serviços necessários ao pleno funcionamento da Fundação;</em></p>
+<p><em>XVII – decidir sobre a aceitação de doações e legados; e</em></p>
+<p><em>XVIII – deliberar sobre a abertura de créditos adicionais.</em></p>
+<p><strong>V</strong> – no “caput” do art. 13 fica alterada a redação para a seguinte:</p>
+<p><em>Art. 13. O(A) Presidente do Conselho Técnico Deliberativo terá as seguintes atribuições:</em></p>
+<p><em>I – convocar e presidir as reuniões do Conselho Técnico Deliberativo;</em></p>
+<p><em>II – proferir voto de qualidade nos casos de empate nas deliberações do Conselho Técnico Deliberativo; e</em></p>
+<p><em>III – exercer outras atividades correlatas.</em></p>
+<p>VI – no art. 14 fica incluído o parágrafo único com a seguinte redação:</p>
+<p><em>Art.14 ……….</em></p>
+<p><strong><em>Parágrafo único</em></strong> <em>. O(A) Diretor(a) Executivo(a), sempre empregado(a), poderá optar pela percepção de sua remuneração, acrescida de verba de representação conforme o padrão estabelecido em Decreto para o cargo das fundações públicas de direito privado estaduais, sendo garantidas férias de trinta dias, além de gratificação natalina e de vantagens</em></p>
+<p><em>estabelecidas em Acordo Coletivo anteriormente percebidas e cessada a investidura, é garantida a reposição de todas as vantagens trabalhistas que tenham sido conferidas ao(à) empregado(a) enquanto ocupante do cargo de Direção.</em></p>
+<p><strong>VI</strong> – no “caput” do art. 15, no art. 16 e no art. 17 ficam alteradas as redações, conforme</p>
+<p>segue:</p>
+<p><em>Art. 15. A Direção Executiva será exercida pelo(a) Diretor(a) Executivo(a), nomeado(a) pela Chefia do Poder Executivo nos termos do art. 12, inciso II, deste Estatuto, com mandato de três anos, podendo ser reconduzido(a), apenas uma vez e por igual período.</em></p>
+<p><em>Art. 16. O(a) Diretor(a) Executivo(a) participará das reuniões do Conselho Técnico Deliberativo apenas como consultor(a), sem direito a voto, e não receberá nenhuma remuneração por sua presença.</em></p>
+<p><em>Art. 17. Compete ao(à) Diretor(a) Executivo(a) da Fundação:</em></p>
+<ul>
+<li><p><em>I – representar a Fundação Escola Técnica Liberato Salzano Vieira da Cunha, ativa e</em></p></li>
+<li><p><em>passivamente, em juízo ou fora dele, podendo delegar poderes para esse efeito, se necessário;</em></p></li>
+<li><p><em>II – celebrar convênios, acordos e contratos;</em></p></li>
+</ul>
+<p><em>III – aprovar o quadro do pessoal docente, técnico, administrativo e auxiliar da</em></p>
+<p><em>Fundação, fixando-lhe as atribuições e o regime de trabalho;</em></p>
+<p><em>IV – admitir, demitir, promover e punir empregados(as) de qualquer categoria e praticar os demais atos inerentes à administração de pessoal;</em></p>
+<ul>
+<li><em>V – designar os(as) titulares das funções de chefia;</em></li>
+</ul>
+<p><em>VI – organizar, superintender e fiscalizar, direta ou indiretamente, todo o serviço da Fundação, zelar pelo patrimônio e pelo ensino ministrado na Instituição;</em></p>
+<p><em>VII – aprovar o conjunto de instrumentos orçamentários para o exercício financeiro subsequente.</em></p>
+<p><em>VIII – abrir contas bancárias e movimenta-lás juntamente com o(a) encarregado(a) da Tesouraria;</em></p>
+<ul>
+<li><em>IX – pagar contas e dar quitações;</em></li>
+</ul>
+<p><em>X – propor ao Conselho Técnico Deliberativo as medidas de ordem didática ou administrativas exigidas para cumprir os interesses do ensino ou as necessidades escolares;</em></p>
+<p><em>XI – encaminhar ao Tribunal de Contas do Estado, a prestação de contas da execução orçamentária do exercício anterior, juntamente com os pareceres do Conselho de Curadores e do Conselho Técnico Deliberativo;</em></p>
+<p><em>XII - encaminhar o relatório anual das atividades gerais da Instituição ao Conselho Técnico Deliberativo e Conselho de Curadores;</em></p>
+<p><em>XIII - fazer cumprir as resoluções emanadas do Conselho Técnico Deliberativo;</em></p>
+<p><em>XIV - exercer quaisquer outras atribuições que, embora não especificadas neste</em></p>
+<p><em>Estatuto, sejam de sua competência, por força de Lei ou Regulamento;</em></p>
+<p><em>XV - convocar reuniões ordinárias e extraordinárias do Conselho Técnico Deliberativo e de Curadores;</em></p>
+<p><em>XVI - convocar as eleições para o cargo de Diretor(a) Executivo(a) da Fundação Escola Técnica Liberato Salzano Vieira da Cunha, nos termos da legislação vigente e do presente Estatuto; e</em></p>
+<p><em>XVII - apresentar proposta de reforma do Estatuto ou Regimentos.</em></p>
+<p><strong>VII</strong> – no art. 21 a alínea <em>a</em> do § 1º passa para a seguinte redação: <em>Art. 21. ……….</em></p>
+<p><em>§ 1º ……….</em></p>
+<p><em>a) pagamento do pessoal da Fundação;</em></p>
+<p><strong>VIII</strong> – no art. 31 fica alterada a redação para a seguinte: <em>Art. 31. O Regimento Geral poderá regular os casos omissos neste Estatuto, respeitados os princípios legais e convencionais próprios.</em></p>
+<p><strong>Art. 2º</strong> O Regimento Geral será elaborado e levado a registro no prazo de doze meses.</p>
+<p><strong>Art. 3º</strong> Este Decreto entra em vigor na data de sua publicação, ficando revogado o Decreto nº 40.390, de 25 de outubro de 2000, bem como o § 2º do art. 21 do Anexo do Decreto nº 18.446, de 28 de fevereiro de 1967, que aprova o Estatuto da Fundação Escola Técnica “Liberato Salzano Vieira da Cunha”, de Novo Hamburgo .</p>
+<p><strong>PALÁCIO PIRATINI</strong> , em Porto Alegre, 27 de novembro de 2014.</p>
+<p><strong>FIM DO DOCUMENTO</strong></p>
+</details>
+</main></div></body></html>
